@@ -1,0 +1,169 @@
+/* Designed by Prakhar Srivastav - 264/48 [http://www.github.com/prakhar1989] */
+.container {
+    width: 1100px;
+}
+
+body {
+    background: url('/static/img/denim.png');
+    font-family: 'Droid Sans', sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+
+.bg_iimc {
+    background: url("../img/iimc.png") -5px 8px no-repeat;
+    width: 560px;
+    margin: 14px auto;
+    height: 602px;
+    text-align: center;
+}
+
+h4 {
+    font-size: 11px;
+}
+
+h1 {
+    color: #27313D;
+    margin-top: 60px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    background: #F4F5F6;
+    padding: 5px 20px;
+}
+
+#logo {
+    width: 820px;
+    height: 100px;
+    background: url("../img/heading.png") -21px -9px no-repeat;
+    float: left;
+}
+
+#logo_login{
+    background: url("../img/heading.png") -110px -9px no-repeat;
+    width: 820px;
+    height: 100px;
+}
+
+.btn {
+    padding: 10px 20px;
+    background: #b7bec9;
+    color: white;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    border: 0px;
+}
+
+.btn:hover {
+    color: white;
+    background: #556070;
+}
+
+
+input[type=submit]{
+    border: none;
+    padding: 10px 20px;
+    margin-right: 15px;
+    color: #ECEEF1;
+    background: #27313D;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+
+input[type=submit]:hover{
+    background: #1b2129;
+}
+
+
+.logout_btn {
+    float: right;
+    padding: 8px 15px;
+    font: 12px;
+}
+.mast_head {
+    background: #eceef1;
+    color: white;
+    height: 110px;
+    padding-top: 20px;
+}
+
+/* navigation area */
+
+.usual ul {
+    margin-left: 0px;
+}
+
+.usual ul li a{
+    font-size: 12px;
+    border: none;
+    height: auto;
+	display : block;
+    color: #ECEEF1;
+	padding : 10px 18px;
+	text-decoration: none;
+    text-transform: uppercase;
+}
+.usual div {
+  clear:left;
+}
+
+#tabbar {
+    background: #eceef1;
+}
+
+#tabbar ul li {
+    float: left;
+    list-style-type: none;
+}
+
+#bars li {
+    background: #DD4A38;
+    margin-right: 3px;
+    -webkit-border-radius: 3px 3px 0px 0px;
+    -moz-border-radius: 3px 3px 0 0;
+    border-radius: 3px 3px 0 0;
+}
+
+#bars li a {
+    font-size: 14px;
+}
+
+#bars li a.selected {
+    background: #27313D;
+    -webkit-border-radius: 3px 3px 0 0 ;
+    -moz-border-radius: 3px 3px 0 0 ;
+    border-radius: 3px 3px 0 0;
+}
+
+
+#resproj ul li a:hover {
+    background: #1b2129;
+}
+
+#confs ul li a:hover {
+    background: #1b2129;
+}
+
+#resproj ul li a{
+    background: #27313D;
+    padding: 12px 28px;
+    text-decoration: none;
+}
+
+#resproj ul li:first-child a{
+    padding-right: 40px;
+}
+
+#confs ul li a{
+    background: #27313D;
+    padding: 12px 36px;
+}
+
+#confs ul li:first-child a{
+    padding-right: 40px;
+}
