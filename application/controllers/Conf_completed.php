@@ -1,6 +1,6 @@
 <?PHP
 
-class CCompleted extends CI_Controller {
+class Conf_Completed extends CI_Controller {
 	
 	function index()
 		{

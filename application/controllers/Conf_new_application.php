@@ -1,6 +1,6 @@
 <?php
 
-class New_Capplication extends CI_Controller {
+class Conf_new_application extends CI_Controller {
 
 				function index()
 				{
@@ -26,7 +26,7 @@ class New_Capplication extends CI_Controller {
 					 
 					 echo '
                      <h1>New Applications</h1>
-					 <FORM METHOD=POST ACTION="ShowConference">
+					 <FORM METHOD=POST ACTION="Conf_show">
                      <table class="table table-bordered">
 					<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Application Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Select</h1></TD></tr>
                      ';

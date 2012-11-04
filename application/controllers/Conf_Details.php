@@ -1,6 +1,6 @@
 <?PHP
 
-class ConferenceDetails extends CI_Controller {
+class Conf_Details extends CI_Controller {
 
 	
     

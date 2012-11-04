@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Research and conference Management Portal</title>
+    <title>Research and Conference Management Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -35,9 +35,9 @@
           <a class="brand" href="/">IIM Calcutta</a>
           <div class="nav-collapse">
             <ul class="nav pull-right">
-                <li><p class="navbar-text"><i class="icon-user icon-white"></i>    UserName </p> </li>
+                <li><p class="navbar-text"><i class="icon-user icon-white"></i>    UserName</p> </li>
                 <li class="divider-vertical"></li>
-                <li class="logout"><a id="logoutBtn" href="#">Logout</a></li>
+                <li class="logout"><a id="logoutBtn" href="logout">Logout</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div>
@@ -57,19 +57,16 @@
 <ul id="VerColMenu">
 	<li><a title="Click to open or close this section" href="#">Research Projects</a>
 		<ul>
-			<li><a title="Click to open or close this section" href="new_application">New Application</a> </li>
-			<li><a title="Click to open or close this section" href="ongoing">Ongoing</a> </li>
-			<li><a title="Click to open or close this section" href="completed">Completed</a> </li>
-			<li><a title="Click to open or close this section" href="app_chairman">Chairman</a> </li>
-			<li><a title="Click to open or close this section" href="app_admin">Admin</a> </li>
-			<li><a title="Click to open or close this section" href="searchProject">Search</a> </li>
+			<li><a title="Click to open or close this section" href="FacultyProjOngoing">View Ongoing Projects</a> </li>
+			<li><a title="Click to open or close this section" href="FacultyProjApp">Apply for Project</a> </li>
+			<li><a title="Click to open or close this section" href="FacultyProjCompleted">View Completed Projects</a> </li>
 		</ul>
 	</li>
-	<li><a title="Click to open or close this section" href="#">Conference</a>
+	<li><a title="Click to open or close this section" href="#">Conferences</a><!--vridhi  -->
 		<ul>
-			<li><a href="#">New Applications</a></li>
-			<li><a href="#">job Descriptions</a></li>
-			<li><a href="#">job Descriptions 2</a></li>
+		    <li><a title="Click to open or close this section" href="facultyConfApp">Apply for Conference</a> </li>
+			<li><a title="Click to open or close this section" href="facultyCongoing">Ongoing Conferences</a> </li>
+			<li><a title="Click to open or close this section" href="facultyCcompleted">Past Conferences</a> </li>
 		</ul>
 	</li>
 	
@@ -83,13 +80,9 @@
 					{
 					$myClass->load_php();
 					}
-					elseif ($action==2)
+					elseif ($action==1)
 					{
-					$myClass->approveMsg($msg);
-					}
-					elseif ($action==3)
-					{
-					$myClass->load_search($searchBy,$searchValue);
+					$myClass->load_php($msg);
 					}
 					
 			?>

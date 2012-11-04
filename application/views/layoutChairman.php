@@ -1,4 +1,25 @@
 <!DOCTYPE html>
+<!--
+
+IIIIIIIIII   SSSSSSSSSSSSSSS         GGGGGGGGGGGGG
+I::::::::I SS:::::::::::::::S     GGG::::::::::::G
+I::::::::IS:::::SSSSSS::::::S   GG:::::::::::::::G
+II::::::IIS:::::S     SSSSSSS  G:::::GGGGGGGG::::G
+  I::::I  S:::::S             G:::::G       GGGGGG
+  I::::I  S:::::S            G:::::G              
+  I::::I   S::::SSSS         G:::::G              
+  I::::I    SS::::::SSSSS    G:::::G    GGGGGGGGGG
+  I::::I      SSS::::::::SS  G:::::G    G::::::::G
+  I::::I         SSSSSS::::S G:::::G    GGGGG::::G
+  I::::I              S:::::SG:::::G        G::::G
+  I::::I              S:::::S G:::::G       G::::G
+II::::::IISSSSSSS     S:::::S  G:::::GGGGGGGG::::G
+I::::::::IS::::::SSSSSS:::::S   GG:::::::::::::::G
+I::::::::IS:::::::::::::::SS      GGG::::::GGG:::G
+IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
+                                                  
+-->
+
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -8,14 +29,9 @@
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link rel="stylesheet" href="http://localhost/ci/static/css/bootstrap.min.css" >
-    <style type="text/css">
-      body {
-        padding-top: 40px;
-      }
-    </style>
-    <link href="http://localhost/ci/static/css/custom.css" rel="stylesheet" type="text/css" >
-    <!-- <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'> -->
+    <link rel="stylesheet" href="http://localhost/rp/static/css/bootstrap.min.css" >
+    <link href="http://localhost/rp/static/css/custom.css" rel="stylesheet" type="text/css" >
+    <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -24,63 +40,46 @@
   </head>
   <body>
 
-    <div class="navbar navbar-fixed-top">
-      <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </a>
-          <a class="brand" href="/">IIM Calcutta</a>
-          <div class="nav-collapse">
-            <ul class="nav pull-right">
-                <li><p class="navbar-text"><i class="icon-user icon-white"></i>    Chairman </p> </li>
-                <li class="divider-vertical"></li>
-                <li class="logout"><a id="logoutBtn" href="#">Logout</a></li>
-            </ul>
-          </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
-
     <div class="mast_head">
         <div class="container">
-            <h1>Research and Conference Management Portal</h1>
-            <h3>Some awesome tag line.</h3>
+            <div id="logo"></div>
+            <a class="btn logout_btn" href="logout">Logout</a>
         </div> <!-- /container -->
     </div>
 
+    <div class="top_nav">
+           <div id="tabbar" class="usual">
+            <div class="container">
+                <ul id="bars">
+                    <li><a href="#resproj" class="selected">Research Projects</a></li>
+                    <li><a href="#confs">Conferences</a></li>
+                </ul>
+                <div id="resproj" style="display: block">
+                    <ul> 
+                        <li><a  href="new_application">New Application</a> </li>
+						<li><a  href="ongoing">Ongoing</a> </li>
+						<li><a  href="completed">Completed</a> </li>
+						<li><a  href="app_committee">Committee</a> </li>
+						<li><a  href="app_admin">Admin</a> </li>
+						<li><a  href="searchProject">Search</a> </li>
+                </div>
+                <div id="confs" style="display: none">
+                    <ul >
+                        <li><a  href="new_Capplication">New Application</a> </li>
+						<li><a  href="index.php/Congoing">Ongoing</a> </li>
+						<li><a  href="Ccompleted">Completed</a> </li>
+						<li><a  href="Capp_admin">Admin</a> </li>
+						<li><a  href="Capp_committee">Committee</a> </li>
+						<li><a  href="searchConference">Search</a> </li>
+                        </li>
+                    </ul>
+                </div>
+           </div> 
+        </div>
+    </div>
+
     <div class="container">
-        <div class="row">
-            <div class="span3" id = "sidemenu">
-<ul id="VerColMenu">
-	<li><a title="Click to open or close this section" href="#">Research Projects</a>
-		<ul>
-			<li><a title="Click to open or close this section" href="http://localhost/ci/index.php/new_application">New Application</a> </li>
-			<li><a title="Click to open or close this section" href="http://localhost/ci/index.php/ongoing">Ongoing</a> </li>
-			<li><a title="Click to open or close this section" href="http://localhost/ci/index.php/completed">Completed</a> </li>
-			<li><a title="Click to open or close this section" href="http://localhost/ci/index.php/app_committee">Committee</a> </li>
-			<li><a title="Click to open or close this section" href="http://localhost/ci/index.php/app_admin">Admin</a> </li>
-			<li><a title="Click to open or close this section" href="http://localhost/ci/index.php/searchProject">Search</a> </li>
-		</ul>
-	</li>
-	<li><a title="Click to open or close this section" href="#">Conference</a>
-		<ul>
-			<li><a title="Click to open or close this section" href="http://localhost/ci/index.php/new_Capplication">New Application</a> </li>
-			<li><a title="Click to open or close this section" href="http://localhost/ci/index.php/Congoing">Ongoing</a> </li>
-			<li><a title="Click to open or close this section" href="http://localhost/ci/index.php/Ccompleted">Completed</a> </li>
-			<li><a title="Click to open or close this section" href="http://localhost/ci/index.php/Capp_admin">Admin</a> </li>
-			<li><a title="Click to open or close this section" href="http://localhost/ci/index.php/Capp_committee">Committee</a> </li>
-			<li><a title="Click to open or close this section" href="http://localhost/ci/index.php/searchConference">Search</a> </li>
-		</ul>
-	</li>
-	
-</ul>
-                
- </div>
-			
-            <div class="span8">
+        <div>
 			<?php
 					if ($action==0)
 					{
@@ -99,13 +98,12 @@
              </div>
         </div>
     </div>
-
-    <footer>
+	<footer>
         <p>Handcrafted by Internet Solutions Group &copy; 2012</p>
     </footer>
-
-    <script src="http://localhost/ci/static/js/jquery.min.js"></script>
-    <script src="http://localhost/ci/static/js/bootstrap.min.js"></script>
-    <script src="http://localhost/ci/static/js/application.js"></script>
+    <script src="http://localhost/rp/static/js/jquery.min.js"></script>
+    <script src="http://localhost/rp/static/js/bootstrap.min.js"></script>
+    <script src="http://localhost/rp/static/js/tabs.min.js"></script>
+    <script src="http://localhost/rp/static/js/application.js"></script>
   </body>
 </html> 

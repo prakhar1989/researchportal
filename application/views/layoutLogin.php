@@ -29,8 +29,8 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link rel="stylesheet" href="http://localhost/ci/static/css/bootstrap.min.css" >
-    <link href="http://localhost/ci/static/css/custom.css" rel="stylesheet" type="text/css" >
+    <link rel="stylesheet" href="http://localhost/rp/static/css/bootstrap.min.css" >
+    <link href="http://localhost/rp/static/css/custom.css" rel="stylesheet" type="text/css" >
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -96,8 +96,8 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
         </div>
             
     </div>
-    <script src="http://localhost/ci/static/js/jquery.min.js"></script>
-    <script src="http://localhost/ci/static/js/bootstrap.min.js"></script>
-    <script src="http://localhost/ci/static/js/application.js"></script>
+    <script src="http://localhost/rp/static/js/jquery.min.js"></script>
+    <script src="http://localhost/rp/static/js/bootstrap.min.js"></script>
+    <script src="http://localhost/rp/static/js/application.js"></script>
   </body>
 </html> 

@@ -4,7 +4,7 @@
 // 1.Show the details of the selected project  
 // 2. Approve or reject a project
 
-class ShowConference extends CI_Controller {
+class Conf_show extends CI_Controller {
 
 	
     
@@ -26,7 +26,7 @@ class ShowConference extends CI_Controller {
 					 $this->load->model('conference_model');
 					  //pass the projectId of the selected project
 					 
-					 echo '<FORM name="approveConference" method= POST action="ShowConference/approveConference">';
+					 echo '<FORM name="approveConference" method= POST action="Conf_show/approveConference">';
 					 $Query= $this->conference_model->conferenceInfo($Conference);
 					 echo '<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 					 ';

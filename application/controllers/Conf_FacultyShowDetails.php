@@ -1,14 +1,14 @@
 <?php
 
 
-class StudentConfShowDetails extends CI_Controller {
+class Conf_facultyShowDetails extends CI_Controller {
 
 	function index()
 	{
 			
 		$data['myClass']=$this;
 		$data['action']=0;
-		$this->load->view('layoutStudent',$data);
+		$this->load->view('layoutFaculty',$data);
 	}
 	function load_php()
 	{

@@ -1,6 +1,6 @@
 <?PHP
 
-class C_accounts extends CI_Controller {
+class Conf_accounts extends CI_Controller {
 	
 	function index()
 		{

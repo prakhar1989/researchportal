@@ -1,6 +1,6 @@
 <?php
 
-class AddC_Account extends CI_Controller {
+class Conf_Add_Account extends CI_Controller {
 
 				function index()
 				{

@@ -1,6 +1,6 @@
 <?php
 
-class Show_C_account extends CI_Controller {
+class Conf_show_account extends CI_Controller {
 
 				function index()
 				{

@@ -1,6 +1,6 @@
 <?PHP
 
-class ApproveConference extends CI_Controller {
+class Conf_approve extends CI_Controller {
 
 		function index()
 		{

@@ -1,6 +1,6 @@
 <?PHP
 
-class CApp_admin extends CI_Controller {
+class Conf_app_chairman extends CI_Controller {
 	
 	function index()
 		{
@@ -23,11 +23,12 @@ class CApp_admin extends CI_Controller {
 				//echo '<p> App_chairman page </p>';
 				//Load the project model
 				$this->load->model('conference_model');
-				$stage='admin';
+				$stage='chairman';
 				$Query= $this->conference_model->conference_stage($stage);
 				
-				echo '<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
-					 ';
+                echo "<h1>Chairman</h1>";
+				echo '<TABLE class="table table-bordered">';
+                echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</tr>';
 					 foreach($Query->result() as $row)
 					 {
 						 echo '<TR><TD>';

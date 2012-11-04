@@ -57,6 +57,15 @@ class login extends CI_Controller {
 		else if($_SESSION['usertype']==2){
 		    header("location:../homeFaculty");
 		}
+		else if($_SESSION['usertype']==3){
+		    header("location:../homeChairman");
+		}
+		else if($_SESSION['usertype']==4){
+		    header("location:../homeComm");
+		}
+		else if($_SESSION['usertype']==5){
+		    header("location:../homeStudent");
+		}
     }
     else {
         $msg = "Wrong Username or Password. Please retry";

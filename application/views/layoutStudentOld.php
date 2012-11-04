@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Research and conference Management Portal</title>
+    <title>Research and Conference Management Portal</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -35,7 +35,7 @@
           <a class="brand" href="/">IIM Calcutta</a>
           <div class="nav-collapse">
             <ul class="nav pull-right">
-                <li><p class="navbar-text"><i class="icon-user icon-white"></i>    UserName </p> </li>
+                <li><p class="navbar-text"><i class="icon-user icon-white"></i>    Admin </p> </li>
                 <li class="divider-vertical"></li>
                 <li class="logout"><a id="logoutBtn" href="#">Logout</a></li>
             </ul>
@@ -55,21 +55,11 @@
         <div class="row">
             <div class="span3" id = "sidemenu">
 <ul id="VerColMenu">
-	<li><a title="Click to open or close this section" href="#">Research Projects</a>
+	<li><a title="Click to open or close this section" href="#">Conferences</a>
 		<ul>
-			<li><a title="Click to open or close this section" href="new_application">New Application</a> </li>
-			<li><a title="Click to open or close this section" href="ongoing">Ongoing</a> </li>
-			<li><a title="Click to open or close this section" href="completed">Completed</a> </li>
-			<li><a title="Click to open or close this section" href="app_chairman">Chairman</a> </li>
-			<li><a title="Click to open or close this section" href="app_admin">Admin</a> </li>
-			<li><a title="Click to open or close this section" href="searchProject">Search</a> </li>
-		</ul>
-	</li>
-	<li><a title="Click to open or close this section" href="#">Conference</a>
-		<ul>
-			<li><a href="#">New Applications</a></li>
-			<li><a href="#">job Descriptions</a></li>
-			<li><a href="#">job Descriptions 2</a></li>
+		    <li><a title="Click to open or close this section" href="studentConfApp">Apply for Conference</a> </li>
+			<li><a title="Click to open or close this section" href="studentCongoing">Ongoing Conferences</a> </li>
+			<li><a title="Click to open or close this section" href="studentCcompleted">Past Conferences</a> </li>
 		</ul>
 	</li>
 	
@@ -103,6 +93,7 @@
 
     <script src="http://localhost/rp/static/js/jquery.min.js"></script>
     <script src="http://localhost/rp/static/js/bootstrap.min.js"></script>
+    <script src="http://localhost/rp/static/js/tabs.min.js"></script>
     <script src="http://localhost/rp/static/js/application.js"></script>
   </body>
 </html> 

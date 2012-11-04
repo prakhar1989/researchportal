@@ -1,6 +1,6 @@
 <?php
 
-class StudentConfApp extends CI_Controller {
+class Conf_studentApp extends CI_Controller {
 
 				function index()
 				{

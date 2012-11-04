@@ -1,6 +1,6 @@
 <?PHP
 
-class FacultyCOngoing extends CI_Controller {
+class Conf_FacultyOngoing extends CI_Controller {
 	
 	function index()
 		{

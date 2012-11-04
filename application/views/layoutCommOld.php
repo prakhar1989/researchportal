@@ -67,9 +67,12 @@
 	</li>
 	<li><a title="Click to open or close this section" href="#">Conference</a>
 		<ul>
-			<li><a href="#">New Applications</a></li>
-			<li><a href="#">job Descriptions</a></li>
-			<li><a href="#">job Descriptions 2</a></li>
+			<li><a title="Click to open or close this section" href="new_Capplication">New Application</a> </li>
+			<li><a title="Click to open or close this section" href="Congoing">Ongoing</a> </li>
+			<li><a title="Click to open or close this section" href="Ccompleted">Completed</a> </li>
+			<li><a title="Click to open or close this section" href="Capp_chairman">Chairman</a> </li>
+			<li><a title="Click to open or close this section" href="Capp_admin">Admin</a> </li>
+			<li><a title="Click to open or close this section" href="searchConference">Search</a> </li>
 		</ul>
 	</li>
 	

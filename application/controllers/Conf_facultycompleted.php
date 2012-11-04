@@ -1,18 +1,18 @@
 <?PHP
 
-class StudentCCompleted extends CI_Controller {
+class Conf_facultyCompleted extends CI_Controller {
 	
 	function index()
 		{
 			
 			$data['myClass']=$this;
 			$data['action']=0;
-			$this->load->view('layoutStudent',$data);
+			$this->load->view('layoutFaculty',$data);
 		}
 	function load_php()
 				{
 				$this->load->model('conference_model');
-				$result= $this->conference_model-> conferenceCompleteStudent('anurag');
+				$result= $this->conference_model-> conferenceCompleteFaculty('anurag');
 				// Display the results
 				echo'
 					

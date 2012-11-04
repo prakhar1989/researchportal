@@ -1,6 +1,6 @@
 <?PHP
 
-class CApp_committee extends CI_Controller {
+class Conf_app_committee extends CI_Controller {
 	
 	function index()
 		{

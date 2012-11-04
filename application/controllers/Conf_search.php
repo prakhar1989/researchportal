@@ -1,5 +1,5 @@
 <?PHP
-class SearchConference extends CI_Controller{
+class Conf_search extends CI_Controller{
 	
 	function index() {
 			$data['myClass']=$this;

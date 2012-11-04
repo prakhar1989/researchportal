@@ -1,6 +1,6 @@
 <?PHP
 
-class COngoing extends CI_Controller {
+class Conf_ongoing extends CI_Controller {
 	
 	function index()
 		{

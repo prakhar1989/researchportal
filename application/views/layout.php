@@ -29,8 +29,8 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link rel="stylesheet" href="http://localhost/ci/static/css/bootstrap.min.css" >
-    <link href="http://localhost/ci/static/css/custom.css" rel="stylesheet" type="text/css" >
+    <link rel="stylesheet" href="http://localhost/rp/static/css/bootstrap.min.css" >
+    <link href="http://localhost/rp/static/css/custom.css" rel="stylesheet" type="text/css" >
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -69,14 +69,13 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                 </div>
                 <div id="confs" style="display: none">
                     <ul >
-                        <li><a href="new_Capplication">New Application</a> </li>
-                        <li><a href="Congoing">Ongoing</a> </li>
-                        <li><a href="Ccompleted">Completed</a> </li>
-                        <li><a href="Capp_chairman">Chairman</a> </li>
-                        <li><a href="Capp_committee">Committee</a> </li>
-                        <li><a href="C_accounts">Accounts</a> </li>
-                        <li><a href="recurring">Recurring</a> </li>
-                        <li><a href="searchConference">Search</a> </li>
+                        <li><a href="Conf_new_application">New Application</a> </li>
+                        <li><a href="Conf_ongoing">Ongoing</a> </li>
+                        <li><a href="Conf_completed">Completed</a> </li>
+                        <li><a href="Conf_app_chairman">Chairman</a> </li>
+                        <li><a href="Conf_app_committee">Committee</a> </li>
+                        <li><a href="Conf_accounts">Accounts</a> </li>
+                        <li><a href="Conf_search">Search</a> </li>
                         </li>
                     </ul>
                 </div>
@@ -108,9 +107,9 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
              </div>
         </div>
     </div>
-    <script src="http://localhost/ci/static/js/jquery.min.js"></script>
-    <script src="http://localhost/ci/static/js/bootstrap.min.js"></script>
-    <script src="http://localhost/ci/static/js/tabs.min.js"></script>
-    <script src="http://localhost/ci/static/js/application.js"></script>
+    <script src="http://localhost/rp/static/js/jquery.min.js"></script>
+    <script src="http://localhost/rp/static/js/bootstrap.min.js"></script>
+    <script src="http://localhost/rp/static/js/tabs.min.js"></script>
+    <script src="http://localhost/rp/static/js/application.js"></script>
   </body>
 </html> 
