@@ -16,7 +16,7 @@ class FacultyProjShowDetails extends CI_Controller {
 				//Load the project model
 				$this->load->model('project_model');
 				$result= $this->project_model->projectSearchByID($ProjectID);
-				echo '<p> hello this is the Project Details Page </p>';
+				//echo '<p> hello this is the Project Details Page </p>';
 				// Display the results
 				echo'
 					<FORM METHOD=POST ACTION="http://localhost/ci/index.php/FacultyProjRequest">

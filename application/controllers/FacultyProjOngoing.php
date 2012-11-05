@@ -20,7 +20,7 @@ class FacultyProjOngoing extends CI_Controller {
 				//$query = $this->db->query($queryStr);
 				// Display the results
 				echo'
-					<FORM METHOD=POST ACTION="http://localhost/ci/index.php/FacultyProjShowDetails">
+					<FORM METHOD=POST ACTION="FacultyProjShowDetails">
 					<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 							
 					<h1>Ongoing Projects</h1>
