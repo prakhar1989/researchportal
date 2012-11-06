@@ -1,6 +1,6 @@
 /* Designed by Prakhar Srivastav - 264/48 [http://www.github.com/prakhar1989] */
-.container {
-    width: 1100px;
+html, body { 
+    height: 100%;
 }
 
 body {
@@ -11,6 +11,10 @@ body {
     line-height: 1.6;
 }
 
+
+.container {
+    width: 1100px;
+}
 
 .bg_iimc {
     background: url("../img/iimc.png") -5px 8px no-repeat;
@@ -166,4 +170,27 @@ input[type=submit]:hover{
 
 #confs ul li:first-child a{
     padding-right: 40px;
+}
+
+/* FOOTER */
+/* Wrapper for page content to push down footer */
+#wrap {
+min-height: 100%;
+height: auto !important;
+height: 100%;
+/* Negative indent footer by it's height */
+margin: 0 auto -40px;
+}
+
+/* Set the fixed height of the footer here */
+footer {
+    text-align: center;
+    background-color: #f5f5f5;
+    height: 40px;
+    font-size: 12px;
+    color: #1B2129;
+}
+
+footer p {
+    padding-top: 10px;
 }

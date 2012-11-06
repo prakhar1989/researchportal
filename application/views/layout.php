@@ -29,8 +29,8 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link rel="stylesheet" href="http://localhost/rp/static/css/bootstrap.min.css" >
-    <link href="http://localhost/rp/static/css/custom.css" rel="stylesheet" type="text/css" >
+    <link rel="stylesheet" href="static/css/bootstrap.min.css" >
+    <link href="static/css/custom.css" rel="stylesheet" type="text/css" >
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -40,6 +40,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
   </head>
   <body>
 
+<div id="wrap">
     <div class="mast_head">
         <div class="container">
             <div id="logo"></div>
@@ -56,15 +57,15 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                 </ul>
                 <div id="resproj" style="display: block">
                     <ul> 
-                        <li><a href="new_application">New Application</a> </li>
-                        <li><a href="extension">Extension</a> </li>
-                        <li><a href="ongoing">Ongoing</a> </li>
-                        <li><a href="completed">Completed</a> </li>
-                        <li><a href="app_chairman">Chairman</a> </li>
-                        <li><a href="app_committee">Committee</a> </li>
-                        <li><a href="Accounts">Accounts</a> </li>
-                        <li><a href="recurring">Recurring</a> </li>
-                        <li><a href="searchProject">Search</a> </li>
+                        <li><a href="/rp/new_application">New Application</a> </li>
+                        <li><a href="/rp/extension">Extension</a> </li>
+                        <li><a href="/rp/ongoing">Ongoing</a> </li>
+                        <li><a href="/rp/completed">Completed</a> </li>
+                        <li><a href="/rp/app_chairman">Chairman</a> </li>
+                        <li><a href="/rp/app_committee">Committee</a> </li>
+                        <li><a href="/rp/Accounts">Accounts</a> </li>
+                        <li><a href="/rp/recurring">Recurring</a> </li>
+                        <li><a href="/rp/searchProject">Search</a> </li>
                     </ul>
                 </div>
                 <div id="confs" style="display: none">
@@ -107,9 +108,15 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
              </div>
         </div>
     </div>
-    <script src="http://localhost/rp/static/js/jquery.min.js"></script>
-    <script src="http://localhost/rp/static/js/bootstrap.min.js"></script>
-    <script src="http://localhost/rp/static/js/tabs.min.js"></script>
-    <script src="http://localhost/rp/static/js/application.js"></script>
+</div>
+    <footer>
+        <div id="container">
+            <p>Handcrafted by Internet Solutions Group &copy; IIM Calcutta</p>
+        </div>
+    </footer>
+    <script src="static/js/jquery.min.js"></script>
+    <script src="static/js/bootstrap.min.js"></script>
+    <script src="static/js/tabs.min.js"></script>
+    <script src="static/js/application.js"></script>
   </body>
 </html> 
