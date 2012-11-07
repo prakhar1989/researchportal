@@ -6,12 +6,16 @@ class HomeAdmin extends CI_Controller {
 		$data['myClass']=$this; // passing the object for callback
 		$data['action']=0;      // what spl action to do for this layout
 		session_start();
-		if($_SESSION['usertype']==1)
+		if (isset($_SESSION['username']))
 		{
-		$this->load->view('layout',$data);
+			if($_SESSION['usertype']==1)
+			{
+			$this->load->view('layout',$data);
+			}
 		}
 		else{
-		//redirect to login page with a msg
+		echo 'hello';
+		header("location:login");
 		}
 	}
 

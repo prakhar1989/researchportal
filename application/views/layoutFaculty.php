@@ -63,9 +63,9 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                 </div>
                 <div id="confs" style="display: none">
                     <ul >
-                        <li><a  href="facultyConfApp">Apply for Conference</a> </li>
-						<li><a  href="facultyCongoing">Ongoing Conferences</a> </li>
-						<li><a  href="facultyCcompleted">Past Conferences</a> </li>
+                        <li><a  href="Conf_facultyApp">Apply for Conference</a> </li>
+						<li><a  href="Conf_facultyongoing">Ongoing Conferences</a> </li>
+						<li><a  href="Conf_facultycompleted">Past Conferences</a> </li>
                         </li>
                     </ul>
                 </div>
