@@ -144,6 +144,13 @@ input[type=submit]:hover{
     border-radius: 3px 3px 0 0;
 }
 
+#resproj ul li a.active {
+    background: #1b2129;
+}
+
+#confs ul li a.active {
+    background: #1b2129;
+}
 
 #resproj ul li a:hover {
     background: #1b2129;
@@ -165,7 +172,7 @@ input[type=submit]:hover{
 
 #confs ul li a{
     background: #27313D;
-    padding: 12px 36px;
+    padding: 12px 46px;
 }
 
 #confs ul li:first-child a{

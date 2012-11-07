@@ -52,7 +52,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
            <div id="tabbar" class="usual">
             <div class="container">
                 <ul id="bars">
-                    <li><a href="#resproj" class="selected">Research Projects</a></li>
+                    <li><a href="#resproj">Research Projects</a></li>
                     <li><a href="#confs">Conferences</a></li>
                 </ul>
                 <div id="resproj" style="display: block">
