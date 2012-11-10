@@ -36,7 +36,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+    <script language="javascript" src="http://localhost/rp/static/js/checkboxes.js"></script>
   </head>
   <body>
 

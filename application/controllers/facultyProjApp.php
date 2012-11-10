@@ -19,7 +19,7 @@ class FacultyProjApp extends CI_Controller {
 						 echo '
 						 <h1>New Project</h1>
 					<p>Please use the form below to enter details of a new project</p>
-					<form method=POST action="FacultyProjApp/insert"  enctype="multipart/form-data"><table class="table table-bordered">
+					<form name="application" method=POST action="FacultyProjApp/insert"  enctype="multipart/form-data"><table class="table table-bordered">
 					<thead>
 						<tr>
 						</tr>
@@ -35,13 +35,14 @@ class FacultyProjApp extends CI_Controller {
 						</tr>
 						<tr>
 							<td>Project Deliverables</td>
-							<td><select name="deliverables">
-							  <option>Case</option>
-							  <option>Course</option>
-						 	  <option>Preparatory</option>
-							  <option>Theoretical Research</option>
-						 	  <option>Secondary Research</option>
-							</select></td>
+							<td><table>
+							<tr>Please select all the deliverable appilcable from below</tr>
+							<tr><td>Cases</td><td><input type="checkbox" value="1" name="casesCB" onClick="enableMe(\'cases\');" /></td><td><input type="text" disabled="disabled" name="cases" value="No of Cases" ></td></tr>
+							<tr><td>Journals</td><td><input type="checkbox" value="1" name="journalsCB" onClick="enableMe(\'journals\');" /></td><td><input type="text" disabled="disabled" name="journals" value="No of Journals" ></td></tr>
+							<tr><td>Book Chapters</td><td><input type="checkbox" value="1" name="chaptersCB" onClick="enableMe(\'chapters\');" /></td><td><input type="text" disabled="disabled" name="chapters" value="No of Chapters" ></td></tr>
+							<tr><td>Conference</td><td><input type="checkbox" value="1" name="conferencesCB" onClick="enableMe(\'conferences\');" /></td><td><input type="text" disabled="disabled" name="conferences" value="No of Conferences" ></td></tr>
+							<tr><td>Work Paper</td><td><input type="checkbox" value="1" name="papersCB" onClick="enableMe(\'papers\');" /></td><td><input type="text" disabled="disabled" name="papers" value="No of Work Papers" ></td></tr>
+							</table></td>													
 						</tr>
 						<tr>
 							<td>Co-Researcher 1 ID</td>
@@ -55,9 +56,12 @@ class FacultyProjApp extends CI_Controller {
 							<td>Project Category</td>
 							<td>
 							<select name="category">
-							  <option>1</option>
-							  <option>2</option>
-							  <option>3</option>
+							  <option>Category 1 (IIM C)</option>
+							  <option>Category 2 (IIM C)</option>
+							  <option>Category 3 (IIM C)</option>
+							  <option>External Project </option>
+							  <option>Other Category</option>
+							  
 							</select>
 						</td>
 						</tr>
