@@ -19,7 +19,7 @@ class FacultyProjApp extends CI_Controller {
 						 echo '
 						 <h1>New Project</h1>
 					<p>Please use the form below to enter details of a new project</p>
-					<form method=POST action="FacultyProjApp/insert" ><table class="table table-bordered">
+					<form method=POST action="FacultyProjApp/insert"  enctype="multipart/form-data"><table class="table table-bordered">
 					<thead>
 						<tr>
 						</tr>
@@ -31,7 +31,7 @@ class FacultyProjApp extends CI_Controller {
 						</tr>
 						<tr>
 							<td>Project Description</td>
-							<td><input type="text" class="large" name="desc"></input></td>
+							<td><input type="file" name="file_desc" id="file_desc" /></td>
 						</tr>
 						<tr>
 							<td>Project Deliverables</td>
@@ -72,8 +72,15 @@ class FacultyProjApp extends CI_Controller {
 					</tbody>
 					</table>
 
-					<input type="submit" value"Submit" class="btn btn-large btn-primary"></input></form>';
-									
+					<input type="submit" value"Submit" class="btn btn-large btn-primary"></input></form>
+				
+					
+					<a href="downloadfile?file=researchportal%283%29.txt">Download file</a>
+					';	
+					
+					
+					
+					
 					}
 				     else 
 					 {
@@ -89,18 +96,26 @@ class FacultyProjApp extends CI_Controller {
 			{
 			 //echo 'The value of Project category is: '.$_POST['category'];
 			 $data['title']=$_POST['title'];
-			 $data['desc']=$_POST['desc'];
+			 //$data['desc']=$_POST['desc'];
 			 $data['researcher2']=$_POST['researcher2'];
 			 $data['researcher3']=$_POST['researcher3'];
 			 $data['grant']=$_POST['grant'];
 			 $data['deliverables']=$_POST['deliverables'];
 			 $data['category']=$_POST['category'];			
 			//$data['']=$_POST[''];
-			 $this->load->model('project_model');
-			 $msg=$this->project_model->insertProject('absdfsf',$data);
+			
+			$this->load->model('project_model');
+			$ProjectId=$this->project_model->insertProject('absdfsf',$data);
+			 
+			 //Uploading the file code... Can be modified to check the file extension if required
+			 
+			 move_uploaded_file($_FILES['file_desc']["tmp_name"],"upload/" . $ProjectId);
+			// echo "Stored in: " . "upload/" . $_FILES["file_desc"]["name"];
+						 
+			 $msg='The Project has been sent for approval ';
 			 require('showMsg.php');
 			 $showMsg=new showMsg();
-			 $showMsg->index($msg,'admin');
+			 $showMsg->index($msg,'faculty');
 			}			
 
 }

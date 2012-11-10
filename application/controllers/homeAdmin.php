@@ -21,7 +21,7 @@ class HomeAdmin extends CI_Controller {
 
 	function load_php()
 	{
-		 $name = $_SESSION['name'];
+		 $name = $_SESSION['username'];
          echo "<h1>Welcome, $name</h1>";
          echo "To begin, use the nav bar on the top to navigate within research projects or conferences saved in the system";
          

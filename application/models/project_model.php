@@ -214,12 +214,24 @@ class Project_model extends CI_Model {
 		
 		//2. Insert value into the project table
 		//INSERT INTO `researchportal`.`project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`) VALUES ('Business Leasdership Study', 'P33333', 'Leadership traits study on current business leaders', '2012-09-29', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', '100000', 'app_admin', '1 Leadership report');
-		 $queryStr= 'INSERT INTO project (ProjectTitle , Description , Researcher1 , Researcher2 ,  Researcher3 , ProjectCategory , ProjectGrant , PStatus , Deliverables ) VALUES (\''.$data['title'].'\' , \'' .$data['desc'].'\' , \''.$user.'\' , \''.$data['researcher2'].'\' , \''.$data['researcher3'].'\' , \''.$data['category'].'\' , \''.$data['grant'].'\' , \'app_admin\' , \''.$data['deliverables'].'\');' ;
+		 $queryStr= 'INSERT INTO project (ProjectTitle , Researcher1 , Researcher2 ,  Researcher3 , ProjectCategory , ProjectGrant , PStatus , Deliverables ) VALUES (\''.$data['title'].'\' , \''.$user.'\' , \''.$data['researcher2'].'\' , \''.$data['researcher3'].'\' , \''.$data['category'].'\' , \''.$data['grant'].'\' , \'app_admin\' , \''.$data['deliverables'].'\');' ;
 		//echo '<br>'.$queryStr;
 		$query = $this->db->query($queryStr);
 		//$result = $query->result();
-		$msg='The Project has been Sent for approval';
-		return $msg;
+		
+		//*** Getting the project Id so as to save the files 
+		$queryStr = 'SELECT ProjectId FROM project WHERE ProjectId = (SELECT MAX(ProjectId)  FROM project)';
+		$query = $this->db->query($queryStr);
+		$result=$query->result();
+		foreach($result as $row)
+					{
+						 //echo 'the projectId is '.$row->ProjectId;
+						 $ProjectId=$row->ProjectId;
+					}
+		
+		
+		//$msg='The Project has been Sent for approval';
+		return $ProjectId;
 		}
 	
 	// function to get the account status of the project
@@ -253,7 +265,7 @@ class Project_model extends CI_Model {
 	{
 		$this->load->database();
 		//--vridhi--added date below
-		$queryStr= 'INSERT INTO budget (Date, ProjectId , dataset , communication , photocopying ,  field , stationery , domestictravel , localconveyance , accomodation , contingency , software , dessimination) VALUES (\''.date("Y-M-D").'\' , \''.$data['projectid'].'\' , \'' .$data['dataset'].'\' , \''.$data['communication'].'\' , \''.$data['photocopying'].'\' , \''.$data['field'].'\' , \''.$data['stationery'].'\' , \''.$data['domestic'].'\' , \''.$data['conveyance'].'\' , \''.$data['accomodation'].'\' , \''.$data['contingency'].'\' , \''.$data['software'].'\' , \''.$data['dessimination'].'\');' ;
+		$queryStr= 'INSERT INTO budget (ProjectId , dataset , communication , photocopying ,  field , stationery , domestictravel , localconveyance , accomodation , contingency , software , dessimination) VALUES (\''.$data['projectid'].'\' , \'' .$data['dataset'].'\' , \''.$data['communication'].'\' , \''.$data['photocopying'].'\' , \''.$data['field'].'\' , \''.$data['stationery'].'\' , \''.$data['domestic'].'\' , \''.$data['conveyance'].'\' , \''.$data['accomodation'].'\' , \''.$data['contingency'].'\' , \''.$data['software'].'\' , \''.$data['dessimination'].'\');' ;
 		//echo '<br>'.$queryStr;
 		$query = $this->db->query($queryStr);
 		//$result = $query->result();

@@ -47,7 +47,7 @@ class login extends CI_Controller {
         //Register $myusername, $mypassword and redirect to file "admin.php"
         session_register("admin");
         session_register("password");
-        $_SESSION['name']= $myusername;
+        $_SESSION['username']= $myusername;
 		foreach($Query->result() as $row){
 		$_SESSION['usertype']= $row->user_type;
 		}
