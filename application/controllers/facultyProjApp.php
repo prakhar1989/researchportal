@@ -104,7 +104,7 @@ class FacultyProjApp extends CI_Controller {
 			 $data['researcher2']=$_POST['researcher2'];
 			 $data['researcher3']=$_POST['researcher3'];
 			 $data['grant']=$_POST['grant'];
-			 $data['deliverables']=$_POST['deliverables'];
+			 $data['deliverables']="dummy_Deliverable";
 			 $data['category']=$_POST['category'];			
 			//$data['']=$_POST[''];
 			
@@ -112,8 +112,8 @@ class FacultyProjApp extends CI_Controller {
 			$ProjectId=$this->project_model->insertProject('absdfsf',$data);
 			 
 			 //Uploading the file code... Can be modified to check the file extension if required
-			 
-			 move_uploaded_file($_FILES['file_desc']["tmp_name"],"upload/" . $ProjectId);
+			 $ext=end(explode('/', $_FILES['file_desc']['type']));
+			 move_uploaded_file($_FILES['file_desc']["tmp_name"],"upload/" . $ProjectId.'_description.'.$ext);
 			// echo "Stored in: " . "upload/" . $_FILES["file_desc"]["name"];
 						 
 			 $msg='The Project has been sent for approval ';

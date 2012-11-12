@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Sep 18, 2012 at 08:37 PM
+-- Generation Time: Nov 12, 2012 at 01:50 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -27,12 +27,143 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE IF NOT EXISTS `budget` (
-  `ProjectId` varchar(50) NOT NULL,
-  `ResearchAssit` decimal(10,0) NOT NULL,
-  `Miscalleneous` decimal(10,0) NOT NULL,
-  `Travel` decimal(10,0) NOT NULL,
-  `Contingency` decimal(10,0) NOT NULL
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ProjectId` varchar(50) DEFAULT NULL,
+  `dataset` float(10,0) DEFAULT NULL,
+  `communication` float(10,0) DEFAULT NULL,
+  `field` float(10,0) DEFAULT NULL,
+  `photocopying` float(10,0) DEFAULT NULL,
+  `stationery` float DEFAULT NULL,
+  `domestictravel` float DEFAULT NULL,
+  `localconveyance` float DEFAULT NULL,
+  `accomodation` float DEFAULT NULL,
+  `contingency` float DEFAULT NULL,
+  `software` float DEFAULT NULL,
+  `dessimination` float DEFAULT NULL,
+  `recurring` float NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `budget`
+--
+
+INSERT INTO `budget` (`Date`, `ProjectId`, `dataset`, `communication`, `field`, `photocopying`, `stationery`, `domestictravel`, `localconveyance`, `accomodation`, `contingency`, `software`, `dessimination`, `recurring`) VALUES
+('0000-00-00 00:00:00', '10', 1000, 1111, 222, 456, 500, 300, 1500, 5000, 0, 999, 0, 0),
+('0000-00-00 00:00:00', '1', 1000, 1111, 222, 456, 500, 300, 1500, 5000, 0, 999, 0, 0),
+('0000-00-00 00:00:00', '12', 300, 777, 245, 765, 1111, 9000, 700, 4000, 555, 400, 150, 0),
+('0000-00-00 00:00:00', '12', NULL, NULL, 1600, NULL, NULL, NULL, 1000, NULL, NULL, NULL, NULL, 0),
+('0000-00-00 00:00:00', '12 ', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0),
+('0000-00-00 00:00:00', '12 ', 669, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '12 ', 669, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '12 ', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '12 ', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '12 ', 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '12 ', 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '12 ', 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '2 ', 1000, 350, 0, 0, 0, 0, 0, 0, 0, 1000, 0, 0),
+('0000-00-00 00:00:00', '12 ', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '22 ', 550, 1000, 0, 50, 0, 0, 0, 0, 0, 0, 800, 0),
+('0000-00-00 00:00:00', '12 ', 130, 878, 0, 0, 0, 0, 0, 0, 0, 454656, 0, 0),
+('0000-00-00 00:00:00', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 733),
+('0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 733),
+('0000-00-00 00:00:00', '12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 733),
+('0000-00-00 00:00:00', '12', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 733),
+('0000-00-00 00:00:00', '12', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 733),
+('2012-11-10 17:12:12', '22 ', 1000, 0, 0, 355, 0, 3000, 0, 0, 0, 200, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `conference`
+--
+
+CREATE TABLE IF NOT EXISTS `conference` (
+  `ConferenceTitle` varchar(400) NOT NULL,
+  `ConferenceId` int(200) NOT NULL AUTO_INCREMENT,
+  `Description` varchar(2000) NOT NULL,
+  `App_Date` date NOT NULL,
+  `Start_Date` date NOT NULL,
+  `End_Date` date NOT NULL,
+  `Researcher1` varchar(80) NOT NULL,
+  `ConferenceCategory` text NOT NULL,
+  `ConferenceGrant` int(11) NOT NULL,
+  `CStatus` varchar(50) NOT NULL,
+  `Block_number` bigint(100) NOT NULL DEFAULT '0' COMMENT 'first block 1st jan 2001- each block of 3 years; 0 for student',
+  PRIMARY KEY (`ConferenceId`),
+  UNIQUE KEY `ProjectId` (`ConferenceId`),
+  UNIQUE KEY `ProjectId_2` (`ConferenceId`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+
+--
+-- Dumping data for table `conference`
+--
+
+INSERT INTO `conference` (`ConferenceTitle`, `ConferenceId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `ConferenceCategory`, `ConferenceGrant`, `CStatus`, `Block_number`) VALUES
+('Marketing in Modern Retails', 1, 'A study on the consumer behavior in a modern retail. His choice /selection methods, payment methods and comfort level to be measured.', '2012-09-28', '2012-09-30', '2012-09-28', 'Ankush Verma', '0', 0, 'rejected', 0),
+('Strategic Marketing', 2, 'Research on the various methods of applying positioning in marketing', '2012-09-17', '2012-09-18', '2012-10-31', 'ankushv', '0', 0, 'completed', 0),
+('Operations Research on Air Industry', 3, '', '0000-00-00', '0000-00-00', '0000-00-00', 'happyMan', '0', 0, 'app_comm', 0),
+('Research on recession cycles', 4, 'A study of recession and its effects', '2012-09-06', '0000-00-00', '0000-00-00', 'abc123', '0', 0, 'rejected', 0),
+('Aasddsa', 5, 'sgdg gd fd gd gdfgd fgdgdg', '2012-09-19', '2012-09-15', '2012-09-24', 'sfsfsf', '0', 0, 'app_comm', 0),
+('Financial Excellence in Banks', 6, 'Studying the various private and government commercial banks  ', '2012-09-12', '2012-09-28', '2012-12-28', 'xcvn2', '0', 0, 'app_chairman', 0),
+('Study on Prakhar', 7, 'Prakhar''s genius uncoded', '2012-09-12', '2012-09-29', '2012-10-16', 'prakhars', '0', 0, 'rejected', 0),
+('Behavioral study of customers of SUVs', 8, 'SUV automobile industry specific study on the buying behaviour of the customers of different regions', '2012-09-19', '2012-12-13', '2013-01-10', 'pkjain', '0', 0, 'app_comm', 0),
+('Behavioral study of customers of sports cars', 9, 'Sports cars industry specific study on the buying behaviour of the customers of different regions', '2012-09-19', '2012-12-13', '2013-01-10', 'pkjain', '0', 0, 'approved', 0),
+('Operational Strategy', 10, 'Study of Various operational strategies in Industry', '2012-09-25', '2012-09-30', '2014-03-12', 'Abc11', '0', 0, 'app_chairman', 0),
+('TestConference', 11, 'Testing the system', '0000-00-00', '2012-12-12', '2013-02-12', 'absdfsf', '2', 5000, 'app_comm', 0),
+('student application', 12, 'going to a conference', '0000-00-00', '2012-12-12', '2013-02-12', 'absdfsf', '1', 100000, 'app_chairman', 0),
+('kk', 13, 'kk', '0000-00-00', '2008-12-01', '0000-00-00', 'absdfsf', 'International', 99, 'app_comm', 4),
+('Int conf', 14, 'assdsdfsfs', '0000-00-00', '2012-12-15', '2012-12-19', 'absdfsf', 'International', 100000, 'app_admin', 4),
+('Int conf 2', 15, 'assdsdfsfs', '0000-00-00', '2012-11-15', '2012-11-19', 'absdfsf', 'International', 100000, 'app_admin', 4),
+('testing ', 16, '3', '0000-00-00', '2012-12-25', '2012-12-29', 'absdfsf', 'International', 34532, 'app_comm', 4),
+('testing ', 17, '3', '0000-00-00', '2012-12-25', '2012-12-29', 'absdfsf', 'International', 34532, 'app_admin', 4),
+('testing ', 18, '3', '0000-00-00', '2012-12-25', '2012-12-29', 'absdfsf', 'International', 34532, 'app_admin', 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `conferencecompleted`
+--
+
+CREATE TABLE IF NOT EXISTS `conferencecompleted` (
+  `ConferenceId` varchar(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `conferenceextension`
+--
+
+CREATE TABLE IF NOT EXISTS `conferenceextension` (
+  `ConferenceId` varchar(200) NOT NULL,
+  `Period` bigint(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `c_budget`
+--
+
+CREATE TABLE IF NOT EXISTS `c_budget` (
+  `date` date NOT NULL,
+  `ConferenceId` varchar(50) NOT NULL,
+  `registrationCharges` decimal(50,0) NOT NULL DEFAULT '0',
+  `travel` decimal(50,0) NOT NULL DEFAULT '0',
+  `stay` decimal(50,0) NOT NULL DEFAULT '0',
+  `perDiem` decimal(50,0) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `c_budget`
+--
+
+INSERT INTO `c_budget` (`date`, `ConferenceId`, `registrationCharges`, `travel`, `stay`, `perDiem`) VALUES
+('0000-00-00', '17', 1000, 5000, 5000, 100),
+('0000-00-00', '9', 1000, 5000, 5000, 100),
+('0000-00-00', '9 ', 200, 765, 897, 123);
 
 -- --------------------------------------------------------
 
@@ -42,9 +173,9 @@ CREATE TABLE IF NOT EXISTS `budget` (
 
 CREATE TABLE IF NOT EXISTS `project` (
   `ProjectTitle` varchar(400) NOT NULL,
-  `ProjectId` varchar(200) NOT NULL,
+  `ProjectId` bigint(200) NOT NULL AUTO_INCREMENT,
   `Description` varchar(2000) NOT NULL,
-  `App_Date` date NOT NULL,
+  `App_Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'The  date of application of the project',
   `Start_Date` date NOT NULL,
   `End_Date` date NOT NULL,
   `Researcher1` varchar(80) NOT NULL,
@@ -57,23 +188,95 @@ CREATE TABLE IF NOT EXISTS `project` (
   PRIMARY KEY (`ProjectId`),
   UNIQUE KEY `ProjectId` (`ProjectId`),
   UNIQUE KEY `ProjectId_2` (`ProjectId`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
 
 --
 -- Dumping data for table `project`
 --
 
 INSERT INTO `project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`) VALUES
-('Marketing in Modern Retails', 'P1000', 'A study on the consumer behavior in a modern retail. His choice /selection methods, payment methods and comfort level to be measured.', '2012-09-28', '2012-09-30', '2012-09-28', 'Ankush Verma', 'Rajgopal Brahmachari', 'Venu Sharma', 2, 50000, 'rejected', ''),
-('Strategic Marketing', 'P11111', 'Research on the various methods of applying positioning in marketing', '2012-09-17', '2012-09-18', '2012-10-31', 'ankushv', 'rajeshb', '', 1, 50000, 'app_comm', ''),
-('Operations Research on Air Industry', 'P11223', '', '0000-00-00', '0000-00-00', '0000-00-00', 'happyMan', 'SadMan', 'ankushv', 0, 0, 'app_comm', ''),
-('Research on recession cycles', 'P1223', 'A study of recession and its effects', '2012-09-06', '0000-00-00', '0000-00-00', 'abc123', 'ankushv', '', 1, 100000, 'rejected', ''),
-('Aasddsa', 'P123234', 'sgdg gd fd gd gdfgd fgdgdg', '2012-09-19', '2012-09-15', '2012-09-24', 'sfsfsf', 'zdfsdf', 'zdfsfs', 1, 333333, 'app_comm', 'zsdfdgdthrh'),
-('Financial Excellence in Banks', 'P12345', 'Studying the various private and government commercial banks  ', '2012-09-12', '2012-09-28', '2012-12-28', 'xcvn2', 'plkjhgggdsa', '', 3, 5000, 'app_chairman', ''),
-('Study on Prakhar', 'P6754', 'Prakhar''s genius uncoded', '2012-09-12', '2012-09-29', '2012-10-16', 'prakhars', 'ashishkj', 'anuragn', 1, 100000, 'rejected', ''),
-('Behavioral study of customers of SUVs', 'P6789', 'SUV automobile industry specific study on the buying behaviour of the customers of different regions', '2012-09-19', '2012-12-13', '2013-01-10', 'pkjain', 'vaibhavc', 'ashishkj', 3, 5, 'app_comm', ''),
-('Behavioral study of customers of sports cars', 'P7777', 'Sports cars industry specific study on the buying behaviour of the customers of different regions', '2012-09-19', '2012-12-13', '2013-01-10', 'pkjain', 'vaibhavc', 'ashishkj', 3, 5, 'app_comm', ''),
-('Operational Strategy', 'P98765', 'Study of Various operational strategies in Industry', '2012-09-25', '2012-09-30', '2014-03-12', 'Abc11', 'POR11', 'lmn45', 2, 50000, 'app_chairman', '');
+('Marketing in Modern Retails', 1, 'A study on the consumer behavior in a modern retail. His choice /selection methods, payment methods and comfort level to be measured.', '2012-09-27 18:30:00', '2012-09-30', '2012-09-28', 'Ankush Verma', 'Rajgopal Brahmachari', 'Venu Sharma', 2, 50000, 'rejected', ''),
+('Marketing Communications', 2, 'Marketing communications strategy', '2012-09-18 18:30:00', '2012-09-17', '2012-09-30', 'anurag', 'chatterjeea', 'prakashd', 1, 100000, 'approved', '1. Optimal marketing strategy and plan'),
+('Strategic Marketing', 3, 'Research on the various methods of applying positioning in marketing', '2012-09-16 18:30:00', '2012-09-18', '2012-10-31', 'ankushv', 'rajeshb', '', 1, 50000, 'app_comm', ''),
+('Operations Research on Air Industry', 4, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'happyMan', 'SadMan', 'ankushv', 0, 0, 'app_chairman', ''),
+('Research on recession cycles', 5, 'A study of recession and its effects', '2012-09-05 18:30:00', '0000-00-00', '0000-00-00', 'abc123', 'ankushv', '', 1, 100000, 'rejected', ''),
+('Aasddsa', 6, 'sgdg gd fd gd gdfgd fgdgdg', '2012-09-18 18:30:00', '2012-09-15', '2012-09-24', 'sfsfsf', 'zdfsdf', 'zdfsfs', 1, 333333, 'rejected', 'zsdfdgdthrh'),
+('Financial Excellence in Banks', 7, 'Studying the various private and government commercial banks  ', '2012-09-11 18:30:00', '2012-09-28', '2012-12-28', 'xcvn2', 'plkjhgggdsa', '', 3, 5000, 'app_chairman', ''),
+('Business Leasdership Study', 8, 'Leadership traits study on current business leaders', '2012-09-28 18:30:00', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', 2, 100000, 'app_admin', '1 Leadership report'),
+('Study on Prakhar', 9, 'Prakhar''s genius uncoded', '2012-09-11 18:30:00', '2012-09-29', '2012-10-16', 'prakhars', 'ashishkj', 'anuragn', 1, 100000, 'completed', ''),
+('Behavioral study of customers of SUVs', 10, 'SUV automobile industry specific study on the buying behaviour of the customers of different regions', '2012-09-18 18:30:00', '2012-12-13', '2013-01-10', 'pkjain', 'vaibhavc', 'ashishkj', 3, 5, 'app_comm', ''),
+('Behavioral study of customers of sports cars', 11, 'Sports cars industry specific study on the buying behaviour of the customers of different regions', '2012-09-18 18:30:00', '2012-12-13', '2013-01-10', 'pkjain', 'vaibhavc', 'ashishkj', 3, 5, 'app_comm', ''),
+('Operational Strategy', 12, 'Study of Various operational strategies in Industry', '2012-09-24 18:30:00', '2012-09-30', '2014-03-12', 'Abc11', 'POR11', 'lmn45', 2, 50000, 'approved', ''),
+('title', 13, 'description', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'R2', 'R3', 1, 99999, 'app_comm', 'D1 D2 D3'),
+('title123', 14, 'description1', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'R21', 'R31', 1, 111111, 'app_comm', 'D1 D2 D3'),
+('titleXYX', 22, 'Desc123', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'co1', 'co2', 3, 55555, 'approved', '1. sddfsf 2.3444'),
+('Test Project', 23, 'Testing purpose', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'tester1', 'tetser2', 2, 1111111, 'app_comm', 'Test 1  and Test 2'),
+('', 24, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '', '', 0, 0, 'app_admin', ''),
+('', 25, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '', '', 1, 0, 'app_comm', ''),
+('23124', 26, 'zslkfjsf akdfskdfs lkfasbns', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '123245', '256ge', 1, 0, 'app_admin', 'Preparatory'),
+('', 27, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '', '', 1, 0, 'app_admin', 'Case'),
+('1245', 28, 'dgdg', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'abc', 'def', 1, 100000, 'app_admin', 'Secondary Research'),
+('', 29, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '', '', 1, 0, 'app_admin', 'Case'),
+('', 30, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '', '', 1, 0, 'app_admin', 'Case'),
+('Marketin', 31, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'ashish', 'amol', 2, 10000, 'app_admin', 'Course'),
+('strategy', 32, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'abhay', 'amul', 2, 10000, 'app_admin', 'Course'),
+('one more project', 33, '', '2012-11-10 09:46:05', '0000-00-00', '0000-00-00', 'absdfsf', 'sdf', 'sdfsf', 2, 33435, 'app_admin', 'Case'),
+('A project on Strategy', 34, '', '2012-11-12 08:57:03', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 50000, 'app_admin', ''),
+('A project on Strategy', 35, '', '2012-11-12 08:58:29', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 50000, 'app_admin', ''),
+('A project on Strategy', 36, '', '2012-11-12 08:58:37', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 50000, 'app_admin', ''),
+('A project on Strategy', 37, '', '2012-11-12 08:59:07', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', ''),
+('A project on Strategy', 38, '', '2012-11-12 08:59:23', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', ''),
+('A project on Strategy', 39, '', '2012-11-12 09:00:13', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
+('A project on Strategy', 40, '', '2012-11-12 09:01:13', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
+('A project on Strategy', 41, '', '2012-11-12 09:02:19', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
+('A project on Strategy', 42, '', '2012-11-12 09:07:35', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
+('A project on Strategy', 43, '', '2012-11-12 09:08:06', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
+('A project on Strategy', 44, '', '2012-11-12 09:08:40', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
+('', 45, '', '2012-11-12 09:51:36', '0000-00-00', '0000-00-00', 'absdfsf', '', '', 0, 0, 'app_admin', 'dummy_Deliverable');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `projectcompleted`
+--
+
+CREATE TABLE IF NOT EXISTS `projectcompleted` (
+  `ProjectId` bigint(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `projectextension`
+--
+
+CREATE TABLE IF NOT EXISTS `projectextension` (
+  `ProjectId` bigint(200) NOT NULL,
+  `Period` bigint(200) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `recurring`
+--
+
+CREATE TABLE IF NOT EXISTS `recurring` (
+  `ProjectId` varchar(50) NOT NULL,
+  `recurring_amt` double NOT NULL,
+  `total` double NOT NULL,
+  PRIMARY KEY (`ProjectId`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `recurring`
+--
+
+INSERT INTO `recurring` (`ProjectId`, `recurring_amt`, `total`) VALUES
+('12', 733, 1000),
+('15', 700, 2000),
+('22', 500, 7500),
+('9', 450, 1350);
 
 -- --------------------------------------------------------
 
@@ -83,8 +286,21 @@ INSERT INTO `project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `
 
 CREATE TABLE IF NOT EXISTS `users` (
   `Username` varchar(50) NOT NULL,
-  `role` varchar(50) NOT NULL
+  `role` varchar(50) NOT NULL,
+  `password` varchar(50) NOT NULL,
+  `user_type` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`Username`, `role`, `password`, `user_type`) VALUES
+('admin', 'admin', 'admin123', 1),
+('ankushv', 'faculty', 'ankush123', 2),
+('chairman', 'chairman', 'chairman', 3),
+('ashishkj', 'student', 'ashishkj', 5),
+('comm', 'committee', 'comm', 4);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
