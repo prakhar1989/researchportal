@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 12, 2012 at 01:50 PM
+-- Generation Time: Nov 20, 2012 at 06:56 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -188,7 +188,7 @@ CREATE TABLE IF NOT EXISTS `project` (
   PRIMARY KEY (`ProjectId`),
   UNIQUE KEY `ProjectId` (`ProjectId`),
   UNIQUE KEY `ProjectId_2` (`ProjectId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
 
 --
 -- Dumping data for table `project`
@@ -232,7 +232,11 @@ INSERT INTO `project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `
 ('A project on Strategy', 42, '', '2012-11-12 09:07:35', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
 ('A project on Strategy', 43, '', '2012-11-12 09:08:06', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
 ('A project on Strategy', 44, '', '2012-11-12 09:08:40', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
-('', 45, '', '2012-11-12 09:51:36', '0000-00-00', '0000-00-00', 'absdfsf', '', '', 0, 0, 'app_admin', 'dummy_Deliverable');
+('', 45, '', '2012-11-12 09:51:36', '0000-00-00', '0000-00-00', 'absdfsf', '', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
+('', 46, '', '2012-11-20 17:13:26', '0000-00-00', '0000-00-00', '', '', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
+('dfgfdhdfh', 47, '', '2012-11-20 17:16:14', '0000-00-00', '0000-00-00', '', 'xhbfg', 'xbfgbxc', 0, 57814, 'app_admin', 'dummy_Deliverable'),
+('dfgfdhdfh', 48, '', '2012-11-20 17:18:02', '0000-00-00', '0000-00-00', '', 'xhbfg', 'xbfgbxc', 0, 57814, 'app_admin', 'dummy_Deliverable'),
+('dfgfdhdfh', 49, '', '2012-11-20 17:18:29', '0000-00-00', '0000-00-00', 'anurag', 'xhbfg', 'xbfgbxc', 0, 57814, 'app_admin', 'dummy_Deliverable');
 
 -- --------------------------------------------------------
 
@@ -300,7 +304,9 @@ INSERT INTO `users` (`Username`, `role`, `password`, `user_type`) VALUES
 ('ankushv', 'faculty', 'ankush123', 2),
 ('chairman', 'chairman', 'chairman', 3),
 ('ashishkj', 'student', 'ashishkj', 5),
-('comm', 'committee', 'comm', 4);
+('comm', 'committee', 'comm', 4),
+('subirb', 'faculty', 'subirb', 2),
+('anurag', 'faculty', 'anurag', 2);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

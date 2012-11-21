@@ -2,6 +2,7 @@
 
 class FacultyProjApp extends CI_Controller {
 
+<<<<<<< HEAD
 		function index()
 		{
 		$data['myClass']=$this;
@@ -14,12 +15,22 @@ class FacultyProjApp extends CI_Controller {
 		header("location:login");
 		}
 		}
+=======
+				function index()
+				{
+					session_start();
+					$data['myClass']=$this;
+					$data['action']=0;
+					$this->load->view('layoutFaculty',$data);
+				}
+>>>>>>> 006f33682452605052588018d9e536c3506eb7a0
 
 				function load_php()
 				{
 					 
 					 $this->load->model('project_model');
-					 $allow= $this->project_model->getNoProj('ankuhfhfhshv');
+					 //$allow= $this->project_model->getNoProj('ankuhfhfhshv');
+					 $allow= $this->project_model->getNoProj($_SESSION['username']);
 					 if($allow==True)
 					 {
 						 echo '
@@ -31,6 +42,10 @@ class FacultyProjApp extends CI_Controller {
 						</tr>
 					</thead>
 					<tbody>
+						<tr>
+							<td>Username</td>
+							<td><b>'.$_SESSION['username'].'</b></td>
+						</tr>
 						<tr>
 							<td>Project Title</td>
 							<td><input type="text" class="large" name="title"></input></td>
@@ -104,6 +119,7 @@ class FacultyProjApp extends CI_Controller {
 			
 			function insert()
 			{
+			 session_start();
 			 //echo 'The value of Project category is: '.$_POST['category'];
 			 $data['title']=$_POST['title'];
 			 //$data['desc']=$_POST['desc'];
@@ -115,8 +131,8 @@ class FacultyProjApp extends CI_Controller {
 			//$data['']=$_POST[''];
 			
 			$this->load->model('project_model');
-			$ProjectId=$this->project_model->insertProject('absdfsf',$data);
-			 
+		$ProjectId=$this->project_model->insertProject('absdfsf',$data);
+			 //$ProjectId=$this->project_model->insertProject($_SESSION['username'],$data);
 			 //Uploading the file code... Can be modified to check the file extension if required
 			 $ext=end(explode('/', $_FILES['file_desc']['type']));
 			 move_uploaded_file($_FILES['file_desc']["tmp_name"],"upload/" . $ProjectId.'_description.'.$ext);

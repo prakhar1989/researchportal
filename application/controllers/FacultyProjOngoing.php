@@ -4,8 +4,9 @@ class FacultyProjOngoing extends CI_Controller {
 	
 	function index()
 		{
-			
-			$data['myClass']=$this;
+					
+					session_start();
+					$data['myClass']=$this;
 					$data['action']=0;
 					session_start();
 					if($_SESSION['usertype']==4){
@@ -19,7 +20,7 @@ class FacultyProjOngoing extends CI_Controller {
 	function load_php()
 				{
 				$this->load->model('project_model');
-				$result= $this->project_model->ongoingFacultyProjects('anurag');
+				$result= $this->project_model->ongoingFacultyProjects($_SESSION['username']);
 				//Load the project model
                 //Query for the ongoign projects (!= completed and rejected)
 				//$this->load->database();
