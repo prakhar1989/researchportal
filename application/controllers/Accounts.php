@@ -6,8 +6,19 @@ class Accounts extends CI_Controller {
 		{
 			
 			$data['myClass']=$this;
-					$data['action']=0;
-					$this->load->view('layout',$data);
+			$data['action']=0;
+			session_start();
+			if($_SESSION['usertype']==1){
+				$this->load->view('layout',$data);
+			} elseif ($_SESSION['usertype']==2){
+				$this->load->view('layoutComm',$data);
+			} elseif($_SESSION['usertype']==3){
+				$this->load->view('layoutChairman',$data);
+			}
+			else{
+			
+			header("location:login");
+			}
 		}
 	function load_php()
 				{

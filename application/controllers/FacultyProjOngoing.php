@@ -7,7 +7,14 @@ class FacultyProjOngoing extends CI_Controller {
 			
 			$data['myClass']=$this;
 					$data['action']=0;
-					$this->load->view('layoutFaculty',$data);
+					session_start();
+					if($_SESSION['usertype']==4){
+						$this->load->view('layoutFaculty',$data);
+					} 
+					else{
+			echo 'hello';
+			header("location:login");
+			}
 		}
 	function load_php()
 				{

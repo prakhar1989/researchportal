@@ -16,7 +16,18 @@ class ShowProject extends CI_Controller {
 				session_start();
 				$data['myClass']=$this;
 				$data['action']=0;
+				session_start();
+			if($_SESSION['usertype']==1){
 				$this->load->view('layout',$data);
+			} elseif ($_SESSION['usertype']==2){
+				$this->load->view('layoutComm',$data);
+			} elseif($_SESSION['usertype']==3){
+				$this->load->view('layoutChairman',$data);
+			}
+			else{
+			
+			header("location:login");
+			}
 			}
     // Displays the details of the project
 	function load_php()
@@ -27,7 +38,7 @@ class ShowProject extends CI_Controller {
 					 $this->load->model('project_model');
 					  //pass the projectId of the selected project
 					 
-					 echo '<FORM name="approveProject" method= POST action="ShowProject/approveProject">';
+					 echo '<FORM name="approveProject" method= POST action="approveProject">';
 					 $Query= $this->project_model->projectInfo($Project);
 					 echo '<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 					 ';

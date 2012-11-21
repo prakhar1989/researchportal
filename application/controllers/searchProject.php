@@ -14,6 +14,10 @@ class SearchProject extends CI_Controller{
 			} elseif($_SESSION['usertype']==3){
 				$this->load->view('layoutChairman',$data);
 			}
+			else{
+			
+			header("location:login");
+			}
 	}
 	//Takes input for the search and calls Search function
 	function load_php() {
@@ -41,7 +45,18 @@ class SearchProject extends CI_Controller{
 		    $data['action']=3;
 			$data['searchBy']=$_POST['searchBy'];
 			$data['searchValue']=$_POST['searchValue'];
-		    $this->load->view('layout',$data);	
+		    session_start();
+			if($_SESSION['usertype']==1){
+				$this->load->view('layout',$data);
+			} elseif ($_SESSION['usertype']==2){
+				$this->load->view('layoutComm',$data);
+			} elseif($_SESSION['usertype']==3){
+				$this->load->view('layoutChairman',$data);
+			}
+			else{
+			
+			header("location:login");
+			}	
 	}
 	
 	//Loads the Project Model and searches for the project
@@ -53,7 +68,7 @@ class SearchProject extends CI_Controller{
 		  $Query= $this->project_model->projectSearch($searchBy,$searchValue);
 	      
 		  echo'
-		  <FORM METHOD=POST ACTION="http://localhost/ci/index.php/projectDetails">
+		  <FORM METHOD=POST ACTION="http://localhost/rp/index.php/projectDetails">
 		  <TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
                      ';
 		echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Description</h4></TD><TD><h4>Researcher</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date';

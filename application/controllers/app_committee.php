@@ -11,10 +11,15 @@ class App_committee extends CI_Controller {
 			session_start();
 			if($_SESSION['usertype']==1){
 				$this->load->view('layout',$data);
-			} elseif ($_SESSION['usertype']==2){
+			} 
+			/*elseif ($_SESSION['usertype']==2){
 				$this->load->view('layoutComm',$data);
-			} elseif($_SESSION['usertype']==3){
+			}*/ elseif($_SESSION['usertype']==3){
 				$this->load->view('layoutChairman',$data);
+			}
+			else{
+			
+			header("location:login");
 			}
 		}
 	function load_php()

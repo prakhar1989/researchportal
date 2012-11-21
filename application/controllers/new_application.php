@@ -15,6 +15,10 @@ class New_application extends CI_Controller {
 					} elseif($_SESSION['usertype']==3){
 						$this->load->view('layoutChairman',$data);
 					}
+					else{
+			echo 'hello';
+			header("location:login");
+			}
 					
 				}
 

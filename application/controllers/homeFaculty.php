@@ -6,8 +6,15 @@ function index()
 {
 $data['myClass']=$this; // passing the object for callback
 $data['action']=0;      // what spl action to do for this layout
-$this->load->view('layoutFaculty',$data);
-}
+session_start();
+if($_SESSION['usertype']==4){
+						$this->load->view('layoutFaculty',$data);
+					} 
+					else{
+			
+			header("location:login");
+			}
+			}
 
 function load_php()
 {
