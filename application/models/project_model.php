@@ -40,18 +40,42 @@ class Project_model extends CI_Model {
 		return $query;
 		}
 		
-		// Get extension projects ... Nikhil
+		// Get extension projects
 	function project_extension()
 		{
 		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='SELECT * FROM extension;';
+		$queryStr='Select * from project where ProjectId IN (SELECT ProjectId FROM projectextension where  ApprovalPending = "admin");';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
 		}
+	
+	// Get Extension Projects pending for chairman approval
+	function project_extension_chairman()
+		{
+		//echo 'project_stage called';
+		$this->load->database();
+		//$query= $this->db->get('project');
+		//echo $Project['Id'];	
+		$queryStr='Select * from project where ProjectId IN (SELECT ProjectId FROM projectextension where  ApprovalPending = "chairman");';
+		//echo $queryStr;
+		$query = $this->db->query($queryStr);
+		return $query;
+		}
+		
+	function projectExtensionAdminResponse($check,$projectid)
+		{
+		$this->load->database();
+		If ($check == 'Approve')
+			$queryStr='UPDATE projectextension SET ApprovalPending = "chairman" where ProjectId = "'.$projectid.'";';
+		ElseIf ($check == 'Reject')
+			$queryStr='UPDATE projectextension SET ApprovalPending = "rejectedAdmin" where ProjectId = "'.$projectid.'";';
+		$query = $this->db->query($queryStr);
+		return $query;
+		}	
 		
 	function ongoingFacultyProjects($user)
 	{
@@ -79,7 +103,40 @@ class Project_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query;
 	}
-		
+	
+	// Request for Project Completion
+	function projectCompletion($value)
+	{
+		$this->load->database();
+		$queryStrCheck = 'Select ProjectId from projectcompleted where ProjectId = "'.$value.'";';
+		$queryCheck = $this->db->query($queryStrCheck);
+		If ( $queryCheck->num_rows() == 0)
+			{
+			$queryStr= 'INSERT INTO projectcompleted (ProjectId) VALUES (\''.$value.'\');' ;
+			$query = $this->db->query($queryStr);
+			$msg='The Project has been Requested for Completion Approval';
+			}
+		Else
+			$msg='Your Request For vApproval Has Already Been Sent';
+		return $msg;
+	}
+	
+	// Request for Project Extension
+	function projectExtension($value,$period)
+	{
+		$this->load->database();
+		$queryStrCheck = 'Select ProjectId from projectextension where ProjectId = "'.$value.'";';
+		$queryCheck = $this->db->query($queryStrCheck);
+		If ( $queryCheck->num_rows() == 0)
+			{
+			$queryStr= 'INSERT INTO projectextension (ProjectId,Period) VALUES (\''.$value.'\',\''.$period.'\');' ;
+			$query = $this->db->query($queryStr);
+			$msg='The Request for Project Extension has been sent';
+			}
+		Else
+			$msg='Your Request For Approval Has Already Been Sent';
+		return $msg;
+	}	
 	//get a project's details
 	function projectInfo($Project)
 		{

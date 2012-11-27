@@ -11,7 +11,7 @@ class FacultyProjRequest extends CI_Controller {
 		}
 	function load_php()
 				{
-				$ProjectID = $this->input->post('ProjectChoice');
+				$ProjectID = $_POST['ProjectSelected'];
 				//echo $ProjectID;
 				//Load the project model
 				$this->load->model('project_model');
@@ -24,11 +24,15 @@ class FacultyProjRequest extends CI_Controller {
 							';
 					if ($_POST['RequestType'] == 'Request For Extension')
 						{
-						echo 'Request For Extension'; 
+						//echo $ProjectID;
+						echo 'Request For Extension Page';
+						$ExtensionPeriod = 20;
+						$msg = $this->project_model->projectExtension($ProjectID,$ExtensionPeriod);
 						} 
 					else if ($_POST['RequestType'] == 'Project Completed') 
 						{
-						echo 'Project Completed'; 
+						echo 'Project Completed Page';
+						$msg = $this->project_model->projectCompletion($ProjectID);
 						}
 					/*foreach($result->result() as $row)
 						{
@@ -47,6 +51,8 @@ class FacultyProjRequest extends CI_Controller {
 						 echo '</TD><TD>';
 						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
 						}			*/ 
+					echo "\n\n";
+					echo $msg;
 					 echo '</TABLE>
 					</FORM>';
                 

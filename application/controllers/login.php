@@ -45,8 +45,8 @@ class login extends CI_Controller {
     // If result matched $myusername and $mypassword, table row must be 1 row
     if($count==1){
         //Register $myusername, $mypassword and redirect to file "admin.php"
-        session_register("admin");
-        session_register("password");
+        //session_register("admin");
+        //session_register("password");
         $_SESSION['username']= $myusername;
 		foreach($Query->result() as $row){
 		$_SESSION['usertype']= $row->user_type;
