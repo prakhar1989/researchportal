@@ -2,7 +2,6 @@
 
 class FacultyProjApp extends CI_Controller {
 
-<<<<<<< HEAD
 		function index()
 		{
 		$data['myClass']=$this;
@@ -15,15 +14,7 @@ class FacultyProjApp extends CI_Controller {
 		header("location:login");
 		}
 		}
-=======
-				function index()
-				{
-					session_start();
-					$data['myClass']=$this;
-					$data['action']=0;
-					$this->load->view('layoutFaculty',$data);
-				}
->>>>>>> 006f33682452605052588018d9e536c3506eb7a0
+
 
 				function load_php()
 				{
