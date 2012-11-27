@@ -11,7 +11,18 @@ class ProjectDetails extends CI_Controller {
 				//echo '<p>Value received is '. $this->input->post('Choice1'). '</p>';
 				$data['myClass']=$this;
 				$data['action']=0;
+				session_start();
+			if($_SESSION['usertype']==1){
 				$this->load->view('layout',$data);
+			} elseif ($_SESSION['usertype']==2){
+				$this->load->view('layoutComm',$data);
+			} elseif($_SESSION['usertype']==3){
+				$this->load->view('layoutChairman',$data);
+			}
+			else{
+			
+			header("location:login");
+			}
 			}
     // Displays the details of the project
 	function load_php()

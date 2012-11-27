@@ -7,7 +7,7 @@ class Completed extends CI_Controller {
 			
 			$data['myClass']=$this;
 			$data['action']=0;
-		//	$this->load->view('layout',$data);
+		
 			//vridhi
 			session_start();
 			if($_SESSION['usertype']==1){
@@ -16,6 +16,10 @@ class Completed extends CI_Controller {
 				$this->load->view('layoutComm',$data);
 			} elseif($_SESSION['usertype']==3){
 				$this->load->view('layoutChairman',$data);
+			}
+			else{
+			
+			header("location:login");
 			}
 		}
 	function load_php()

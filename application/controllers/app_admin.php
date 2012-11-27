@@ -10,12 +10,17 @@ class App_admin extends CI_Controller {
 			//$this->load->view('layout',$data);
 			//vridhi
 			session_start();
-			if($_SESSION['usertype']==1){
-				$this->load->view('layout',$data);
-			} elseif ($_SESSION['usertype']==2){
+			//if($_SESSION['usertype']==1){				//this is page showing application pending with admin for approval; 
+			//	$this->load->view('layout',$data);		//page is meant for chairman and committee; so should nt be accessible to admin
+			//} else									//admin can see such projects under the "New application" tab
+			if ($_SESSION['usertype']==2){
 				$this->load->view('layoutComm',$data);
 			} elseif($_SESSION['usertype']==3){
 				$this->load->view('layoutChairman',$data);
+			}
+			else{
+			echo 'hello';
+			header("location:login");
 			}
 		}
 	function load_php()

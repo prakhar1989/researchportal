@@ -7,7 +7,19 @@ class Show_account extends CI_Controller {
 					session_start();
 					$data['myClass']=$this;
 					$data['action']=0;
-					$this->load->view('layout',$data);
+					session_start();
+					//$this->load->view('layout',$data);
+					if($_SESSION['usertype']==1){
+						$this->load->view('layout',$data);
+					} elseif ($_SESSION['usertype']==2){
+						$this->load->view('layoutComm',$data);
+					} elseif($_SESSION['usertype']==3){
+						$this->load->view('layoutChairman',$data);
+					}
+					else{
+			echo 'hello';
+			header("location:login");
+			}
 					
 				}
 

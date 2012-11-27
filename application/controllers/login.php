@@ -54,13 +54,13 @@ class login extends CI_Controller {
 		if($_SESSION['usertype']==1){
 		    header("location:../homeAdmin");
 		}
-		else if($_SESSION['usertype']==2){
+		else if($_SESSION['usertype']==4){
 		    header("location:../homeFaculty");
 		}
 		else if($_SESSION['usertype']==3){
 		    header("location:../homeChairman");
 		}
-		else if($_SESSION['usertype']==4){
+		else if($_SESSION['usertype']==2){
 		    header("location:../homeComm");
 		}
 		else if($_SESSION['usertype']==5){
@@ -69,7 +69,7 @@ class login extends CI_Controller {
     }
     else {
         $msg = "Wrong Username or Password. Please retry";
-        header("location:login.php?msg=$msg");
+        header("location:../login?msg=$msg");
     }
     ob_end_flush();
 }
