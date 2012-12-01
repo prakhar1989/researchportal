@@ -39,18 +39,49 @@ class ShowProject extends CI_Controller {
 					  //pass the projectId of the selected project
 					 
 					 echo '<FORM name="approveProject" method= POST action="approveProject">';
+
 					 $Query= $this->project_model->projectInfo($Project);
-					 echo '<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
-					 ';
-					 echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1;</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1>';
+					 echo '<table class="table table-bordered"> 
+					
+					 <thead>
+							<tr>
+							</tr>
+					</thead>
+					<tbody>';
+					 $tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h4>';
+					 foreach($Query->result() as $row)
+					 {
+						if ($row->cases!=0)
+						{
+						 $tableHeader= $tableHeader.'<TD><h4>Cases</h4>';
+						}
+						if ($row->journals!=0)
+						{
+						 $tableHeader= $tableHeader.'<TD><h4>Journals</h4>';
+						}
+						if ($row->chapters!=0)
+						{
+						 $tableHeader= $tableHeader.'<TD><h4>Chapters</h4>';
+						}
+						if ($row->conference!=0)
+						{
+						 $tableHeader= $tableHeader.'<TD><h4>Conferences</h4>';
+						}
+						if ($row->paper!=0)
+						{
+						 $tableHeader= $tableHeader.'<TD><h4>Papers</h4>';
+						}
+						$tableHeader= $tableHeader.'</TR>';
+					 }
+					 
+					 echo $tableHeader;
+					 //echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1>';
 					 foreach($Query->result() as $row)
 					 {
 						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
 						 echo '</TD><TD>';
 						 print $row->ProjectId;
-						 echo '</TD><TD>';
-						 print $row->Description;
 						 echo '</TD><TD>';
 						 print $row->ProjectCategory;
 						 echo '</TD><TD>';
@@ -63,8 +94,37 @@ class ShowProject extends CI_Controller {
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
+						if ($row->cases!=0)
+						{
+						 echo '</TD><TD>';
+						 print $row->cases;
+						}
+						if ($row->journals!=0)
+						{
+						 echo '</TD><TD>';
+						 print $row->journals;
+						}
+						if ($row->chapters!=0)
+						{
+						 echo '</TD><TD>';
+						 print $row->chapters;
+						}
+						if ($row->conference!=0)
+						{
+						 echo '</TD><TD>';
+						 print $row->conference;
+						}
+						if ($row->paper!=0)
+						{
+						 echo '</TD><TD>';
+						 print $row->paper;
+						}
 					 }
-					 echo '</TABLE>';
+					 
+					 echo '</tbody> </TABLE>';
+					 //$size = filesize('upload/54_description.pdf');
+					 //echo $size;
+					 echo'<a href="downloadfile?file='.$row->ProjectId.'_description.pdf">Download Description file</a><br><br>';
 					 echo '<input type= submit value= "Approve" name="approve"><input type= submit value= "Reject" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >'; //Hidden to pass the projectId without showing it to the user
 					 echo '</FORM>';
 				}

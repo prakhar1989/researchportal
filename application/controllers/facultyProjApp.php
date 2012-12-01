@@ -112,6 +112,56 @@ class FacultyProjApp extends CI_Controller {
 			{
 			 session_start();
 			 //echo 'The value of Project category is: '.$_POST['category'];
+			 if(isset($_POST['casesCB']))
+			 {
+				//echo 'cases CB is it chcked ? ';
+				$data['cases']=$_POST['cases'];
+			 }
+			 else
+			 {
+			 $data['cases']=0;
+			 }
+			 
+			 if(isset($_POST['journalsCB']))
+			 {
+				//echo 'journals CB is it checked ? ';
+				$data['journals']=$_POST['journals'];
+			 }
+			 else
+			 {
+			 $data['journals']=0;
+			 }
+			 
+			 if(isset($_POST['chaptersCB']))
+			 {
+				$data['chapters']=$_POST['chapters'];
+				//echo 'chapters CB is it checked ? ';
+			 }
+			 else
+			 {
+			 $data['chapters']=0;
+			 }
+			 
+			 if(isset($_POST['conferencesCB']))
+			 {
+				$data['conferences']=$_POST['conferences'];
+				//echo 'conference CB is it checked ? ';
+			 }
+			 else
+			 {
+			 $data['conferences']=0;
+			 }
+			 
+			 if(isset($_POST['papersCB']))
+			 {
+				$data['papers']=$_POST['papers'];
+				//echo 'papers CB is it checked ? ';
+			 }
+			 else
+			 {
+			 $data['papers']=0;
+			 }
+			 
 			 $data['title']=$_POST['title'];
 			 //$data['desc']=$_POST['desc'];
 			 $data['researcher2']=$_POST['researcher2'];
@@ -122,13 +172,13 @@ class FacultyProjApp extends CI_Controller {
 			//$data['']=$_POST[''];
 			
 			$this->load->model('project_model');
-		$ProjectId=$this->project_model->insertProject('absdfsf',$data);
+		$ProjectId=$this->project_model->insertProject($_SESSION['username'],$data);
 			 //$ProjectId=$this->project_model->insertProject($_SESSION['username'],$data);
 			 //Uploading the file code... Can be modified to check the file extension if required
 			 $ext=end(explode('/', $_FILES['file_desc']['type']));
 			 move_uploaded_file($_FILES['file_desc']["tmp_name"],"upload/" . $ProjectId.'_description.'.$ext);
 			// echo "Stored in: " . "upload/" . $_FILES["file_desc"]["name"];
-						 
+			
 			 $msg='The Project has been sent for approval ';
 			 require('showMsg.php');
 			 $showMsg=new showMsg();
