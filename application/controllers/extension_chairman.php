@@ -13,6 +13,7 @@ class extension_chairman extends CI_Controller
 				{
 				echo '<h1>Extensions</h1>';
 				echo '<p> This is the Extension page. The Requests for project extenions to be showed here</p>';
+				session_start();
 				$this->load->model('project_model');
 				$Query= $this->project_model->project_extension_chairman();
 				
