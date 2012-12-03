@@ -63,10 +63,8 @@ class Extension extends CI_Controller
 						 }
 						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
 					 }
-				echo '</tbody></TABLE>
-				
-				
 
+				echo '</tbody></TABLE>		
 				<p>Please enter comments (mandatory)*</p>
 				<p><textarea name="comment" ></textarea></p>
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Approve">

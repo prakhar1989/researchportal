@@ -58,8 +58,9 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                     <ul> 
                         <li><a  href="new_application">New Application</a> </li>
 						<li><a  href="extension_chairman">Extension</a> </li>
-						<li><a  href="ongoing">Ongoing</a> </li>
-						<li><a  href="completed">Completed</a> </li>
+						<li><a href="/rp/completion">Completion</a> </li>
+                        <li><a href="/rp/ongoing">Ongoing</a> </li>
+                        <li><a href="/rp/completed">Finished</a> </li>
 						<li><a  href="app_committee">Committee</a> </li>
 						<li><a  href="app_admin">Admin</a> </li>
 						<li><a  href="searchProject">Search</a> </li>
