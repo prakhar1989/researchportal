@@ -3,8 +3,8 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2012 at 08:55 PM
--- Server version: 5.1.50
+-- Generation Time: Dec 03, 2012 at 11:00 PM
+-- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
@@ -16,11 +16,17 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
+<<<<<<< HEAD
 
 --
 -- Database: `researchportal`
 --
 
+=======
+--
+-- Database: `researchportal`
+--
+>>>>>>> 8c123f50d80a1103f12c792176460a713e4e7bbd
 
 -- --------------------------------------------------------
 
@@ -102,30 +108,6 @@ INSERT INTO `budget` (`Date`, `ProjectId`, `dataset`, `communication`, `field`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `c_budget`
---
-
-CREATE TABLE IF NOT EXISTS `c_budget` (
-  `date` date NOT NULL,
-  `ConferenceId` varchar(50) NOT NULL,
-  `registrationCharges` decimal(50,0) NOT NULL DEFAULT '0',
-  `travel` decimal(50,0) NOT NULL DEFAULT '0',
-  `stay` decimal(50,0) NOT NULL DEFAULT '0',
-  `perDiem` decimal(50,0) NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `c_budget`
---
-
-INSERT INTO `c_budget` (`date`, `ConferenceId`, `registrationCharges`, `travel`, `stay`, `perDiem`) VALUES
-('0000-00-00', '17', 1000, 5000, 5000, 100),
-('0000-00-00', '9', 1000, 5000, 5000, 100),
-('0000-00-00', '9 ', 200, 765, 897, 123);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `comment`
 --
 
@@ -155,7 +137,10 @@ INSERT INTO `comment` (`Project_ID`, `Comment`, `Comment_type`, `User`, `User_ty
 (32, 'llll', 'admin_approve_extension', 'admin', 1, '2012-12-03 18:05:05'),
 (45, 'dfgdffg', 'admin_approve_extension', 'admin', 1, '2012-12-03 18:10:26'),
 (36, 'fdgdgdfgfd', 'fafgfd', 'fdgdg', 4, '2012-12-03 18:23:25'),
-(36, 'bfgfg', 'rdgdttertr', 'gfhgf', 2, '2012-12-03 18:23:25');
+(36, 'bfgfg', 'rdgdttertr', 'gfhgf', 2, '2012-12-03 18:23:25'),
+(36, 'Test Comment from Admin', 'admin_approve_extension', 'admin', 1, '2012-12-03 18:59:56'),
+(12, 'hello, sending for your Approval', 'admin_approve_extension', 'admin', 1, '2012-12-03 19:12:08'),
+(12, 'dear chairman please approve this project 12', 'admin_approve_completion', 'admin', 1, '2012-12-03 21:48:39');
 
 -- --------------------------------------------------------
 
@@ -224,6 +209,30 @@ CREATE TABLE IF NOT EXISTS `conferenceextension` (
   `ConferenceId` varchar(200) NOT NULL,
   `Period` bigint(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `c_budget`
+--
+
+CREATE TABLE IF NOT EXISTS `c_budget` (
+  `date` date NOT NULL,
+  `ConferenceId` varchar(50) NOT NULL,
+  `registrationCharges` decimal(50,0) NOT NULL DEFAULT '0',
+  `travel` decimal(50,0) NOT NULL DEFAULT '0',
+  `stay` decimal(50,0) NOT NULL DEFAULT '0',
+  `perDiem` decimal(50,0) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `c_budget`
+--
+
+INSERT INTO `c_budget` (`date`, `ConferenceId`, `registrationCharges`, `travel`, `stay`, `perDiem`) VALUES
+('0000-00-00', '17', 1000, 5000, 5000, 100),
+('0000-00-00', '9', 1000, 5000, 5000, 100),
+('0000-00-00', '9 ', 200, 765, 897, 123);
 
 -- --------------------------------------------------------
 
@@ -316,8 +325,21 @@ INSERT INTO `project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `
 --
 
 CREATE TABLE IF NOT EXISTS `projectcompleted` (
-  `ProjectId` bigint(200) NOT NULL
+  `ProjectId` bigint(200) NOT NULL,
+  `Period` bigint(200) NOT NULL,
+  `ApprovalPending` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `projectcompleted`
+--
+
+INSERT INTO `projectcompleted` (`ProjectId`, `Period`, `ApprovalPending`) VALUES
+(51, 12, 'rejectedAdmin'),
+(32, 2, 'chairman'),
+(45, 4, 'chairman'),
+(36, 3, 'chairman'),
+(12, 5, 'chairman');
 
 -- --------------------------------------------------------
 
@@ -339,7 +361,13 @@ INSERT INTO `projectextension` (`ProjectId`, `Period`, `ApprovalPending`) VALUES
 (51, 12, 'rejectedAdmin'),
 (32, 2, 'chairman'),
 (45, 4, 'chairman'),
-(36, 3, 'Admin');
+(36, 3, 'chairman'),
+(12, 5, 'chairman'),
+(51, 12, 'rejectedAdmin'),
+(32, 2, 'chairman'),
+(45, 4, 'chairman'),
+(36, 3, 'chairman'),
+(12, 5, 'chairman');
 
 -- --------------------------------------------------------
 
@@ -383,12 +411,18 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`Username`, `role`, `password`, `user_type`) VALUES
 ('admin', 'admin', 'admin123', 1),
-('ankushv', 'faculty', 'ankush123', 4),
+('ankushv', 'faculty', 'ankush123', 2),
 ('chairman', 'chairman', 'chairman', 3),
 ('ashishkj', 'student', 'ashishkj', 5),
+<<<<<<< HEAD
 ('comm', 'committee', 'comm', 2),
 ('subirb', 'faculty', 'subirb', 4),
 ('anurag', 'faculty', 'anurag', 4);
+=======
+('comm', 'committee', 'comm', 4),
+('subirb', 'faculty', 'subirb', 2),
+('anurag', 'faculty', 'anurag', 2);
+>>>>>>> 8c123f50d80a1103f12c792176460a713e4e7bbd
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

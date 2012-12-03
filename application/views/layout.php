@@ -59,7 +59,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                     <ul> 
                         <li><a href="/rp/new_application">New Application</a> </li>
                         <li><a href="/rp/extension">Extension</a> </li>
-						<li><a href="/rp/completion">Completion</a> </li>
+						<li><a href="/rp/Completion_admin">Completion</a> </li>
                         <li><a href="/rp/ongoing">Ongoing</a> </li>
                         <li><a href="/rp/completed">Finished</a> </li>
                         <li><a href="/rp/app_chairman">Chairman</a> </li>
