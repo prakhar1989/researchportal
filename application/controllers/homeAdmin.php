@@ -1,22 +1,20 @@
 <?php
-class HomeAdmin extends CI_Controller {
+class homeAdmin extends CI_Controller {
 
 	function index()
 	{
+		session_start();
 		$data['myClass']=$this; // passing the object for callback
 		$data['action']=0;      // what spl action to do for this layout
-		session_start();
-		if (isset($_SESSION['username']))
-		{
-			if($_SESSION['usertype']==1)
-			{
-			$this->load->view('layout',$data);
-			}
-		}
-		else{
-		echo 'hello';
-		header("location:login");
-		}
+		
+		if($_SESSION['usertype']==1){
+						$this->load->view('layout',$data);
+					} 
+					else
+					{
+					header("location:login");
+					}
+
 	}
 
 	function load_php()
