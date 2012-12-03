@@ -18,17 +18,17 @@ class ExtensionCheckChairmanRequest extends CI_Controller
 							';
 					if ($_POST['RequestType'] == 'Approve')
 						{
-						//$this->project_model->projectExtensionAdminResponse('Approve',$ProjectID);
+						$this->project_model->projectExtensionChairmanResponse('Approve',$ProjectID);
 						header("Location: /rp/extension_chairman");
 						} 
 					else if ($_POST['RequestType'] == 'Reject') 
 						{
-						//$this->project_model->projectExtensionAdminResponse('Reject',$ProjectID);
+						$this->project_model->projectExtensionChairmanResponse('Reject',$ProjectID);
 						header("Location: /rp/extension_chairman");
 						}
 					else if ($_POST['RequestType'] == 'Consult Committee') 
 						{
-						//$this->project_model->projectExtensionAdminResponse('Reject',$ProjectID);
+						$this->project_model->projectExtensionChairmanResponse('Consult Committee',$ProjectID);
 						header("Location: /rp/extension_chairman");
 						}
 					echo "\n\n";

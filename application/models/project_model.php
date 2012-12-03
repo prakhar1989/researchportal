@@ -66,6 +66,7 @@ class Project_model extends CI_Model {
 		return $query;
 		}
 		
+	// Check Admin Response for Project Extension and Update Tables Accordingly
 	function projectExtensionAdminResponse($check,$projectid)
 		{
 		$this->load->database();
@@ -73,6 +74,20 @@ class Project_model extends CI_Model {
 			$queryStr='UPDATE projectextension SET ApprovalPending = "chairman" where ProjectId = "'.$projectid.'";';
 		ElseIf ($check == 'Reject')
 			$queryStr='UPDATE projectextension SET ApprovalPending = "rejectedAdmin" where ProjectId = "'.$projectid.'";';
+		$query = $this->db->query($queryStr);
+		return $query;
+		}	
+	
+	// Check Chairman Response for Project Extension and Update Tables Accordingly
+	function projectExtensionChairmanResponse($check,$projectid)
+		{
+		$this->load->database();
+		If ($check == 'Approve')
+			$queryStr='UPDATE projectextension SET ApprovalPending = "approved" where ProjectId = "'.$projectid.'";';
+		ElseIf ($check == 'Reject')
+			$queryStr='UPDATE projectextension SET ApprovalPending = "rejectedChairman" where ProjectId = "'.$projectid.'";';
+		ElseIf ($check == 'Consult Committee')
+			$queryStr='UPDATE projectextension SET ApprovalPending = "ConsultCommittee" where ProjectId = "'.$projectid.'";';
 		$query = $this->db->query($queryStr);
 		return $query;
 		}	
