@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Nov 20, 2012 at 06:56 PM
+-- Generation Time: Dec 03, 2012 at 02:04 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -181,62 +181,73 @@ CREATE TABLE IF NOT EXISTS `project` (
   `Researcher1` varchar(80) NOT NULL,
   `Researcher2` varchar(80) NOT NULL,
   `Researcher3` varchar(80) NOT NULL,
-  `ProjectCategory` int(11) NOT NULL,
+  `ProjectCategory` varchar(30) NOT NULL,
   `ProjectGrant` int(11) NOT NULL,
   `PStatus` varchar(50) NOT NULL,
   `Deliverables` varchar(500) NOT NULL,
+  `cases` int(11) NOT NULL DEFAULT '0',
+  `journals` int(11) NOT NULL DEFAULT '0',
+  `chapters` int(11) NOT NULL DEFAULT '0',
+  `conference` int(11) NOT NULL DEFAULT '0',
+  `paper` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`ProjectId`),
   UNIQUE KEY `ProjectId` (`ProjectId`),
   UNIQUE KEY `ProjectId_2` (`ProjectId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=50 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
 
 --
 -- Dumping data for table `project`
 --
 
-INSERT INTO `project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`) VALUES
-('Marketing in Modern Retails', 1, 'A study on the consumer behavior in a modern retail. His choice /selection methods, payment methods and comfort level to be measured.', '2012-09-27 18:30:00', '2012-09-30', '2012-09-28', 'Ankush Verma', 'Rajgopal Brahmachari', 'Venu Sharma', 2, 50000, 'rejected', ''),
-('Marketing Communications', 2, 'Marketing communications strategy', '2012-09-18 18:30:00', '2012-09-17', '2012-09-30', 'anurag', 'chatterjeea', 'prakashd', 1, 100000, 'approved', '1. Optimal marketing strategy and plan'),
-('Strategic Marketing', 3, 'Research on the various methods of applying positioning in marketing', '2012-09-16 18:30:00', '2012-09-18', '2012-10-31', 'ankushv', 'rajeshb', '', 1, 50000, 'app_comm', ''),
-('Operations Research on Air Industry', 4, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'happyMan', 'SadMan', 'ankushv', 0, 0, 'app_chairman', ''),
-('Research on recession cycles', 5, 'A study of recession and its effects', '2012-09-05 18:30:00', '0000-00-00', '0000-00-00', 'abc123', 'ankushv', '', 1, 100000, 'rejected', ''),
-('Aasddsa', 6, 'sgdg gd fd gd gdfgd fgdgdg', '2012-09-18 18:30:00', '2012-09-15', '2012-09-24', 'sfsfsf', 'zdfsdf', 'zdfsfs', 1, 333333, 'rejected', 'zsdfdgdthrh'),
-('Financial Excellence in Banks', 7, 'Studying the various private and government commercial banks  ', '2012-09-11 18:30:00', '2012-09-28', '2012-12-28', 'xcvn2', 'plkjhgggdsa', '', 3, 5000, 'app_chairman', ''),
-('Business Leasdership Study', 8, 'Leadership traits study on current business leaders', '2012-09-28 18:30:00', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', 2, 100000, 'app_admin', '1 Leadership report'),
-('Study on Prakhar', 9, 'Prakhar''s genius uncoded', '2012-09-11 18:30:00', '2012-09-29', '2012-10-16', 'prakhars', 'ashishkj', 'anuragn', 1, 100000, 'completed', ''),
-('Behavioral study of customers of SUVs', 10, 'SUV automobile industry specific study on the buying behaviour of the customers of different regions', '2012-09-18 18:30:00', '2012-12-13', '2013-01-10', 'pkjain', 'vaibhavc', 'ashishkj', 3, 5, 'app_comm', ''),
-('Behavioral study of customers of sports cars', 11, 'Sports cars industry specific study on the buying behaviour of the customers of different regions', '2012-09-18 18:30:00', '2012-12-13', '2013-01-10', 'pkjain', 'vaibhavc', 'ashishkj', 3, 5, 'app_comm', ''),
-('Operational Strategy', 12, 'Study of Various operational strategies in Industry', '2012-09-24 18:30:00', '2012-09-30', '2014-03-12', 'Abc11', 'POR11', 'lmn45', 2, 50000, 'approved', ''),
-('title', 13, 'description', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'R2', 'R3', 1, 99999, 'app_comm', 'D1 D2 D3'),
-('title123', 14, 'description1', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'R21', 'R31', 1, 111111, 'app_comm', 'D1 D2 D3'),
-('titleXYX', 22, 'Desc123', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'co1', 'co2', 3, 55555, 'approved', '1. sddfsf 2.3444'),
-('Test Project', 23, 'Testing purpose', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'tester1', 'tetser2', 2, 1111111, 'app_comm', 'Test 1  and Test 2'),
-('', 24, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '', '', 0, 0, 'app_admin', ''),
-('', 25, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '', '', 1, 0, 'app_comm', ''),
-('23124', 26, 'zslkfjsf akdfskdfs lkfasbns', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '123245', '256ge', 1, 0, 'app_admin', 'Preparatory'),
-('', 27, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '', '', 1, 0, 'app_admin', 'Case'),
-('1245', 28, 'dgdg', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'abc', 'def', 1, 100000, 'app_admin', 'Secondary Research'),
-('', 29, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '', '', 1, 0, 'app_admin', 'Case'),
-('', 30, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '', '', 1, 0, 'app_admin', 'Case'),
-('Marketin', 31, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'ashish', 'amol', 2, 10000, 'app_admin', 'Course'),
-('strategy', 32, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'abhay', 'amul', 2, 10000, 'app_admin', 'Course'),
-('one more project', 33, '', '2012-11-10 09:46:05', '0000-00-00', '0000-00-00', 'absdfsf', 'sdf', 'sdfsf', 2, 33435, 'app_admin', 'Case'),
-('A project on Strategy', 34, '', '2012-11-12 08:57:03', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 50000, 'app_admin', ''),
-('A project on Strategy', 35, '', '2012-11-12 08:58:29', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 50000, 'app_admin', ''),
-('A project on Strategy', 36, '', '2012-11-12 08:58:37', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 50000, 'app_admin', ''),
-('A project on Strategy', 37, '', '2012-11-12 08:59:07', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', ''),
-('A project on Strategy', 38, '', '2012-11-12 08:59:23', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', ''),
-('A project on Strategy', 39, '', '2012-11-12 09:00:13', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
-('A project on Strategy', 40, '', '2012-11-12 09:01:13', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
-('A project on Strategy', 41, '', '2012-11-12 09:02:19', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
-('A project on Strategy', 42, '', '2012-11-12 09:07:35', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
-('A project on Strategy', 43, '', '2012-11-12 09:08:06', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
-('A project on Strategy', 44, '', '2012-11-12 09:08:40', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
-('', 45, '', '2012-11-12 09:51:36', '0000-00-00', '0000-00-00', 'absdfsf', '', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
-('', 46, '', '2012-11-20 17:13:26', '0000-00-00', '0000-00-00', '', '', '', 0, 0, 'app_admin', 'dummy_Deliverable'),
-('dfgfdhdfh', 47, '', '2012-11-20 17:16:14', '0000-00-00', '0000-00-00', '', 'xhbfg', 'xbfgbxc', 0, 57814, 'app_admin', 'dummy_Deliverable'),
-('dfgfdhdfh', 48, '', '2012-11-20 17:18:02', '0000-00-00', '0000-00-00', '', 'xhbfg', 'xbfgbxc', 0, 57814, 'app_admin', 'dummy_Deliverable'),
-('dfgfdhdfh', 49, '', '2012-11-20 17:18:29', '0000-00-00', '0000-00-00', 'anurag', 'xhbfg', 'xbfgbxc', 0, 57814, 'app_admin', 'dummy_Deliverable');
+INSERT INTO `project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`, `cases`, `journals`, `chapters`, `conference`, `paper`) VALUES
+('Marketing in Modern Retails', 1, 'A study on the consumer behavior in a modern retail. His choice /selection methods, payment methods and comfort level to be measured.', '2012-09-27 18:30:00', '2012-09-30', '2012-09-28', 'Ankush Verma', 'Rajgopal Brahmachari', 'Venu Sharma', '2', 50000, 'rejected', '', 0, 0, 0, 0, 0),
+('Marketing Communications', 2, 'Marketing communications strategy', '2012-09-18 18:30:00', '2012-09-17', '2012-09-30', 'anurag', 'chatterjeea', 'prakashd', '1', 100000, 'approved', '1. Optimal marketing strategy and plan', 0, 0, 0, 0, 0),
+('Strategic Marketing', 3, 'Research on the various methods of applying positioning in marketing', '2012-09-16 18:30:00', '2012-09-18', '2012-10-31', 'ankushv', 'rajeshb', '', '1', 50000, 'app_comm', '', 0, 0, 0, 0, 0),
+('Operations Research on Air Industry', 4, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'happyMan', 'SadMan', 'ankushv', '0', 0, 'app_chairman', '', 0, 0, 0, 0, 0),
+('Research on recession cycles', 5, 'A study of recession and its effects', '2012-09-05 18:30:00', '0000-00-00', '0000-00-00', 'abc123', 'ankushv', '', '1', 100000, 'rejected', '', 0, 0, 0, 0, 0),
+('Aasddsa', 6, 'sgdg gd fd gd gdfgd fgdgdg', '2012-09-18 18:30:00', '2012-09-15', '2012-09-24', 'sfsfsf', 'zdfsdf', 'zdfsfs', '1', 333333, 'rejected', 'zsdfdgdthrh', 0, 0, 0, 0, 0),
+('Financial Excellence in Banks', 7, 'Studying the various private and government commercial banks  ', '2012-09-11 18:30:00', '2012-09-28', '2012-12-28', 'xcvn2', 'plkjhgggdsa', '', '3', 5000, 'app_chairman', '', 0, 0, 0, 0, 0),
+('Business Leasdership Study', 8, 'Leadership traits study on current business leaders', '2012-09-28 18:30:00', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', 100000, 'app_admin', '1 Leadership report', 0, 0, 0, 0, 0),
+('Study on Prakhar', 9, 'Prakhar''s genius uncoded', '2012-09-11 18:30:00', '2012-09-29', '2012-10-16', 'prakhars', 'ashishkj', 'anuragn', '1', 100000, 'completed', '', 0, 0, 0, 0, 0),
+('Behavioral study of customers of SUVs', 10, 'SUV automobile industry specific study on the buying behaviour of the customers of different regions', '2012-09-18 18:30:00', '2012-12-13', '2013-01-10', 'pkjain', 'vaibhavc', 'ashishkj', '3', 5, 'app_comm', '', 0, 0, 0, 0, 0),
+('Behavioral study of customers of sports cars', 11, 'Sports cars industry specific study on the buying behaviour of the customers of different regions', '2012-09-18 18:30:00', '2012-12-13', '2013-01-10', 'pkjain', 'vaibhavc', 'ashishkj', '3', 5, 'app_comm', '', 0, 0, 0, 0, 0),
+('Operational Strategy', 12, 'Study of Various operational strategies in Industry', '2012-09-24 18:30:00', '2012-09-30', '2014-03-12', 'Abc11', 'POR11', 'lmn45', '2', 50000, 'approved', '', 0, 0, 0, 0, 0),
+('title', 13, 'description', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'R2', 'R3', '1', 99999, 'app_comm', 'D1 D2 D3', 0, 0, 0, 0, 0),
+('title123', 14, 'description1', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'R21', 'R31', '1', 111111, 'app_comm', 'D1 D2 D3', 0, 0, 0, 0, 0),
+('titleXYX', 22, 'Desc123', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'co1', 'co2', '3', 55555, 'approved', '1. sddfsf 2.3444', 0, 0, 0, 0, 0),
+('Test Project', 23, 'Testing purpose', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'tester1', 'tetser2', '2', 1111111, 'app_comm', 'Test 1  and Test 2', 0, 0, 0, 0, 0),
+('', 24, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '', '', '0', 0, 'app_admin', '', 0, 0, 0, 0, 0),
+('', 25, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '', '', '1', 0, 'app_comm', '', 0, 0, 0, 0, 0),
+('23124', 26, 'zslkfjsf akdfskdfs lkfasbns', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '123245', '256ge', '1', 0, 'app_admin', 'Preparatory', 0, 0, 0, 0, 0),
+('', 27, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '', '', '1', 0, 'app_admin', 'Case', 0, 0, 0, 0, 0),
+('1245', 28, 'dgdg', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'abc', 'def', '1', 100000, 'app_admin', 'Secondary Research', 0, 0, 0, 0, 0),
+('', 29, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '', '', '1', 0, 'app_admin', 'Case', 0, 0, 0, 0, 0),
+('', 30, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', '', '', '1', 0, 'app_admin', 'Case', 0, 0, 0, 0, 0),
+('Marketin', 31, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'ashish', 'amol', '2', 10000, 'app_admin', 'Course', 0, 0, 0, 0, 0),
+('strategy', 32, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'abhay', 'amul', '2', 10000, 'app_admin', 'Course', 0, 0, 0, 0, 0),
+('one more project', 33, '', '2012-11-10 09:46:05', '0000-00-00', '0000-00-00', 'absdfsf', 'sdf', 'sdfsf', '2', 33435, 'app_admin', 'Case', 0, 0, 0, 0, 0),
+('A project on Strategy', 34, '', '2012-11-12 08:57:03', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', '0', 50000, 'app_admin', '', 0, 0, 0, 0, 0),
+('A project on Strategy', 35, '', '2012-11-12 08:58:29', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', '0', 50000, 'app_admin', '', 0, 0, 0, 0, 0),
+('A project on Strategy', 36, '', '2012-11-12 08:58:37', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', '0', 50000, 'app_admin', '', 0, 0, 0, 0, 0),
+('A project on Strategy', 37, '', '2012-11-12 08:59:07', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', '0', 0, 'app_admin', '', 0, 0, 0, 0, 0),
+('A project on Strategy', 38, '', '2012-11-12 08:59:23', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', '0', 0, 'app_admin', '', 0, 0, 0, 0, 0),
+('A project on Strategy', 39, '', '2012-11-12 09:00:13', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', '0', 0, 'app_admin', 'dummy_Deliverable', 0, 0, 0, 0, 0),
+('A project on Strategy', 40, '', '2012-11-12 09:01:13', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', '0', 0, 'app_admin', 'dummy_Deliverable', 0, 0, 0, 0, 0),
+('A project on Strategy', 41, '', '2012-11-12 09:02:19', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', '0', 0, 'app_admin', 'dummy_Deliverable', 0, 0, 0, 0, 0),
+('A project on Strategy', 42, '', '2012-11-12 09:07:35', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', '0', 0, 'app_admin', 'dummy_Deliverable', 0, 0, 0, 0, 0),
+('A project on Strategy', 43, '', '2012-11-12 09:08:06', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', '0', 0, 'app_admin', 'dummy_Deliverable', 0, 0, 0, 0, 0),
+('A project on Strategy', 44, '', '2012-11-12 09:08:40', '0000-00-00', '0000-00-00', 'absdfsf', 'anubhavs', '', '0', 0, 'app_admin', 'dummy_Deliverable', 0, 0, 0, 0, 0),
+('', 45, '', '2012-11-12 09:51:36', '0000-00-00', '0000-00-00', 'absdfsf', '', '', '0', 0, 'app_admin', 'dummy_Deliverable', 0, 0, 0, 0, 0),
+('', 46, '', '2012-11-20 17:13:26', '0000-00-00', '0000-00-00', '', '', '', '0', 0, 'app_admin', 'dummy_Deliverable', 0, 0, 0, 0, 0),
+('dfgfdhdfh', 47, '', '2012-11-20 17:16:14', '0000-00-00', '0000-00-00', '', 'xhbfg', 'xbfgbxc', '0', 57814, 'app_admin', 'dummy_Deliverable', 0, 0, 0, 0, 0),
+('dfgfdhdfh', 48, '', '2012-11-20 17:18:02', '0000-00-00', '0000-00-00', '', 'xhbfg', 'xbfgbxc', '0', 57814, 'app_admin', 'dummy_Deliverable', 0, 0, 0, 0, 0),
+('new project', 49, 'this is new project', '2012-12-01 09:34:45', '0000-00-00', '0000-00-00', 'anurag', 'ankitv', '', '1', 100000, 'app_admin', '', 0, 0, 0, 0, 0),
+('', 50, '', '2012-12-01 09:35:40', '0000-00-00', '0000-00-00', '', '', '', '0', 0, '', '', 0, 1, 0, 2, 0),
+('new project', 51, '', '2012-12-01 10:16:27', '0000-00-00', '0000-00-00', 'absdfsf', 'abhinavj', 'sdfsf', 'Category 1 (IIM C)', 10000, 'app_admin', '', 1, 5, 4, 6, 3),
+('new project', 52, '', '2012-12-01 10:18:59', '0000-00-00', '0000-00-00', 'subirb', 'abhinavj', 'sdfsf', 'Category 1 (IIM C)', 10000, 'app_admin', '', 1, 5, 4, 6, 3),
+('new project', 53, '', '2012-12-01 10:20:08', '0000-00-00', '0000-00-00', 'subirb', 'abhinavj', 'raghav', 'Category 1 (IIM C)', 10000, 'app_admin', '', 1, 5, 0, 0, 3),
+('Latest marketing developements', 54, '', '2012-12-01 11:21:08', '0000-00-00', '0000-00-00', 'anurag', 'rajeshk', '', 'Category 1 (IIM C)', 1000, 'app_admin', '', 0, 0, 0, 1, 0),
+('Latest marketing developements', 55, '', '2012-12-01 18:15:53', '0000-00-00', '0000-00-00', 'anurag', 'rajeshk', '', 'Category 1 (IIM C)', 1000, 'app_admin', '', 0, 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
