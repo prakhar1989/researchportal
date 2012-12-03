@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2012 at 11:00 PM
+-- Generation Time: Dec 03, 2012 at 11:11 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -16,17 +16,9 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
 
-<<<<<<< HEAD
-
 --
 -- Database: `researchportal`
 --
-
-=======
---
--- Database: `researchportal`
---
->>>>>>> 8c123f50d80a1103f12c792176460a713e4e7bbd
 
 -- --------------------------------------------------------
 
@@ -411,18 +403,12 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`Username`, `role`, `password`, `user_type`) VALUES
 ('admin', 'admin', 'admin123', 1),
-('ankushv', 'faculty', 'ankush123', 2),
+('ankushv', 'faculty', 'ankush123', 4),
 ('chairman', 'chairman', 'chairman', 3),
 ('ashishkj', 'student', 'ashishkj', 5),
-<<<<<<< HEAD
 ('comm', 'committee', 'comm', 2),
 ('subirb', 'faculty', 'subirb', 4),
 ('anurag', 'faculty', 'anurag', 4);
-=======
-('comm', 'committee', 'comm', 4),
-('subirb', 'faculty', 'subirb', 2),
-('anurag', 'faculty', 'anurag', 2);
->>>>>>> 8c123f50d80a1103f12c792176460a713e4e7bbd
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
