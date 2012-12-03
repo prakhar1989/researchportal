@@ -374,6 +374,25 @@ class Project_model extends CI_Model {
 	$query = $this->db->query($queryStr);
 	
 	}
-		 
+	//vridhi-function to insert comment into the comment table
+	function insertComment($user, $usertype, $ProjectID, $comment, $comment_type)
+	{
+		$this->load->database();
+		$queryStr= 'INSERT INTO comment (Project_ID , Comment, Comment_type, User, User_type) VALUES ('.$ProjectID.' , \''.$comment.'\' , \''.$comment_type.'\' , \''.$user.'\' , '.$usertype.');' ;
+		//echo '<br>'.$queryStr;
+		$query = $this->db->query($queryStr);
+		//$result = $query->result();
+		//$msg='The Comments have been Added';
+		//return $msg;
+	}
+	//vridhi-function to get comments from comment table based on project id. more checks can be added in query to check for usertype
+	function getcomment($ProjectID, $usertype)
+	{
+		$this->load->database();
+		$queryStr='SELECT * FROM comment WHERE Project_ID='.$ProjectID.';';
+		$query = $this->db->query($queryStr);
+		return $query->result();
+		
+	}		 
 }
 ?>

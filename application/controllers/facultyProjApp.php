@@ -85,6 +85,12 @@ class FacultyProjApp extends CI_Controller {
 							<td>Proposed Time Frame (redundant)<small>after project initiation</small></td>
 							<td><input type="text" class="large"></input></td>
 						</tr>
+						<tr>
+							<td>Extra comments</td>
+							<td><input type="checkbox" value="1" name="commentCB" onClick="enableMe(\'comment\');" />
+							<textarea disabled="disabled" name="comment" ></textarea></td>
+						
+						</tr>
 					</tbody>
 					</table>
 
@@ -173,11 +179,25 @@ class FacultyProjApp extends CI_Controller {
 			
 			$this->load->model('project_model');
 		$ProjectId=$this->project_model->insertProject($_SESSION['username'],$data);
+		//	$ProjectId=900;
 			 //$ProjectId=$this->project_model->insertProject($_SESSION['username'],$data);
 			 //Uploading the file code... Can be modified to check the file extension if required
 			 $ext=end(explode('/', $_FILES['file_desc']['type']));
 			 move_uploaded_file($_FILES['file_desc']["tmp_name"],"upload/" . $ProjectId.'_description.'.$ext);
 			// echo "Stored in: " . "upload/" . $_FILES["file_desc"]["name"];
+
+			if(isset($_POST['commentCB']))
+			{
+				if(!isset($_POST['comment']) || strlen(trim($_POST['comment'])) == 0)
+				{
+				}
+				else
+				{
+					$this->load->model('project_model');
+					$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$ProjectId,addslashes(trim($_POST['comment'])),"faculty_application");
+				}
+				
+			}
 			
 			 $msg='The Project has been sent for approval ';
 			 require('showMsg.php');

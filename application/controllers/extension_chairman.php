@@ -42,9 +42,18 @@ class extension_chairman extends CI_Controller
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
-						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
+						  //vridhi--display comments below
+						 $Result=$this->project_model->getComment($row->ProjectId, $_SESSION['usertype']);
+						 foreach($Result as $row1)
+						 {
+							 echo '<p>'.$row1->Date.' ; '.$row1->User.': '.$row1->Comment.'</p>';
+						 }
+						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
 					 }
 				echo '</tbody></TABLE>
+				<p>Please enter comments (mandatory)*</p>
+				<p><textarea name="comment" ></textarea></p>
+				
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Approve">
 				<INPUT TYPE=SUBMIT name="RequestType" value="Reject">
 				<INPUT TYPE=SUBMIT name="RequestType" value="Consult Committee">

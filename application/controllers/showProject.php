@@ -16,7 +16,7 @@ class ShowProject extends CI_Controller {
 				session_start();
 				$data['myClass']=$this;
 				$data['action']=0;
-				session_start();
+//				session_start();
 			if($_SESSION['usertype']==1){
 				$this->load->view('layout',$data);
 			} elseif ($_SESSION['usertype']==2){
@@ -38,7 +38,7 @@ class ShowProject extends CI_Controller {
 					 $this->load->model('project_model');
 					  //pass the projectId of the selected project
 					 
-					 echo '<FORM name="approveProject" method= POST action="approveProject">';
+					 echo '<FORM name="approveProject" method= POST action="ShowProject/approveProject">';
 
 					 $Query= $this->project_model->projectInfo($Project);
 					 echo '<table class="table table-bordered"> 
@@ -122,18 +122,48 @@ class ShowProject extends CI_Controller {
 					 }
 					 
 					 echo '</tbody> </TABLE>';
+
+					$Result= $this->project_model->getcomment($Project, $_SESSION['usertype']);
+					 echo '<table class="table table-bordered"> 
+					
+					 <thead>
+							<tr>
+							</tr>
+					</thead>
+					<tbody>';
+					 $tableHeader= '<TR><TD><h4>Comment</h4></TD><TD><h4>Comment Type</h4></TD><TD><h4>Added by user</h4></TD><TD><h4>Added on</h4>';
+					 
+					 echo $tableHeader;
+					 foreach($Result as $row1)
+					 {
+						 echo '<TR><TD>';
+						 print $row1->Comment;
+						 echo '</TD><TD>';
+						 print $row1->Comment_type;
+						 echo '</TD><TD>';
+						 print $row1->User;
+						 echo '</TD><TD>';
+						 print $row1->Date;
+						
+					 }
+					 
+					 echo '</tbody> </TABLE>';
+
+
 					 //$size = filesize('upload/54_description.pdf');
 					 //echo $size;
 					 echo'<a href="downloadfile?file='.$row->ProjectId.'_description.pdf">Download Description file</a><br><br>';
+					 echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p><p><textarea name="comment"></textarea></p>';
 					 echo '<input type= submit value= "Approve" name="approve"><input type= submit value= "Reject" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >'; //Hidden to pass the projectId without showing it to the user
 					 echo '</FORM>';
 				}
 	
-	//fucntion to approve or reject project based on the user's selection
+	//function to approve or reject project based on the user's selection
 	function approveProject(){
 		session_start();
 		$data['myClass']=$this;
 		$data['action']=2;
+			
 		
 		$this->load->model('project_model');
 		
@@ -141,29 +171,62 @@ class ShowProject extends CI_Controller {
 		//echo 'project value:'.$_POST['projectID'];
 		if($_POST['approve']=='Approve')
 		{
+			$data['msg']='Approved';
 			if($_SESSION['usertype']==1)
 			{
 				$Query= $this->project_model->changeStatus('app_comm',$_POST['projectID']);
+				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"admin_approve");
+				$this->load->view('layout',$data);
 			} 
 			elseif ($_SESSION['usertype']==2)
 			{
 				$Query= $this->project_model->changeStatus('app_chairman',$_POST['projectID']);
+				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"committee_approve");
+				$this->load->view('layoutComm',$data);
 			}
 			elseif ($_SESSION['usertype']==3)
 			{
 				$Query= $this->project_model->changeStatus('approved',$_POST['projectID']);
+				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"chairman_approve");
+				$this->load->view('layoutChairman',$data);
 			}
+			else
+			{
+			
+			header("location:login");
+			}
+
 			
 			//$this->load->view('layout',$data);
-			$data['msg']='Approved';
+
 		}
 		else
 		{
 		    $Query= $this->project_model->changeStatus('rejected',$_POST['projectID']);
 			$data['msg']='Rejected';
+			if($_SESSION['usertype']==1)
+			{
+							$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"admin_reject");
+							$this->load->view('layout',$data);
+			}
+			elseif ($_SESSION['usertype']==2)
+			{
+							$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"committee_reject");
+							$this->load->view('layoutComm',$data);
+			}
+			elseif ($SESSION['usertype']==3)
+			{
+							$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"chairmain_reject");
+							$this->load->view('layoutChairman',$data);
+			}
+			else{
+			
+			header("location:login");
+			}
+
+			
 		}
 		
-		$this->load->view('layout',$data);
 	}
 	
 	function approveMsg($status){

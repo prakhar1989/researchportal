@@ -32,12 +32,17 @@ class FacultyProjRequest extends CI_Controller {
 						//echo $ProjectID;
 						echo 'Request For Extension Page';
 						$ExtensionPeriod = 20;
-						$msg = $this->project_model->projectExtension($ProjectID,$ExtensionPeriod);
+						if(strlen(trim($_POST['comment']))!=0)
+						{
+							$msg = $this->project_model->projectExtension($ProjectID,$ExtensionPeriod);
+							$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), 'faculty_extension');
+						}
 						} 
 					else if ($_POST['RequestType'] == 'Project Completed') 
 						{
 						echo 'Project Completed Page';
 						$msg = $this->project_model->projectCompletion($ProjectID);
+							$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), 'faculty_completed');
 						}
 					/*foreach($result->result() as $row)
 						{
