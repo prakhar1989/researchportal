@@ -117,7 +117,7 @@ class Project_model extends CI_Model {
 			$msg='The Project has been Requested for Completion Approval';
 			}
 		Else
-			$msg='Your Request For vApproval Has Already Been Sent';
+			$msg='Your Request For Approval Has Already Been Sent';
 		return $msg;
 	}
 	

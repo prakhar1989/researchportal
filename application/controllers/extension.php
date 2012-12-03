@@ -56,7 +56,7 @@ class Extension extends CI_Controller
 						 print $row->Researcher3;
 						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
 					 }
-				echo '</tbody></TABLE>
+				echo '</tbody></TABLE> 
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Approve">
 				<INPUT TYPE=SUBMIT name="RequestType" value="Reject">
 				</FORM>';
