@@ -51,6 +51,8 @@ class FacultyProjShowDetails extends CI_Controller {
 						 //echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
 						}			 
 					 echo '</tbody></TABLE>
+					<p>Please enter comments (mandatory)*</p>
+					<p><textarea name="comment" ></textarea></p>
 					<INPUT TYPE=SUBMIT name ="RequestType" value="Request For Extension">
 					<INPUT TYPE=SUBMIT name="RequestType" value="Project Completed">
 					</FORM>';

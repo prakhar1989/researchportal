@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.5.2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2012 at 02:04 PM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Generation Time: Dec 03, 2012 at 07:27 PM
+-- Server version: 5.5.25a
+-- PHP Version: 5.4.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -71,7 +71,65 @@ INSERT INTO `budget` (`Date`, `ProjectId`, `dataset`, `communication`, `field`, 
 ('0000-00-00 00:00:00', '12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 733),
 ('0000-00-00 00:00:00', '12', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 733),
 ('0000-00-00 00:00:00', '12', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 733),
+('2012-11-10 17:12:12', '22 ', 1000, 0, 0, 355, 0, 3000, 0, 0, 0, 200, 0, 0),
+('0000-00-00 00:00:00', '10', 1000, 1111, 222, 456, 500, 300, 1500, 5000, 0, 999, 0, 0),
+('0000-00-00 00:00:00', '1', 1000, 1111, 222, 456, 500, 300, 1500, 5000, 0, 999, 0, 0),
+('0000-00-00 00:00:00', '12', 300, 777, 245, 765, 1111, 9000, 700, 4000, 555, 400, 150, 0),
+('0000-00-00 00:00:00', '12', NULL, NULL, 1600, NULL, NULL, NULL, 1000, NULL, NULL, NULL, NULL, 0),
+('0000-00-00 00:00:00', '12 ', 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 0),
+('0000-00-00 00:00:00', '12 ', 669, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '12 ', 669, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '12 ', 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '12 ', 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '12 ', 0, 0, 3, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '12 ', 12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '12 ', 0, 0, 0, 100, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '2 ', 1000, 350, 0, 0, 0, 0, 0, 0, 0, 1000, 0, 0),
+('0000-00-00 00:00:00', '12 ', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '22 ', 550, 1000, 0, 50, 0, 0, 0, 0, 0, 0, 800, 0),
+('0000-00-00 00:00:00', '12 ', 130, 878, 0, 0, 0, 0, 0, 0, 0, 454656, 0, 0),
+('0000-00-00 00:00:00', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0),
+('0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 733),
+('0000-00-00 00:00:00', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 733),
+('0000-00-00 00:00:00', '12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 733),
+('0000-00-00 00:00:00', '12', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 733),
+('0000-00-00 00:00:00', '12', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 733),
 ('2012-11-10 17:12:12', '22 ', 1000, 0, 0, 355, 0, 3000, 0, 0, 0, 200, 0, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `comment`
+--
+
+CREATE TABLE IF NOT EXISTS `comment` (
+  `Project_ID` bigint(200) NOT NULL,
+  `Comment` varchar(5000) NOT NULL,
+  `Comment_type` varchar(50) NOT NULL,
+  `User` varchar(50) NOT NULL,
+  `User_type` int(11) NOT NULL,
+  `Date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`Project_ID`, `Comment`, `Comment_type`, `User`, `User_type`, `Date`) VALUES
+(900, 'jgdjsgbdbgjdbgmndsbfdmnsgbjdsf ndfbgdjsgbjfgbdgjfg bjhbgfsjdbgjbdgfbhgbfdhbjfd', 'faculty_application', 'fac', 4, '2012-12-03 07:17:42'),
+(900, 'jvhdjsbg,d,g":Sdgl;/dg/dfmglkfshdgkjbdsfn/;''.,', 'faculty_application', 'fac', 4, '2012-12-03 07:23:56'),
+(42, 'aaaaaaaaaaaaaaa', 'admin-approve', 'sdsd', 1, '2012-12-03 14:13:39'),
+(52, 'asasas', 'admin_approve', 'admin', 1, '2012-12-03 14:37:39'),
+(51, 'ffjf', 'admin_reject', 'admin', 1, '2012-12-03 14:37:58'),
+(51, 'ffjf', 'admin_reject', 'admin', 1, '2012-12-03 14:39:41'),
+(51, 'ffjf', 'admin_reject', 'admin', 1, '2012-12-03 14:46:45'),
+(55, 'dgdfgfdg', 'admin_approve', 'admin', 1, '2012-12-03 14:47:20'),
+(51, 'asfsfsdfdsfds', 'admin_reject_extension', 'admin', 1, '2012-12-03 17:58:37'),
+(32, 'llll', 'admin_approve_extension', 'admin', 1, '2012-12-03 18:05:05'),
+(45, 'dfgdffg', 'admin_approve_extension', 'admin', 1, '2012-12-03 18:10:26'),
+(36, 'fdgdgdfgfd', 'fafgfd', 'fdgdg', 4, '2012-12-03 18:23:25'),
+(36, 'bfgfg', 'rdgdttertr', 'gfhgf', 2, '2012-12-03 18:23:25');
 
 -- --------------------------------------------------------
 
@@ -243,11 +301,11 @@ INSERT INTO `project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `
 ('dfgfdhdfh', 48, '', '2012-11-20 17:18:02', '0000-00-00', '0000-00-00', '', 'xhbfg', 'xbfgbxc', '0', 57814, 'app_admin', 'dummy_Deliverable', 0, 0, 0, 0, 0),
 ('new project', 49, 'this is new project', '2012-12-01 09:34:45', '0000-00-00', '0000-00-00', 'anurag', 'ankitv', '', '1', 100000, 'app_admin', '', 0, 0, 0, 0, 0),
 ('', 50, '', '2012-12-01 09:35:40', '0000-00-00', '0000-00-00', '', '', '', '0', 0, '', '', 0, 1, 0, 2, 0),
-('new project', 51, '', '2012-12-01 10:16:27', '0000-00-00', '0000-00-00', 'absdfsf', 'abhinavj', 'sdfsf', 'Category 1 (IIM C)', 10000, 'app_admin', '', 1, 5, 4, 6, 3),
-('new project', 52, '', '2012-12-01 10:18:59', '0000-00-00', '0000-00-00', 'subirb', 'abhinavj', 'sdfsf', 'Category 1 (IIM C)', 10000, 'app_admin', '', 1, 5, 4, 6, 3),
-('new project', 53, '', '2012-12-01 10:20:08', '0000-00-00', '0000-00-00', 'subirb', 'abhinavj', 'raghav', 'Category 1 (IIM C)', 10000, 'app_admin', '', 1, 5, 0, 0, 3),
+('new project', 51, '', '2012-12-01 10:16:27', '0000-00-00', '0000-00-00', 'absdfsf', 'abhinavj', 'sdfsf', 'Category 1 (IIM C)', 10000, 'rejected', '', 1, 5, 4, 6, 3),
+('new project', 52, '', '2012-12-01 10:18:59', '0000-00-00', '0000-00-00', 'subirb', 'abhinavj', 'sdfsf', 'Category 1 (IIM C)', 10000, 'app_comm', '', 1, 5, 4, 6, 3),
+('new project', 53, '', '2012-12-01 10:20:08', '0000-00-00', '0000-00-00', 'subirb', 'abhinavj', 'raghav', 'Category 1 (IIM C)', 10000, 'app_comm', '', 1, 5, 0, 0, 3),
 ('Latest marketing developements', 54, '', '2012-12-01 11:21:08', '0000-00-00', '0000-00-00', 'anurag', 'rajeshk', '', 'Category 1 (IIM C)', 1000, 'app_admin', '', 0, 0, 0, 1, 0),
-('Latest marketing developements', 55, '', '2012-12-01 18:15:53', '0000-00-00', '0000-00-00', 'anurag', 'rajeshk', '', 'Category 1 (IIM C)', 1000, 'app_admin', '', 0, 0, 0, 1, 0);
+('Latest marketing developements', 55, '', '2012-12-01 18:15:53', '0000-00-00', '0000-00-00', 'anurag', 'rajeshk', '', 'Category 1 (IIM C)', 1000, 'app_comm', '', 0, 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -267,8 +325,19 @@ CREATE TABLE IF NOT EXISTS `projectcompleted` (
 
 CREATE TABLE IF NOT EXISTS `projectextension` (
   `ProjectId` bigint(200) NOT NULL,
-  `Period` bigint(200) NOT NULL
+  `Period` bigint(200) NOT NULL,
+  `ApprovalPending` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `projectextension`
+--
+
+INSERT INTO `projectextension` (`ProjectId`, `Period`, `ApprovalPending`) VALUES
+(51, 12, 'rejectedAdmin'),
+(32, 2, 'chairman'),
+(45, 4, 'chairman'),
+(36, 3, 'Admin');
 
 -- --------------------------------------------------------
 
