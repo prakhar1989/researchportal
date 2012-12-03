@@ -23,7 +23,7 @@ class Completion_admin extends CI_Controller
 		}
 	function load_php()
 				{
-				echo '<h1>Extensions</h1>';
+				echo '<h1>Completion Requests</h1>';
 				echo '<p> This is the Completion page. The Requests for project extenions to be showed here</p>';
 				$this->load->model('project_model');
 				$Query= $this->project_model->project_completion_admin();
@@ -31,7 +31,7 @@ class Completion_admin extends CI_Controller
 				echo '<FORM METHOD=POST ACTION="CompletionCheckAdminRequest">
 				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 					 <table class="table table-bordered">
-					<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>ProjectGrant</h4><TD><h4>App_Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Select</h1></TD></tr>
+					<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>ProjectGrant</h4><TD><h4>App_Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Comments</h4></TD><TD><h4>Select</h1></TD></tr>
 					
 					<tbody>';
 					 foreach($Query->result() as $row)
@@ -64,6 +64,8 @@ class Completion_admin extends CI_Controller
 						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
 					 }
 				echo '</tbody></TABLE> 
+				<p>Please enter comments (mandatory)*</p>
+				<p><textarea name="comment" ></textarea></p>
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Approve">
 				<INPUT TYPE=SUBMIT name="RequestType" value="Reject">
 				</FORM>';

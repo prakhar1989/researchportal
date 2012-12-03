@@ -84,19 +84,30 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='Select * from project where ProjectId IN (SELECT ProjectId FROM projectcompletion where  ApprovalPending = "admin");';
+		$queryStr='Select * from project where ProjectId IN (SELECT ProjectId FROM projectcompleted where  ApprovalPending = "admin");';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
 		}	
+	function project_completion_chairman()
+		{
+		//echo 'project_stage called';
+		$this->load->database();
+		//$query= $this->db->get('project');
+		//echo $Project['Id'];	
+		$queryStr='Select * from project where ProjectId IN (SELECT ProjectId FROM projectcompleted where  ApprovalPending = "chairman");';
+		//echo $queryStr;
+		$query = $this->db->query($queryStr);
+		return $query;
+		}		
 		
 	function projectCompletionAdminResponse($check,$projectid)
 		{
 		$this->load->database();
 		If ($check == 'Approve')
-			$queryStr='UPDATE projectcompletion SET ApprovalPending = "chairman" where ProjectId = "'.$projectid.'";';
+			$queryStr='UPDATE projectcompleted SET ApprovalPending = "chairman" where ProjectId = "'.$projectid.'";';
 		ElseIf ($check == 'Reject')
-			$queryStr='UPDATE projectcompletion SET ApprovalPending = "rejectedAdmin" where ProjectId = "'.$projectid.'";';
+			$queryStr='UPDATE projectcompleted SET ApprovalPending = "rejectedAdmin" where ProjectId = "'.$projectid.'";';
 		$query = $this->db->query($queryStr);
 		return $query;
 		}	
