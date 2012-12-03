@@ -4,17 +4,27 @@ class Completion_chairman extends CI_Controller
 	{
 	function index()
 		{
-			
+			session_start();
 			$data['myClass']=$this;
 			$data['action']=0;
-			$this->load->view('layout',$data);
+			
+			if($_SESSION['usertype']==1){
+				$this->load->view('layout',$data);
+			} elseif ($_SESSION['usertype']==2){
+				$this->load->view('layoutComm',$data);
+			} elseif($_SESSION['usertype']==3){
+				$this->load->view('layoutChairman',$data);
+			}
+			else{
+			header("location:login");
+			}
 		}
 	function load_php()
 				{
 				echo '<h1>Completion Requests</h1>';
-				echo '<p> This is the Completion page. The Requests for project extenions to be showed here</p>';
+				echo '<p> This is the Completion page. The Requests for project extensions to be showed here</p>';
 				
-				session_start();
+				
 				$this->load->model('project_model');
 				$Query= $this->project_model->project_completion_chairman();
 				

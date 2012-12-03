@@ -4,10 +4,10 @@ class Extension extends CI_Controller
 	{
 	function index()
 		{
-			
+			session_start();
 			$data['myClass']=$this;
 			$data['action']=0;
-			session_start();
+			
 					
 			if($_SESSION['usertype']==1){
 						$this->load->view('layout',$data);
@@ -16,8 +16,8 @@ class Extension extends CI_Controller
 					} elseif($_SESSION['usertype']==3){
 						$this->load->view('layoutChairman',$data);
 					}
-					else{
-			echo 'hello';
+			else{
+			
 			header("location:login");
 			}
 		}
