@@ -148,7 +148,7 @@ class Project_model extends CI_Model {
 		$queryCheck = $this->db->query($queryStrCheck);
 		If ( $queryCheck->num_rows() == 0)
 			{
-			$queryStr= 'INSERT INTO projectcompleted (ProjectId) VALUES (\''.$value.'\');' ;
+			$queryStr= 'INSERT INTO projectcompleted (ProjectId , ApprovalPending) VALUES (\''.$value.'\', \'admin\' );' ;
 			$query = $this->db->query($queryStr);
 			$msg='The Project has been Requested for Completion Approval';
 			}
@@ -165,7 +165,7 @@ class Project_model extends CI_Model {
 		$queryCheck = $this->db->query($queryStrCheck);
 		If ( $queryCheck->num_rows() == 0)
 			{
-			$queryStr= 'INSERT INTO projectextension (ProjectId,Period) VALUES (\''.$value.'\',\''.$period.'\');' ;
+			$queryStr= 'INSERT INTO projectextension (ProjectId, Period , ApprovalPending) VALUES (\''.$value.'\',\''.$period.'\' , \'admin\' );' ;
 			$query = $this->db->query($queryStr);
 			$msg='The Request for Project Extension has been sent';
 			}
