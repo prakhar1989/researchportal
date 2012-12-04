@@ -40,7 +40,8 @@ class Project_model extends CI_Model {
 		return $query;
 		}
 		
-		// Get extension projects
+
+	// Get extension projects
 	function project_extension()
 		{
 		//echo 'project_stage called';
@@ -53,6 +54,7 @@ class Project_model extends CI_Model {
 		return $query;
 		}
 	
+	// Code added by Pratik
 	// Get Extension Projects pending for chairman approval
 	function project_extension_chairman()
 		{
@@ -66,7 +68,22 @@ class Project_model extends CI_Model {
 		return $query;
 		}
 		
-	
+	// Code added by Pratik
+	// Get the Extension Projects pending Consultation for Committee
+	function project_extension_committee()
+		{
+		//echo 'project_stage called';
+		$this->load->database();
+		//$query= $this->db->get('project');
+		//echo $Project['Id'];	
+		$queryStr='Select * from project where ProjectId IN (SELECT ProjectId FROM projectextension where  ApprovalPending = "ConsultCommittee");';
+		//echo $queryStr;
+		$query = $this->db->query($queryStr);
+		return $query;
+		}
+		
+	// Code added by Pratik
+	//Check Admin Response for extension as to Approve and Reject and act accordingly
 	function projectExtensionAdminResponse($check,$projectid)
 		{
 		$this->load->database();
@@ -77,7 +94,22 @@ class Project_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query;
 		}	
+		
+	// Code added by Pratik
+	//Check Admin Response for completion as to Approve and Reject and act accordingly
+	function projectCompletionAdminResponse($check,$projectid)
+		{
+		$this->load->database();
+		If ($check == 'Approve')
+			$queryStr='UPDATE projectcompleted SET ApprovalPending = "chairman" where ProjectId = "'.$projectid.'";';
+		ElseIf ($check == 'Reject')
+			$queryStr='UPDATE projectcompleted SET ApprovalPending = "rejectedAdmin" where ProjectId = "'.$projectid.'";';
+		$query = $this->db->query($queryStr);
+		return $query;
+		}	
 	
+	// Code added by Pratik
+	//Check for projects pending for completion approval by Admin
 	function project_completion_admin()
 		{
 		//echo 'project_stage called';
@@ -89,6 +121,9 @@ class Project_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query;
 		}	
+		
+	// Code added by Pratik
+	//Check for projects pending for completion approval by Chairman
 	function project_completion_chairman()
 		{
 		//echo 'project_stage called';
@@ -101,16 +136,7 @@ class Project_model extends CI_Model {
 		return $query;
 		}		
 		
-	function projectCompletionAdminResponse($check,$projectid)
-		{
-		$this->load->database();
-		If ($check == 'Approve')
-			$queryStr='UPDATE projectcompleted SET ApprovalPending = "chairman" where ProjectId = "'.$projectid.'";';
-		ElseIf ($check == 'Reject')
-			$queryStr='UPDATE projectcompleted SET ApprovalPending = "rejectedAdmin" where ProjectId = "'.$projectid.'";';
-		$query = $this->db->query($queryStr);
-		return $query;
-		}	
+	
 	
 	
 	function ongoingFacultyProjects($user)
@@ -429,6 +455,32 @@ class Project_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query->result();
 		
-	}		 
+	}
+
+	// Code Added by Pratik 4 Dec 2012
+	// Check Chairman Response for Project Extension and Update Tables Accordingly
+	function projectExtensionChairmanResponse($check,$projectid)
+		{
+		$this->load->database();
+		If ($check == 'Approve')
+			$queryStr='UPDATE projectextension SET ApprovalPending = "approved" where ProjectId = "'.$projectid.'";';
+		ElseIf ($check == 'Reject')
+			$queryStr='UPDATE projectextension SET ApprovalPending = "rejectedChairman" where ProjectId = "'.$projectid.'";';
+		ElseIf ($check == 'Consult Committee')
+			$queryStr='UPDATE projectextension SET ApprovalPending = "ConsultCommittee" where ProjectId = "'.$projectid.'";';
+		$query = $this->db->query($queryStr);
+		return $query;
+		}		
+		
+	// Code Added by Pratik 4 Dec 2012
+	// Check Committee Response for Project Extension and Update Tables Accordingly
+	function projectExtensionCommitteeResponse($check,$projectid)
+		{
+		$this->load->database();
+		If ($check == 'Send')
+			$queryStr='UPDATE projectextension SET ApprovalPending = "chairman" where ProjectId = "'.$projectid.'";';
+		$query = $this->db->query($queryStr);
+		return $query;
+		}
 }
 ?>

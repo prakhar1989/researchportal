@@ -57,6 +57,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                 <div id="resproj" style="display: block">
                     <ul> 
                         <li><a  href="new_application">New Application</a> </li>
+						<li><a href="extension_committee">Extension</a> </li>
 						<li><a href="Completion_comm">Completion</a> </li>
                         <li><a href="ongoing">Ongoing</a> </li>
                         <li><a href="completed">Finished</a> </li>
