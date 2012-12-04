@@ -108,6 +108,21 @@ class Project_model extends CI_Model {
 		return $query;
 		}	
 	
+	// Code Added by Pratik 4 Dec 2012
+	// Check Chairman Response for Project Completion and Update Tables Accordingly
+	function projectCompletionChairmanResponse($check,$projectid)
+		{
+		$this->load->database();
+		If ($check == 'Approve')
+			$queryStr='UPDATE projectcompleted SET ApprovalPending = "approved" where ProjectId = "'.$projectid.'";';
+		ElseIf ($check == 'Reject')
+			$queryStr='UPDATE projectcompleted SET ApprovalPending = "rejectedChairman" where ProjectId = "'.$projectid.'";';
+		ElseIf ($check == 'Consult Committee')
+			$queryStr='UPDATE projectcompleted SET ApprovalPending = "ConsultCommittee" where ProjectId = "'.$projectid.'";';
+		$query = $this->db->query($queryStr);
+		return $query;
+		}
+	
 	// Code added by Pratik
 	//Check for projects pending for completion approval by Admin
 	function project_completion_admin()
@@ -136,7 +151,19 @@ class Project_model extends CI_Model {
 		return $query;
 		}		
 		
-	
+	// Code added by Pratik
+	// Get the Completion Projects pending Consultation for Committee
+	function project_completion_committee()
+		{
+		//echo 'project_stage called';
+		$this->load->database();
+		//$query= $this->db->get('project');
+		//echo $Project['Id'];	
+		$queryStr='Select * from project where ProjectId IN (SELECT ProjectId FROM projectcompleted where  ApprovalPending = "ConsultCommittee");';
+		//echo $queryStr;
+		$query = $this->db->query($queryStr);
+		return $query;
+		}
 	
 	
 	function ongoingFacultyProjects($user)
@@ -479,6 +506,17 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		If ($check == 'Send')
 			$queryStr='UPDATE projectextension SET ApprovalPending = "chairman" where ProjectId = "'.$projectid.'";';
+		$query = $this->db->query($queryStr);
+		return $query;
+		}
+		
+	// Code Added by Pratik 4 Dec 2012
+	// Check Committee Response for Project Completion and Update Tables Accordingly
+	function projectCompletionCommitteeResponse($check,$projectid)
+		{
+		$this->load->database();
+		If ($check == 'Send')
+			$queryStr='UPDATE projectcompleted SET ApprovalPending = "chairman" where ProjectId = "'.$projectid.'";';
 		$query = $this->db->query($queryStr);
 		return $query;
 		}

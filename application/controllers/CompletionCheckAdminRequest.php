@@ -21,13 +21,13 @@ class CompletionCheckAdminRequest extends CI_Controller
 						{
 						$this->project_model->projectCompletionAdminResponse('Approve',$ProjectID);
 						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_approve_completion");
-						header("Location: /rp/extension");
+						header("Location: /rp/completion_admin");
 						} 
 					else if ($_POST['RequestType'] == 'Reject') 
 						{
 						$this->project_model->projectCompletionAdminResponse('Reject',$ProjectID);
 						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_reject_completion");
-						header("Location: /rp/extension");
+						header("Location: /rp/completion_admin");
 						}
 					echo "\n\n";
 					//echo $msg;

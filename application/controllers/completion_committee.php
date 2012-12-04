@@ -1,6 +1,6 @@
 <?PHP
 
-class extension_committee extends CI_Controller 
+class completion_committee extends CI_Controller 
 	{
 	function index()
 		{
@@ -20,15 +20,16 @@ class extension_committee extends CI_Controller
 			
 			header("location:login");
 			}
-		}	
+		}
 	function load_php()
 				{
-				echo '<h1>Extensions</h1>';
-				echo '<p> This is the Extension page. The Requests for project extenions to be showed here</p>';
+				echo '<h1>Completion Request</h1>';
+				echo '<p> This is the Completion page. The Requests for project completions to be showed here</p>';
+				//session_start();
 				$this->load->model('project_model');
-				$Query= $this->project_model->project_extension_committee();
+				$Query= $this->project_model->project_completion_committee();
 				
-				echo '<FORM METHOD=POST ACTION="ExtensionCheckCommitteeRequest">
+				echo '<FORM METHOD=POST ACTION="CompletionCheckCommitteeRequest">
 				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 					 <table class="table table-bordered">
 					<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>ProjectGrant</h4><TD><h4>App_Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Comments</h4></TD><TD><h4>Select</h1></TD></tr>

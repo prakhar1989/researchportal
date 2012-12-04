@@ -32,6 +32,7 @@ class ExtensionCheckChairmanRequest extends CI_Controller
 					else if ($_POST['RequestType'] == 'Consult Committee') 
 						{
 						$this->project_model->projectExtensionChairmanResponse('Consult Committee',$ProjectID);
+						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "chairman_consult_extension");
 						header("Location: /rp/extension_chairman");
 						}
 					echo "\n\n";
