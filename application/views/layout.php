@@ -44,7 +44,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
     <div class="mast_head">
         <div class="container">
             <div id="logo"></div>
-            <a class="btn logout_btn" href="logout">Logout</a>
+            <a class="btn logout_btn" href="/rp/logout">Logout</a>
         </div> <!-- /container -->
     </div>
 
