@@ -71,13 +71,13 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                 </div>
                 <div id="confs" style="display: none">
                     <ul >
-                        <li><a href="Conf_new_application">New Application</a> </li>
-                        <li><a href="Conf_ongoing">Ongoing</a> </li>
-                        <li><a href="Conf_completed">Completed</a> </li>
-                        <li><a href="Conf_app_chairman">Chairman</a> </li>
-                        <li><a href="Conf_app_committee">Committee</a> </li>
-                        <li><a href="Conf_accounts">Accounts</a> </li>
-                        <li><a href="Conf_search">Search</a> </li>
+                        <li><a href="/rp/Conf_new_application">New Application</a> </li>
+                        <li><a href="/rp/Conf_ongoing">Ongoing</a> </li>
+                        <li><a href="/rp/Conf_completed">Completed</a> </li>
+                        <li><a href="/rp/Conf_app_chairman">Chairman</a> </li>
+                        <li><a href="/rp/Conf_app_committee">Committee</a> </li>
+                        <li><a href="/rp/Conf_accounts">Accounts</a> </li>
+                        <li><a href="/rp/Conf_search">Search</a> </li>
                         </li>
                     </ul>
                 </div>
@@ -115,9 +115,9 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
             <p>Handcrafted by Internet Solutions Group &copy; IIM Calcutta</p>
         </div>
     </footer>
-    <script src="static/js/jquery.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/tabs.min.js"></script>
-    <script src="static/js/application.js"></script>
+    <script src="http://localhost/rp/static/js/jquery.min.js"></script>
+    <script src="http://localhost/rp/static/js/jquery.min.js"></script>
+    <script src="http://localhost/rp/static/js/jquery.min.js"></script>
+    <script src="http://localhost/rp/static/js/jquery.min.js"></script>
   </body>
 </html> 

@@ -56,16 +56,16 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                 </ul>
                 <div id="resproj" style="display: block">
                     <ul> 
-                        <li><a  href="FacultyProjOngoing">View Ongoing Projects</a> </li>
-						<li><a  href="FacultyProjApp">Apply for Project</a> </li>
-						<li><a  href="FacultyProjCompleted">View Completed Projects</a> </li>
+                        <li><a  href="/rp/FacultyProjOngoing">View Ongoing Projects</a> </li>
+						<li><a  href="/rp/FacultyProjApp">Apply for Project</a> </li>
+						<li><a  href="/rp/FacultyProjCompleted">View Completed Projects</a> </li>
                     </ul>
                 </div>
                 <div id="confs" style="display: none">
                     <ul >
-                        <li><a  href="Conf_facultyApp">Apply for Conference</a> </li>
-						<li><a  href="Conf_facultyongoing">Ongoing Conferences</a> </li>
-						<li><a  href="Conf_facultycompleted">Past Conferences</a> </li>
+                        <li><a  href="/rp/Conf_facultyApp">Apply for Conference</a> </li>
+						<li><a  href="/rp/Conf_facultyongoing">Ongoing Conferences</a> </li>
+						<li><a  href="/rp/Conf_facultycompleted">Past Conferences</a> </li>
                         </li>
                     </ul>
                 </div>

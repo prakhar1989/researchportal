@@ -56,24 +56,24 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                 </ul>
                 <div id="resproj" style="display: block">
                     <ul> 
-                        <li><a  href="new_application">New Application</a> </li>
-						<li><a href="extension_committee">Extension</a> </li>
-						<li><a href="completion_committee">Completion</a> </li>
-                        <li><a href="ongoing">Ongoing</a> </li>
-                        <li><a href="completed">Finished</a> </li>
-						<li><a  href="app_chairman">Chairman</a> </li>
-						<li><a  href="app_admin">Admin</a> </li>
-						<li><a  href="searchProject">Search</a> </li>
+                        <li><a  href="/rp/new_application">New Application</a> </li>
+						<li><a href="/rp/extension_committee">Extension</a> </li>
+						<li><a href="/rp/completion_committee">Completion</a> </li>
+                        <li><a href="/rp/ongoing">Ongoing</a> </li>
+                        <li><a href="/rp/completed">Finished</a> </li>
+						<li><a  href="/rp/app_chairman">Chairman</a> </li>
+						<li><a  href="/rp/app_admin">Admin</a> </li>
+						<li><a  href="/rp/searchProject">Search</a> </li>
                     </ul>
                 </div>
                 <div id="confs" style="display: block">
                     <ul >
-                        <li><a  href="new_Capplication">New Application</a> </li>
-						<li><a  href="Congoing">Ongoing</a> </li>
-						<li><a  href="Ccompleted">Completed</a> </li>
-						<li><a  href="Capp_chairman">Chairman</a> </li>
-						<li><a  href="Capp_admin">Admin</a> </li>
-						<li><a  href="searchConference">Search</a> </li>
+                        <li><a  href="/rp/new_Capplication">New Application</a> </li>
+						<li><a  href="/rp/Congoing">Ongoing</a> </li>
+						<li><a  href="/rp/Ccompleted">Completed</a> </li>
+						<li><a  href="/rp/Capp_chairman">Chairman</a> </li>
+						<li><a  href="/rp/Capp_admin">Admin</a> </li>
+						<li><a  href="/rp/searchConference">Search</a> </li>
                     </ul>
                 </div>
            </div> 

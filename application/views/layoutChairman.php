@@ -56,23 +56,23 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                 </ul>
                 <div id="resproj" style="display: block">
                     <ul> 
-                        <li><a  href="new_application">New Application</a> </li>
-						<li><a  href="extension_chairman">Extension</a> </li>
+                        <li><a  href="/rp/new_application">New Application</a> </li>
+						<li><a  href="/rp/extension_chairman">Extension</a> </li>
 						<li><a href="/rp/Completion_chairman">Completion</a> </li>
                         <li><a href="/rp/ongoing">Ongoing</a> </li>
                         <li><a href="/rp/completed">Finished</a> </li>
-						<li><a  href="app_committee">Committee</a> </li>
-						<li><a  href="app_admin">Admin</a> </li>
-						<li><a  href="searchProject">Search</a> </li>
+						<li><a  href="/rp/app_committee">Committee</a> </li>
+						<li><a  href="/rp/app_admin">Admin</a> </li>
+						<li><a  href="/rp/searchProject">Search</a> </li>
                 </div>
                 <div id="confs" style="display: none">
                     <ul >
-                        <li><a  href="new_Capplication">New Application</a> </li>
-						<li><a  href="index.php/Congoing">Ongoing</a> </li>
-						<li><a  href="Ccompleted">Completed</a> </li>
-						<li><a  href="Capp_admin">Admin</a> </li>
-						<li><a  href="Capp_committee">Committee</a> </li>
-						<li><a  href="searchConference">Search</a> </li>
+                        <li><a  href="/rp/new_Capplication">New Application</a> </li>
+						<li><a  href="/rp/Congoing">Ongoing</a> </li>
+						<li><a  href="/rp/Ccompleted">Completed</a> </li>
+						<li><a  href="/rp/Capp_admin">Admin</a> </li>
+						<li><a  href="/rp/Capp_committee">Committee</a> </li>
+						<li><a  href="/rp/searchConference">Search</a> </li>
                         </li>
                     </ul>
                 </div>
