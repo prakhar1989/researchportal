@@ -59,7 +59,7 @@ class New_application extends CI_Controller {
 					 {
 					 echo '</tbody>
 					 </TABLE>
-					 <INPUT TYPE=SUBMIT value="Submit">
+					 <INPUT TYPE=SUBMIT value="VIEW">
 					</FORM>';
 					
 				}

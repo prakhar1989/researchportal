@@ -100,7 +100,7 @@ class ShowProject extends CI_Controller {
 						 echo '</TD><TD>';
 						 if ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_2')
 						 {
-							echo 'YES</TD><TD>';
+							echo 'YES';
 						 }else
 						 {
 							echo 'NO';
@@ -167,13 +167,20 @@ class ShowProject extends CI_Controller {
 					 //echo $size;
 					 echo'<a href="downloadfile?file='.$row->ProjectId.'_description.pdf">Download Description file</a><br><br>';
 					 echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p><p><textarea name="comment"></textarea></p>';
-					 if ($_SESSION['usertype']==1)
+					 if ($_SESSION['usertype']!=3)
 					 {
 					 echo '<input type= submit value= "Forward" name="approve"><input type= submit value= "Reject" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >'; //Hidden to pass the projectId without showing it to the user
 					 }
 					 else
 					 {
-					 echo '<input type= submit value= "Approve" name="approve"><input type= submit value= "Reject" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >';
+						if ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_2')
+						{
+							echo '<input type= submit value= "Approve" name="approve"><input type= submit value= "Reject" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >';
+						}
+						elseif ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_1')
+						{
+							echo '<input type= submit value= "Forward" name="approve"><input type= submit value= "Reject" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >';
+						}						
 					 }
 					 echo '</FORM>';
 				}
@@ -200,13 +207,19 @@ class ShowProject extends CI_Controller {
 			} 
 			elseif ($_SESSION['usertype']==2)
 			{
-				$Query= $this->project_model->changeStatus('app_chairman',$_POST['projectID']);
+				$Query= $this->project_model->changeStatus('app_chairman_2',$_POST['projectID']);
 				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"committee_approve");
 				$this->load->view('layoutComm',$data);
 			}
-			elseif ($_SESSION['usertype']==3)
+			elseif ($_SESSION['usertype']==3 && $_POST['approve']=='Approve')
 			{
 				$Query= $this->project_model->changeStatus('approved',$_POST['projectID']);
+				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"chairman_approve");
+				$this->load->view('layoutChairman',$data);
+			}
+			elseif($_SESSION['usertype']==3 && $_POST['approve']=='Forward')
+			{
+				$Query= $this->project_model->changeStatus('app_comm',$_POST['projectID']);
 				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"chairman_approve");
 				$this->load->view('layoutChairman',$data);
 			}
