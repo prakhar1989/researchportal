@@ -154,7 +154,14 @@ class ShowProject extends CI_Controller {
 					 //echo $size;
 					 echo'<a href="downloadfile?file='.$row->ProjectId.'_description.pdf">Download Description file</a><br><br>';
 					 echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p><p><textarea name="comment"></textarea></p>';
-					 echo '<input type= submit value= "Approve" name="approve"><input type= submit value= "Reject" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >'; //Hidden to pass the projectId without showing it to the user
+					 if ($_SESSION['usertype']==1)
+					 {
+					 echo '<input type= submit value= "Forward" name="approve"><input type= submit value= "Reject" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >'; //Hidden to pass the projectId without showing it to the user
+					 }
+					 else
+					 {
+					 echo '<input type= submit value= "Approve" name="approve"><input type= submit value= "Reject" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >';
+					 }
 					 echo '</FORM>';
 				}
 	
@@ -169,7 +176,7 @@ class ShowProject extends CI_Controller {
 		
 		//echo '@#usertype is :'.$_SESSION['usertype'];
 		//echo 'project value:'.$_POST['projectID'];
-		if($_POST['approve']=='Approve')
+		if($_POST['approve']=='Approve' OR $_POST['approve']=='Forward')
 		{
 			$data['msg']='Approved';
 			if($_SESSION['usertype']==1)

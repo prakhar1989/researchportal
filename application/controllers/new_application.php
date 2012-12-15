@@ -60,8 +60,8 @@ class New_application extends CI_Controller {
 					 echo '</tbody>
 					 </TABLE>
 					 <INPUT TYPE=SUBMIT value="Submit">
-					</FORM>
-					<a href="downloadfile?file=researchportal%283%29.txt">Download file</a>';
+					</FORM>';
+					
 				}
 				
 				 
