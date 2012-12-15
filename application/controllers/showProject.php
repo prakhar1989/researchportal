@@ -51,6 +51,9 @@ class ShowProject extends CI_Controller {
 					 $tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h4>';
 					 foreach($Query->result() as $row)
 					 {
+					    if ($_SESSION['usertype']==3)
+						{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
+						}
 						if ($row->cases!=0)
 						{
 						 $tableHeader= $tableHeader.'<TD><h4>Cases</h4>';
@@ -94,6 +97,16 @@ class ShowProject extends CI_Controller {
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
+						 echo '</TD><TD>';
+						 if ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_2')
+						 {
+							echo 'YES</TD><TD>';
+						 }else
+						 {
+							echo 'NO';
+						 }
+						 
+						 
 						if ($row->cases!=0)
 						{
 						 echo '</TD><TD>';
