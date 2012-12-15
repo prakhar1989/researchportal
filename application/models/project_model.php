@@ -20,7 +20,7 @@ class Project_model extends CI_Model {
 		}
 		elseif ($_SESSION['usertype']==3)
 		{
-			$queryStr='SELECT * FROM project WHERE PStatus = "app_chairman" ; ';
+			$queryStr='SELECT * FROM project WHERE PStatus = "app_chairman_1" OR PStatus = "app_chairman_2" ;';
 		}
 		$query= $this->db->query($queryStr);
 		return $query->result();

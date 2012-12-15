@@ -29,8 +29,8 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link rel="stylesheet" href="static/css/bootstrap.min.css" >
-    <link href="static/css/custom.css" rel="stylesheet" type="text/css" >
+    <link rel="stylesheet" href="/rp/static/css/bootstrap.min.css" >
+    <link href="/rp/static/css/custom.css" rel="stylesheet" type="text/css" >
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
