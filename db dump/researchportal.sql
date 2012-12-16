@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 03, 2012 at 11:11 PM
+-- Generation Time: Dec 16, 2012 at 11:16 AM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -132,7 +132,16 @@ INSERT INTO `comment` (`Project_ID`, `Comment`, `Comment_type`, `User`, `User_ty
 (36, 'bfgfg', 'rdgdttertr', 'gfhgf', 2, '2012-12-03 18:23:25'),
 (36, 'Test Comment from Admin', 'admin_approve_extension', 'admin', 1, '2012-12-03 18:59:56'),
 (12, 'hello, sending for your Approval', 'admin_approve_extension', 'admin', 1, '2012-12-03 19:12:08'),
-(12, 'dear chairman please approve this project 12', 'admin_approve_completion', 'admin', 1, '2012-12-03 21:48:39');
+(12, 'dear chairman please approve this project 12', 'admin_approve_completion', 'admin', 1, '2012-12-03 21:48:39'),
+(2, 'dear admin lease consider this for completion', 'faculty_completed', 'anurag', 4, '2012-12-03 22:21:11'),
+(12, 'reconsider', 'admin_approve_extension', 'admin', 1, '2012-12-03 22:22:48'),
+(2, 'approve it admin', 'faculty_completed', 'anurag', 4, '2012-12-03 22:44:08'),
+(2, 'please approve admin', 'faculty_completed', 'anurag', 4, '2012-12-03 22:48:38'),
+(2, 'consider for app admin', 'faculty_completed', 'anurag', 4, '2012-12-03 22:52:54'),
+(2, 'pleaSE APPROVE', 'faculty_extension', 'anurag', 4, '2012-12-04 09:34:45'),
+(2, 'Sir please approve!', 'admin_approve_extension', 'admin', 1, '2012-12-04 09:35:33'),
+(54, 'Seems ok!', 'admin_approve', 'admin', 1, '2012-12-15 18:38:45'),
+(8, 'The project requirements are met!', 'admin_approve', 'admin', 1, '2012-12-15 18:46:30');
 
 -- --------------------------------------------------------
 
@@ -254,7 +263,7 @@ CREATE TABLE IF NOT EXISTS `project` (
   PRIMARY KEY (`ProjectId`),
   UNIQUE KEY `ProjectId` (`ProjectId`),
   UNIQUE KEY `ProjectId_2` (`ProjectId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=56 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=55 ;
 
 --
 -- Dumping data for table `project`
@@ -264,11 +273,11 @@ INSERT INTO `project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `
 ('Marketing in Modern Retails', 1, 'A study on the consumer behavior in a modern retail. His choice /selection methods, payment methods and comfort level to be measured.', '2012-09-27 18:30:00', '2012-09-30', '2012-09-28', 'Ankush Verma', 'Rajgopal Brahmachari', 'Venu Sharma', '2', 50000, 'rejected', '', 0, 0, 0, 0, 0),
 ('Marketing Communications', 2, 'Marketing communications strategy', '2012-09-18 18:30:00', '2012-09-17', '2012-09-30', 'anurag', 'chatterjeea', 'prakashd', '1', 100000, 'approved', '1. Optimal marketing strategy and plan', 0, 0, 0, 0, 0),
 ('Strategic Marketing', 3, 'Research on the various methods of applying positioning in marketing', '2012-09-16 18:30:00', '2012-09-18', '2012-10-31', 'ankushv', 'rajeshb', '', '1', 50000, 'app_comm', '', 0, 0, 0, 0, 0),
-('Operations Research on Air Industry', 4, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'happyMan', 'SadMan', 'ankushv', '0', 0, 'app_chairman', '', 0, 0, 0, 0, 0),
+('Operations Research on Air Industry', 4, '', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'happyMan', 'SadMan', 'ankushv', '0', 0, 'app_chairman_1', '', 0, 0, 0, 0, 0),
 ('Research on recession cycles', 5, 'A study of recession and its effects', '2012-09-05 18:30:00', '0000-00-00', '0000-00-00', 'abc123', 'ankushv', '', '1', 100000, 'rejected', '', 0, 0, 0, 0, 0),
 ('Aasddsa', 6, 'sgdg gd fd gd gdfgd fgdgdg', '2012-09-18 18:30:00', '2012-09-15', '2012-09-24', 'sfsfsf', 'zdfsdf', 'zdfsfs', '1', 333333, 'rejected', 'zsdfdgdthrh', 0, 0, 0, 0, 0),
-('Financial Excellence in Banks', 7, 'Studying the various private and government commercial banks  ', '2012-09-11 18:30:00', '2012-09-28', '2012-12-28', 'xcvn2', 'plkjhgggdsa', '', '3', 5000, 'app_chairman', '', 0, 0, 0, 0, 0),
-('Business Leasdership Study', 8, 'Leadership traits study on current business leaders', '2012-09-28 18:30:00', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', 100000, 'app_admin', '1 Leadership report', 0, 0, 0, 0, 0),
+('Financial Excellence in Banks', 7, 'Studying the various private and government commercial banks  ', '2012-09-11 18:30:00', '2012-09-28', '2012-12-28', 'xcvn2', 'plkjhgggdsa', '', '3', 5000, 'app_chairman_1', '', 0, 0, 0, 0, 0),
+('Business Leasdership Study', 8, 'Leadership traits study on current business leaders', '2012-09-28 18:30:00', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', 100000, 'app_chairman_1', '1 Leadership report', 0, 0, 0, 0, 0),
 ('Study on Prakhar', 9, 'Prakhar''s genius uncoded', '2012-09-11 18:30:00', '2012-09-29', '2012-10-16', 'prakhars', 'ashishkj', 'anuragn', '1', 100000, 'completed', '', 0, 0, 0, 0, 0),
 ('Behavioral study of customers of SUVs', 10, 'SUV automobile industry specific study on the buying behaviour of the customers of different regions', '2012-09-18 18:30:00', '2012-12-13', '2013-01-10', 'pkjain', 'vaibhavc', 'ashishkj', '3', 5, 'app_comm', '', 0, 0, 0, 0, 0),
 ('Behavioral study of customers of sports cars', 11, 'Sports cars industry specific study on the buying behaviour of the customers of different regions', '2012-09-18 18:30:00', '2012-12-13', '2013-01-10', 'pkjain', 'vaibhavc', 'ashishkj', '3', 5, 'app_comm', '', 0, 0, 0, 0, 0),
@@ -302,13 +311,11 @@ INSERT INTO `project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `
 ('', 46, '', '2012-11-20 17:13:26', '0000-00-00', '0000-00-00', '', '', '', '0', 0, 'app_admin', 'dummy_Deliverable', 0, 0, 0, 0, 0),
 ('dfgfdhdfh', 47, '', '2012-11-20 17:16:14', '0000-00-00', '0000-00-00', '', 'xhbfg', 'xbfgbxc', '0', 57814, 'app_admin', 'dummy_Deliverable', 0, 0, 0, 0, 0),
 ('dfgfdhdfh', 48, '', '2012-11-20 17:18:02', '0000-00-00', '0000-00-00', '', 'xhbfg', 'xbfgbxc', '0', 57814, 'app_admin', 'dummy_Deliverable', 0, 0, 0, 0, 0),
-('new project', 49, 'this is new project', '2012-12-01 09:34:45', '0000-00-00', '0000-00-00', 'anurag', 'ankitv', '', '1', 100000, 'app_admin', '', 0, 0, 0, 0, 0),
 ('', 50, '', '2012-12-01 09:35:40', '0000-00-00', '0000-00-00', '', '', '', '0', 0, '', '', 0, 1, 0, 2, 0),
 ('new project', 51, '', '2012-12-01 10:16:27', '0000-00-00', '0000-00-00', 'absdfsf', 'abhinavj', 'sdfsf', 'Category 1 (IIM C)', 10000, 'rejected', '', 1, 5, 4, 6, 3),
 ('new project', 52, '', '2012-12-01 10:18:59', '0000-00-00', '0000-00-00', 'subirb', 'abhinavj', 'sdfsf', 'Category 1 (IIM C)', 10000, 'app_comm', '', 1, 5, 4, 6, 3),
 ('new project', 53, '', '2012-12-01 10:20:08', '0000-00-00', '0000-00-00', 'subirb', 'abhinavj', 'raghav', 'Category 1 (IIM C)', 10000, 'app_comm', '', 1, 5, 0, 0, 3),
-('Latest marketing developements', 54, '', '2012-12-01 11:21:08', '0000-00-00', '0000-00-00', 'anurag', 'rajeshk', '', 'Category 1 (IIM C)', 1000, 'app_admin', '', 0, 0, 0, 1, 0),
-('Latest marketing developements', 55, '', '2012-12-01 18:15:53', '0000-00-00', '0000-00-00', 'anurag', 'rajeshk', '', 'Category 1 (IIM C)', 1000, 'app_comm', '', 0, 0, 0, 1, 0);
+('Latest marketing developements', 54, '', '2012-12-01 11:21:08', '0000-00-00', '0000-00-00', 'anurag', 'rajeshk', '', 'Category 1 (IIM C)', 1000, 'app_chairman_2', '', 0, 0, 0, 1, 0);
 
 -- --------------------------------------------------------
 
@@ -319,7 +326,7 @@ INSERT INTO `project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `
 CREATE TABLE IF NOT EXISTS `projectcompleted` (
   `ProjectId` bigint(200) NOT NULL,
   `Period` bigint(200) NOT NULL,
-  `ApprovalPending` varchar(50) NOT NULL
+  `ApprovalPending` varchar(50) NOT NULL DEFAULT 'admin'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -331,7 +338,8 @@ INSERT INTO `projectcompleted` (`ProjectId`, `Period`, `ApprovalPending`) VALUES
 (32, 2, 'chairman'),
 (45, 4, 'chairman'),
 (36, 3, 'chairman'),
-(12, 5, 'chairman');
+(12, 5, 'chairman'),
+(2, 0, 'admin');
 
 -- --------------------------------------------------------
 
@@ -342,7 +350,7 @@ INSERT INTO `projectcompleted` (`ProjectId`, `Period`, `ApprovalPending`) VALUES
 CREATE TABLE IF NOT EXISTS `projectextension` (
   `ProjectId` bigint(200) NOT NULL,
   `Period` bigint(200) NOT NULL,
-  `ApprovalPending` varchar(50) NOT NULL
+  `ApprovalPending` varchar(50) NOT NULL DEFAULT 'admin'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -359,7 +367,8 @@ INSERT INTO `projectextension` (`ProjectId`, `Period`, `ApprovalPending`) VALUES
 (32, 2, 'chairman'),
 (45, 4, 'chairman'),
 (36, 3, 'chairman'),
-(12, 5, 'chairman');
+(12, 5, 'chairman'),
+(2, 20, 'chairman');
 
 -- --------------------------------------------------------
 
