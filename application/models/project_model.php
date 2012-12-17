@@ -249,7 +249,7 @@ class Project_model extends CI_Model {
 	function insertRecurring($data)
 		{
 			$this->load->database();
-			$queryStr= 'INSERT INTO recurring (Project_Id, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, Day_payment) VALUES ('.$data['ProjectId'].', '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\', '.$data['Day_payment'].');';
+			$queryStr= 'INSERT INTO recurring (ProjectId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, Day_payment) VALUES ('.$data['ProjectId'].', '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\', '.$data['Day_payment'].');';
 			$query = $this->db->query($queryStr);
 			$msg='The Recurring expense has been added';
 			return $msg;

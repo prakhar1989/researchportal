@@ -34,7 +34,7 @@ class FacultyRecurring extends CI_Controller {
 					foreach($result->result() as $row)
 						{
 						echo '<TR><TD>';
-						 print $row->Project_Id;
+						 print $row->ProjectId;
 						 echo '</TD><TD>';
 						 print $row->researcher_id;
 						 echo '</TD><TD>';
