@@ -198,6 +198,15 @@ class Project_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query;
 	}
+	// Search for completed projects for a faculty
+	function projectPendingFaculty($user)
+	{
+		$this->load->database();
+		$queryStr='SELECT * FROM project WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND (PStatus <> \'approved\' OR PStatus <> \'completed\'))';
+		//echo $queryStr;
+		$query = $this->db->query($queryStr);
+		return $query;
+	}
 	
 	// Request for Project Completion
 	function projectCompletion($value)
