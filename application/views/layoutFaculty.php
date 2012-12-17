@@ -59,6 +59,8 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                         <li><a  href="/rp/FacultyProjOngoing">View Ongoing Projects</a> </li>
 						<li><a  href="/rp/FacultyProjApp">Apply for Project</a> </li>
 						<li><a  href="/rp/FacultyProjCompleted">View Completed Projects</a> </li>
+						<li><a  href="FacultyProjPending">View Pending Projects</a> </li>
+
                     </ul>
                 </div>
                 <div id="confs" style="display: none">
