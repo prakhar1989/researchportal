@@ -16,7 +16,13 @@ class Project_model extends CI_Model {
 		} 
 		elseif ($_SESSION['usertype']==2)
 		{
-			$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" ; ';
+			
+			if($_SESSION['username']=="comm")
+				$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 3 OR comm_approval = 4 OR comm_approval = 7);';
+			elseif($_SESSION['username']=="comm1")
+				$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 2 OR comm_approval = 4 OR comm_approval = 6); ';
+			elseif($_SESSION['username']=="comm2")
+				$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 2 OR comm_approval = 3 OR comm_approval = 5); ';
 		}
 		elseif ($_SESSION['usertype']==3)
 		{
@@ -250,6 +256,29 @@ class Project_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query;
 		}
+	function changeStatusComm($comm_app,$status,$Project)//changing the status of the project
+		{
+		//echo 'changeStatus called ';
+		$this->load->database();
+		//$num = 0;
+		$queryStr = 'SELECT comm_approval FROM project WHERE ProjectId =\''.$Project.'\' ;';
+		$query = $this->db->query($queryStr);
+			$result=$query->result();
+			foreach($result as $row)
+			{
+			$num=$row->comm_approval;
+			}
+		$num = $num + $comm_app;
+		//echo "Project Name:".$Project;
+		$queryStr='UPDATE project SET  comm_approval =\''.$num.'\' WHERE  ProjectId =\''.$Project.'\' ;';
+		if($num == 9)
+			$queryStr='UPDATE project SET  PStatus =\''.$status.'\' WHERE  ProjectId =\''.$Project.'\' ;';
+		
+		
+		//echo $queryStr;
+		$query = $this->db->query($queryStr);
+		return $query;
+		}
 	
 	// Get the projects at  committee or chairman's approval pending stage	
 	function project_stage($stage)
@@ -326,6 +355,8 @@ class Project_model extends CI_Model {
 	    $query= $this->db->query($queryStr);
 		return $query->result();
 	}
+	
+	
 	
 	// Function to get all the projects
 	function allProjects()

@@ -60,7 +60,7 @@ class login extends CI_Controller {
 		else if($_SESSION['usertype']==3){
 		    header("location:../homeChairman");
 		}
-		else if($_SESSION['usertype']==2){
+		else if($_SESSION['usertype']==2 || $_SESSION['usertype']==6 || $_SESSION['usertype']==7){
 		    header("location:../homeComm");
 		}
 		else if($_SESSION['usertype']==5){

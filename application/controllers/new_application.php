@@ -11,12 +11,14 @@ class New_application extends CI_Controller {
 					if($_SESSION['usertype']==1){
 						$this->load->view('layout',$data);
 					} elseif ($_SESSION['usertype']==2){
+						
+						
 						$this->load->view('layoutComm',$data);
 					} elseif($_SESSION['usertype']==3){
 						$this->load->view('layoutChairman',$data);
 					}
 					else{
-			echo 'hello';
+			
 			header("location:login");
 			}
 					

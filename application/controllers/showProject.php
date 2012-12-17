@@ -16,7 +16,7 @@ class ShowProject extends CI_Controller {
 				session_start();
 				$data['myClass']=$this;
 				$data['action']=0;
-//				session_start();
+
 			if($_SESSION['usertype']==1){
 				$this->load->view('layout',$data);
 			} elseif ($_SESSION['usertype']==2){
@@ -207,7 +207,13 @@ class ShowProject extends CI_Controller {
 			} 
 			elseif ($_SESSION['usertype']==2)
 			{
-				$Query= $this->project_model->changeStatus('app_chairman_2',$_POST['projectID']);
+				if($_SESSION['username']=="comm")
+					$Query= $this->project_model->changeStatusComm(2,'app_chairman_2',$_POST['projectID']);
+				elseif($_SESSION['username']=="comm1")
+					$Query= $this->project_model->changeStatusComm(3,'app_chairman_2',$_POST['projectID']);
+				elseif($_SESSION['username']=="comm2")
+					$Query= $this->project_model->changeStatusComm(4,'app_chairman_2',$_POST['projectID']);
+				
 				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"committee_approve");
 				$this->load->view('layoutComm',$data);
 			}

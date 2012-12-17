@@ -12,7 +12,7 @@ class Conf_Completed extends CI_Controller {
 			session_start();
 			if($_SESSION['usertype']==1){
 				$this->load->view('layout',$data);
-			} elseif ($_SESSION['usertype']==2){
+			} elseif ($_SESSION['usertype']==2 || $_SESSION['usertype']==6 || $_SESSION['usertype']==7){
 				$this->load->view('layoutComm',$data);
 			} elseif($_SESSION['usertype']==3){
 				$this->load->view('layoutChairman',$data);
