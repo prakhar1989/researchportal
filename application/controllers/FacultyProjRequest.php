@@ -30,7 +30,7 @@ class FacultyProjRequest extends CI_Controller {
 					if ($_POST['RequestType'] == 'Request For Extension')
 						{
 						//echo $ProjectID;
-						echo 'Request For Extension Page';
+						//echo 'Request For Extension Page';
 						$ExtensionPeriod = 20;
 						if(strlen(trim($_POST['comment']))!=0)
 						{
@@ -40,7 +40,7 @@ class FacultyProjRequest extends CI_Controller {
 						} 
 					else if ($_POST['RequestType'] == 'Project Completed') 
 						{
-						echo 'Project Completed Page';
+						//echo 'Project Completed Page';
 						$msg = $this->project_model->projectCompletion($ProjectID);
 							$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), 'faculty_completed');
 						}
