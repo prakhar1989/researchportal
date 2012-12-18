@@ -27,12 +27,12 @@ class Completion_admin extends CI_Controller
 				echo '<p> This is the Completion page. The Requests for project extenions to be showed here</p>';
 				$this->load->model('project_model');
 				$Query= $this->project_model->project_completion_admin();
-				$count= $this->project_model->getDirectoryList(55);
-				echo $count;
+				//$count= $this->project_model->getDirectoryList(55);
+				//echo $count;
 				echo '<FORM METHOD=POST ACTION="CompletionCheckAdminRequest">
 				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 					 <table class="table table-bordered">
-					<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>ProjectGrant</h4><TD><h4>App_Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Comments</h4></TD><TD><h4>Select</h1></TD></tr>
+					<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>ProjectGrant</h4><TD><h4>Start_Date</h4></TD><TD><h4>End_Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Comments</h4></TD><TD><h4>Select</h1></TD></tr>
 					
 					<tbody>';
 					 foreach($Query->result() as $row)
@@ -48,7 +48,11 @@ class Completion_admin extends CI_Controller
 						 echo '</TD><TD>';
 						 print $row->ProjectGrant;
 						 echo '</TD><TD>';
-						 print $row->App_Date;
+						 print $row->Start_Date;
+						 echo '</TD><TD>';
+						 print $row->End_Date;
+						 echo '</TD><TD>';
+						 print $row->Period;
 						 echo '</TD><TD>';
 						 print $row->Researcher1;
 						 echo '</TD><TD>';
@@ -69,16 +73,17 @@ class Completion_admin extends CI_Controller
 				<p><textarea name="comment" ></textarea></p>
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Approve and Forward To Chairman">
 				<INPUT TYPE=Button name="RequestType" value="Check Deliverables" onClick=checkDeliverables()>
+				<INPUT TYPE=SUBMIT name ="RequestType" value="Send For Revision">
 				</FORM>';
 				}
 	}
 ?>
 
-<script>
-function checkDeliverables()
+	<script>
+//function checkDeliverables()
 {
 //var count = getDirectoryList (55);
-var period = prompt(count,"0");
+//var period = prompt(count,"0");
 //document.form1.hidden1.value = period;
 }
 </script>

@@ -23,12 +23,12 @@ class ExtensionCheckAdminRequest extends CI_Controller
 						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_approve_extension");
 						header("Location: /rp/extension");
 						} 
-					/*else if ($_POST['RequestType'] == 'Send For Revision') 
+					else if ($_POST['RequestType'] == 'Send For Revision') 
 						{
 						$this->project_model->projectExtensionAdminResponse('Send For Revision',$ProjectID);
 						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_reject_extension");
 						header("Location: /rp/extension");
-						}*/
+						}
 					echo "\n\n";
 					//echo $msg;
 					 echo '</TABLE>

@@ -74,6 +74,7 @@ class extension_chairman extends CI_Controller
 				
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Approve">
 				<INPUT TYPE=SUBMIT name="RequestType" value="Reject">
+				<INPUT TYPE=SUBMIT name="RequestType" value="Send For Revision">
 				</FORM>';
 				}
 	}

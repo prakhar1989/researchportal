@@ -29,6 +29,12 @@ class CompletionCheckChairmanRequest extends CI_Controller
 						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "chairman_reject_completion");
 						header("Location: /rp/Completion_chairman");
 						}
+					else if ($_POST['RequestType'] == 'Send For Revision') 
+						{
+						$this->project_model->projectCompletionChairmanResponse('Send For Revision',$ProjectID);
+						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "chairman_consult_extension");
+						header("Location: /rp/extension_chairman");
+						}
 					echo "\n\n";
 					 echo '</TABLE>
 					</FORM>';
