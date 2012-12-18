@@ -18,7 +18,7 @@ class FacultyProjPending extends CI_Controller {
 	function load_php()
 				{
 				$this->load->model('project_model');
-				$result= $this->project_model-> projectPendingFaculty('anurag');
+				$result= $this->project_model->projectPendingFaculty('anurag');
 				// Display the results
 				echo'
 					<FORM METHOD=POST ACTION="http://localhost/ci/index.php/FacultyProjRequest">
