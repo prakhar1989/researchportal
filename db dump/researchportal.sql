@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 3.4.5
+-- version 3.5.2
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 16, 2012 at 11:16 AM
--- Server version: 5.5.16
--- PHP Version: 5.3.8
+-- Generation Time: Dec 18, 2012 at 12:23 PM
+-- Server version: 5.5.25a
+-- PHP Version: 5.4.4
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -95,7 +95,8 @@ INSERT INTO `budget` (`Date`, `ProjectId`, `dataset`, `communication`, `field`, 
 ('0000-00-00 00:00:00', '12', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 733),
 ('0000-00-00 00:00:00', '12', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 733),
 ('0000-00-00 00:00:00', '12', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 733),
-('2012-11-10 17:12:12', '22 ', 1000, 0, 0, 355, 0, 3000, 0, 0, 0, 200, 0, 0);
+('2012-11-10 17:12:12', '22 ', 1000, 0, 0, 355, 0, 3000, 0, 0, 0, 200, 0, 0),
+('0000-00-00 00:00:00', '22', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 500);
 
 -- --------------------------------------------------------
 
@@ -377,21 +378,54 @@ INSERT INTO `projectextension` (`ProjectId`, `Period`, `ApprovalPending`) VALUES
 --
 
 CREATE TABLE IF NOT EXISTS `recurring` (
-  `ProjectId` varchar(50) NOT NULL,
+  `ProjectId` varchar(200) NOT NULL,
   `recurring_amt` double NOT NULL,
   `total` double NOT NULL,
-  PRIMARY KEY (`ProjectId`)
+  `Userid` varchar(200) NOT NULL,
+  `Account_Details` varchar(1000) NOT NULL,
+  `Payment_Procedure` varchar(200) NOT NULL,
+  `No_payments` bigint(200) NOT NULL,
+  `researcher_id` varchar(200) NOT NULL,
+  `Day_payment` tinyint(32) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `recurring`
 --
 
-INSERT INTO `recurring` (`ProjectId`, `recurring_amt`, `total`) VALUES
-('12', 733, 1000),
-('15', 700, 2000),
-('22', 500, 7500),
-('9', 450, 1350);
+INSERT INTO `recurring` (`ProjectId`, `recurring_amt`, `total`, `Userid`, `Account_Details`, `Payment_Procedure`, `No_payments`, `researcher_id`, `Day_payment`) VALUES
+('', 733, 1000, '', '', '', 0, '', 0),
+('', 700, 2000, '', '', '', 0, '', 0),
+('', 500, 7500, '', '', '', 0, '', 0),
+('', 450, 1350, '', '', '', 0, '', 0),
+('12', 4444, 0, 'ankushv', '2342dvdsv', 'ds', 12, 'ddd', 3),
+('11', 67, 222, '', '', '', 0, '', 0),
+('14', 67, 0, 'ankushv', 'gjhggfjh', 'jhghg', 6, 'yyy', 7),
+('14', 67, 0, 'ankushv', 'gjhggfjh', 'jhghg', 6, 'yyy', 7),
+('14', 67, 0, 'ankushv', 'gjhggfjh', 'jhghg', 6, 'yyy', 7),
+('14', 67, 0, 'ankushv', 'gjhggfjh', 'jhghg', 6, 'yyy', 7),
+('14', 67, 0, 'ankushv', 'gjhggfjh', 'jhghg', 6, 'yyy', 7),
+('14', 67, 0, 'ankushv', 'gjhggfjh', 'jhghg', 6, 'yyy', 7),
+('14', 67, 0, 'ankushv', 'gjhggfjh', 'jhghg', 6, 'yyy', 7),
+('1', 1, 0, 'ankushv', '1', '1', 1, '1', 1),
+('1', 1, 0, 'ankushv', '1', '1', 1, '1', 1),
+('1', 1, 0, 'ankushv', '1', '1', 1, '1', 1),
+('1', 1, 0, 'ankushv', '1', '1', 1, '1', 1),
+('1', 1, 0, 'ankushv', '1', '1', 1, '1', 1),
+('2', 22, 0, 'ankushv', '2', '2', 2, '2', 2),
+('2', 22, 0, 'ankushv', '2', '2', 2, '2', 2),
+('2', 22, 0, 'ankushv', '2', '2', 2, '2', 2),
+('2', 22, 0, 'ankushv', '2', '2', 2, '2', 2),
+('2', 22, 0, 'ankushv', '2', '2', 2, '2', 2),
+('2', 22, 0, 'ankushv', '2', '2', 2, '2', 2),
+('2', 22, 0, 'ankushv', '2', '2', 2, '2', 2),
+('2', 22, 0, 'ankushv', '2', '2', 2, '2', 2),
+('2', 22, 0, 'ankushv', '2', '2', 2, '2', 2),
+('3', 3, 0, 'ankushv', '3', '3', 3, '3', 3),
+('4', 4, 0, 'ankushv', '4', '4', 4, '4', 4),
+('4', 4, 0, 'ankushv', '4', '4', 4, '4', 4),
+('4', 4, 0, 'ankushv', '4', '4', 4, '4', 4),
+('4', 4, 0, 'ankushv', '4', '4', 4, '4', 4);
 
 -- --------------------------------------------------------
 
