@@ -59,7 +59,8 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                         <li><a  href="/rp/FacultyProjOngoing">View Ongoing Projects</a> </li>
 						<li><a  href="/rp/FacultyProjApp">Apply for Project</a> </li>
 						<li><a  href="/rp/FacultyProjCompleted">View Completed Projects</a> </li>
-						<li><a  href="FacultyProjPending">View Pending Projects</a> </li>
+						<li><a  href="/rp/FacultyProjPending">View Pending Projects</a> </li>
+						<li><a  href="/rp/FacultyRecurring">Recurring Expenses</a> </li>
 
                     </ul>
                 </div>
@@ -98,5 +99,6 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
     <script src="http://localhost/rp/static/js/bootstrap.min.js"></script>
     <script src="http://localhost/rp/static/js/tabs.min.js"></script>
     <script src="http://localhost/rp/static/js/application.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   </body>
 </html> 

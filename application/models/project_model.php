@@ -116,8 +116,8 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		If ($check == 'Approve')
 			$queryStr='UPDATE projectcompleted SET ApprovalPending = "chairman" where ProjectId = "'.$projectid.'";';
-		ElseIf ($check == 'Reject')
-			$queryStr='UPDATE projectcompleted SET ApprovalPending = "rejectedAdmin" where ProjectId = "'.$projectid.'";';
+		ElseIf ($check == 'Review')
+			$queryStr='UPDATE projectcompleted SET ApprovalPending = "reviewAdmin" where ProjectId = "'.$projectid.'";';
 		$query = $this->db->query($queryStr);
 		return $query;
 		}	
@@ -210,7 +210,7 @@ class Project_model extends CI_Model {
 	function projectPendingFaculty($user)
 	{
 		$this->load->database();
-		$queryStr='SELECT * FROM project WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND (PStatus <> \'approved\' OR PStatus <> \'completed\'))';
+		$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus <> \'approved\' OR PStatus <> \'completed\'))';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -249,6 +249,25 @@ class Project_model extends CI_Model {
 			$msg='Your Request For Approval Has Already Been Sent';
 		return $msg;
 	}	
+	
+	// Get recurring details for faculty
+	function projectRecurring($user)
+		{
+		$this->load->database();
+		$queryStr='SELECT * FROM recurring WHERE Userid = \''.$user.'\'';
+		$query = $this->db->query($queryStr);
+		return $query;
+		}
+		
+	// insert recurring record in the table-- called from faculty page
+	function insertRecurring($data)
+		{
+			$this->load->database();
+			$queryStr= 'INSERT INTO recurring (ProjectId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, Day_payment) VALUES ('.$data['ProjectId'].', '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\', '.$data['Day_payment'].');';
+			$query = $this->db->query($queryStr);
+			$msg='The Recurring expense has been added';
+			return $msg;
+		}
 	//get a project's details
 	function projectInfo($Project)
 		{
