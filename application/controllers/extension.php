@@ -31,7 +31,7 @@ class Extension extends CI_Controller
 				echo '<FORM METHOD=POST ACTION="ExtensionCheckAdminRequest">
 				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 					 <table class="table table-bordered">
-					<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>ProjectGrant</h4><TD><h4>App_Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Comments</h4></TD><TD><h4>Select</h1></TD></tr>
+					<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>ProjectGrant</h4><TD><h4>Start_Date</h4></TD><TD><h4>End_Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Comments</h4></TD><TD><h4>Select</h1></TD></tr>
 					
 					<tbody>';
 					 foreach($Query->result() as $row)
@@ -47,7 +47,11 @@ class Extension extends CI_Controller
 						 echo '</TD><TD>';
 						 print $row->ProjectGrant;
 						 echo '</TD><TD>';
-						 print $row->App_Date;
+						 print $row->Start_Date;
+						 echo '</TD><TD>';
+						 print $row->End_Date;
+						 echo '</TD><TD>';
+						 print $row->Period;
 						 echo '</TD><TD>';
 						 print $row->Researcher1;
 						 echo '</TD><TD>';
@@ -68,7 +72,6 @@ class Extension extends CI_Controller
 				<p>Please enter comments (mandatory)*</p>
 				<p><textarea name="comment" ></textarea></p>
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Approve and Forward To Chairman">
-				<INPUT TYPE=SUBMIT name="RequestType" value="Send For Revision">
 				</FORM>';
 				}
 	}

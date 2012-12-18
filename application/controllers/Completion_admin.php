@@ -27,7 +27,8 @@ class Completion_admin extends CI_Controller
 				echo '<p> This is the Completion page. The Requests for project extenions to be showed here</p>';
 				$this->load->model('project_model');
 				$Query= $this->project_model->project_completion_admin();
-				
+				$count= $this->project_model->getDirectoryList(55);
+				echo $count;
 				echo '<FORM METHOD=POST ACTION="CompletionCheckAdminRequest">
 				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 					 <table class="table table-bordered">
@@ -66,11 +67,18 @@ class Completion_admin extends CI_Controller
 				echo '</tbody></TABLE> 
 				<p>Please enter comments (mandatory)*</p>
 				<p><textarea name="comment" ></textarea></p>
-				<INPUT TYPE=SUBMIT name ="RequestType" value="Approve">
-				<INPUT TYPE=SUBMIT name="RequestType" value="Review">
+				<INPUT TYPE=SUBMIT name ="RequestType" value="Approve and Forward To Chairman">
+				<INPUT TYPE=Button name="RequestType" value="Check Deliverables" onClick=checkDeliverables()>
 				</FORM>';
 				}
 	}
-
-
 ?>
+
+<script>
+function checkDeliverables()
+{
+//var count = getDirectoryList (55);
+var period = prompt(count,"0");
+//document.form1.hidden1.value = period;
+}
+</script>

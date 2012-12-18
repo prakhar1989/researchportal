@@ -36,7 +36,8 @@ class Ongoing extends CI_Controller {
                     <TD><h4>Description</h4></TD>
                     <TD><h4>ProjectCategory</TD>
                     <TD><h4>ProjectGrant</TD>
-                    <TD><h4>App_Date</TD>
+                    <TD><h4>Start_Date</TD>
+					<TD><h4>End_Date</TD>
                     <TD><h4>Researcher1</TD>
                     <TD><h4>Researcher2</TD>
                     <TD><h4>Researcher3</h1></TD></tbody>';
@@ -54,7 +55,9 @@ class Ongoing extends CI_Controller {
 						 echo '</TD><TD>';
 						 print $row->ProjectGrant;
 						 echo '</TD><TD>';
-						 print $row->App_Date;
+						 print $row->Start_Date;
+						 echo '</TD><TD>';
+						 print $row->End_Date;
 						 echo '</TD><TD>';
 						 print $row->Researcher1;
 						 echo '</TD><TD>';

@@ -69,7 +69,6 @@ class Completion_chairman extends CI_Controller
 				
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Approve">
 				<INPUT TYPE=SUBMIT name="RequestType" value="Reject">
-				<INPUT TYPE=SUBMIT name="RequestType" value="Consult Committee">
 				</FORM>';
 				}
 	}
