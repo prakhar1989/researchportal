@@ -183,6 +183,15 @@ class Project_model extends CI_Model {
 		return $query;
 
 		}
+		// Search for project by Project ID
+	function projectRevise($value)
+		{
+		$this->load->database();
+		$queryStr='SELECT * FROM project WHERE PStatus = "revisionAdmin" OR PStatus = "revisionChairman";';	
+		$query = $this->db->query($queryStr);
+		return $query;
+
+		}
 	// Search for completed projects for a faculty
 	function projectCompleteFaculty($user)
 	{
@@ -407,7 +416,24 @@ class Project_model extends CI_Model {
 		//$msg='The Project has been Sent for approval';
 		return $ProjectId;
 		}
-	
+	//function to insert the project details into project table (user is Faculty)
+	function insertProjectRevision($user,$data,$status,$projectid)
+		{
+		//1. Check if co researchers are doing more than 3 projects
+		//echo 'insertProject called';
+		
+		
+		//2. Insert value into the project table
+		//INSERT INTO `researchportal`.`project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`) VALUES ('Business Leasdership Study', 'P33333', 'Leadership traits study on current business leaders', '2012-09-29', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', '100000', 'app_admin', '1 Leadership report');
+		 $queryStr= 'UPDATE project SET ProjectCategory = '.$data['category'].', ProjectGrant = '.$data['grant'].', PStatus = '.$status.', cases = '.$data['cases'].', journals = '.$data['journals'].', chapters = '.$data['chapters'].', conference = '.$data['conferences'].', paper = '.$data['papers'].') WHERE ProjectId = '.$projectid.';';
+		//echo '<br>'.$queryStr;
+		$query = $this->db->query($queryStr);
+		//$result = $query->result();
+		
+		//*** Getting the project Id so as to save the files 
+		//$queryStr = 'SELECT ProjectId FROM project WHERE ProjectId = (SELECT MAX(ProjectId)  FROM project)';
+		
+		}
 	// function to get the account status of the project
     function getAccStatus ($projectId)
 		{

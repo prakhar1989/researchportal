@@ -30,7 +30,7 @@ class FacultyAddRecurring extends CI_Controller {
 						  
 						
 					<p>Please enter the amounts in the Recurring Expense below</p>
-					<form method=POST action="FacultyAddRecurring/insert" ><table class="table table-bordered">
+					<form name="recurring" method=POST action="FacultyAddRecurring/insert"  enctype="multipart/form-data"><table class="table table-bordered">
 					<thead>
 						<tr>
 						</tr>
@@ -65,7 +65,7 @@ class FacultyAddRecurring extends CI_Controller {
 						</tr>
 						<tr>
 							<td>Upload CV</td>
-							<td><input type="file" name="cv" id="cv" /></td>
+							<td><input type="file" name="cv" id="cv" ></td>
 						</tr>
 							
 					</tbody>
@@ -96,12 +96,13 @@ class FacultyAddRecurring extends CI_Controller {
 			 $this->load->model('project_model');
 			 $msg=$this->project_model->insertRecurring($data);
 			 //Uploading the file code... Can be modified to check the file extension if required
-			 $ext=end(explode('/', $_FILES['file_desc']['type']));
+			 //echo $_FILES[];
+			 $ext=end(explode('/', $_FILES['cv']['type']));
 			 move_uploaded_file($_FILES['cv']["tmp_name"],"upload/" . $_POST['ProjectId'].'_cv_'.$_POST['RA_id'].'.'.$ext);
 			// echo "Stored in: " . "upload/" . $_FILES["cv"]["name"];
 			 require('showMsg.php');
 			 $showMsg=new showMsg();
-			 $showMsg->index($msg,'admin');
+			 $showMsg->index($msg,'faculty');
 			}			
 
 }
