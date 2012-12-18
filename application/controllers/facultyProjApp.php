@@ -82,7 +82,7 @@ class FacultyProjApp extends CI_Controller {
 							<td><input type="text" class="large" name="grant"></input></td>
 						</tr>
 						<tr>
-							<td>Proposed Time Frame (redundant)<small>after project initiation</small></td>
+							<td>Proposed Time Frame after project initiation months </td>
 							<td><input type="text" class="large"></input></td>
 						</tr>
 						<tr>
@@ -94,13 +94,13 @@ class FacultyProjApp extends CI_Controller {
 					</tbody>
 					</table>
 
-					<input type="submit" value"Submit" class="btn btn-large btn-primary"></input></form>
+					<input type="submit" value="Apply" class="btn btn-large btn-primary"></input></form>
 				
 					
-					<a href="downloadfile?file=researchportal%283%29.txt">Download file</a>
+					
 					';	
 					
-					
+					//<a href="downloadfile?file=researchportal%283%29.txt">Download file</a>
 					
 					
 					}
