@@ -57,8 +57,6 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                 <div id="resproj" style="display: block">
                     <ul> 
                         <li><a  href="/rp/new_application">New Application</a> </li>
-						<li><a href="/rp/extension_committee">Extension</a> </li>
-						<li><a href="/rp/completion_committee">Completion</a> </li>
                         <li><a href="/rp/ongoing">Ongoing</a> </li>
                         <li><a href="/rp/completed">Finished</a> </li>
 						<li><a  href="/rp/app_chairman">Chairman</a> </li>
