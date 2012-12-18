@@ -169,7 +169,7 @@ class ShowProject extends CI_Controller {
 					 echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p><p><textarea name="comment"></textarea></p>';
 					 if ($_SESSION['usertype']!=3)
 					 {
-					 echo '<input type= submit value= "Forward" name="approve"><input type= submit value= "Reject" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >'; //Hidden to pass the projectId without showing it to the user
+					 echo '<input type= submit value= "Forward" name="approve"><input type= submit value= "Review" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >'; //Hidden to pass the projectId without showing it to the user
 					 }
 					 else
 					 {
@@ -179,7 +179,7 @@ class ShowProject extends CI_Controller {
 						}
 						elseif ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_1')
 						{
-							echo '<input type= submit value= "Forward" name="approve"><input type= submit value= "Reject" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >';
+							echo '<input type= submit value= "Forward" name="approve"><input type= submit value= "Review" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >';
 						}						
 					 }
 					 echo '</FORM>';
