@@ -102,8 +102,8 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		If ($check == 'Approve')
 			$queryStr='UPDATE projectcompleted SET ApprovalPending = "chairman" where ProjectId = "'.$projectid.'";';
-		ElseIf ($check == 'Reject')
-			$queryStr='UPDATE projectcompleted SET ApprovalPending = "rejectedAdmin" where ProjectId = "'.$projectid.'";';
+		ElseIf ($check == 'Review')
+			$queryStr='UPDATE projectcompleted SET ApprovalPending = "reviewAdmin" where ProjectId = "'.$projectid.'";';
 		$query = $this->db->query($queryStr);
 		return $query;
 		}	

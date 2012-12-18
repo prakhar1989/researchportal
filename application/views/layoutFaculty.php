@@ -99,5 +99,6 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
     <script src="http://localhost/rp/static/js/bootstrap.min.js"></script>
     <script src="http://localhost/rp/static/js/tabs.min.js"></script>
     <script src="http://localhost/rp/static/js/application.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   </body>
 </html> 

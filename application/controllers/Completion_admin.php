@@ -67,7 +67,7 @@ class Completion_admin extends CI_Controller
 				<p>Please enter comments (mandatory)*</p>
 				<p><textarea name="comment" ></textarea></p>
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Approve">
-				<INPUT TYPE=SUBMIT name="RequestType" value="Reject">
+				<INPUT TYPE=SUBMIT name="RequestType" value="Review">
 				</FORM>';
 				}
 	}
