@@ -185,26 +185,26 @@ class Project_model extends CI_Model {
 		}
 	// Code added by Pratik
 	// Get Extension Revision Projects for Faculty
-	function project_extensionrevision_faculty()
+	function project_extensionrevision_faculty($user)
 		{
 		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  projectextension.ApprovalPending = "revisionAdmin" OR projectextension.ApprovalPending = "revisionChairman";';
+		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  (projectextension.ApprovalPending = "revisionAdmin" OR projectextension.ApprovalPending = "revisionChairman") AND (Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\');';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
 		}
 	// Code added by Pratik
 	// Get CompletionRevision Projects for Faculty
-	function project_completionrevision_faculty()
+	function project_completionrevision_faculty($user)
 		{
 		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='Select project.*,projectcompleted.* From project Inner Join projectcompleted On project.ProjectId = projectcompleted.ProjectId where  projectcompleted.ApprovalPending = "revisionAdmin" OR projectcompleted.ApprovalPending = "revisionChairman";';
+		$queryStr='Select project.*,projectcompleted.* From project Inner Join projectcompleted On project.ProjectId = projectcompleted.ProjectId where  (projectcompleted.ApprovalPending = "revisionAdmin" OR projectcompleted.ApprovalPending = "revisionChairman") AND (Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\');';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -439,6 +439,7 @@ class Project_model extends CI_Model {
 			return $msg;
 		}
 		
+		
 		//2. Insert value into the project table
 		//INSERT INTO `researchportal`.`project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`) VALUES ('Business Leasdership Study', 'P33333', 'Leadership traits study on current business leaders', '2012-09-29', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', '100000', 'app_admin', '1 Leadership report');
 		 $queryStr= 'INSERT INTO project (ProjectTitle , Researcher1 , Researcher2 ,  Researcher3 , ProjectCategory , ProjectGrant , PStatus , cases , journals , chapters , conference , paper ) VALUES (\''.$data['title'].'\' , \''.$user.'\' , \''.$data['researcher2'].'\' , \''.$data['researcher3'].'\' , \''.$data['category'].'\' , \''.$data['grant'].'\' , \'app_admin\' , \''.$data['cases'].'\' , \''.$data['journals'].'\' , \''.$data['chapters'].'\' , \''.$data['conferences'].'\' , \''.$data['papers'].'\');' ;
@@ -632,6 +633,14 @@ class Project_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query;
 		}
+		
+	function budgetConsumed($Project)
+	{
+		$this->load->database();
+		$queryStr='';
+		$query = $this->db->query($queryStr);
+		return 0;
+	}
 	
 	// Code Added by Pratik 
 	// To get the number of files uploaded
