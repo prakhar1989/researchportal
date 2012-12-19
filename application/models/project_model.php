@@ -654,5 +654,13 @@ class Project_model extends CI_Model {
     return $count;
 
   }*/
+  function insertWorkOrder($projectId,$workId)
+  {
+	$this->load->database();
+	$queryStr='Update project set WorkOrderId = \''.$workId.'\' , PStatus =\'ongoing\' WHERE ProjectId ='.$projectId.';';
+	//echo $queryStr;
+	$query = $this->db->query($queryStr);
+	
+ }
 }
 ?>

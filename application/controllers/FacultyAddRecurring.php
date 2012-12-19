@@ -12,7 +12,7 @@ class FacultyAddRecurring extends CI_Controller {
 						$this->load->view('layoutFaculty',$data);
 					}					
 					else{
-			echo 'hello';
+			//echo 'hello';
 			header("location:login");
 			}
 				}
@@ -96,7 +96,6 @@ class FacultyAddRecurring extends CI_Controller {
 			 $this->load->model('project_model');
 			 $msg=$this->project_model->insertRecurring($data);
 			 //Uploading the file code... Can be modified to check the file extension if required
-			 //echo $_FILES[];
 			 $ext=end(explode('/', $_FILES['cv']['type']));
 			 move_uploaded_file($_FILES['cv']["tmp_name"],"upload/" . $_POST['ProjectId'].'_cv_'.$_POST['RA_id'].'.'.$ext);
 			// echo "Stored in: " . "upload/" . $_FILES["cv"]["name"];

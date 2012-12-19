@@ -27,12 +27,13 @@ class Ongoing extends CI_Controller {
 				// Display the results
                 
 				$this->load->model('project_model');
-				$status='approved';
+				$status='ongoing';
 				$Query= $this->project_model->project_status($status);
 				
 				echo '<TABLE class="table table-bordered"><tbody>';
                 echo '<TR><TD><h4>ProjectTitle</h4></TD>
                     <TD><h4>ProjectId</h4></TD>
+					<TD><h4>WorkOrderId</h4></TD>
                     <TD><h4>Description</h4></TD>
                     <TD><h4>ProjectCategory</TD>
                     <TD><h4>ProjectGrant</TD>
@@ -48,6 +49,8 @@ class Ongoing extends CI_Controller {
 						 print $row->ProjectTitle;
 						 echo '</TD><TD>';
 						 print $row->ProjectId;
+						 echo '</TD><TD>';
+						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
 						 print $row->Description;
 						 echo '</TD><TD>';
