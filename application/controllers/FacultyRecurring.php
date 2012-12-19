@@ -25,7 +25,7 @@ class FacultyRecurring extends CI_Controller {
 				//echo '<p> hello this is the Project Details Page </p>';
 				// Display the results
 				echo'
-					<FORM METHOD=POST ACTION="http://localhost/rp/index.php/FacultyAddRecurring">
+					<FORM METHOD=POST ACTION="http://localhost/rp/FacultyAddRecurring">
 					<table class="table table-bordered">
 					<tr<><td></td></tr>
 					<TD><h4>ProjectId</h4></TD><TD><h4>RA ID</h4></TD><TD><h4>Recurring Amount</h4></TD><TD><h4>Number of Payments</h4></TD><TD><h4>Account Details</h4></TD><TD><h4>Payment Procedure</h4></TD><TD><h4>Day of payment</h4></TD><TD><h4>Total Payment</h1></TD>
