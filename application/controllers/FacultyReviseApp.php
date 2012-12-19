@@ -17,12 +17,13 @@ class FacultyReviseApp extends CI_Controller {
 		}
 	function load_php()
 				{
-				$ProjectID = $_POST['ProjectSelected'];
+				$ProjectID = $_SESSION['ProjectID'];
 				//echo $ProjectID;
 				//Load the project model
 				$this->load->model('project_model');
 				$result= $this->project_model->projectSearchByID($ProjectID);
-				$status=$result->result()->;
+				foreach ($result->result() as $row){
+				$status=$row->PStatus;
 				//echo '<p> hello this is the Project Details Page </p>';
 				// Display the results
 					 echo '
@@ -39,7 +40,7 @@ class FacultyReviseApp extends CI_Controller {
 						</tr>
 						<tr>
 							<td>Project Title</td>
-							<td><b>'.$result->result()->ProjectTitle.'</b></td>
+							<td><b>'.$row->ProjectTitle.'</b></td>
 						</tr>
 						<tr>
 							<td>Project Description</td>
@@ -67,13 +68,13 @@ class FacultyReviseApp extends CI_Controller {
 							<tr>
 							<td>Co-Researcher 1 ID</td>
 							<td><b>'
-							.$result->result()->Researcher1.
+							.$row->Researcher1.
 							'</b></td>
 							</tr>
 							<tr>
 							<td>Co-Researcher 2 ID</td>
 								<td><b>'
-							.$result->result()->Researcher2.
+							.$row->Researcher2.
 							'</b></td>
 							</tr>
 							';
@@ -119,7 +120,7 @@ class FacultyReviseApp extends CI_Controller {
 					
 					
 			
-                
+                }
 				
 				}
 function insert()
