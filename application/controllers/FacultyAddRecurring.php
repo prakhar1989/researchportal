@@ -49,7 +49,7 @@ class FacultyAddRecurring extends CI_Controller {
 							<td><input type="text" class="large" name="recurring_amt"></input></td>
 						</tr>
 						<tr>
-							<td>Number of payments</td>
+							<td>Number of months</td>
 							<td><input type="text" class="large" name="No_payments"></input></td>
 						</tr>
 						<tr>
