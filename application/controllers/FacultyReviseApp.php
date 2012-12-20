@@ -17,8 +17,10 @@ class FacultyReviseApp extends CI_Controller {
 		}
 	function load_php()
 				{
+				//echo 'jai mata di';
 				$ProjectID = $_SESSION['ProjectID'];
 				//echo $ProjectID;
+				//echo 'jai mata di';
 				//Load the project model
 				$this->load->model('project_model');
 				$result= $this->project_model->projectSearchByID($ProjectID);
@@ -110,7 +112,7 @@ class FacultyReviseApp extends CI_Controller {
 					</tbody>
 					</table>
 
-					<input type="submit" value="Apply" class="btn btn-large btn-primary"></input><input type="hidden" name=projectID value="'.$Project.' " ><input type="hidden" name=status value="'.$result->result()->PStatus.' " ></form>
+					<input type="submit" value="Apply" class="btn btn-large btn-primary"></input><input type="hidden" name=projectID value="'.$ProjectID.' " ><input type="hidden" name=status value="'.$status.' " ></form>
 				
 					
 					
@@ -188,7 +190,7 @@ function insert()
 			
 			$this->load->model('project_model');
 			
-		$this->project_model->insertProjectRevision($_SESSION['username'],$data,$_POST['status'],$_POST[projectId]);
+		$this->project_model->insertProjectRevision($_SESSION['username'],$data,$_POST['status'],$_POST['ProjectID']);
 		//	$ProjectId=900;
 			 //$ProjectId=$this->project_model->insertProject($_SESSION['username'],$data);
 			 //Uploading the file code... Can be modified to check the file extension if required

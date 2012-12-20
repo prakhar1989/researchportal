@@ -213,7 +213,7 @@ class Project_model extends CI_Model {
 	function ongoingFacultyProjects($user)
 	{
 		$this->load->database();
-		$queryStr='SELECT * FROM project WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'approved\')';
+		$queryStr='SELECT * FROM project WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'ongoing\')';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -249,7 +249,7 @@ class Project_model extends CI_Model {
 	function projectPendingFaculty($user)
 	{
 		$this->load->database();
-		$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus <> \'approved\' OR PStatus <> \'completed\'))';
+		$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus <> \'approved\' OR PStatus <> \'completed\' OR PStatus <> \'ongoing\'))';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -376,6 +376,10 @@ class Project_model extends CI_Model {
 		elseif ($type == 'ProjectName')
 		{
 			$queryStr='SELECT * FROM project WHERE ProjectTitle LIKE \'%'.$value.'%\';';	
+		}
+		elseif ($type == 'WorkOrderId')
+		{
+			$queryStr='SELECT * FROM project WHERE WorkOrderId LIKE \'%'.$value.'%\';';	
 		}
 		//echo '<br>'.$queryStr;
 		$query = $this->db->query($queryStr);

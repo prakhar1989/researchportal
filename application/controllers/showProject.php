@@ -169,7 +169,7 @@ class ShowProject extends CI_Controller {
 					 echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p><p><textarea name="comment"></textarea></p>';
 					 if ($_SESSION['usertype']!=3)
 					 {
-					 echo '<input type= submit value= "Forward" name="approve"><input type= submit value= "Review" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >'; //Hidden to pass the projectId without showing it to the user
+					 echo '<input type= submit value= "Forward" name="approve"><input type= submit value= "Send for Revision" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >'; //Hidden to pass the projectId without showing it to the user
 					 }
 					 else
 					 {
@@ -235,20 +235,23 @@ class ShowProject extends CI_Controller {
 		}
 		else
 		{
-		    $Query= $this->project_model->changeStatus('rejected',$_POST['projectID']);
+		    
 			$data['msg']='Rejected';
 			if($_SESSION['usertype']==1)
 			{
+							$Query= $this->project_model->changeStatus('revisionAdmin',$_POST['projectID']);
 							$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"admin_reject");
 							$this->load->view('layout',$data);
 			}
 			elseif ($_SESSION['usertype']==2)
 			{
+							
 							$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"committee_reject");
 							$this->load->view('layoutComm',$data);
 			}
 			elseif ($SESSION['usertype']==3)
 			{
+							$Query= $this->project_model->changeStatus('revisionChairman',$_POST['projectID']);
 							$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"chairmain_reject");
 							$this->load->view('layoutChairman',$data);
 			}
@@ -269,7 +272,7 @@ class ShowProject extends CI_Controller {
 			}
 		else
 			{
-			echo 'Project has been Rejected';
+			echo 'Project has been sent for revision';
 			}
 	}
 }

@@ -19,6 +19,9 @@ class FacultyProjRevision extends CI_Controller {
 				{
 				$ProjectID = $this->input->post('ProjectChoice');
 				//echo $ProjectID;
+				//$_SESSION['ProjectID']=$ProjectID;
+				//$_SESSION['ProjectID']=$ProjectID;
+				//echo $ProjectID;
 				//Load the project model
 				$this->load->model('project_model');
 				$result= $this->project_model->projectRevise($ProjectID);
@@ -52,7 +55,7 @@ class FacultyProjRevision extends CI_Controller {
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
 						 echo '</TD>';
-						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
+						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
 						}			 
 					 echo '</tbody></TABLE>
 					<INPUT TYPE=SUBMIT name ="RequestType" value="Edit New Application">
