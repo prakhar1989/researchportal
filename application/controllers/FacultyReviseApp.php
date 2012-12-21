@@ -89,7 +89,7 @@ class FacultyReviseApp extends CI_Controller {
 							  <option>Category 1 (IIM C)</option>
 							  <option>Category 2 (IIM C)</option>
 							  <option>Category 3 (IIM C)</option>
-							  <option>External Project </option>
+							  <option>Externally Funded Project </option>
 							  <option>Other Category</option>
 							  
 							</select>
