@@ -108,7 +108,7 @@ class FacultyAddRecurring extends CI_Controller {
 			 $ext=end(explode('/', $_FILES['cv']['type']));
 			 move_uploaded_file($_FILES['cv']["tmp_name"],"upload/" . $_POST['ProjectId'].'_cv_'.$_POST['RA_id'].'.'.$ext);
 			 $ext=end(explode('/', $_FILES['apt_ltr']['type']));
-			 move_uploaded_file($_FILES['apt_ltr']['tmp_name'],"upload/" . $_POST['ProjectId'].'_apt_ltr_'.$_POST['RA_id'].'.'.$ext);
+			 move_uploaded_file($_FILES['apt_ltr']['tmp_name'],"upload/" . $_POST['ProjectId'].'_apt_ltr_'.str_replace(" ","_",$_POST['RA_id']).'.'.$ext);
 			 
 			// echo "Stored in: " . "upload/" . $_FILES["cv"]["name"];
 			 require('showMsg.php');
