@@ -45,6 +45,10 @@ class FacultyAddRecurring extends CI_Controller {
 							<td><input type="text" class="large" name="RA_id"></input></td>
 						</tr>
 						<tr>
+							<td>Research Assistant Date of Birth</td>
+							<td><input type="text" class="large" name="DOB"></input></td>
+						</tr>
+						<tr>
 							<td>Recurring Amount</td>
 							<td><input type="text" class="large" name="recurring_amt"></input></td>
 						</tr>
@@ -66,6 +70,10 @@ class FacultyAddRecurring extends CI_Controller {
 						<tr>
 							<td>Upload CV</td>
 							<td><input type="file" name="cv" id="cv" ></td>
+						</tr>
+						<tr>
+							<td>Upload Appointment Letter</td>
+							<td><input type="file" name="apt_ltr" id="apt_ltr" ></td>
 						</tr>
 							
 					</tbody>
@@ -93,11 +101,15 @@ class FacultyAddRecurring extends CI_Controller {
 			 $data['No_Payments']=$_POST['No_payments'];
 			 $data['researcher_id']=$_POST['RA_id'];
 			 $data['Day_payment']=$_POST['Day_payment'];
+			 $data['DOB']=$_POST['DOB'];
 			 $this->load->model('project_model');
 			 $msg=$this->project_model->insertRecurring($data);
 			 //Uploading the file code... Can be modified to check the file extension if required
 			 $ext=end(explode('/', $_FILES['cv']['type']));
 			 move_uploaded_file($_FILES['cv']["tmp_name"],"upload/" . $_POST['ProjectId'].'_cv_'.$_POST['RA_id'].'.'.$ext);
+			 $ext=end(explode('/', $_FILES['apt_ltr']['type']));
+			 move_uploaded_file($_FILES['apt_ltr']['tmp_name'],"upload/" . $_POST['ProjectId'].'_apt_ltr_'.$_POST['RA_id'].'.'.$ext);
+			 
 			// echo "Stored in: " . "upload/" . $_FILES["cv"]["name"];
 			 require('showMsg.php');
 			 $showMsg=new showMsg();
