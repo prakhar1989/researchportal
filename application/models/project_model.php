@@ -397,7 +397,7 @@ class Project_model extends CI_Model {
 		 $query = $this->db->query($queryStr);
 		 $result = $query->row_array();
 		 //echo 'The count of projects is '.$result['total'];
-		 if ($result['total']>=3)
+		 if ($result['total']>=2)
 			return False;
 		 else
 		   return True;
