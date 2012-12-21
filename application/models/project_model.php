@@ -675,5 +675,7 @@ class Project_model extends CI_Model {
 	$query = $this->db->query($queryStr);
 	
  }
+ function getWorkOrder($projectId)
+ {
 }
 ?>

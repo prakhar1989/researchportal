@@ -28,13 +28,15 @@ class FacultyRecurring extends CI_Controller {
 					<FORM METHOD=POST ACTION="http://localhost/rp/FacultyAddRecurring">
 					<table class="table table-bordered">
 					<tr<><td></td></tr>
-					<TD><h4>ProjectId</h4></TD><TD><h4>RA ID</h4></TD><TD><h4>Recurring Amount</h4></TD><TD><h4>Number of Payments</h4></TD><TD><h4>Account Details</h4></TD><TD><h4>Payment Procedure</h4></TD><TD><h4>Day of payment</h4></TD><TD><h4>Total Payment</h1></TD>
+					<TD><h4>ProjectId</h4></TD><TD><h4>Work Order ID</h4></TD><TD><h4>RA ID</h4></TD><TD><h4>Recurring Amount</h4></TD><TD><h4>Number of Payments</h4></TD><TD><h4>Account Details</h4></TD><TD><h4>Payment Procedure</h4></TD><TD><h4>Day of payment</h4></TD><TD><h4>Total Payment</h1></TD>
 					
 					<tbody>';
 					foreach($result->result() as $row)
 						{
 						echo '<TR><TD>';
 						 print $row->ProjectId;
+						 echo '</TD><TD>';
+						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
 						 print $row->researcher_id;
 						 echo '</TD><TD>';

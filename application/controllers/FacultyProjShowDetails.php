@@ -28,7 +28,7 @@ class FacultyProjShowDetails extends CI_Controller {
 					<FORM name = "form1" METHOD=POST ACTION="http://localhost/rp/index.php/FacultyProjRequest">
 					<table class="table table-bordered">
 					<tr<><td></td></tr>
-					<TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3</h4></TD><TD><h4>Total Grant</h4></TD><TD><h4>Budget Consumed</h1></TD>
+					<TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Work Order Id</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3</h4></TD><TD><h4>Total Grant</h4></TD><TD><h4>Budget Consumed</h1></TD>
 				
 					<tbody>	
 					<INPUT TYPE="HIDDEN" NAME="ProjectSelected" VALUE="'.$ProjectID.'">	
@@ -41,6 +41,8 @@ class FacultyProjShowDetails extends CI_Controller {
 						 print $row->ProjectTitle;
 						 echo '</TD><TD>';
 						 print $row->ProjectId;
+						  echo '</TD><TD>';
+						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
 						 print $row->Start_Date;
 						 echo '</TD><TD>';
