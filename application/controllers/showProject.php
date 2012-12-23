@@ -165,7 +165,7 @@ class ShowProject extends CI_Controller {
 
 					 //$size = filesize('upload/54_description.pdf');
 					 //echo $size;
-					 echo'<a href="downloadfile?file='.$row->ProjectId.'_description.pdf">Download Description file</a><br><br>';
+					 echo'<a href="downloadfile?file=upload/'.$row->ProjectId.'_description">Download Project Description file</a><br><br>';
 					 echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p><p><textarea name="comment"></textarea></p>';
 					 if ($_SESSION['usertype']!=3)
 					 {
