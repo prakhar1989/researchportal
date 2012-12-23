@@ -1,5 +1,5 @@
 <?php
-ini_set( "display_errors", 0);
+//ini_set( "display_errors", 0);
 class New_application extends CI_Controller {
 
 				function index()
