@@ -678,4 +678,5 @@ class Project_model extends CI_Model {
  function getWorkOrder($projectId)
  {
 }
+}
 ?>
