@@ -249,7 +249,7 @@ class Project_model extends CI_Model {
 	function projectPendingFaculty($user)
 	{
 		$this->load->database();
-		$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus <> \'approved\' OR PStatus <> \'completed\' OR PStatus <> \'ongoing\'))';
+		$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus <> \'approved\' AND PStatus <> \'completed\' AND PStatus <> \'ongoing\'))';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
