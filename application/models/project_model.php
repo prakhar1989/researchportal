@@ -323,12 +323,46 @@ class Project_model extends CI_Model {
 	// Function to change the status of the project
 	function changeStatus($status,$Project)//changing the status of the project
 		{
-		//echo 'changeStatus called ';
-		$this->load->database();
-		//echo "Project Name:".$Project;
-		$queryStr='UPDATE project SET  PStatus =\''.$status.'\' WHERE  ProjectId =\''.$Project.'\' ;';
-		//echo $queryStr;
-		$query = $this->db->query($queryStr);
+			//echo 'changeStatus called ';
+			$this->load->database();
+			//echo "Project Name:".$Project;
+		if ($_SESSION['usertype']==2)
+		{
+			$queryStr ='Select comm_approval from project where ProjectID = "'.$Project.'"' ;
+			$query = $this->db->query($queryStr);
+			var_dump($query->result());
+			$result = $query->result();
+			echo'  The value is '.$result[0]->comm_approval;
+			$comm_val= $result[0]->comm_approval;
+			if ($_SESSION['username']=='comm')
+			{
+				$comm_val=$comm_val+2;
+			}
+			elseif 
+			($_SESSION['username']=='comm1')
+			{
+				$comm_val=$comm_val+6;
+			}
+			elseif ($_SESSION['username']=='comm2')
+			{
+				$comm_val=$comm_val+7;
+			}
+			$queryStr='UPDATE project SET comm_approval= '.$comm_val.' WHERE ProjectId =\''.$Project.'\' ;';
+			echo '<br>The string 1 is '.$queryStr;
+			$query = $this->db->query($queryStr);
+			if ( $comm_val == 15)
+			{
+				$queryStr='UPDATE project SET  PStatus =\''.$status.'\' WHERE  ProjectId =\''.$Project.'\' ;';
+				echo '<br>The string 2 is '.$queryStr;
+				$query = $this->db->query($queryStr);
+			}
+		}
+		else
+		{
+			$queryStr='UPDATE project SET  PStatus =\''.$status.'\' WHERE  ProjectId =\''.$Project.'\' ;';
+			//echo $queryStr;
+			$query = $this->db->query($queryStr);
+		}
 		return $query;
 		}
 	
@@ -470,7 +504,7 @@ class Project_model extends CI_Model {
 		{
 		//1. Check if co researchers are doing more than 3 projects
 		//echo 'insertProject called';
-		
+		 $this->load->database();
 		
 		//2. Insert value into the project table
 		//INSERT INTO `researchportal`.`project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`) VALUES ('Business Leasdership Study', 'P33333', 'Leadership traits study on current business leaders', '2012-09-29', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', '100000', 'app_admin', '1 Leadership report');

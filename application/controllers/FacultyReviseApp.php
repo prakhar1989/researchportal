@@ -190,8 +190,8 @@ function insert()
 			
 			$this->load->model('project_model');
 			
-		$this->project_model->insertProjectRevision($_SESSION['username'],$data,$_POST['status'],$_POST['ProjectID']);
-		//	$ProjectId=900;
+		    $this->project_model->insertProjectRevision($_SESSION['username'],$data,$_POST['status'],$_POST['ProjectID']);
+			//	$ProjectId=900;
 			 //$ProjectId=$this->project_model->insertProject($_SESSION['username'],$data);
 			 //Uploading the file code... Can be modified to check the file extension if required
 			 $ext=end(explode('/', $_FILES['file_desc']['type']));
