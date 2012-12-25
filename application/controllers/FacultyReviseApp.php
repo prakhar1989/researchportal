@@ -106,7 +106,7 @@ class FacultyReviseApp extends CI_Controller {
 						<tr>
 							<td>Extra comments</td>
 							
-							<textarea disabled="enabled" name="comment" ></textarea></td>
+							<td><textarea disabled="enabled" name="comment" ></textarea></td>
 						
 						</tr>
 					</tbody>
