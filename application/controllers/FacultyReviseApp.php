@@ -106,13 +106,13 @@ class FacultyReviseApp extends CI_Controller {
 						<tr>
 							<td>Extra comments</td>
 							
-							<td><textarea disabled="enabled" name="comment" ></textarea></td>
+							<td><textarea name="comment" ></textarea></td>
 						
 						</tr>
 					</tbody>
 					</table>
 
-					<input type="submit" value="Apply" class="btn btn-large btn-primary"></input><input type="hidden" name=projectID value="'.$ProjectID.' " ><input type="hidden" name=status value="'.$status.' " ></form>
+					<input type="submit" value="Apply" class="btn btn-large btn-primary"></input><input type="hidden" name=projectID value="'.$ProjectID.' " ></input><input type="hidden" name=status value="'.$status.' " ></input></form>
 				
 					
 					
