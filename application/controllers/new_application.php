@@ -37,8 +37,22 @@ class New_application extends CI_Controller {
 					
 					<tbody>';
 					 $flag=0;
+					 echo 'username is '.$_SESSION['username'];
 					 foreach($data['query'] as $row)
 					 {
+						 if  (($_SESSION['username']=='comm') AND($row->comm_approval == 2 || $row->comm_approval== 8 || $row->comm_approval== 9 ))
+						 {
+							continue;
+						 }
+						 elseif (($_SESSION['username']=='comm1') AND ($row->comm_approval == 6 || $row->comm_approval == 8 || $row->comm_approval == 13 ))
+						 {
+						   continue;
+						 }
+						 elseif (($_SESSION['username']=='comm2') AND($row->comm_approval ==7 || $row->comm_approval ==9 || $row->comm_approval ==13 ))
+						 {
+						   continue;
+						 }
+						 
 						 $flag++;
 						 echo '<TR><TD>';
 						 print $row->ProjectTitle;

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Dec 20, 2012 at 01:43 PM
+-- Generation Time: Dec 24, 2012 at 05:37 PM
 -- Server version: 5.5.16
 -- PHP Version: 5.3.8
 
@@ -145,8 +145,6 @@ INSERT INTO `comment` (`Project_ID`, `Comment`, `Comment_type`, `User`, `User_ty
 (2, 'extend', 'faculty_extension', 'anurag', 4, '2012-12-18 05:51:49'),
 (55, 'Please approve within one month', 'faculty_application', 'anurag', 4, '2012-12-18 07:04:14'),
 (2, 'Please review for mistakes and upload the correct deliverables', 'admin_reject_completion', 'admin', 1, '2012-12-18 07:37:08'),
-(58, 'approve asap', 'faculty_application', 'anurag', 4, '2012-12-18 09:05:51'),
-(59, 'please approve asap', 'faculty_application', 'anurag', 4, '2012-12-18 09:07:42'),
 (55, 'Please upload correct deliverables', 'admin_reject', 'admin', 1, '2012-12-19 10:05:00'),
 (55, 'Please upload correct deliverables', 'admin_reject', 'admin', 1, '2012-12-19 10:10:28'),
 (3, 'Comm', 'committee_approve', 'comm', 2, '2012-12-19 10:55:44'),
@@ -158,7 +156,22 @@ INSERT INTO `comment` (`Project_ID`, `Comment`, `Comment_type`, `User`, `User_ty
 (57, 'approved!!', 'chairman_approve', 'chairman', 3, '2012-12-19 11:16:09'),
 (57, 'extension', 'faculty_extension', 'anurag', 4, '2012-12-19 11:23:36'),
 (57, 'ok', 'admin_approve_extension', 'admin', 1, '2012-12-19 11:26:26'),
-(57, 'plz set correct date', 'chairman_consult_extension', 'chairman', 3, '2012-12-19 11:27:03');
+(57, 'plz set correct date', 'chairman_consult_extension', 'chairman', 3, '2012-12-19 11:27:03'),
+(60, 'check it for download', 'faculty_application', 'anurag', 4, '2012-12-21 14:57:10'),
+(11, '', 'committee_approve', 'comm', 2, '2012-12-24 10:50:07'),
+(11, '', 'committee_approve', 'comm', 2, '2012-12-24 10:51:48'),
+(11, '', 'committee_approve', 'comm', 2, '2012-12-24 10:52:08'),
+(11, '', 'committee_approve', 'comm', 2, '2012-12-24 10:52:28'),
+(11, '', 'committee_approve', 'comm', 2, '2012-12-24 10:52:50'),
+(11, '', 'committee_approve', 'comm', 2, '2012-12-24 10:52:57'),
+(11, '', 'committee_approve', 'comm', 2, '2012-12-24 10:53:30'),
+(11, '', 'committee_approve', 'comm', 2, '2012-12-24 10:54:05'),
+(11, '', 'committee_approve', 'comm', 2, '2012-12-24 10:54:21'),
+(11, '', 'committee_approve', 'comm', 2, '2012-12-24 10:54:32'),
+(11, 'Seems ok!', 'committee_approve', 'comm', 2, '2012-12-24 13:06:28'),
+(11, 'seems fine to me as well', 'committee_approve', 'comm1', 2, '2012-12-24 13:09:21'),
+(11, 'Plz approve!', 'committee_approve', 'comm2', 2, '2012-12-24 13:16:49'),
+(60, '', 'admin_reject', 'admin', 1, '2012-12-24 13:33:50');
 
 -- --------------------------------------------------------
 
@@ -282,7 +295,7 @@ CREATE TABLE IF NOT EXISTS `project` (
   PRIMARY KEY (`ProjectId`),
   UNIQUE KEY `ProjectId` (`ProjectId`),
   UNIQUE KEY `ProjectId_2` (`ProjectId`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=58 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=62 ;
 
 --
 -- Dumping data for table `project`
@@ -297,7 +310,7 @@ INSERT INTO `project` (`ProjectTitle`, `WorkOrderId`, `ProjectId`, `Description`
 ('Financial Excellence in Banks', '', 7, 'Studying the various private and government commercial banks  ', '2012-09-11 18:30:00', '2012-09-28', '2012-12-28', 'xcvn2', 'plkjhgggdsa', '', '3', 5000, 'app_chairman_1', '', 0, 0, 0, 0, 0, 0),
 ('Business Leasdership Study', '', 8, 'Leadership traits study on current business leaders', '2012-09-28 18:30:00', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', 100000, 'app_chairman_1', '1 Leadership report', 0, 0, 0, 0, 0, 0),
 ('Behavioral study of customers of SUVs', '', 10, 'SUV automobile industry specific study on the buying behaviour of the customers of different regions', '2012-09-18 18:30:00', '2012-12-13', '2013-01-10', 'pkjain', 'vaibhavc', 'ashishkj', '3', 5, 'app_chairman_2', '', 0, 0, 0, 0, 0, 0),
-('Behavioral study of customers of sports cars', '', 11, 'Sports cars industry specific study on the buying behaviour of the customers of different regions', '2012-09-18 18:30:00', '2012-12-13', '2013-01-10', 'pkjain', 'vaibhavc', 'ashishkj', '3', 5, 'app_comm', '', 0, 0, 0, 0, 0, 0),
+('Behavioral study of customers of sports cars', '', 11, 'Sports cars industry specific study on the buying behaviour of the customers of different regions', '2012-09-18 18:30:00', '2012-12-13', '2013-01-10', 'pkjain', 'vaibhavc', 'ashishkj', '3', 5, 'app_chairman_2', '', 0, 0, 0, 0, 0, 15),
 ('Operational Strategy', 'W234', 12, 'Study of Various operational strategies in Industry', '2012-09-24 18:30:00', '2012-09-30', '2014-03-12', 'Abc11', 'POR11', 'lmn45', '2', 50000, 'approved', '', 0, 0, 0, 0, 0, 0),
 ('title', '', 13, 'description', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'R2', 'R3', '1', 99999, 'app_comm', 'D1 D2 D3', 0, 0, 0, 0, 0, 0),
 ('title123', '', 14, 'description1', '0000-00-00 00:00:00', '0000-00-00', '0000-00-00', 'absdfsf', 'R21', 'R31', '1', 111111, 'app_comm', 'D1 D2 D3', 0, 0, 0, 0, 0, 0),
@@ -332,9 +345,9 @@ INSERT INTO `project` (`ProjectTitle`, `WorkOrderId`, `ProjectId`, `Description`
 ('new project', '', 51, '', '2012-12-01 10:16:27', '0000-00-00', '0000-00-00', 'absdfsf', 'abhinavj', 'sdfsf', 'Category 1 (IIM C)', 10000, 'rejected', '', 1, 5, 4, 6, 3, 0),
 ('new project', '', 52, '', '2012-12-01 10:18:59', '0000-00-00', '0000-00-00', 'subirb', 'abhinavj', 'sdfsf', 'Category 1 (IIM C)', 10000, 'app_comm', '', 1, 5, 4, 6, 3, 0),
 ('new project', '', 53, '', '2012-12-01 10:20:08', '0000-00-00', '0000-00-00', 'subirb', 'abhinavj', 'raghav', 'Category 1 (IIM C)', 10000, 'app_comm', '', 1, 5, 0, 0, 3, 0),
-('18 Dec', '', 55, '', '2012-12-18 07:04:14', '0000-00-00', '0000-00-00', 'anurag', 'atulb', 'atalc', 'Category 3 (IIM C)', 44000, 'revisionAdmin', '', 0, 2, 0, 0, 0, 0),
-('18 Dec', '', 56, '', '2012-12-18 07:04:14', '0000-00-00', '0000-00-00', 'anurag', 'atulb', 'atalc', 'Category 3 (IIM C)', 44000, 'approved', '', 0, 2, 0, 0, 0, 0),
-('asc', 'w23234', 57, '', '2012-12-19 11:06:05', '0000-00-00', '0000-00-00', 'anurag', 'biswatosh', 'subir', 'Category 3 (IIM C)', 33323, 'ongoing', '', 0, 0, 3, 0, 0, 0);
+('asc', 'w23234', 57, '', '2012-12-19 11:06:05', '0000-00-00', '0000-00-00', 'anurag', 'biswatosh', 'subir', 'Category 3 (IIM C)', 33323, 'ongoing', '', 0, 0, 3, 0, 0, 0),
+('addd project', '', 60, '', '2012-12-21 14:57:10', '0000-00-00', '0000-00-00', 'anurag', 'sfdgd', 'w436ygf', 'Category 2 (IIM C)', 556765868, 'revisionAdmin', '', 4, 0, 0, 0, 0, 0),
+('asc', 'w23234', 61, '', '2012-12-19 11:06:05', '0000-00-00', '0000-00-00', 'anurag', 'biswatosh', 'subir', 'Category 3 (IIM C)', 33323, 'approved', '', 0, 0, 3, 0, 0, 0);
 
 -- --------------------------------------------------------
 
@@ -449,7 +462,8 @@ INSERT INTO `recurring` (`ProjectId`, `recurring_amt`, `total`, `Userid`, `Accou
 ('4', 4, 0, 'anurag', '4', '4', 4, '4', 4),
 ('5', 5, 0, 'anurag', '5', '5', 5, '5', 5),
 ('5', 5, 0, 'anurag', '5', '5', 5, '5', 5),
-('2', 456, 0, 'anurag', 'dfsf fvds ', 'ffff', 5, 'as', 5);
+('2', 456, 0, 'anurag', 'dfsf fvds ', 'ffff', 5, 'as', 5),
+('2', 2, 0, 'anurag', '2', '2', 2, '4', 2);
 
 -- --------------------------------------------------------
 
