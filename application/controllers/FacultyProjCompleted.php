@@ -25,7 +25,7 @@ class FacultyProjCompleted extends CI_Controller {
 					<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 							<h1>Completed Projects</h1>
 						<table class="table table-bordered">
-					<TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Application Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD>
+					<TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Work Order Id</h4></TD><TD><h4>Application Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD>
 					
 					<tbody>';
 					foreach($result->result() as $row)
@@ -35,6 +35,8 @@ class FacultyProjCompleted extends CI_Controller {
 						 print $row->ProjectTitle;
 						 echo '</td><TD>';
 						 print $row->ProjectId;
+						 echo '</td><TD>';
+						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
 						 print $row->App_Date;
 						 echo '</TD><TD>';

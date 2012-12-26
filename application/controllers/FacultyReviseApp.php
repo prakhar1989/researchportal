@@ -1,10 +1,10 @@
-<?php
+<?PHP
 
-class FacultyProjApp extends CI_Controller {
-
-		function index()
+class FacultyReviseApp extends CI_Controller {
+	
+	function index()
 		{
-		ini_set( "display_errors", 0); 
+			
 		$data['myClass']=$this;
 		$data['action']=0;
 		session_start();
@@ -15,31 +15,22 @@ class FacultyProjApp extends CI_Controller {
 		header("location:login");
 		}
 		}
-		
-		function explode_dn($dn, $with_attributes=0)
-						{
-							ini_set( "display_errors", 0); 
-							$result = ldap_explode_dn($dn, $with_attributes);
-							foreach($result as $key=>$value){
-							  $result[$key] = preg_replace("/\\\([0-9A-Fa-f]{2})/e", "''.chr(hexdec('\\1')).''", $value);
-							}
-							return $result;
-						}
-
-
-				function load_php()
+	function load_php()
 				{
-					 error_reporting(E_ERROR | E_PARSE);
-					 ini_set( "display_errors", 0);  
-					 $this->load->model('project_model');
-					 //$allow= $this->project_model->getNoProj('ankuhfhfhshv');
-					 $allow= $this->project_model->getNoProj($_SESSION['username']);
-					 if($allow==True)
-					 {
-						 echo '
-						 <h1>New Project</h1>
-					<p>Please use the form below to enter details of a new project</p>
-					<form name="application" method=POST action="FacultyProjApp/insert"  enctype="multipart/form-data"><table class="table table-bordered">
+				//echo 'jai mata di';
+				$ProjectID = $_SESSION['ProjectID'];
+				//echo $ProjectID;
+				//echo 'jai mata di';
+				//Load the project model
+				$this->load->model('project_model');
+				$result= $this->project_model->projectSearchByID($ProjectID);
+				foreach ($result->result() as $row){
+				$status=$row->PStatus;
+				//echo '<p> hello this is the Project Details Page </p>';
+				// Display the results
+					 echo '
+					<p>Please use the form below to edit the details of a new project</p>
+					<form name="application" method=POST action="FacultyReviseApp/insert"  enctype="multipart/form-data"><table class="table table-bordered">
 					<thead>
 						<tr>
 						</tr>
@@ -51,7 +42,7 @@ class FacultyProjApp extends CI_Controller {
 						</tr>
 						<tr>
 							<td>Project Title</td>
-							<td><input type="text" class="large" name="title"></input></td>
+							<td><b>'.$row->ProjectTitle.'</b></td>
 						</tr>
 						<tr>
 							<td>Project Description</td>
@@ -70,25 +61,7 @@ class FacultyProjApp extends CI_Controller {
 						</tr>';
 						
 						
-							// LDAP Connection
-							$username="ashishkj11";
-							$ldapHost="192.168.1.103";
-							$ldapPort=389;
-							$ds = ldap_connect($ldapHost, $ldapPort) or die('Could not connect to $ldaphost');
-							if ($ds) {
-								$r = ldap_bind($ds);
-								$query = ldap_search($ds, "ou=Group,dc=iimcal,dc=ac,dc=in", "cn=Faculty");
-								$data = ldap_get_entries($ds, $query);
-								$namescsv ="[";
-								$namesarray= array();
-								foreach($data[0]['member'] as $member) {
-									$member_dn = $this->explode_dn($member);
-									$member_cn = str_replace("cn=","",$member_dn[0]);
-									$namescsv.="\"".$member_cn."\", ";
-									array_push($namesarray, $member_cn);
-								};
-								$namescsv.="\"\"]";
-							} else { $member_cn = Nil; }
+							
 							
 
 							
@@ -96,15 +69,15 @@ class FacultyProjApp extends CI_Controller {
 							<div class="container-narrow">
 							<tr>
 							<td>Co-Researcher 1 ID</td>
-							<td>
-							<input type="text" name="researcher2" class="names_text" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source=\''.$namescsv.'\'></input> 
-							</td>
+							<td><b>'
+							.$row->Researcher1.
+							'</b></td>
 							</tr>
 							<tr>
 							<td>Co-Researcher 2 ID</td>
-							<td>
-							<input type="text" name="researcher3" class="names_text" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source=\''.$namescsv.'\'></input> 
-							</td>
+								<td><b>'
+							.$row->Researcher2.
+							'</b></td>
 							</tr>
 							';
 						  
@@ -132,14 +105,14 @@ class FacultyProjApp extends CI_Controller {
 						</tr>
 						<tr>
 							<td>Extra comments</td>
-							<td><input type="checkbox" value="1" name="commentCB" onClick="enableMe(\'comment\');" />
-							<textarea disabled="disabled" name="comment" ></textarea></td>
+							
+							<td><textarea name="comment" ></textarea></td>
 						
 						</tr>
 					</tbody>
 					</table>
 
-					<input type="submit" value="Apply" class="btn btn-large btn-primary"></input></form>
+					<input type="submit" value="Apply" class="btn btn-large btn-primary"></input><input type="hidden" name=projectID value="'.$ProjectID.' " ></input><input type="hidden" name=status value="'.$status.' " ></input></form>
 				
 					
 					
@@ -148,18 +121,11 @@ class FacultyProjApp extends CI_Controller {
 					//<a href="downloadfile?file=researchportal%283%29.txt">Download file</a>
 					
 					
-					}
-				     else 
-					 {
-						echo '<h3>You cant apply any more projects as of now</h3>';
-					 }
-				 
-				 
-				 
-				}
-			//function to insert the data into project table
 			
-			function insert()
+                }
+				
+				}
+function insert()
 			{
 			 session_start();
 			 //echo 'The value of Project category is: '.$_POST['category'];
@@ -213,44 +179,44 @@ class FacultyProjApp extends CI_Controller {
 			 $data['papers']=0;
 			 }
 			 
-			 $data['title']=$_POST['title'];
+			 //$data['title']=$_POST['title'];
 			 //$data['desc']=$_POST['desc'];
-			 $data['researcher2']=$_POST['researcher2'];
-			 $data['researcher3']=$_POST['researcher3'];
+			 //$data['researcher2']=$_POST['researcher2'];
+			 //$data['researcher3']=$_POST['researcher3'];
 			 $data['grant']=$_POST['grant'];
 			 $data['deliverables']="dummy_Deliverable";
 			 $data['category']=$_POST['category'];			
 			//$data['']=$_POST[''];
 			
 			$this->load->model('project_model');
-		$ProjectId=$this->project_model->insertProject($_SESSION['username'],$data);
-		//	$ProjectId=900;
+			
+		    $this->project_model->insertProjectRevision($_SESSION['username'],$data,$_POST['status'],$_POST['ProjectID']);
+			//	$ProjectId=900;
 			 //$ProjectId=$this->project_model->insertProject($_SESSION['username'],$data);
 			 //Uploading the file code... Can be modified to check the file extension if required
 			 $ext=end(explode('/', $_FILES['file_desc']['type']));
 			 move_uploaded_file($_FILES['file_desc']["tmp_name"],"upload/" . $ProjectId.'_description.'.$ext);
 			// echo "Stored in: " . "upload/" . $_FILES["file_desc"]["name"];
 
-			if(isset($_POST['commentCB']))
-			{
+			//if(isset($_POST['commentCB']))
+			//{
 				if(!isset($_POST['comment']) || strlen(trim($_POST['comment'])) == 0)
 				{
 				}
 				else
 				{
 					$this->load->model('project_model');
-					$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$ProjectId,addslashes(trim($_POST['comment'])),"faculty_application");
+					$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$ProjectID,addslashes(trim($_POST['comment'])),"faculty_application_revision");
 				}
 				
-			}
+			//}
 			
 			 $msg='The Project has been sent for approval ';
 			 require('showMsg.php');
 			 $showMsg=new showMsg();
 			 $showMsg->index($msg,'faculty');
-			}			
-
-}
+			}				
+	}
 
 
 ?>

@@ -18,7 +18,7 @@ class FacultyProjPending extends CI_Controller {
 	function load_php()
 				{
 				$this->load->model('project_model');
-				$result= $this->project_model-> projectPendingFaculty('anurag');
+				$result= $this->project_model-> projectPendingFaculty($_SESSION['username']);
 				// Display the results
 				echo'
 					<FORM METHOD=POST ACTION="http://localhost/ci/index.php/FacultyProjRequest">
@@ -28,6 +28,7 @@ class FacultyProjPending extends CI_Controller {
 					<TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Application Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD>
 					
 					<tbody>';
+					echo 'New Applications';
 					foreach($result->result() as $row)
 						{
 						echo '<tr>
@@ -36,7 +37,7 @@ class FacultyProjPending extends CI_Controller {
 						 echo '</td><TD>';
 						 print $row->ProjectId;
 						 echo '</TD><TD>';
-						 print $row->App_Date;
+						 print $row->Start_Date;
 						 echo '</TD><TD>';
 						 print $row->Researcher1;
 						 echo '</TD><TD>';
@@ -47,6 +48,8 @@ class FacultyProjPending extends CI_Controller {
 						}			 
 					 echo '</tbody>
 					</table>
+					
+					
 					</FORM>';
                 
 				

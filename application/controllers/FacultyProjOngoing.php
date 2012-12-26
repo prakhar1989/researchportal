@@ -32,7 +32,7 @@ class FacultyProjOngoing extends CI_Controller {
 							
 					<h1>Ongoing Projects</h1>
 						<table class="table table-bordered">
-					<TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Application Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD><TD><h4>Select</h1></TD>
+					<TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Work Order Id</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD><TD><h4>Select</h1></TD>
 					
 					<tbody>		';
 					foreach($result->result() as $row)
@@ -42,7 +42,11 @@ class FacultyProjOngoing extends CI_Controller {
 						 echo '</TD><TD>';
 						 print $row->ProjectId;
 						 echo '</TD><TD>';
-						 print $row->App_Date;
+						 print $row->WorkOrderId;
+						 echo '</TD><TD>';
+						 print $row->Start_Date;
+						 echo '</TD><TD>';
+						 print $row->End_Date;
 						 echo '</TD><TD>';
 						 print $row->Researcher1;
 						 echo '</TD><TD>';

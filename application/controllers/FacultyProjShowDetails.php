@@ -25,36 +25,47 @@ class FacultyProjShowDetails extends CI_Controller {
 				//echo '<p> hello this is the Project Details Page </p>';
 				// Display the results
 				echo'
-					<FORM METHOD=POST ACTION="http://localhost/rp/index.php/FacultyProjRequest">
+					<FORM name = "form1" METHOD=POST ACTION="http://localhost/rp/index.php/FacultyProjRequest">
 					<table class="table table-bordered">
 					<tr<><td></td></tr>
-					<TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Application Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD>
-					
+					<TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Work Order Id</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3</h4></TD><TD><h4>Total Grant</h4></TD><TD><h4>Budget Consumed</h1></TD>
+				
 					<tbody>	
-					<INPUT TYPE="HIDDEN" NAME="ProjectSelected" VALUE="'.$ProjectID.'">					
+					<INPUT TYPE="HIDDEN" NAME="ProjectSelected" VALUE="'.$ProjectID.'">	
+					<INPUT TYPE="HIDDEN" NAME="hidden1">	
 					';
+					//$Period = $_GET['period'];//document.form1.hidden1.value;
 					foreach($result->result() as $row)
 						{
 						echo '<TR><TD>';
 						 print $row->ProjectTitle;
 						 echo '</TD><TD>';
 						 print $row->ProjectId;
+						  echo '</TD><TD>';
+						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
-						 print $row->App_Date;
+						 print $row->Start_Date;
+						 echo '</TD><TD>';
+						 print $row->End_Date;
 						 echo '</TD><TD>';
 						 print $row->Researcher1;
 						 echo '</TD><TD>';
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
-						 echo '</TD>';
-						 //echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
+						 echo '</TD><TD>';
+						 print $row->ProjectGrant;
+						 echo '</TD><TD>';
+						 //print $this->project_model->budgetConsumed($ProjectID);
+						 //echo '</TD>';
+						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
 						}			 
 					 echo '</tbody></TABLE>
+
 					<p>Please enter comments (mandatory)*</p>
 					<p><textarea name="comment" ></textarea></p>
-					<INPUT TYPE=SUBMIT name ="RequestType" value="Request For Extension">
-					<INPUT TYPE=SUBMIT name="RequestType" value="Project Completed">
+					<INPUT TYPE=SUBMIT name ="RequestType" value="Request For Extension" onclick="myFunction()">
+					<INPUT TYPE=SUBMIT name="RequestType" value="Request For Project Closure">
 					</FORM>';
                 
 				
@@ -64,3 +75,11 @@ class FacultyProjShowDetails extends CI_Controller {
 
 
 ?>
+
+<script>
+function myFunction()
+{
+var period = prompt("Please Enter the Extension Period in Months","0");
+document.form1.hidden1.value = period;
+}
+</script>

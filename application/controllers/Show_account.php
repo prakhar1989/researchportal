@@ -7,7 +7,7 @@ class Show_account extends CI_Controller {
 					session_start();
 					$data['myClass']=$this;
 					$data['action']=0;
-					session_start();
+					//session_start();
 					//$this->load->view('layout',$data);
 					if($_SESSION['usertype']==1){
 						$this->load->view('layout',$data);

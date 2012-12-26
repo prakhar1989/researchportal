@@ -17,17 +17,25 @@ class CompletionCheckAdminRequest extends CI_Controller
 					<FORM METHOD=POST ACTION="#">
 					<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 							';
-					if ($_POST['RequestType'] == 'Approve')
+					if ($_POST['RequestType'] == 'Approve and Forward To Chairman')
 						{
 						$this->project_model->projectCompletionAdminResponse('Approve',$ProjectID);
 						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_approve_completion");
 						header("Location: /rp/completion_admin");
 						} 
-					else if ($_POST['RequestType'] == 'Reject') 
+					else if ($_POST['RequestType'] == 'Check Deliverables') 
 						{
-						$this->project_model->projectCompletionAdminResponse('Reject',$ProjectID);
-						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_reject_completion");
-						header("Location: /rp/completion_admin");
+						
+						//$array = $this->project_model->getDirectoryList('/upload');
+						//echo $array;
+						//$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_reject_completion");
+						//header("Location: /rp/completion_admin");
+						}
+					else if ($_POST['RequestType'] == 'Send For Revision') 
+						{
+						$this->project_model->projectCompletionAdminResponse('Send For Revision',$ProjectID);
+						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_reject_extension");
+						header("Location: /rp/extension");
 						}
 					echo "\n\n";
 					//echo $msg;
