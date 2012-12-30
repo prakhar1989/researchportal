@@ -19,14 +19,10 @@ class FacultyRevisionCheck extends CI_Controller
 							';
 					if ($_POST['RequestType'] == 'Edit New Application')
 						{
-						//$this->project_model->projectCompletionChairmanResponse('Approve',$ProjectID);
-						//$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "chairman_approve_completion");
 						header("Location: /rp/FacultyReviseApp");
 						} 
 					else if ($_POST['RequestType'] == 'Edit Extension') 
 						{
-						//$this->project_model->projectCompletionChairmanResponse('Reject',$ProjectID);
-						//$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "chairman_reject_completion");
 						header("Location: /rp/FacultyRevExt");
 						}
 					else if ($_POST['RequestType'] == 'Edit Completion') 
