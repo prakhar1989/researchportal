@@ -19,7 +19,7 @@ class Completed extends CI_Controller {
 			}
 			else{
 			
-			header("location:login");
+			header("location:/rp/login");
 			}
 		}
 	function load_php()

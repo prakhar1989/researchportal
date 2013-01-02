@@ -334,6 +334,7 @@ class Project_model extends CI_Model {
 			//echo "Project Name:".$Project;
 		if ($_SESSION['usertype']==2)
 		{
+			
 			$queryStr ='Select comm_approval from project where ProjectID = "'.$Project.'"' ;
 			$query = $this->db->query($queryStr);
 			var_dump($query->result());
@@ -373,16 +374,16 @@ class Project_model extends CI_Model {
 		}
 	function changeStatusComm($comm_app,$status,$Project)//changing the status of the project
 		{
-		//echo 'changeStatus called ';
+		
 		$this->load->database();
 		//$num = 0;
 		$queryStr = 'SELECT comm_approval FROM project WHERE ProjectId =\''.$Project.'\' ;';
 		$query = $this->db->query($queryStr);
-			$result=$query->result();
-			foreach($result as $row)
-			{
-			$num=$row->comm_approval;
-			}
+		$result=$query->result();
+		foreach($result as $row)
+		{
+		$num=$row->comm_approval;
+		}
 		$num = $num + $comm_app;
 		//echo "Project Name:".$Project;
 		$queryStr='UPDATE project SET  comm_approval =\''.$num.'\' WHERE  ProjectId =\''.$Project.'\' ;';

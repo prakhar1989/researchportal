@@ -26,7 +26,7 @@ class ShowProject extends CI_Controller {
 			}
 			else{
 			
-			header("location:login");
+			header("location:/rp/login");
 			}
 			}
     // Displays the details of the project
@@ -193,7 +193,7 @@ class ShowProject extends CI_Controller {
 			
 		
 		$this->load->model('project_model');
-		
+		echo $_SESSION['usertype'];
 		//echo '@#usertype is :'.$_SESSION['usertype'];
 		//echo 'project value:'.$_POST['projectID'];
 		if($_POST['approve']=='Approve' OR $_POST['approve']=='Forward')
@@ -231,8 +231,7 @@ class ShowProject extends CI_Controller {
 			}
 			else
 			{
-			
-			header("location:login");
+			header("location:/rp/login");
 			}
 
 			
@@ -255,15 +254,15 @@ class ShowProject extends CI_Controller {
 							$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"committee_reject");
 							$this->load->view('layoutComm',$data);
 			}
-			elseif ($SESSION['usertype']==3)
+			elseif ($_SESSION['usertype']==3)
 			{
 							$Query= $this->project_model->changeStatus('revisionChairman',$_POST['projectID']);
 							$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"chairmain_reject");
 							$this->load->view('layoutChairman',$data);
 			}
 			else{
-			
-			header("location:login");
+			echo $_SESSION['usertype'];
+			//header("location:/rp/login");
 			}
 
 			
