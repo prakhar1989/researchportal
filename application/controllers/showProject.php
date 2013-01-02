@@ -193,7 +193,6 @@ class ShowProject extends CI_Controller {
 			
 		
 		$this->load->model('project_model');
-		echo $_SESSION['usertype'];
 		//echo '@#usertype is :'.$_SESSION['usertype'];
 		//echo 'project value:'.$_POST['projectID'];
 		if($_POST['approve']=='Approve' OR $_POST['approve']=='Forward')
@@ -261,8 +260,7 @@ class ShowProject extends CI_Controller {
 							$this->load->view('layoutChairman',$data);
 			}
 			else{
-			echo $_SESSION['usertype'];
-			//header("location:/rp/login");
+			header("location:/rp/login");
 			}
 
 			
