@@ -20,7 +20,7 @@ class EditRecurring extends CI_Controller {
 	$this->load->model('project_model');
 	if($_POST['Action']=='Edit Amount')
 		{
-			echo 'Going to edit amount for '.$_POST['Choice'];
+			//echo 'Going to edit amount for '.$_POST['Choice'];
 			echo '
 						 <h1>Add Recurring Amount</h1>
 					<p>Please Enter the new Recurring Amount below for the ProjectId '.$_POST['Choice'].'</p>
