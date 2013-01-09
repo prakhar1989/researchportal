@@ -23,7 +23,7 @@ class SearchProject extends CI_Controller{
 	function load_php() {
 			echo '<h1>Search</h1>';
             echo "<p>Please select filter</p>";
-			echo '<FORM name="searchProject" method= POST action="SearchProject/search">';
+			echo '<FORM name="searchProject" method= POST action="searchProject/search">';
             echo '<ul class="radiolist">
                 <li><input type="radio" name="searchBy" value="ProjectId" /> ProjectId </li>
                 <li><input type="radio" name="searchBy" value="Researcher" /> Researcher </li>

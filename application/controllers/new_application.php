@@ -39,7 +39,7 @@ class New_application extends CI_Controller {
 					
 					<tbody>';
 					 $flag=0;
-					 echo 'username is '.$_SESSION['username'];
+					 //echo 'username is '.$_SESSION['username'];
 					 foreach($data['query'] as $row)
 					 {
 						 if  (($_SESSION['username']=='comm') AND($row->comm_approval == 2 || $row->comm_approval== 8 || $row->comm_approval== 9 ))

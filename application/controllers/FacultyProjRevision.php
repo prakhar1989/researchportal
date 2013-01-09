@@ -30,7 +30,7 @@ class FacultyProjRevision extends CI_Controller {
 				//echo '<p> hello this is the Project Details Page </p>';
 				// Display the results
 				echo'
-					<FORM METHOD=POST ACTION="http://localhost/rp/FacultyRevisionCheck">
+					<FORM METHOD=POST ACTION="/rp/FacultyRevisionCheck">
 					<table class="table table-bordered">
 					<tr<><td></td></tr>
 					<TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4></h1></TD>
