@@ -40,7 +40,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
   </head>
   <body>
 
-<div id="wrap">
+<!--<div id="wrap">-->
     <div class="mast_head">
         <div class="container">
             <div id="logo"></div>
@@ -79,7 +79,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                         <li><a href="/rp/Conf_app_committee">Committee</a> </li>
                         <li><a href="/rp/Conf_accounts">Accounts</a> </li>
                         <li><a href="/rp/Conf_search">Search</a> </li>
-                        </li>
+                        
                     </ul>
                 </div>
            </div> 
@@ -109,16 +109,16 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
 			?>
              </div>
         </div>
-    </div>
-</div>
+   <!-- </div>-->
+
     <footer>
         <div id="container">
             <p>Handcrafted by Internet Solutions Group &copy; IIM Calcutta</p>
         </div>
     </footer>
-    <script src="http://localhost/rp/static/js/jquery.min.js"></script>
-    <script src="http://localhost/rp/static/js/jquery.min.js"></script>
-    <script src="http://localhost/rp/static/js/jquery.min.js"></script>
-    <script src="http://localhost/rp/static/js/jquery.min.js"></script>
+    <script src="/rp/static/js/jquery.min.js"></script>
+    <script src="/rp/static/js/bootstrap.min.js"></script>
+    <script src="/rp/static/js/tabs.min.js"></script>
+    <script src="/rp/static/js/application.js"></script>
   </body>
 </html> 

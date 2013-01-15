@@ -56,6 +56,7 @@ class App_committee extends CI_Controller {
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
+						 echo '</TD></TR>';
 					 }
 				echo '</tbody></TABLE>';
 				}

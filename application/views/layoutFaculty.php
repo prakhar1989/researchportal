@@ -29,14 +29,14 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
     <meta name="author" content="">
 
     <!-- Le styles -->
-    <link rel="stylesheet" href="http://localhost/rp/static/css/bootstrap.min.css" >
-    <link href="http://localhost/rp/static/css/custom.css" rel="stylesheet" type="text/css" >
+    <link rel="stylesheet" href="/rp/static/css/bootstrap.min.css" >
+    <link href="/rp/static/css/custom.css" rel="stylesheet" type="text/css" >
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
     <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script language="javascript" src="http://localhost/rp/static/js/checkboxes.js"></script>
+    <script language="javascript" src="/rp/static/js/checkboxes.js"></script>
   </head>
   <body>
 
@@ -92,14 +92,14 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
 			?>
              </div>
         </div>
-    </div>
+    
 	<footer>
         <p>Handcrafted by Internet Solutions Group &copy; 2012</p>
     </footer>
-    <script src="http://localhost/rp/static/js/jquery.min.js"></script>
-    <script src="http://localhost/rp/static/js/bootstrap.min.js"></script>
-    <script src="http://localhost/rp/static/js/tabs.min.js"></script>
-    <script src="http://localhost/rp/static/js/application.js"></script>
+    <script src="/rp/static/js/jquery.min.js"></script>
+    <script src="/rp/static/js/bootstrap.min.js"></script>
+    <script src="/rp/static/js/tabs.min.js"></script>
+    <script src="/rp/static/js/application.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   </body>
 </html> 
