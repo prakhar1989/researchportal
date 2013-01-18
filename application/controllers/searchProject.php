@@ -72,7 +72,7 @@ class SearchProject extends CI_Controller{
 		  <FORM METHOD=POST ACTION="projectDetails">
 		  <TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
                      ';
-		echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>WorkOrderId</h4></TD><TD><h4>Description</h4></TD><TD><h4>Researcher</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date';
+		echo '<TR><TD><h4>Project Title</h4></TD><TD><h4>Project ID</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Description</h4></TD><TD><h4>Researcher</TD><TD><h4>ProjectGrant</TD><TD><h4>Application Date';
 
 			foreach($Query->result() as $row)
 			 {
