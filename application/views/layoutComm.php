@@ -78,10 +78,12 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
         </div>
     </div>
 
+	
+	
     <div class="container">
         <div>
 			<?php
-							if ($action==0)
+					if ($action==0)
 					{
 					$myClass->load_php();
 					}
@@ -100,6 +102,9 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
 	<footer>
         <p>Handcrafted by Internet Solutions Group &copy; 2012</p>
     </footer>
+	
+	
+	
     <script src="/rp/static/js/jquery.min.js"></script>
     <script src="/rp/static/js/bootstrap.min.js"></script>
     <script src="/rp/static/js/tabs.min.js"></script>

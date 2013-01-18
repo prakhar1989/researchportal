@@ -21,7 +21,7 @@ class FacultyProjPending extends CI_Controller {
 				$result= $this->project_model-> projectPendingFaculty($_SESSION['username']);
 				// Display the results
 				echo'
-					<FORM METHOD=POST ACTION="http://localhost/ci/index.php/FacultyProjRequest">
+					<FORM METHOD=POST ACTION="FacultyProjRequest">
 					<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 							<h1>Pending Projects</h1>
 						<table class="table table-bordered">
