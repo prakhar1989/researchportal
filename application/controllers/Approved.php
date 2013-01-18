@@ -24,7 +24,12 @@ class Approved extends CI_Controller {
                 
 				$this->load->model('project_model');
 				$status='approved';
-				$Query= $this->project_model->project_status($status);
+				$Query= $this->project_model->project_status("kkk");
+				if($Query->num_rows()==0){
+					 echo '<h3>&nbsp;&nbsp;No Approved Applications As Of Now </h3><br > </tbody> </TABLE>';
+				} 
+				else
+				{
 				
 				echo '
 				<FORM METHOD=POST ACTION="Approved/AddWorkOrder">
@@ -43,10 +48,8 @@ class Approved extends CI_Controller {
                     <TD><h4>Researcher3</h1></TD>
 					<TD><h4>Select</h4></TD>
 					</tbody>';
-					$flag=0;
 					 foreach($Query->result() as $row)
 					 {
-						 $flag = $flag +1;
 						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
 						 echo '</TD><TD>';
@@ -69,11 +72,6 @@ class Approved extends CI_Controller {
 						 print $row->Researcher3;
 						 echo '<TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ProjectId.'"></TD></TR>';
 					 }
-					 if($flag==0){
-					 echo '<h4>No Approved Applications as Of Now</h4> <br > </tbody> </TABLE>';
-					 }
-					 else
-					 {
 					 echo '</tbody>
 					 </TABLE>
 					 <h3>Enter WorkOrder Number</h3> <input type="text" class="large" name="WorkId"></input> <br><br>
@@ -89,7 +87,7 @@ class Approved extends CI_Controller {
 		//echo 'the project Id and WorkorderId : '.$projectId.$workId;
 		$this->load->model('project_model');
 		$this->project_model->insertWorkOrder($projectId,$workId);
-		$msg='The Project has been asssigned the WorkOrderNumber';
+		$msg='The Project has been asssigned the Work Order Number';
 		require('showMsg.php');
 		$showMsg=new showMsg();
 		$showMsg->index($msg,'admin');
