@@ -24,7 +24,7 @@ class Approved extends CI_Controller {
                 
 				$this->load->model('project_model');
 				$status='approved';
-				$Query= $this->project_model->project_status("kkk");
+				$Query= $this->project_model->project_status($status);
 				if($Query->num_rows()==0){
 					 echo '<h3>&nbsp;&nbsp;No Approved Applications As Of Now </h3><br > </tbody> </TABLE>';
 				} 
