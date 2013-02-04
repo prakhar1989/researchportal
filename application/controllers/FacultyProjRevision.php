@@ -38,6 +38,8 @@ class FacultyProjRevision extends CI_Controller {
 					<tbody>	
 					<INPUT TYPE="HIDDEN" NAME="ProjectSelected" VALUE="'.$ProjectID.'">					
 					';
+										echo '<p></br></p>';
+					echo '<hr size=10 noshade color="#333333"><h3>New Applications: Projects Sent Back For Revision</h3>';
 					foreach($result->result() as $row)
 						{
 						echo '<TR><TD>';
@@ -67,7 +69,7 @@ class FacultyProjRevision extends CI_Controller {
 					
 					<tbody>';
 					echo '<p></br></p>';
-					echo '<hr size=10 noshade color="#333333"><h3>Extension:Projects Sent Back For Revision</h3>';
+					echo '<hr size=10 noshade color="#333333"><h3>Extension: Projects Sent Back For Revision</h3>';
 					foreach($result1->result() as $row)
 						{
 						echo '<tr>
@@ -108,7 +110,7 @@ class FacultyProjRevision extends CI_Controller {
 					
 					<tbody>';
 					echo '<p></br></p>';
-					echo '<hr size=10 noshade color="#333333"><h3>Completion:Projects Sent Back For Revision</h3>';
+					echo '<hr size=10 noshade color="#333333"><h3>Completion: Projects Sent Back For Revision</h3>';
 					foreach($result2->result() as $row)
 						{
 						echo '<tr>
