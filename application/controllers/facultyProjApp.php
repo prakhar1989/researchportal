@@ -34,6 +34,7 @@ class FacultyProjApp extends CI_Controller {
 					 $this->load->model('project_model');
 					 //$allow= $this->project_model->getNoProj('ankuhfhfhshv');
 					 $allow= $this->project_model->getNoProj($_SESSION['username']);
+					 $allow = True; /// only for testing..remove for deployment TODO
 					 if($allow==True)
 					 {
 						 echo '

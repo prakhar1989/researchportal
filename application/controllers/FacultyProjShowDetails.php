@@ -28,7 +28,7 @@ class FacultyProjShowDetails extends CI_Controller {
 					<FORM name = "form1" METHOD=POST ACTION="FacultyProjRequest">
 					<table class="table table-bordered">
 					<tr<><td></td></tr>
-					<TD><h4>Project Title</h4></TD><TD><h4>Project ID</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3</h4></TD><TD><h4>Total Grant</h4></TD><TD><h4>Budget Consumed</h1></TD>
+					<TD><h4>Project Title</h4></TD><TD><h4>Project ID</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3</h4></TD><TD><h4>Total Grant</h4></TD><TD><h4>Budget Consumed</h4></TD><TD><h4>Project Category</h1></TD>
 				
 					<tbody>	
 					<INPUT TYPE="HIDDEN" NAME="ProjectSelected" VALUE="'.$ProjectID.'">	
