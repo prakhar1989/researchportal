@@ -149,10 +149,10 @@ class FacultyProjApp extends CI_Controller {
 					
 					
 					}
-				     else 
-					 {
+				    else 
+					{
 						echo '<h3>You cant apply any more projects as of now</h3>';
-					 }
+					}
 				 
 				 
 				 
