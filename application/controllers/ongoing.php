@@ -32,13 +32,13 @@ class Ongoing extends CI_Controller {
 				
 				echo '<TABLE class="table table-bordered"><tbody>';
                 echo '<TR><TD><h4>ProjectTitle</h4></TD>
-                    <TD><h4>ProjectId</h4></TD>
-					<TD><h4>WorkOrderId</h4></TD>
+                    <TD><h4>Project ID</h4></TD>
+					<TD><h4>Work Order Number</h4></TD>
                     <TD><h4>Description</h4></TD>
-                    <TD><h4>ProjectCategory</TD>
-                    <TD><h4>ProjectGrant</TD>
-                    <TD><h4>Start_Date</TD>
-					<TD><h4>End_Date</TD>
+                    <TD><h4>Project Category</TD>
+                    <TD><h4>Project Grant</TD>
+                    <TD><h4>Start Date</TD>
+					<TD><h4>End Date</TD>
                     <TD><h4>Researcher1</TD>
                     <TD><h4>Researcher2</TD>
                     <TD><h4>Researcher3</h1></TD></tbody>';

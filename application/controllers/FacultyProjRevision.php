@@ -30,7 +30,7 @@ class FacultyProjRevision extends CI_Controller {
 				//echo '<p> hello this is the Project Details Page </p>';
 				// Display the results
 				echo'
-					<FORM METHOD=POST ACTION="http://localhost/rp/FacultyRevisionCheck">
+					<FORM METHOD=POST ACTION="/rp/FacultyRevisionCheck">
 					<table class="table table-bordered">
 					<tr<><td></td></tr>
 					<TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4></h1></TD>
@@ -38,6 +38,8 @@ class FacultyProjRevision extends CI_Controller {
 					<tbody>	
 					<INPUT TYPE="HIDDEN" NAME="ProjectSelected" VALUE="'.$ProjectID.'">					
 					';
+										echo '<p></br></p>';
+					echo '<hr size=10 noshade color="#333333"><h3>New Applications: Projects Sent Back For Revision</h3>';
 					foreach($result->result() as $row)
 						{
 						echo '<TR><TD>';
@@ -63,11 +65,11 @@ class FacultyProjRevision extends CI_Controller {
 					<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 				
 						<table class="table table-bordered">
-					<TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Work Order Id</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD><TD><h4>Comments</h1></TD><TD><h4>Select</h1></TD>
+					<TD><h4>Project Title</h4></TD><TD><h4>Project ID</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD><TD><h4>Comments</h1></TD><TD><h4>Select</h1></TD>
 					
 					<tbody>';
 					echo '<p></br></p>';
-					echo '<hr size=10 noshade color="#333333"><h3>Extension:Projects Sent Back For Revision</h3>';
+					echo '<hr size=10 noshade color="#333333"><h3>Extension: Projects Sent Back For Revision</h3>';
 					foreach($result1->result() as $row)
 						{
 						echo '<tr>
@@ -104,11 +106,11 @@ class FacultyProjRevision extends CI_Controller {
 				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 				
 						<table class="table table-bordered">
-					<TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Work Order Id</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD><TD><h4>Comments</h1></TD><TD><h4>Select</h1></TD>
+					<TD><h4>Project Title</h4></TD><TD><h4>Project ID</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD><TD><h4>Comments</h1></TD><TD><h4>Select</h1></TD>
 					
 					<tbody>';
 					echo '<p></br></p>';
-					echo '<hr size=10 noshade color="#333333"><h3>Completion:Projects Sent Back For Revision</h3>';
+					echo '<hr size=10 noshade color="#333333"><h3>Completion: Projects Sent Back For Revision</h3>';
 					foreach($result2->result() as $row)
 						{
 						echo '<tr>

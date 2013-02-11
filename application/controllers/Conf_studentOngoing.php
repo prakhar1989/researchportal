@@ -21,7 +21,7 @@ class Conf_studentOngoing extends CI_Controller {
 				//$query = $this->db->query($queryStr);
 				// Display the results
 				echo'
-					<FORM METHOD=POST ACTION="http://localhost/ci/index.php/StudentConfShowDetails">
+					<FORM METHOD=POST ACTION="StudentConfShowDetails">
 					<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 							';
 					foreach($result->result() as $row)

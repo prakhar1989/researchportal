@@ -43,7 +43,7 @@ class Conf_search extends CI_Controller{
 		  $Query= $this->conference_model->conferenceSearch($searchBy,$searchValue);
 	      
 		  echo'
-		  <FORM METHOD=POST ACTION="http://localhost/ci/index.php/conferenceDetails">
+		  <FORM METHOD=POST ACTION="conferenceDetails">
 		  <TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
                      ';
 			foreach($Query->result() as $row)
