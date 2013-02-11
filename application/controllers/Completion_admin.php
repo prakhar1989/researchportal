@@ -74,7 +74,7 @@ class Completion_admin extends CI_Controller
 				<p>Please enter comments (mandatory)*</p>
 				<p><textarea name="comment" ></textarea></p>
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Approve and Forward To Chairman">
-				<INPUT TYPE=Button name="RequestType" value="Check Deliverables" onClick=checkDeliverables()>
+				<INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables">
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Send For Revision">
 				</FORM>';
 				}

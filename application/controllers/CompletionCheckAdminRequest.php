@@ -10,8 +10,9 @@ class CompletionCheckAdminRequest extends CI_Controller
 		}
 	function load_php()
 				{
-				$ProjectID = $_POST['ProjectSelected'];
+				$this->load->database();
 				$this->load->model('project_model');
+				$ProjectID = $_POST['ProjectSelected'];
 				session_start();
 				echo'
 					<FORM METHOD=POST ACTION="#">
@@ -21,21 +22,43 @@ class CompletionCheckAdminRequest extends CI_Controller
 						{
 						$this->project_model->projectCompletionAdminResponse('Approve',$ProjectID);
 						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_approve_completion");
-						header("Location: /rp/completion_admin");
+						header("Location: /rp/Completion_admin");
 						} 
 					else if ($_POST['RequestType'] == 'Check Deliverables') 
 						{
-						
-						//$array = $this->project_model->getDirectoryList('/upload');
-						//echo $array;
-						//$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_reject_completion");
-						//header("Location: /rp/completion_admin");
+						//echo $ProjectID;
+						$Path = "upload/".$ProjectID."_";
+						//$Path = "upload/".$ProjectID."_";
+						$Files = glob($Path."*.pdf");
+						$countuploaded = 0;
+						foreach ($Files as $File)
+							{
+							//echo $File;
+							//$Files=(explode('.', $File));
+							$countuploaded++;			
+							echo'<a href="download?file='.$File.'">'.$File.'</a><br><br>';
+							echo '<br>';
+							}
+						echo 'Number of Deliverables uploaded: '.$countuploaded;
+						$queryStr='Select * from project where ProjectId = "'.$ProjectID.'";';
+						$query = $this->db->query($queryStr);
+						$countpromised = 0;
+						foreach($query->result() as $row)
+							{
+							$countpromised = $countpromised + $row->Deliverables;
+							$countpromised = $countpromised + $row->cases;
+							$countpromised = $countpromised + $row->journals;
+							$countpromised = $countpromised + $row->chapters;
+							$countpromised = $countpromised + $row->conference;
+							$countpromised = $countpromised + $row->paper;
+							}
+						echo '<br>Number of Deliverables promised: '.$countpromised;
 						}
 					else if ($_POST['RequestType'] == 'Send For Revision') 
 						{
 						$this->project_model->projectCompletionAdminResponse('Send For Revision',$ProjectID);
 						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_reject_extension");
-						header("Location: /rp/extension");
+						header("Location: /rp/Completion_admin");
 						}
 					echo "\n\n";
 					//echo $msg;

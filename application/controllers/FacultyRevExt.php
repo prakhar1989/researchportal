@@ -31,7 +31,7 @@ class FacultyRevExt extends CI_Controller {
 					<tr<><td></td></tr>
 					<tbody>';
 					echo '<p></br></p>';
-					echo 'Extension:Project Sent Back For Revision';
+					//echo 'Extension:Project Sent Back For Revision';
 					echo '</tbody>
 					</table>
 					<Input Type = TEXT name="Period"></Input>
