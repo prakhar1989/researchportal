@@ -64,8 +64,12 @@ class FacultyAddRecurring extends CI_Controller {
 							<td><input type="text" class="large" name="Payment_Procedure"></input></td>
 						</tr>
 						<tr>
-							<td>Day of recurring payment (Enter values 1-31)</td>
-							<td><input type="text" class="large" name="Day_payment"></input></td>
+							<td>In case of cheque transfer: the cheque would be in the name of</td>
+							<td><input type="text" class="large" name="Cheque_name"></input></td>
+						</tr>
+						<tr>
+							<td>PAN number</td>
+							<td><input type="text" class="large" name="PAN"></input></td>
 						</tr>
 						<tr>
 							<td>Upload CV</td>
@@ -102,6 +106,8 @@ class FacultyAddRecurring extends CI_Controller {
 			 $data['researcher_id']=$_POST['RA_id'];
 			 $data['Day_payment']=$_POST['Day_payment'];
 			 $data['DOB']=$_POST['DOB'];
+			 $data['PAN']=$_POST['PAN'];
+			 $data['Cheque_name']=$POST['Cheque_name'];
 			 $this->load->model('project_model');
 			 $msg=$this->project_model->insertRecurring($data);
 			 //Uploading the file code... Can be modified to check the file extension if required
