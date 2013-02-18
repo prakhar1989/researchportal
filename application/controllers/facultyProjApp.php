@@ -40,7 +40,9 @@ class FacultyProjApp extends CI_Controller {
 						 echo '
 						 <h1>New Project</h1>
 					<p>Please use the form below to enter details of a new project</p>
-					<form name="application" method=POST action="FacultyProjApp/insert"  enctype="multipart/form-data"><table class="table table-bordered">
+					 
+					<form name="application" id="commentForm" method=POST action="FacultyProjApp/insert"  enctype="multipart/form-data">
+					<table class="table table-bordered">
 					<thead>
 						<tr>
 						</tr>

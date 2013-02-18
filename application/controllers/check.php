@@ -1,14 +1,4 @@
-<?php
-class check extends CI_Controller {
-function index()
-{
-$data['myClass']=$this;
-$data['action']=0;
-$this->load->view('layoutComm',$data);
-}
 
-function load_php(){
-echo '
 <head>
 <style type="text/css">
 * { font-family: Verdana; font-size: 96%; }
@@ -31,7 +21,7 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; }
   });
   </script> 
 
- <form name="approveProject" class="cmxform" id="commentForm" method="post" action="/rp/login">
+ <form class="cmxform" id="commentForm" method="post" action="/rp/login">
 
    <legend>A simple comment form with submit validation and default messages</legend>
    <p>
@@ -56,7 +46,3 @@ em { font-weight: bold; padding-right: 1em; vertical-align: top; }
 
  </form>
 </body>
-';
-}
-}
-?>

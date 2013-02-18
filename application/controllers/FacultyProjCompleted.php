@@ -56,21 +56,26 @@ class FacultyProjCompleted extends CI_Controller {
 					 echo '</tbody>
 					</table>';
 					
-					echo '<br><br><hr size=10 noshade color="#333333"><h3>Files Uploaded</h3>';
+					echo '<br><hr size=10 noshade color="#333333"><h3>Files Uploaded</h3>';
 					$queryStr='Select * from project where ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND PStatus = "completed")';
 					$query = $this->db->query($queryStr);
-					foreach ($query->result() as $row)
+					If ($query->num_rows() == 0)
+						echo 'No projects are Complete as of today.';
+					Else
 					{
-					echo 'Project Title: '.$row->ProjectTitle;
-					echo '<br>';
-					$Path = "upload/".$row->ProjectId."_";
-					$Files = glob($Path."*.pdf");
-					foreach ($Files as $File)
-						{	
-						echo'<a href="download?file='.$File.'">'.$File.'</a><br><br>';
+						foreach ($query->result() as $row)
+						{
+						echo 'Project Title: '.$row->ProjectTitle;
 						echo '<br>';
+						$Path = "upload/".$row->ProjectId."_";
+						$Files = glob($Path."*.pdf");
+						foreach ($Files as $File)
+							{	
+							echo'<a href="download?file='.$File.'">'.$File.'</a><br><br>';
+							echo '<br>';
+							}
+						echo '<br><br>';
 						}
-					echo '<br><br>';
 					}
 					echo '</FORM>';
                 
