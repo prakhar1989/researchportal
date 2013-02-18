@@ -56,6 +56,9 @@ class FacultyProjShowDetails extends CI_Controller {
 						 echo '</TD><TD>';
 						 print $row->ProjectGrant;
 						 echo '</TD><TD>';
+						 print $row->ProjectCategory;
+						 echo '</TD><TD>';
+
 						 //print $this->project_model->budgetConsumed($ProjectID);
 						 //echo '</TD>';
 						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
