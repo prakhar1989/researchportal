@@ -76,7 +76,6 @@ class Completion_admin extends CI_Controller
 
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Checked and Forward To Chairman">
 				<INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables" onClick=checkDeliverables()>
-
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Send For Revision">
 				</FORM>';
 				
