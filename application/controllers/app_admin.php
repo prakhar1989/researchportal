@@ -36,15 +36,13 @@ class App_admin extends CI_Controller {
 				<table class="table table-bordered">';
 				//<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 					 
-					 echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1;</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1></TR>
+					 echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1;</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1></TR>
 					 <tbody>';
 
 					 foreach($Query->result() as $row)
 					 {
 						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
-						 echo '</TD><TD>';
-						 print $row->ProjectId;
 						 echo '</TD><TD>';
 						 print $row->Description;
 						 echo '</TD><TD>';

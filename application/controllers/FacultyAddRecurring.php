@@ -37,8 +37,8 @@ class FacultyAddRecurring extends CI_Controller {
 					</thead>
 					<tbody>
 						<tr>
-							<td>Project ID</td>
-							<td><input type="text" class="large" name="ProjectId"></input></td>
+							<td>Work Order Number</td>
+							<td><input type="text" class="large" name="WorkOrderNumber"></input></td>
 						</tr>
 						<tr>
 							<td>Research Assistant ID</td>
@@ -97,7 +97,7 @@ class FacultyAddRecurring extends CI_Controller {
 			{
 			session_start();
 			 //echo 'The value of Project category is: '.$_POST['category'];
-			 $data['ProjectId']=$_POST['ProjectId'];
+			 $data['WorkOrderNumber']=$_POST['WorkOrderNumber'];
 			 $data['recurring_amt']=$_POST['recurring_amt'];
 			 $data['Userid']=$_SESSION['username'];
 			 $data['Account_Details']=$_POST['Account_details'];
@@ -112,9 +112,9 @@ class FacultyAddRecurring extends CI_Controller {
 			 $msg=$this->project_model->insertRecurring($data);
 			 //Uploading the file code... Can be modified to check the file extension if required
 			 $ext=end(explode('/', $_FILES['cv']['type']));
-			 move_uploaded_file($_FILES['cv']["tmp_name"],"upload/" . $_POST['ProjectId'].'_cv_'.$_POST['RA_id'].'.'.$ext);
+			 move_uploaded_file($_FILES['cv']["tmp_name"],"upload/" . $_POST['WorkOrderNumber'].'_cv_'.$_POST['RA_id'].'.'.$ext);
 			 $ext=end(explode('/', $_FILES['apt_ltr']['type']));
-			 move_uploaded_file($_FILES['apt_ltr']['tmp_name'],"upload/" . $_POST['ProjectId'].'_apt_ltr_'.str_replace(" ","_",$_POST['RA_id']).'.'.$ext);
+			 move_uploaded_file($_FILES['apt_ltr']['tmp_name'],"upload/" . $_POST['WorkOrderNumber'].'_apt_ltr_'.str_replace(" ","_",$_POST['RA_id']).'.'.$ext);
 			 
 			// echo "Stored in: " . "upload/" . $_FILES["cv"]["name"];
 			 require('showMsg.php');

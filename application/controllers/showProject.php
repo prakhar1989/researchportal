@@ -61,7 +61,7 @@ class ShowProject extends CI_Controller {
 							</tr>
 					</thead>
 					<tbody>';
-					 $tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h4>';
+					 $tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h4>';
 					 foreach($Query->result() as $row)
 					 {
 					    if ($_SESSION['usertype']==3)
@@ -91,13 +91,13 @@ class ShowProject extends CI_Controller {
 					 }
 					 
 					 echo $tableHeader;
-					 //echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1>';
+					 //echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Id</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1>';
 					 foreach($Query->result() as $row)
 					 {
 						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
 						 echo '</TD><TD>';
-						 print $row->ProjectId;
+						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
 						 print $row->ProjectCategory;
 						 echo '</TD><TD>';

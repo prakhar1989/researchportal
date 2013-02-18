@@ -32,15 +32,13 @@ class Completion_admin extends CI_Controller
 				echo '<FORM METHOD=POST ACTION="CompletionCheckAdminRequest">
 				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 					 <table class="table table-bordered">
-					<tr><TD><h4>Project Title</h4></TD><TD><h4>Project ID</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Description</h4></TD><TD><h4>Project Category</h4></TD><TD><h4>Project Grant</h4><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Comments</h4></TD><TD><h4>Select</h1></TD></tr>
+					<tr><TD><h4>Project Title</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Description</h4></TD><TD><h4>Project Category</h4></TD><TD><h4>Project Grant</h4><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Comments</h4></TD><TD><h4>Select</h1></TD></tr>
 					
 					<tbody>';
 					 foreach($Query->result() as $row)
 					 {
 						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
-						 echo '</TD><TD>';
-						 print $row->ProjectId;
 						 echo '</TD><TD>';
 						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
@@ -84,7 +82,7 @@ class Completion_admin extends CI_Controller
 				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 				
 						<table class="table table-bordered">
-					<TD><h4>Project Title</h4></TD><TD><h4>Project ID</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD><TD><h4>Comments</h1></TD><TD><h4>Select</h1></TD>
+					<TD><h4>Project Title</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD><TD><h4>Comments</h1></TD><TD><h4>Select</h1></TD>
 					
 					<tbody>';
 					echo '<p></br></p>';
@@ -94,8 +92,6 @@ class Completion_admin extends CI_Controller
 						echo '<tr>
 						<td>';
 						 print $row->ProjectTitle;
-						 echo '</td><TD>';
-						 print $row->ProjectId;
 						 echo '</td><TD>';
 						 print $row->WorkOrderId;
 						 echo '</TD><TD>';

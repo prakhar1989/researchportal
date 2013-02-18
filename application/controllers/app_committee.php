@@ -33,15 +33,13 @@ class App_committee extends CI_Controller {
 				echo '
 				<h1>Committee Projects</h1>
 						<table class="table table-bordered">
-						<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1></tr>
+						<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1></tr>
 						<tbody>';
 
 					 foreach($Query->result() as $row)
 					 {
 						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
-						 echo '</TD><TD>';
-						 print $row->ProjectId;
 						 echo '</TD><TD>';
 						 print $row->Description;
 						 echo '</TD><TD>';

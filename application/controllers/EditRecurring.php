@@ -23,7 +23,7 @@ class EditRecurring extends CI_Controller {
 			//echo 'Going to edit amount for '.$_POST['Choice'];
 			echo '
 						 <h1>Add Recurring Amount</h1>
-					<p>Please Enter the new Recurring Amount below for the ProjectId '.$_POST['Choice'].'</p>
+					<p>Please Enter the new Recurring Amount below</p>
 					<form method=POST action="EditRecurring/EditAmount" ><table class="table table-bordered">
 					<thead>
 						<tr>
@@ -52,8 +52,8 @@ class EditRecurring extends CI_Controller {
 					</thead>
 					<tbody>
 						<tr>
-							<td>ProjectId</td>
-							<td><input type="text" class="large" name="ProjectId"></input></td>
+							<td>Work Order Number</td>
+							<td><input type="text" class="large" name="WorkOrderNumber"></input></td>
 						</tr>
 						<tr>
 							<td>Recurring Amount</td>
@@ -77,7 +77,7 @@ class EditRecurring extends CI_Controller {
 	$data['action']=2;
 	
 	$this->load->model('project_model');
-	$Msg=$this->project_model->editAmount($_POST['projectId'],$_POST['amount']);
+	$Msg=$this->project_model->editAmount($_POST['WorkOrderNumber'],$_POST['amount']);
 	$data['msg']=$Msg;
 	$this->load->view('layout',$data);
 	}
@@ -87,7 +87,7 @@ class EditRecurring extends CI_Controller {
 	$data['myClass']=$this;
 	$data['action']=2;
 	$this->load->model('project_model');
-	$Msg=$this->project_model->addProject($_POST['ProjectId'],$_POST['amount'],$_POST['total']);
+	$Msg=$this->project_model->addProject($_POST['WorkOrderNumber'],$_POST['amount'],$_POST['total']);
 	$data['msg']=$Msg;
 	$this->load->view('layout',$data);
 	}

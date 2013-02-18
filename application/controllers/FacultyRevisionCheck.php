@@ -33,12 +33,12 @@ class FacultyRevisionCheck extends CI_Controller
 						$this->load->database();
 						$this->load->model('project_model');
 						$Path = "upload/".$ProjectID."_";
-						$Files = glob($Path."*.pdf");
+						$Files = glob($Path."*.*");
 						$countuploaded = 0;
 						foreach ($Files as $File)
 							{
 							$countuploaded++;			
-							echo'<a href="download?file='.$File.'">'.$File.'</a><br><br>';
+							echo'<a href="download?file='.$File.'">'.$File.'</a>';
 							echo '<br>';
 							}
 						echo 'Number of Deliverables uploaded: '.$countuploaded;
@@ -58,8 +58,6 @@ class FacultyRevisionCheck extends CI_Controller
 						echo '<br><br>';
 						If ($countpromised > $countuploaded)
 							{
-							echo '<input id="element_5" name="element_5" class="element file" type="file"/>';
-							//echo '<input type=text value="2" name=txt id=txt/>';
 							for ($i=1; $i <= ($countpromised - $countuploaded); $i++)
 								{
 								echo '<br><input type="file" name="file_desc_'.$i.'" id="file_desc_'.$i.'" />';
@@ -80,20 +78,14 @@ class FacultyRevisionCheck extends CI_Controller
 			{
 			session_start();
 					$ProjectId = $_SESSION['ProjectID'];
-					//$temp = $_POST['txt'];
-					//echo $temp;
-					echo $ProjectId;
-					$i = $_POST['i'];
-					echo $i;
-					$ext = end(explode('.', $_FILES["element_5"]["name"]));
-					echo $ext;
 					move_uploaded_file($_FILES["element_5"]["tmp_name"],"upload/".$ProjectId.'.'.$ext);
 				
 					for ($j=1; $j < $i ; $j++)
 						{
 						$ext=end(explode('/', $_FILES['file_desc_'.$j]['type']));
-						move_uploaded_file($_FILES['file_desc_'.$j]["tmp_name"],"upload/" . $ProjectId.'_'.$j.$ext);		           
+						move_uploaded_file($_FILES['file_desc_'.$j]["tmp_name"],"upload/" . $ProjectId.'_'.$j.'.'.$ext);		           
 						}
+			header("Location: /rp/FacultyProjRevision");
 			}
 }
 ?>
