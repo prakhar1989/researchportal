@@ -32,8 +32,8 @@ class FacultyProjRevision extends CI_Controller {
 				echo'
 					<FORM METHOD=POST ACTION="/rp/FacultyRevisionCheck">
 					<table class="table table-bordered">
-					<tr<><td></td></tr>
-					<TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4></h1></TD>
+					<tr>
+					<TD><h4>ProjectTitle</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Comments</TD><TD><h4>Select</h1></TD>
 					
 					<tbody>	
 					<INPUT TYPE="HIDDEN" NAME="ProjectSelected" VALUE="'.$ProjectID.'">					
@@ -45,8 +45,6 @@ class FacultyProjRevision extends CI_Controller {
 						echo '<TR><TD>';
 						 print $row->ProjectTitle;
 						 echo '</TD><TD>';
-						 print $row->ProjectId;
-						 echo '</TD><TD>';
 						 print $row->Start_Date;
 						 echo '</TD><TD>';
 						 print $row->End_Date;
@@ -56,7 +54,12 @@ class FacultyProjRevision extends CI_Controller {
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
-						 echo '</TD>';
+						 echo '</td><td>';
+						$Result=$this->project_model->getComment($row->ProjectId, $_SESSION['usertype']);
+						 foreach($Result as $row1)
+						 {
+							 echo '<p>'.$row1->Date.' ; '.$row1->User.': '.$row1->Comment.'</p>';
+						 }
 						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
 						}			 
 					 echo '</tbody></TABLE>
@@ -65,7 +68,7 @@ class FacultyProjRevision extends CI_Controller {
 					<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 				
 						<table class="table table-bordered">
-					<TD><h4>Project Title</h4></TD><TD><h4>Project ID</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD><TD><h4>Comments</h1></TD><TD><h4>Select</h1></TD>
+					<TD><h4>Project Title</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD><TD><h4>Comments</h1></TD><TD><h4>Select</h1></TD>
 					
 					<tbody>';
 					echo '<p></br></p>';
@@ -75,8 +78,6 @@ class FacultyProjRevision extends CI_Controller {
 						echo '<tr>
 						<td>';
 						 print $row->ProjectTitle;
-						 echo '</td><TD>';
-						 print $row->ProjectId;
 						 echo '</td><TD>';
 						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
@@ -106,7 +107,7 @@ class FacultyProjRevision extends CI_Controller {
 				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 				
 						<table class="table table-bordered">
-					<TD><h4>Project Title</h4></TD><TD><h4>Project ID</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD><TD><h4>Comments</h1></TD><TD><h4>Select</h1></TD>
+					<TD><h4>Project Title</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h4></TD><TD><h4>Comments</h4></TD><TD><h4>Select</h1></TD>
 					
 					<tbody>';
 					echo '<p></br></p>';
@@ -116,8 +117,6 @@ class FacultyProjRevision extends CI_Controller {
 						echo '<tr>
 						<td>';
 						 print $row->ProjectTitle;
-						 echo '</td><TD>';
-						 print $row->ProjectId;
 						 echo '</td><TD>';
 						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
