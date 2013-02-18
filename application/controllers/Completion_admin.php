@@ -73,10 +73,55 @@ class Completion_admin extends CI_Controller
 				echo '</tbody></TABLE> 
 				<p>Please enter comments (mandatory)*</p>
 				<p><textarea name="comment" ></textarea></p>
+
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Checked and Forward To Chairman">
 				<INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables" onClick=checkDeliverables()>
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Send For Revision">
 				</FORM>';
+				
+				$result1= $this->project_model->projectCompletionApproved();
+				echo '<FORM METHOD=POST ACTION="printfilecomp">
+				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
+				
+						<table class="table table-bordered">
+					<TD><h4>Project Title</h4></TD><TD><h4>Project ID</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD><TD><h4>Comments</h1></TD><TD><h4>Select</h1></TD>
+					
+					<tbody>';
+					echo '<p></br></p>';
+					echo '<hr size=10 noshade color="#333333"><h3>Projects Approved for Extension</h3>';
+					foreach($result1->result() as $row)
+						{
+						echo '<tr>
+						<td>';
+						 print $row->ProjectTitle;
+						 echo '</td><TD>';
+						 print $row->ProjectId;
+						 echo '</td><TD>';
+						 print $row->WorkOrderId;
+						 echo '</TD><TD>';
+						 print $row->Start_Date;
+						 echo '</TD><TD>';
+						 print $row->End_Date;
+						 echo '</TD><TD>';
+						 print $row->Period;
+						 echo '</TD><TD>';
+						 print $row->Researcher1;
+						 echo '</TD><TD>';
+						 print $row->Researcher2;
+						 echo '</TD><TD>';
+						 print $row->Researcher3;
+						echo '</td><td>';
+						$Result=$this->project_model->getComment($row->ProjectId, $_SESSION['usertype']);
+						 foreach($Result as $row1)
+						 {
+							 echo '<p>'.$row1->Date.' ; '.$row1->User.': '.$row1->Comment.'</p>';
+						 }
+						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
+						}			 
+					 echo '</tbody>
+					</table>
+				<INPUT TYPE=SUBMIT name ="RequestType" value="Print">
+				</Form>';
 				}
 	}
 ?>

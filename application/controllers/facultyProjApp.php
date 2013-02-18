@@ -55,7 +55,7 @@ class FacultyProjApp extends CI_Controller {
 							<td><input type="text" class="large" name="title"></input></td>
 						</tr>
 						<tr>
-							<td>Project Description</td>
+							<td>Project Description (Please upload full paper)</td>
 							<td><input type="file" name="file_desc" id="file_desc" /></td>
 						</tr>
 						<tr>

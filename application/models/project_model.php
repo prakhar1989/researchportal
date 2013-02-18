@@ -56,6 +56,24 @@ class Project_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query;
 		}
+		
+	// List all the projects approved for extension
+	function projectExtensionApproved()
+		{
+		$this->load->database();
+		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  ApprovalPending = "approved" order by project.ProjectId';
+		$query = $this->db->query($queryStr);
+		return $query;
+		}
+	
+	// List all the projects approved for completion
+	function projectCompletionApproved()
+		{
+		$this->load->database();
+		$queryStr='Select project.*,projectcompleted.* From project Inner Join projectcompleted On project.ProjectId = projectcompleted.ProjectId where  ApprovalPending = "approved" order by project.ProjectId';
+		$query = $this->db->query($queryStr);
+		return $query;
+		}
 	
 	// Code added by Pratik
 	// Get Extension Projects pending for chairman approval
@@ -315,6 +333,21 @@ class Project_model extends CI_Model {
 			$msg='The Recurring expense has been added';
 			return $msg;
 		}
+		
+	//get a project's details
+	function projectInfoNewProject($Project)
+		{
+		//echo 'projectInfo called';
+		$this->load->database();
+		//$query= $this->db->get('project');
+		//echo $Project['Id'];	
+		$queryStr='Select *From project where  project.ProjectID = "'.$Project.'" order by project.ProjectId;';
+		//echo $queryStr;
+		$query = $this->db->query($queryStr);
+		return $query;
+		}
+		
+	
 	//get a project's details
 	function projectInfo($Project)
 		{
@@ -322,7 +355,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='SELECT * FROM project WHERE ProjectID = "'.$Project.'";';
+		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  project.ProjectID = "'.$Project.'" order by project.ProjectId;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
