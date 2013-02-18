@@ -10,7 +10,7 @@ class FacultyRevisionCheck extends CI_Controller
 		}
 	function load_php()
 				{
-				echo '<FORM METHOD=POST action="FacultyRevisionCheck/insert" >';
+				echo '<FORM METHOD=POST action="FacultyRevisionCheck/insert" enctype="">';
 				$this->load->model('project_model');
 				session_start();
 				$_SESSION['ProjectID'] = $_POST['ProjectSelected'];

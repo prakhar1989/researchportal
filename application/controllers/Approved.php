@@ -37,7 +37,6 @@ class Approved extends CI_Controller {
 					 <table class="table table-bordered">
 				<tbody>';
                 echo '<TR><TD><h4>ProjectTitle</h4></TD>
-                    <TD><h4>ProjectId</h4></TD>
                     <TD><h4>Description</h4></TD>
                     <TD><h4>ProjectCategory</TD>
                     <TD><h4>ProjectGrant</TD>
@@ -52,8 +51,6 @@ class Approved extends CI_Controller {
 					 {
 						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
-						 echo '</TD><TD>';
-						 print $row->ProjectId;
 						 echo '</TD><TD>';
 						 print $row->Description;
 						 echo '</TD><TD>';

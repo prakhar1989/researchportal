@@ -326,9 +326,9 @@ class Project_model extends CI_Model {
 	function insertRecurring($data)
 		{
 			$this->load->database();
-			$queryStr1='SELECT WorkOrderId FROM project WHERE ProjectId = '.$data['ProjectId'].';';
+			$queryStr1='SELECT ProjectId FROM project WHERE WorkOrderId = '.$data['WorkOrderNumber'].';';
 			$row=$this->db->query($queryStr1)->result();
-			$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, Day_payment, PAN, Cheque_name) VALUES ('.$data['ProjectId'].', \''.$row[0]->WorkOrderId.'\' , '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\', '.$data['Day_payment'].', \''.$data['PAN'].'\', \''.$data['Cheque_name'].'\');';
+			$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, Day_payment, PAN, Cheque_name) VALUES ('.$row[0]->ProjectId.'\' , '.$data['WorkOrderNumber'].', '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\', '.$data['Day_payment'].', \''.$data['PAN'].'\', \''.$data['Cheque_name'].'\');';
 			$query = $this->db->query($queryStr);
 			$msg='The Recurring expense has been added';
 			return $msg;
