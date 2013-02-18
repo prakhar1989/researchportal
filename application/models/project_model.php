@@ -779,5 +779,15 @@ class Project_model extends CI_Model {
  function getWorkOrder($projectId)
  {
 }
+function getStatus($projectId)
+{
+$this->load->database();
+		//$query= $this->db->get('project');
+		//echo $Project['Id'];	
+		$queryStr='SELECT PStatus FROM project WHERE ProjectId = "'.$projectId.'";';
+		//echo $queryStr;
+		$query = $this->db->query($queryStr);
+		return $query;
+}
 }
 ?>
