@@ -17,8 +17,10 @@ class FacultyProjCompleted extends CI_Controller {
 		}
 	function load_php()
 				{
+				$user = $_SESSION['username'];
+				$this->load->database();
 				$this->load->model('project_model');
-				$result= $this->project_model-> projectCompleteFaculty('anurag');
+				$result= $this->project_model-> projectCompleteFaculty($user);
 				// Display the results
 				echo'
 					<FORM METHOD=POST ACTION="FacultyProjRequest">
@@ -52,8 +54,25 @@ class FacultyProjCompleted extends CI_Controller {
 						 echo '</tr>';
 						}			 
 					 echo '</tbody>
-					</table>
-					</FORM>';
+					</table>';
+					
+					echo '<br><br><hr size=10 noshade color="#333333"><h3>Files Uploaded</h3>';
+					$queryStr='Select * from project where ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND PStatus = "completed")';
+					$query = $this->db->query($queryStr);
+					foreach ($query->result() as $row)
+					{
+					echo 'Project Title: '.$row->ProjectTitle;
+					echo '<br>';
+					$Path = "upload/".$row->ProjectId."_";
+					$Files = glob($Path."*.pdf");
+					foreach ($Files as $File)
+						{	
+						echo'<a href="download?file='.$File.'">'.$File.'</a><br><br>';
+						echo '<br>';
+						}
+					echo '<br><br>';
+					}
+					echo '</FORM>';
                 
 				
 				}
