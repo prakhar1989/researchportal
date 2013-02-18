@@ -53,7 +53,7 @@ class ShowProject extends CI_Controller {
 				   </script>
 				   <FORM name="approveProject" class = "cmxform" id="commentForm" method= "POST" action="ShowProject/approveProject">';
 
-					 $Query= $this->project_model->projectInfo($Project);
+					 $Query= $this->project_model->projectInfoNewProject($Project);
 					 echo '<table class="table table-bordered"> 
 					
 					 <thead>
@@ -178,8 +178,8 @@ class ShowProject extends CI_Controller {
 
 					 //$size = filesize('upload/54_description.pdf');
 					 //echo $size;
-					 echo'<a href="downloadfile?file=upload/'.$row->ProjectId.'_description">Download Project Description file</a><br><br>';
-					 echo'<a href="printfile?file='.$row->ProjectId.'" target="_blank">Print</a><br><br>';
+					 echo'<a href="downloadfile?file=upload/'.$Project.'_description">Download Project Description file</a><br><br>';
+					 echo'<a href="printfile?file='.$Project.'" target="_blank">Print</a><br><br>';
 					 //echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p><p><textarea name="comment"></textarea></p>';
 
 					 echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p>

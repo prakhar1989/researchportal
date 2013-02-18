@@ -10,7 +10,7 @@ class FacultyRevisionCheck extends CI_Controller
 		}
 	function load_php()
 				{
-				echo '<FORM METHOD=POST action="FacultyRevisionCheckSubmit" >';
+				echo '<FORM METHOD=POST action="FacultyRevisionCheck/insert" >';
 				$this->load->model('project_model');
 				session_start();
 				$_SESSION['ProjectID'] = $_POST['ProjectSelected'];
@@ -65,7 +65,7 @@ class FacultyRevisionCheck extends CI_Controller
 								echo '<br><input type="file" name="file_desc_'.$i.'" id="file_desc_'.$i.'" />';
 								}
 							echo'<input type="hidden" name="i" value="'.$i.'" />
-							<br><input type="submit" value="Apply" class="btn btn-large btn-primary"></input>';
+							<br><input type="SUBMIT" value="Apply" class="btn btn-large btn-primary "></input>';
 							}
 							 
 						}
@@ -75,5 +75,25 @@ class FacultyRevisionCheck extends CI_Controller
                 
 				
 				}
-	}
+	
+			function insert()
+			{
+			session_start();
+					$ProjectId = $_SESSION['ProjectID'];
+					//$temp = $_POST['txt'];
+					//echo $temp;
+					echo $ProjectId;
+					$i = $_POST['i'];
+					echo $i;
+					$ext = end(explode('.', $_FILES["element_5"]["name"]));
+					echo $ext;
+					move_uploaded_file($_FILES["element_5"]["tmp_name"],"upload/".$ProjectId.'.'.$ext);
+				
+					for ($j=1; $j < $i ; $j++)
+						{
+						$ext=end(explode('/', $_FILES['file_desc_'.$j]['type']));
+						move_uploaded_file($_FILES['file_desc_'.$j]["tmp_name"],"upload/" . $ProjectId.'_'.$j.$ext);		           
+						}
+			}
+}
 ?>
