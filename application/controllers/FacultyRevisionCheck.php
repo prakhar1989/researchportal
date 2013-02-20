@@ -85,6 +85,9 @@ class FacultyRevisionCheck extends CI_Controller
 						$ext=end(explode('/', $_FILES['file_desc_'.$j]['type']));
 						move_uploaded_file($_FILES['file_desc_'.$j]["tmp_name"],"upload/" . $ProjectId.'_'.$j.'.'.$ext);		           
 						}
+			$this->load->database();
+			$this->load->model('project_model');
+			$result= $this->project_model->projectCompletionFacultyResponse($ProjectId);
 			header("Location: /rp/FacultyProjRevision");
 			}
 }

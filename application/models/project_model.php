@@ -144,6 +144,22 @@ class Project_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query;
 		}	
+	//Check Admin Response for completion as to Approve and Reject and act accordingly
+	function projectCompletionFacultyResponse($projectid)
+		{
+		$this->load->database();
+		$queryStr='Select * from projectcompleted where ProjectId = "'.$projectid.'";';
+		$query = $this->db->query($queryStr);
+		foreach($query->result() as $row)
+		{
+		If ($row->ApprovalPending == 'revisionAdmin')
+			$queryStr1='UPDATE projectcompleted SET ApprovalPending = "admin" where ProjectId = "'.$projectid.'";';
+		ElseIf ($row->ApprovalPending == 'revisionChairman')
+			$queryStr1='UPDATE projectcompleted SET ApprovalPending = "chairman" where ProjectId = "'.$projectid.'";';
+		}
+		$query1 = $this->db->query($queryStr1);
+		return $query1;
+		}	
 	
 	// Code Added by Pratik 4 Dec 2012
 	// Check Chairman Response for Project Completion and Update Tables Accordingly
@@ -326,9 +342,9 @@ class Project_model extends CI_Model {
 	function insertRecurring($data)
 		{
 			$this->load->database();
-			$queryStr1='SELECT ProjectId FROM project WHERE WorkOrderId = '.$data['WorkOrderNumber'].';';
+			$queryStr1='SELECT WorkOrderId FROM project WHERE ProjectId = '.$data['ProjectId'].';';
 			$row=$this->db->query($queryStr1)->result();
-			$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, Day_payment, PAN, Cheque_name) VALUES ('.$row[0]->ProjectId.'\' , '.$data['WorkOrderNumber'].', '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\', '.$data['Day_payment'].', \''.$data['PAN'].'\', \''.$data['Cheque_name'].'\');';
+			$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, Day_payment, PAN, Cheque_name) VALUES ('.$data['ProjectId'].', \''.$row[0]->WorkOrderId.'\' , '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\', '.$data['Day_payment'].', \''.$data['PAN'].'\', \''.$data['Cheque_name'].'\');';
 			$query = $this->db->query($queryStr);
 			$msg='The Recurring expense has been added';
 			return $msg;
@@ -778,16 +794,6 @@ class Project_model extends CI_Model {
  }
  function getWorkOrder($projectId)
  {
-}
-function getStatus($projectId)
-{
-$this->load->database();
-		//$query= $this->db->get('project');
-		//echo $Project['Id'];	
-		$queryStr='SELECT PStatus FROM project WHERE ProjectId = "'.$projectId.'";';
-		//echo $queryStr;
-		$query = $this->db->query($queryStr);
-		return $query;
 }
 }
 ?>
