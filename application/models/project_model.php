@@ -144,6 +144,22 @@ class Project_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query;
 		}	
+	//Check Admin Response for completion as to Approve and Reject and act accordingly
+	function projectCompletionFacultyResponse($projectid)
+		{
+		$this->load->database();
+		$queryStr='Select * from projectcompleted where ProjectId = "'.$projectid.'";';
+		$query = $this->db->query($queryStr);
+		foreach($query->result() as $row)
+		{
+		If ($row->ApprovalPending == 'revisionAdmin')
+			$queryStr1='UPDATE projectcompleted SET ApprovalPending = "admin" where ProjectId = "'.$projectid.'";';
+		ElseIf ($row->ApprovalPending == 'revisionChairman')
+			$queryStr1='UPDATE projectcompleted SET ApprovalPending = "chairman" where ProjectId = "'.$projectid.'";';
+		}
+		$query1 = $this->db->query($queryStr1);
+		return $query1;
+		}	
 	
 	// Code Added by Pratik 4 Dec 2012
 	// Check Chairman Response for Project Completion and Update Tables Accordingly
