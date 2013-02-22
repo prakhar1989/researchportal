@@ -6,7 +6,7 @@ class FacultyRevisionCheck extends CI_Controller
 		{			
 		$data['myClass']=$this;
 		$data['action']=0;
-		$this->load->view('layoutfaculty',$data);
+		$this->load->view('layoutFaculty',$data);
 		}
 	function load_php()
 				{

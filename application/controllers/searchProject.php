@@ -25,7 +25,7 @@ class SearchProject extends CI_Controller{
             echo "<p>Please select filter</p>";
 			echo '<FORM name="searchProject" method= POST action="searchProject/search">';
             echo '<ul class="radiolist">
-                <li><input type="radio" name="searchBy" value="ProjectId" /> ProjectId </li>
+                <!--<li><input type="radio" name="searchBy" value="ProjectId" /> ProjectId </li>-->
                 <li><input type="radio" name="searchBy" value="Researcher" /> Researcher </li>
                 <li><input type="radio" name="searchBy" value="ProjectType" /> Project Type </li>
                 <li><input type="radio" name="searchBy" value="ProjectCategory" /> Project Category </li>
