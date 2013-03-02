@@ -42,8 +42,6 @@ class ProjectDetails extends CI_Controller {
 						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
 						 echo '</TD><TD>';
-						 print $row->ProjectId;
-						 echo '</TD><TD>';
 						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
 						 print $row->Description;

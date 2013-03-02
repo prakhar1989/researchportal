@@ -9,7 +9,8 @@ class ShowProject extends CI_Controller {
 	
     
 	//calls the view to create the background etc.
-	function index(){
+	function index()
+			{
 
 				//echo '<p>Value received is '. $this->input->post('Choice1'). '</p>';
 				session_start();
@@ -29,31 +30,17 @@ class ShowProject extends CI_Controller {
 			}
 			}
     // Displays the details of the project
-	function load_php(){
+	function load_php()
+			{
 					 //echo 'load project called    ';
 					 $Project = $this->input->post('Choice1');
 					 //echo $Project;
 					 $this->load->model('project_model');
 					  //pass the projectId of the selected project
 					 
-					 echo '
-				   <script src="/rp/static/js/jquery-latest.js"></script>
-				   <script type="text/javascript" src="/rp/static/js/jquery.validate.js"></script>
-				   <style type="text/css">
-				   * { font-family: Verdana; font-size: 96%; }
-				   label { width: 10em; float: left; }
-				   label.error { float: none; color: red; padding-left: .5em; vertical-align: top; }
-				   p { clear: both; }.submit { margin-left: 12em; }
-				   em { font-weight: bold; padding-right: 1em; vertical-align: top; }
-				   </style>
-				   <script>
-				   $(document).ready(function(){
-				   $("#commentForm").validate();
-				   });
-				   </script>
-				   <FORM name="approveProject" class = "cmxform" id="commentForm" method= "POST" action="ShowProject/approveProject">';
+					 echo '<FORM name="approveProject" method= POST action="ShowProject/approveProject">';
 
-					 $Query= $this->project_model->projectInfoNewProject($Project);
+					 $Query= $this->project_model->projectInfo($Project);
 					 echo '<table class="table table-bordered"> 
 					
 					 <thead>
@@ -61,7 +48,7 @@ class ShowProject extends CI_Controller {
 							</tr>
 					</thead>
 					<tbody>';
-					 $tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h4>';
+					 $tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h4>';
 					 foreach($Query->result() as $row)
 					 {
 					    if ($_SESSION['usertype']==3)
@@ -91,13 +78,13 @@ class ShowProject extends CI_Controller {
 					 }
 					 
 					 echo $tableHeader;
-					 //echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Id</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1>';
+					 //echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1>';
 					 foreach($Query->result() as $row)
 					 {
 						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
 						 echo '</TD><TD>';
-						 print $row->WorkOrderId;
+						 print $row->ProjectId;
 						 echo '</TD><TD>';
 						 print $row->ProjectCategory;
 						 echo '</TD><TD>';
@@ -178,15 +165,8 @@ class ShowProject extends CI_Controller {
 
 					 //$size = filesize('upload/54_description.pdf');
 					 //echo $size;
-					 echo'<a href="downloadfile?file=upload/'.$Project.'_description">Download Project Description file</a><br><br>';
-					 echo'<a href="printfile?file='.$Project.'" target="_blank">Print</a><br><br>';
-					 //echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p><p><textarea name="comment"></textarea></p>';
-
-					 echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p>
-					 <p> <label for="cname">Name</label>
-					<em>*</em><input id="cname" name="name" size="25" class="required" minlength="2" /></p>
-					 <p><textarea name="comment"></textarea></p>';
-
+					 echo'<a href="downloadfile?file=upload/'.$row->ProjectId.'_description">Download Project Description file</a><br><br>';
+					 echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p><p><textarea name="comment"></textarea></p>';
 					 if ($_SESSION['usertype']!=3)
 					 {
 					 echo '<input type= submit value= "Forward" name="approve"><input type= submit value= "Send for Revision" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >'; //Hidden to pass the projectId without showing it to the user

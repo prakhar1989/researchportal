@@ -28,7 +28,7 @@ class Conf_new_application extends CI_Controller {
                      <h1>New Applications</h1>
 					 <FORM METHOD=POST ACTION="Conf_show">
                      <table class="table table-bordered">
-					<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Application Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Select</h1></TD></tr>
+					<tr><TD><h4>Conference Title</h4></TD><TD><h4>Conference Id</h4></TD><TD><h4>Application Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Select</h1></TD></tr>
                      ';
 					 $flag=0;
 					 foreach($data['query'] as $row)

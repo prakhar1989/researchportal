@@ -49,8 +49,6 @@ class FacultyProjRequest extends CI_Controller {
 						echo '<TR><TD>';
 						 print $row->ProjectTitle;
 						 echo '</TD><TD>';
-						 print $row->ProjectId;
-						 echo '</TD><TD>';
 						 print $row->App_Date;
 						 echo '</TD><TD>';
 						 print $row->Researcher1;

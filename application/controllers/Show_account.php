@@ -40,7 +40,7 @@ class Show_account extends CI_Controller {
 						 <TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 						 <h1>Account Details</h1>
 							<table class="table table-bordered">
-						<tr><TD><h4>Date</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Dataset</h4></TD><TD><h4>Communication</h4></TD><TD><h4>Field</h4></TD><TD><h4>Photocopying</h4></TD><TD><h4>Stationery</TD><TD><h4>Domestictravel</h1></TD><TD><h4>Localconveyance</h1></TD><TD><h4>Accomodation</h1></TD><TD><h4>Contingency</h1></TD><TD><h4>Software</h1></TD><TD><h4>Research Dessimination</h1></TD><TD><h4>Recurring</h1></TD></tr>
+						<tr><TD><h4>Date</h4></TD><TD><h4>Dataset</h4></TD><TD><h4>Communication</h4></TD><TD><h4>Field</h4></TD><TD><h4>Photocopying</h4></TD><TD><h4>Stationery</TD><TD><h4>Domestictravel</h1></TD><TD><h4>Localconveyance</h1></TD><TD><h4>Accomodation</h1></TD><TD><h4>Contingency</h1></TD><TD><h4>Software</h1></TD><TD><h4>Research Dessimination</h1></TD><TD><h4>Recurring</h1></TD></tr>
 						
 						<tbody>';
 						
@@ -49,8 +49,6 @@ class Show_account extends CI_Controller {
 							 
 							 echo '<TR><TD>';
 							 print $row->Date;//vridhi
-							 echo '</TD><TD>';
-							  print $row->ProjectId;
 							 echo '</TD><TD>';
 							 print $row->dataset;
 							 echo '</TD><TD>';

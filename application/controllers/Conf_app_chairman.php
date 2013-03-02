@@ -28,7 +28,7 @@ class Conf_app_chairman extends CI_Controller {
 				
                 echo "<h1>Chairman</h1>";
 				echo '<TABLE class="table table-bordered">';
-                echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>ProjectId</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</tr>';
+                echo '<TR><TD><h4>Conference Title</h4></TD><TD><h4>Conference Id</h4></TD><TD><h4>Description</h4></TD><TD><h4>Conference Category</TD><TD><h4>Conference Grant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</tr>';
 					 foreach($Query->result() as $row)
 					 {
 						 echo '<TR><TD>';
