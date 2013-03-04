@@ -67,6 +67,7 @@ class FacultyProjShowDetails extends CI_Controller {
 					<p><textarea name="comment" ></textarea></p>
 					<INPUT TYPE=SUBMIT name ="RequestType" value="Request For Extension" onclick="myFunction()">
 					<INPUT TYPE=SUBMIT name="RequestType" value="Request For Project Closure">
+					<INPUT TYPE=SUBMIT name="RequestType" value="View Detailed Budget">
 					</FORM>';
                 
 				
