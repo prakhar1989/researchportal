@@ -68,26 +68,35 @@ class Approved extends CI_Controller {
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
 						 echo '<TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ProjectId.'"></TD></TR>';
+						 $Id=$row->ProjectId;
 					 }
-					 echo '</tbody>
-					 </TABLE>
+					 echo '</tbody></TABLE>
+					 <br><INPUT TYPE=SUBMIT value="Download Project Desciption" name="Check"><br><br>
 					 <h3>Enter WorkOrder Number</h3> <input type="text" class="large" name="WorkId"></input> <br><br>
-					 <INPUT TYPE=SUBMIT value="Add WorkOrderId">
+					 <INPUT TYPE=SUBMIT value="Add WorkOrderId" name="Check">
 					</FORM>';
 	
 					}
 	}
 	function AddWorkOrder()
 	{
-		$projectId=$_POST['Choice1'];
-		$workId=$_POST['WorkId'];
-		//echo 'the project Id and WorkorderId : '.$projectId.$workId;
-		$this->load->model('project_model');
-		$this->project_model->insertWorkOrder($projectId,$workId);
-		$msg='The Project has been asssigned the Work Order Number';
-		require('showMsg.php');
-		$showMsg=new showMsg();
-		$showMsg->index($msg,'admin');
+		if($_POST['Check']=='Add WorkOrderId')
+		{
+			$Project = $this->input->post('Choice1');
+			$workId=$_POST['WorkId'];
+			//echo 'the project Id and WorkorderId : '.$projectId.$workId;
+			$this->load->model('project_model');
+			$this->project_model->insertWorkOrder($Project,$workId);
+			$msg='The Project has been asssigned the Work Order Number';
+			require('showMsg.php');
+			$showMsg=new showMsg();
+			$showMsg->index($msg,'admin');
+		}
+		else if($_POST['Check']=='Download Project Desciption')
+		{
+		$Project = $this->input->post('Choice1');
+		header("location:/rp/downloadfile?file=upload/".$Project."_description");
+		}
 	}
 }
 ?>

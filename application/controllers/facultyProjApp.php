@@ -29,15 +29,21 @@ class FacultyProjApp extends CI_Controller {
 
 				function load_php()
 				{
-					 error_reporting(E_ERROR | E_PARSE);
-					 ini_set( "display_errors", 0);  
-					 $this->load->model('project_model');
-					 //$allow= $this->project_model->getNoProj('ankuhfhfhshv');
-					 $allow= $this->project_model->getNoProj($_SESSION['username']);
-					 $allow = True; /// only for testing..remove for deployment TODO
-					 if($allow==True)
-					 {
-						 echo '
+					error_reporting(E_ERROR | E_PARSE);
+					ini_set( "display_errors", 0);  
+					$this->load->model('project_model');
+					//$allow= $this->project_model->getNoProj('ankuhfhfhshv');
+					$allow= $this->project_model->getNoProj($_SESSION['username']);
+					$allow = True; /// only for testing..remove for deployment TODO
+					 
+					//If ($allow >= 2) Remove the comments when uploading on the Production Server
+					if($allow==True)
+					{
+						echo '<h3>You cant apply any more projects as of now</h3>';
+					}
+				    else 
+					{
+							 echo '
 						 <h1>New Project</h1>
 					<p>Please use the form below to enter details of a new project</p>
 					 
@@ -74,7 +80,7 @@ class FacultyProjApp extends CI_Controller {
 						
 						
 							// LDAP Connection
-							$username="ashishkj11";
+							/*$username="ashishkj11";
 							$ldapHost="192.168.1.103";
 							$ldapPort=389;
 							$ds = ldap_connect($ldapHost, $ldapPort) or die('Could not connect to $ldaphost');
@@ -92,7 +98,7 @@ class FacultyProjApp extends CI_Controller {
 								};
 								$namescsv.="\"\"]";
 							} else { $member_cn = Nil; }
-							
+							*/
 
 							
 							echo'
@@ -149,12 +155,6 @@ class FacultyProjApp extends CI_Controller {
 					';	
 					
 					//<a href="downloadfile?file=researchportal%283%29.txt">Download file</a>
-					
-					
-					}
-				    else 
-					{
-						echo '<h3>You cant apply any more projects as of now</h3>';
 					}
 				 
 				 
