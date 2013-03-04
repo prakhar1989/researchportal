@@ -7,7 +7,7 @@ class Project_model extends CI_Model {
      
 	//get all the projects details
 	function getProjects()
-		{
+	{
 		$this->load->database();
 		//echo '@#usertype is :'.$_SESSION['usertype'];
 		if($_SESSION['usertype']==1)
@@ -26,12 +26,21 @@ class Project_model extends CI_Model {
 		}
 		elseif ($_SESSION['usertype']==3)
 		{
-			$queryStr='SELECT * FROM project WHERE PStatus = "app_chairman_1" OR PStatus = "app_chairman_2" ;';
+			$queryStr='SELECT * FROM project WHERE PStatus = "app_chairman_1";';
 		}
 		$query= $this->db->query($queryStr);
 		return $query->result();
+	}
+	function getCommProjects()//for projects pending with committee, which can be directly approved by chairman(called from 'committee' tab for user: chairman)
+	{
+		$this->load->database();
+		if ($_SESSION['usertype']==3)
+		{
+			$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" OR PStatus = "app_chairman_2";';
 		}
-		
+		$query= $this->db->query($queryStr);
+		return $query->result();
+	}	
 		
 		
 		// By Nikhil for displaying ongoing projects
@@ -383,7 +392,7 @@ class Project_model extends CI_Model {
 			//echo 'changeStatus called ';
 			$this->load->database();
 			//echo "Project Name:".$Project;
-		if ($_SESSION['usertype']==2)
+		/*if ($_SESSION['usertype']==2)
 		{
 			
 			$queryStr ='Select comm_approval from project where ProjectID = "'.$Project.'"' ;
@@ -414,13 +423,12 @@ class Project_model extends CI_Model {
 				echo '<br>The string 2 is '.$queryStr;
 				$query = $this->db->query($queryStr);
 			}
-		}
-		else
-		{
+		}*/
+		
 			$queryStr='UPDATE project SET  PStatus =\''.$status.'\' WHERE  ProjectId =\''.$Project.'\' ;';
 			//echo $queryStr;
 			$query = $this->db->query($queryStr);
-		}
+		
 		return $query;
 		}
 	function changeStatusComm($comm_app,$status,$Project)//changing the status of the project
@@ -563,7 +571,7 @@ class Project_model extends CI_Model {
 		
 		//2. Insert value into the project table
 		//INSERT INTO `researchportal`.`project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`) VALUES ('Business Leasdership Study', 'P33333', 'Leadership traits study on current business leaders', '2012-09-29', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', '100000', 'app_admin', '1 Leadership report');
-		 $queryStr= 'INSERT INTO project (ProjectTitle , Researcher1 , Researcher2 ,  Researcher3 , ProjectCategory , ProjectGrant , PStatus , cases , journals , chapters , conference , paper ) VALUES (\''.$data['title'].'\' , \''.$user.'\' , \''.$data['researcher2'].'\' , \''.$data['researcher3'].'\' , \''.$data['category'].'\' , \''.$data['grant'].'\' , \'app_admin\' , \''.$data['cases'].'\' , \''.$data['journals'].'\' , \''.$data['chapters'].'\' , \''.$data['conferences'].'\' , \''.$data['papers'].'\');' ;
+		 $queryStr= 'INSERT INTO project (ProjectTitle , Researcher1 , Researcher2 ,  Researcher3 , ProjectCategory , ProjectGrant , PStatus , cases , journals , chapters , conference , paper, books ) VALUES (\''.$data['title'].'\' , \''.$user.'\' , \''.$data['researcher2'].'\' , \''.$data['researcher3'].'\' , \''.$data['category'].'\' , \''.$data['grant'].'\' , \'app_admin\' , \''.$data['cases'].'\' , \''.$data['journals'].'\' , \''.$data['chapters'].'\' , \''.$data['conferences'].'\' , \''.$data['papers'].'\', \''.$data['books'].'\');' ;
 		//echo '<br>'.$queryStr;
 		$query = $this->db->query($queryStr);
 		//$result = $query->result();
@@ -591,7 +599,7 @@ class Project_model extends CI_Model {
 		
 		//2. Insert value into the project table
 		//INSERT INTO `researchportal`.`project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`) VALUES ('Business Leasdership Study', 'P33333', 'Leadership traits study on current business leaders', '2012-09-29', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', '100000', 'app_admin', '1 Leadership report');
-		 $queryStr= 'UPDATE project SET ProjectCategory = "'.$data['category'].'", ProjectGrant = '.$data['grant'].', PStatus = "'.$status.'", cases = '.$data['cases'].', journals = '.$data['journals'].', chapters = '.$data['chapters'].', conference = '.$data['conferences'].', paper = '.$data['papers'].' WHERE ProjectId = '.$projectid.';';
+		 $queryStr= 'UPDATE project SET ProjectCategory = "'.$data['category'].'", ProjectGrant = '.$data['grant'].', PStatus = "'.$status.'", cases = '.$data['cases'].', journals = '.$data['journals'].', chapters = '.$data['chapters'].', conference = '.$data['conferences'].', paper = '.$data['papers'].', , books = '.$data['books'].' WHERE ProjectId = '.$projectid.';';
 		//echo '<br>'.$queryStr;
 		$query = $this->db->query($queryStr);
 		//$result = $query->result();

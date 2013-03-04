@@ -65,7 +65,8 @@ class ShowProject extends CI_Controller {
 					 foreach($Query->result() as $row)
 					 {
 					    if ($_SESSION['usertype']==3)
-						{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
+						{
+						$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
 						}
 						if ($row->cases!=0)
 						{
@@ -87,6 +88,11 @@ class ShowProject extends CI_Controller {
 						{
 						 $tableHeader= $tableHeader.'<TD><h4>Papers</h4>';
 						}
+						if ($row->books!=0)
+						{
+						 $tableHeader= $tableHeader.'<TD><h4>Books</h4>';
+						}
+						
 						$tableHeader= $tableHeader.'</TR>';
 					 }
 					 
@@ -145,6 +151,11 @@ class ShowProject extends CI_Controller {
 						 echo '</TD><TD>';
 						 print $row->paper;
 						}
+						if ($row->books!=0)
+						{
+						 echo '</TD><TD>';
+						 print $row->books;
+						}
 					 }
 					 
 					 echo '</tbody> </TABLE>';
@@ -189,12 +200,29 @@ class ShowProject extends CI_Controller {
 
 					 if ($_SESSION['usertype']!=3)
 					 {
-					 echo '<input type= submit value= "Forward" name="approve"><input type= submit value= "Send for Revision" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >'; //Hidden to pass the projectId without showing it to the user
+						echo '<input type= submit value= "Forward" name="approve"><input type= submit value= "Send for Revision" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >'; //Hidden to pass the projectId without showing it to the user
 					 }
 					 else
 					 {
-						if ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_2')
+						if ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_2' || $row->PStatus=='app_comm')
 						{
+							$commStr= '';
+							if($row->comm_approval == 0){
+							$commStr = $commStr."No Committee Member ";
+							}
+							
+							if($row->comm_approval == 2 || $row->comm_approval == 5 || $row->comm_approval == 6 || $row->comm_approval == 9){
+							$commStr = $commStr."Committee1 ";
+							}
+							if($row->comm_approval == 3 || $row->comm_approval == 5 || $row->comm_approval == 7 || $row->comm_approval == 9){
+							$commStr = $commStr."Committee2 ";
+							}
+							if($row->comm_approval == 4 || $row->comm_approval == 6 || $row->comm_approval == 7 || $row->comm_approval == 9){
+							$commStr = $commStr."Committee3";
+							}
+							echo '<h4>Approved by ';
+							echo $commStr;
+							echo '</h4>';
 							echo '<input type= submit value= "Approve" name="approve"><input type= submit value= "Reject" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >';
 						}
 						elseif ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_1')
@@ -220,6 +248,7 @@ class ShowProject extends CI_Controller {
 			$data['msg']='Approved';
 			if($_SESSION['usertype']==1)
 			{
+				
 				$Query= $this->project_model->changeStatus('app_chairman_1',$_POST['projectID']);
 				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"admin_approve");
 				$this->load->view('layout',$data);
@@ -238,12 +267,21 @@ class ShowProject extends CI_Controller {
 			}
 			elseif ($_SESSION['usertype']==3 && $_POST['approve']=='Approve')
 			{
+				
 				$Query= $this->project_model->changeStatus('approved',$_POST['projectID']);
 				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"chairman_approve");
 				$this->load->view('layoutChairman',$data);
 			}
 			elseif($_SESSION['usertype']==3 && $_POST['approve']=='Forward')
 			{
+				$to = "nikhil.labh@gmail.com";
+				$subject = "New Project Consultation";
+				$message = "Hello,
+				Chairman has sent a new project for consultation";
+				$from = "fpoffice@iimcal.ac.in";
+				$headers = "From:" . $from;
+				$stat = mail($to,$subject,$message,$headers);
+				//echo $stat;
 				$Query= $this->project_model->changeStatus('app_comm',$_POST['projectID']);
 				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"chairman_approve");
 				$this->load->view('layoutChairman',$data);

@@ -53,6 +53,7 @@ class FacultyRevisionCheck extends CI_Controller
 							$countpromised = $countpromised + $row->chapters;
 							$countpromised = $countpromised + $row->conference;
 							$countpromised = $countpromised + $row->paper;
+							$countpromised = $countpromised + $row->books;
 							}
 						echo '<br>Number of Deliverables promised: '.$countpromised;
 						echo '<br><br>';

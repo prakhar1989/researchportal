@@ -9,9 +9,8 @@ class ShowProject extends CI_Controller {
 	
     
 	//calls the view to create the background etc.
-	function index()
-			{
-
+	function index(){
+	
 				//echo '<p>Value received is '. $this->input->post('Choice1'). '</p>';
 				session_start();
 				$data['myClass']=$this;
@@ -30,8 +29,7 @@ class ShowProject extends CI_Controller {
 			}
 			}
     // Displays the details of the project
-	function load_php()
-			{
+	function load_php(){
 					 //echo 'load project called    ';
 					 $Project = $this->input->post('Choice1');
 					 //echo $Project;

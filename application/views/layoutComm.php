@@ -58,9 +58,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                     <ul> 
                         <li><a  href="/rp/new_application">New Application</a> </li>
                         <li><a href="/rp/ongoing">Ongoing</a> </li>
-                        <li><a href="/rp/completed">Finished</a> </li>
-						<li><a  href="/rp/app_chairman">Chairman</a> </li>
-						<li><a  href="/rp/app_admin">Admin</a> </li>
+                        <li><a href="/rp/completed">Completed Projects</a> </li>
 						<li><a  href="/rp/searchProject">Search</a> </li>
                     </ul>
                 </div>
