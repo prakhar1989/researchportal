@@ -37,14 +37,14 @@ class FacultyProjApp extends CI_Controller {
 					$allow = True; /// only for testing..remove for deployment TODO
 					 
 					//If ($allow >= 2) Remove the comments when uploading on the Production Server
-					if($allow==True)
+					if($allow==False)
 					{
 						echo '<h3>You cant apply any more projects as of now</h3>';
 					}
 				    else 
 					{
-							 echo '
-						 <h1>New Project</h1>
+					echo '
+					<h1>New Project</h1>
 					<p>Please use the form below to enter details of a new project</p>
 					 
 					<form name="application" id="commentForm" method=POST action="FacultyProjApp/insert"  enctype="multipart/form-data">
@@ -81,10 +81,9 @@ class FacultyProjApp extends CI_Controller {
 						
 						
 							// LDAP Connection
-<<<<<<< HEAD
+
 							//***********uncomment on server********
-=======
->>>>>>> 5e723dc2d973b36b660bf43601831087efd711ba
+
 							/*$username="ashishkj11";
 							$ldapHost="192.168.1.103";
 							$ldapPort=389;
@@ -102,14 +101,13 @@ class FacultyProjApp extends CI_Controller {
 									array_push($namesarray, $member_cn);
 								};
 								$namescsv.="\"\"]";
-<<<<<<< HEAD
+
 							} else { $member_cn = Nil; }*/ 
 							//******uncomment on server***********
 							
-=======
-							} else { $member_cn = Nil; }
-							*/
->>>>>>> 5e723dc2d973b36b660bf43601831087efd711ba
+
+							
+
 
 							
 							echo'
