@@ -29,15 +29,21 @@ class FacultyProjApp extends CI_Controller {
 
 				function load_php()
 				{
-					 error_reporting(E_ERROR | E_PARSE);
-					 ini_set( "display_errors", 0);  
-					 $this->load->model('project_model');
-					 //$allow= $this->project_model->getNoProj('ankuhfhfhshv');
-					 $allow= $this->project_model->getNoProj($_SESSION['username']);
-					 $allow = True; /// only for testing..remove for deployment TODO
-					 if($allow==True)
-					 {
-						 echo '
+					error_reporting(E_ERROR | E_PARSE);
+					ini_set( "display_errors", 0);  
+					$this->load->model('project_model');
+					//$allow= $this->project_model->getNoProj('ankuhfhfhshv');
+					$allow= $this->project_model->getNoProj($_SESSION['username']);
+					$allow = True; /// only for testing..remove for deployment TODO
+					 
+					//If ($allow >= 2) Remove the comments when uploading on the Production Server
+					if($allow==True)
+					{
+						echo '<h3>You cant apply any more projects as of now</h3>';
+					}
+				    else 
+					{
+							 echo '
 						 <h1>New Project</h1>
 					<p>Please use the form below to enter details of a new project</p>
 					 
@@ -75,7 +81,10 @@ class FacultyProjApp extends CI_Controller {
 						
 						
 							// LDAP Connection
+<<<<<<< HEAD
 							//***********uncomment on server********
+=======
+>>>>>>> 5e723dc2d973b36b660bf43601831087efd711ba
 							/*$username="ashishkj11";
 							$ldapHost="192.168.1.103";
 							$ldapPort=389;
@@ -93,9 +102,14 @@ class FacultyProjApp extends CI_Controller {
 									array_push($namesarray, $member_cn);
 								};
 								$namescsv.="\"\"]";
+<<<<<<< HEAD
 							} else { $member_cn = Nil; }*/ 
 							//******uncomment on server***********
 							
+=======
+							} else { $member_cn = Nil; }
+							*/
+>>>>>>> 5e723dc2d973b36b660bf43601831087efd711ba
 
 							
 							echo'
@@ -152,12 +166,6 @@ class FacultyProjApp extends CI_Controller {
 					';	
 					
 					//<a href="downloadfile?file=researchportal%283%29.txt">Download file</a>
-					
-					
-					}
-				    else 
-					{
-						echo '<h3>You cant apply any more projects as of now</h3>';
 					}
 				 
 				 

@@ -61,13 +61,23 @@ class ShowProject extends CI_Controller {
 							</tr>
 					</thead>
 					<tbody>';
-					 $tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h4>';
+					 
 					 foreach($Query->result() as $row)
 					 {
+<<<<<<< HEAD
 					    if ($_SESSION['usertype']==3)
 						{
 						$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
 						}
+=======
+					 If ($row->cases!=0 OR  $row->journals!=0 OR $row->chapters!=0 OR $row->conference!=0 OR $row->paper!=0 OR $row->books!=0)
+						{
+						$tableHeader= '<TR><TD rowspan="2"><h4>ProjectTitle</h4></TD><TD rowspan="2"><h4>Work Order Number</h4></TD><TD rowspan="2"><h4>ProjectCategory</TD><TD rowspan="2"><h4>ProjectGrant</TD><TD rowspan="2"><h4>App_Date</TD><TD rowspan="2"><h4>Researcher1</TD><TD rowspan="2"><h4>Researcher2</TD><TD rowspan="2"><h4>Researcher3 </h4>';
+						/*if ($_SESSION['usertype']==3)
+						{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
+						}*/
+						$tableHeader= $tableHeader.'<TD><h4>Deliverables</h4></TD></TR><TR>';
+>>>>>>> 5e723dc2d973b36b660bf43601831087efd711ba
 						if ($row->cases!=0)
 						{
 						 $tableHeader= $tableHeader.'<TD><h4>Cases</h4>';
@@ -92,10 +102,22 @@ class ShowProject extends CI_Controller {
 						{
 						 $tableHeader= $tableHeader.'<TD><h4>Books</h4>';
 						}
+<<<<<<< HEAD
 						
+=======
+						$tableHeader= $tableHeader.'</TR>';
+						}
+					else
+						{
+						$tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD ><h4>Researcher3 </h4>';
+						/*if ($_SESSION['usertype']==3)
+						{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
+						}*/
+						}
+>>>>>>> 5e723dc2d973b36b660bf43601831087efd711ba
 						$tableHeader= $tableHeader.'</TR>';
 					 }
-					 
+					 $tableHeader= $tableHeader.'</TR>';
 					 echo $tableHeader;
 					 //echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Id</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1>';
 					 foreach($Query->result() as $row)
@@ -116,44 +138,49 @@ class ShowProject extends CI_Controller {
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
-						 echo '</TD><TD>';
-						 if ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_2')
+						 echo '</TD>';
+						 /*if ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_2')
 						 {
 							echo 'YES';
-						 }else
+						 }
+						 else if ($_SESSION['usertype']=='3' && $row->PStatus!='app_chairman_2')
 						 {
 							echo 'NO';
-						 }
+						 }*/
 						 
 						 
 						if ($row->cases!=0)
 						{
-						 echo '</TD><TD>';
+						 echo '<TD>';
 						 print $row->cases;
 						}
 						if ($row->journals!=0)
 						{
-						 echo '</TD><TD>';
+						 echo '<TD>';
 						 print $row->journals;
 						}
 						if ($row->chapters!=0)
 						{
-						 echo '</TD><TD>';
+						 echo '<TD>';
 						 print $row->chapters;
 						}
 						if ($row->conference!=0)
 						{
-						 echo '</TD><TD>';
+						 echo '<TD>';
 						 print $row->conference;
 						}
 						if ($row->paper!=0)
 						{
-						 echo '</TD><TD>';
+						 echo '<TD>';
 						 print $row->paper;
 						}
 						if ($row->books!=0)
 						{
+<<<<<<< HEAD
 						 echo '</TD><TD>';
+=======
+						 echo '<TD>';
+>>>>>>> 5e723dc2d973b36b660bf43601831087efd711ba
 						 print $row->books;
 						}
 					 }
@@ -185,22 +212,36 @@ class ShowProject extends CI_Controller {
 					 }
 					 
 					 echo '</tbody> </TABLE>';
-
-
+					
+					echo'<a href="downloadfile?file=upload/'.$Project.'_description">Download Project Description file</a><br><br>';
+					
+					if ($_SESSION['usertype']==1)
+					{
 					 //$size = filesize('upload/54_description.pdf');
 					 //echo $size;
-					 echo'<a href="downloadfile?file=upload/'.$Project.'_description">Download Project Description file</a><br><br>';
 					 echo'<a href="printfile?file='.$Project.'" target="_blank">Print</a><br><br>';
 					 //echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p><p><textarea name="comment"></textarea></p>';
-
+					}
+					
+					if ($_SESSION['usertype']!=2)
+					{
 					 echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p>
 					 <p> <label for="cname">Name</label>
 					<em>*</em><input id="cname" name="name" size="25" class="required" minlength="2" /></p>
 					 <p><textarea name="comment"></textarea></p>';
-
-					 if ($_SESSION['usertype']!=3)
+					}
+					
+					 if ($_SESSION['usertype']==1)
 					 {
+					 echo '<input type= submit value= "Forward To Chairman" name="approve"><input type= submit value= "Send for Revision" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >'; //Hidden to pass the projectId without showing it to the user
+					 }
+					 else if ($_SESSION['usertype']==2)
+					 {
+<<<<<<< HEAD
 						echo '<input type= submit value= "Forward" name="approve"><input type= submit value= "Send for Revision" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >'; //Hidden to pass the projectId without showing it to the user
+=======
+					 echo '<input type= submit value= "Forward With Approval" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >'; //Hidden to pass the projectId without showing it to the user
+>>>>>>> 5e723dc2d973b36b660bf43601831087efd711ba
 					 }
 					 else
 					 {
@@ -227,7 +268,7 @@ class ShowProject extends CI_Controller {
 						}
 						elseif ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_1')
 						{
-							echo '<input type= submit value= "Forward" name="approve"><input type= submit value= "Review" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >';
+							echo '<input type= submit value= "Forward To Committee" name="approve"><input type= submit value= "Review" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >';
 						}						
 					 }
 					 echo '</FORM>';
@@ -243,7 +284,7 @@ class ShowProject extends CI_Controller {
 		$this->load->model('project_model');
 		//echo '@#usertype is :'.$_SESSION['usertype'];
 		//echo 'project value:'.$_POST['projectID'];
-		if($_POST['approve']=='Approve' OR $_POST['approve']=='Forward')
+		if($_POST['approve']=='Approve' OR $_POST['approve']=='Forward To Committee' OR $_POST['approve']=='Forward To Chairman' OR $_POST['approve']=='Forward With Approval')
 		{
 			$data['msg']='Approved';
 			if($_SESSION['usertype']==1)
@@ -272,7 +313,7 @@ class ShowProject extends CI_Controller {
 				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"chairman_approve");
 				$this->load->view('layoutChairman',$data);
 			}
-			elseif($_SESSION['usertype']==3 && $_POST['approve']=='Forward')
+			elseif($_SESSION['usertype']==3 && $_POST['approve']=='Forward To Committee')
 			{
 				$to = "nikhil.labh@gmail.com";
 				$subject = "New Project Consultation";
@@ -329,11 +370,11 @@ class ShowProject extends CI_Controller {
 	function approveMsg($status){
 		if($status=='Approved')
 			{
-			echo 'Project has been Approved!!!!!';
+			echo 'Project has been sent for consultation.';
 			}
 		else
 			{
-			echo 'Project has been sent for revision';
+			echo 'Project has been sent for revision.';
 			}
 	}
 }

@@ -515,7 +515,7 @@ class Project_model extends CI_Model {
 		{
 		 // SELECT Count(*) from `project` WHERE Researcher1='ankushv' or Researcher2='ankushv'or Researcher3='ankushv'
 		 $this->load->database();
-		 $queryStr='SELECT Count(*) as "total" from `project` WHERE Researcher1=\''.$user.'\' OR Researcher2=\''.$user.'\' OR Researcher3=\''.$user.'\'';
+		 $queryStr='SELECT Count(*) as "total" from `project` WHERE (Researcher1=\''.$user.'\' OR Researcher2=\''.$user.'\' OR Researcher3=\''.$user.'\') And (ProjectCategory = "Category 1 (IIM C)" OR ProjectCategory = "Category 2 (IIM C)" OR ProjectCategory = "Category 3 (IIM C)")';
 		 //echo $queryStr;
 		 $query = $this->db->query($queryStr);
 		 $result = $query->row_array();
