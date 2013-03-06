@@ -1,6 +1,7 @@
 <?PHP
 
-class Approved extends CI_Controller {
+class Approved extends CI_Controller 
+{
 	
 	function index()
 		{
@@ -16,7 +17,7 @@ class Approved extends CI_Controller {
 			}
 		}
 	function load_php()
-				{
+	{
 				echo '<h1> Approved Applications </h1>';
 				//Load the project model
                 //Query for the ongoing projects (!= completed and rejected)
@@ -70,8 +71,15 @@ class Approved extends CI_Controller {
 						 echo '<TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ProjectId.'"></TD></TR>';
 						 $Id=$row->ProjectId;
 					 }
-					 echo '</tbody></TABLE>
-					 <br><INPUT TYPE=SUBMIT value="Download Project Desciption" name="Check"><br><br>
+					 echo '</tbody></TABLE>';
+					 if ($_SESSION['usertype']==1)
+					{
+					 //$size = filesize('upload/54_description.pdf');
+					 //echo $size;
+					 echo'<br><INPUT TYPE=SUBMIT value="Print" name="Check"><br><br>';
+					 //echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p><p><textarea name="comment"></textarea></p>';
+					}
+					 echo '<br><INPUT TYPE=SUBMIT value="Download Project Desciption" name="Check"><br><br>
 					 <h3>Enter WorkOrder Number</h3> <input type="text" class="large" name="WorkId"></input> <br><br>
 					 <INPUT TYPE=SUBMIT value="Add WorkOrderId" name="Check">
 					</FORM>';
@@ -92,11 +100,17 @@ class Approved extends CI_Controller {
 			$showMsg=new showMsg();
 			$showMsg->index($msg,'admin');
 		}
-		else if($_POST['Check']=='Download Project Desciption')
+		elseif($_POST['Check']=='Download Project Desciption')
 		{
 		$Project = $this->input->post('Choice1');
 		header("location:/rp/downloadfile?file=upload/".$Project."_description");
 		}
+		elseif($_POST['Check']=='Print')
+		{
+		$Project = $this->input->post('Choice1');
+		header("location:/rp/printfile?file=".$Project.");
+		}
+		
 	}
 }
 ?>
