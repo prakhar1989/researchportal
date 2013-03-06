@@ -285,7 +285,7 @@ class ShowProject extends CI_Controller {
 				elseif($_SESSION['username']=="comm2")
 					$Query= $this->project_model->changeStatusComm(4,'app_chairman_2',$_POST['projectID']);
 				
-				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"committee_approve");
+				//$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"committee_approve");
 				$this->load->view('layoutComm',$data);
 			}
 			elseif ($_SESSION['usertype']==3 && $_POST['approve']=='Approve')
