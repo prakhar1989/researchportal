@@ -40,7 +40,7 @@ class Show_account extends CI_Controller {
 						 <TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 						 <h1>Account Details</h1>
 							<table class="table table-bordered">
-						<tr><TD><h4>Date</h4></TD><TD><h4>Dataset</h4></TD><TD><h4>Communication</h4></TD><TD><h4>Field</h4></TD><TD><h4>Photocopying</h4></TD><TD><h4>Stationery</TD><TD><h4>Domestictravel</h1></TD><TD><h4>Localconveyance</h1></TD><TD><h4>Accomodation</h1></TD><TD><h4>Contingency</h1></TD><TD><h4>Software</h1></TD><TD><h4>Research Dessimination</h1></TD><TD><h4>Recurring</h1></TD></tr>
+						<tr><TD><h4>Date</h4></TD><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</TD><TD><h4>Hardware/Software/Data Costs</h1></TD><TD><h4>Research Dissemination</h1></TD><TD><h4>Contingency</h1></TD></tr>
 						
 						<tbody>';
 						
@@ -50,29 +50,23 @@ class Show_account extends CI_Controller {
 							 echo '<TR><TD>';
 							 print $row->Date;//vridhi
 							 echo '</TD><TD>';
-							 print $row->dataset;
+							 print $row->ResearchAssistance;
 							 echo '</TD><TD>';
-							 print $row->communication;
+							 print $row->RCE;
 							 echo '</TD><TD>';
-							 print $row->field;
+							 print $row->Investigators;
 							 echo '</TD><TD>';
-							 print $row->photocopying;
+							 print $row->TravelAcco;
 							 echo '</TD><TD>';
-							 print $row->stationery;
+							 print $row->Communication;
 							 echo '</TD><TD>';
-							 print $row->domestictravel;
+							 print $row->ITCosts;
 							 echo '</TD><TD>';
-							 print $row->localconveyance;
+							 print $row->Dissemination;
 							 echo '</TD><TD>';
-							 print $row->accomodation;
-							 echo '</TD><TD>';
-							 print $row->contingency;
-							 echo '</TD><TD>';
-							 print $row->software;
-							 echo '</TD><TD>';
-							 print $row->dessimination;
-							 echo '</TD><TD>';
-							 print $row->recurring;
+							 print $row->Contingency;
+							 echo '</TD></TR>';
+							 
 						 }
 										 
 						 echo '</tbody>

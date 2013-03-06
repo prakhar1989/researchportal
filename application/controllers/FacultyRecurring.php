@@ -52,9 +52,9 @@ class FacultyRecurring extends CI_Controller {
 						 echo '</TD>';
 						 //echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
 						}			 
-					 echo '</tbody></TABLE>
-					<INPUT TYPE=SUBMIT name ="Add" value="Add Recurring Expense">
-					</FORM>';
+					 echo '</tbody></TABLE>';
+					//<INPUT TYPE=SUBMIT name ="Add" value="Add Recurring Expense">
+					echo '</FORM>';
                 
 				
 				}

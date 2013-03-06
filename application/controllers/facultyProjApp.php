@@ -37,14 +37,14 @@ class FacultyProjApp extends CI_Controller {
 					$allow = True; /// only for testing..remove for deployment TODO
 					 
 					//If ($allow >= 2) Remove the comments when uploading on the Production Server
-					if($allow==True)
+					if($allow==False)
 					{
 						echo '<h3>You cant apply any more projects as of now</h3>';
 					}
 				    else 
 					{
-							 echo '
-						 <h1>New Project</h1>
+					echo '
+					<h1>New Project</h1>
 					<p>Please use the form below to enter details of a new project</p>
 					 
 					<form name="application" id="commentForm" method=POST action="FacultyProjApp/insert"  enctype="multipart/form-data">
@@ -71,15 +71,19 @@ class FacultyProjApp extends CI_Controller {
 							<td><table>
 							<tr>Please select all the deliverable appilcable from below</tr>
 							<tr><td>Cases</td><td><input type="checkbox" value="1" name="casesCB" onClick="enableMe(\'cases\');" /></td><td><input type="text" disabled="disabled" name="cases" value="No of Cases" ></td></tr>
-							<tr><td>Journals</td><td><input type="checkbox" value="1" name="journalsCB" onClick="enableMe(\'journals\');" /></td><td><input type="text" disabled="disabled" name="journals" value="No of Journals" ></td></tr>
+							<tr><td>Journal Papers</td><td><input type="checkbox" value="1" name="journalsCB" onClick="enableMe(\'journals\');" /></td><td><input type="text" disabled="disabled" name="journals" value="No of Journals" ></td></tr>
 							<tr><td>Book Chapters</td><td><input type="checkbox" value="1" name="chaptersCB" onClick="enableMe(\'chapters\');" /></td><td><input type="text" disabled="disabled" name="chapters" value="No of Chapters" ></td></tr>
-							<tr><td>Conference</td><td><input type="checkbox" value="1" name="conferencesCB" onClick="enableMe(\'conferences\');" /></td><td><input type="text" disabled="disabled" name="conferences" value="No of Conferences" ></td></tr>
-							<tr><td>Work Paper</td><td><input type="checkbox" value="1" name="papersCB" onClick="enableMe(\'papers\');" /></td><td><input type="text" disabled="disabled" name="papers" value="No of Work Papers" ></td></tr>
+							<tr><td>Conference Paper</td><td><input type="checkbox" value="1" name="conferencesCB" onClick="enableMe(\'conferences\');" /></td><td><input type="text" disabled="disabled" name="conferences" value="No of Conferences" ></td></tr>
+							<tr><td>Working Paper</td><td><input type="checkbox" value="1" name="papersCB" onClick="enableMe(\'papers\');" /></td><td><input type="text" disabled="disabled" name="papers" value="No of Work Papers" ></td></tr>
+							<tr><td>Books</td><td><input type="checkbox" value="1" name="booksCB" onClick="enableMe(\'books\');" /></td><td><input type="text" disabled="disabled" name="books" value="No of Books" ></td></tr>
 							</table></td>													
 						</tr>';
 						
 						
 							// LDAP Connection
+
+							//***********uncomment on server********
+
 							/*$username="ashishkj11";
 							$ldapHost="192.168.1.103";
 							$ldapPort=389;
@@ -97,8 +101,13 @@ class FacultyProjApp extends CI_Controller {
 									array_push($namesarray, $member_cn);
 								};
 								$namescsv.="\"\"]";
-							} else { $member_cn = Nil; }
-							*/
+
+							} else { $member_cn = Nil; }*/ 
+							//******uncomment on server***********
+							
+
+							
+
 
 							
 							echo'
@@ -126,7 +135,7 @@ class FacultyProjApp extends CI_Controller {
 							  <option>Category 2 (IIM C)</option>
 							  <option>Category 3 (IIM C)</option>
 							  <option>Externally Funded Project </option>
-							  <option>Other Category</option>
+							  
 							  
 							</select>
 						</td>
@@ -184,6 +193,16 @@ class FacultyProjApp extends CI_Controller {
 			 else
 			 {
 			 $data['journals']=0;
+			 }
+			 
+			 if(isset($_POST['booksCB']))
+			 {
+				//echo 'journals CB is it checked ? ';
+				$data['books']=$_POST['books'];
+			 }
+			 else
+			 {
+			 $data['books']=0;
 			 }
 			 
 			 if(isset($_POST['chaptersCB']))

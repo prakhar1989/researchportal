@@ -60,7 +60,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
 						<li><a  href="/rp/FacultyProjApp">Apply for Project</a> </li>
 						<li><a  href="/rp/FacultyProjCompleted">View Completed Projects</a> </li>
 						<li><a  href="/rp/FacultyProjPending">View Pending Projects</a> </li>
-						<li><a  href="/rp/FacultyRecurring">Recurring Expenses</a> </li>
+						<li><a  href="/rp/FacultyRecurring">Research Assistant</a> </li>
 						<li><a  href="/rp/FacultyProjRevision">Pending for Revision</a> </li>
 
                     </ul>

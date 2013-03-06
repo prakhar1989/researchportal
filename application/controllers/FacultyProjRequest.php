@@ -36,13 +36,27 @@ class FacultyProjRequest extends CI_Controller {
 						{
 							$msg = $this->project_model->projectExtension($ProjectID,$ExtensionPeriod);
 							$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), 'faculty_extension');
+						echo "\n\n";
+					echo $msg;
 						}
+						
 						} 
 					else if ($_POST['RequestType'] == 'Request For Project Closure') 
 						{
 						//echo 'Project Completed Page';
 						$msg = $this->project_model->projectCompletion($ProjectID);
 							$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), 'faculty_completed');
+							echo "\n\n";
+							echo $msg;
+						}
+					else if($_POST['RequestType'] == 'View Detailed Budget')
+						{
+							echo '<h1>Account Details</h1>
+							<table class="table table-bordered">
+						<tr><TD><h4>Date</h4></TD><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</TD><TD><h4>Hardware/Software/Data Costs</h1></TD><TD><h4>Research Dissemination</h1></TD><TD><h4>Contingency</h1></TD></tr>
+						
+						<tbody>';
+						
 						}
 					/*foreach($result->result() as $row)
 						{
@@ -59,8 +73,8 @@ class FacultyProjRequest extends CI_Controller {
 						 echo '</TD><TD>';
 						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
 						}			*/ 
-					echo "\n\n";
-					echo $msg;
+					//echo "\n\n";
+					//echo $msg;
 					 echo '</TABLE>
 					</FORM>';
                 

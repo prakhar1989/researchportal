@@ -66,7 +66,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                         <li><a href="/rp/app_chairman">Chairman</a> </li>
                         <li><a href="/rp/app_committee">Committee</a> </li>
                         <li><a href="/rp/Accounts">Accounts</a> </li>
-                        <li><a href="/rp/recurring">Recurring</a> </li>
+                        <li><a href="/rp/recurring">Research Assistant</a> </li>
                         <li><a href="/rp/searchProject">Search</a> </li>
                     </ul>
                 </div>

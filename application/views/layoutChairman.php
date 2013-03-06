@@ -58,9 +58,9 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                     <ul> 
                         <li><a  href="/rp/new_application">New Application</a> </li>
 						<li><a  href="/rp/extension_chairman">Extension</a> </li>
-						<li><a href="/rp/Completion_chairman">Completion</a> </li>
+						<li><a href="/rp/Completion_chairman">Closure</a> </li>
                         <li><a href="/rp/ongoing">Ongoing</a> </li>
-                        <li><a href="/rp/completed">Finished</a> </li>
+                        <li><a href="/rp/completed">Completed Project</a> </li>
 						<li><a  href="/rp/app_committee">Committee</a> </li>
 						<li><a  href="/rp/app_admin">Admin</a> </li>
 						<li><a  href="/rp/searchProject">Search</a> </li>
