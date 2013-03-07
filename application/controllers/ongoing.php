@@ -30,6 +30,7 @@ class Ongoing extends CI_Controller {
 				$status='ongoing';
 				$Query= $this->project_model->project_status($status);
 				
+				echo '<FORM METHOD=POST ACTION="CompletionCheckAdminRequest">';
 				echo '<TABLE class="table table-bordered"><tbody>';
                 echo '<TR><TD><h4>ProjectTitle</h4></TD>
 					<TD><h4>Work Order Number</h4></TD>
@@ -64,8 +65,13 @@ class Ongoing extends CI_Controller {
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
+						 echo '</TD><TD>';
+						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
 					 }
 				echo '</TABLE>';
+				
+				echo '<INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables" onClick=checkDeliverables()>';
+				echo '</FORM>';
 				}
 	
 	}

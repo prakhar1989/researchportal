@@ -43,8 +43,50 @@ class FacultyProjRequest extends CI_Controller {
 						} 
 					else if ($_POST['RequestType'] == 'Request For Project Closure') 
 						{
-						//echo 'Project Completed Page';
-						$msg = $this->project_model->projectCompletion($ProjectID);
+								//echo 'Project Completed Page';
+								$this->load->database();
+							$this->load->model('project_model');
+							$Path = "upload/".$ProjectID."_";
+							$Files = glob($Path."*.*");
+							$countuploaded = 0;
+							foreach ($Files as $File)
+								{
+								$countuploaded++;			
+								echo'<a href="download?file='.$File.'">'.$File.'</a>';
+								echo '<br>';
+								}
+							echo 'Number of Deliverables uploaded: '.$countuploaded;
+							$queryStr='Select * from project where ProjectId = "'.$ProjectID.'";';
+							$query = $this->db->query($queryStr);
+							$countpromised = 0;
+							foreach($query->result() as $row)
+								{
+								$countpromised = $countpromised + $row->Deliverables;
+								$countpromised = $countpromised + $row->cases;
+								$countpromised = $countpromised + $row->journals;
+								$countpromised = $countpromised + $row->chapters;
+								$countpromised = $countpromised + $row->conference;
+								$countpromised = $countpromised + $row->paper;
+								$countpromised = $countpromised + $row->books;
+								}
+							echo '<br>Number of Deliverables promised: '.$countpromised;
+							echo '<br><br>';
+							
+							
+							If ($countpromised > $countuploaded)
+								{
+								for ($i=1; $i <= ($countpromised - $countuploaded); $i++)
+									{
+									echo '<br><input type="file" name="file_desc_'.$i.'" id="file_desc_'.$i.'" />';
+									}
+								echo'<input type="hidden" name="i" value="'.$i.'" />
+								<br><input type="SUBMIT" value="Apply" class="btn btn-large btn-primary "></input>';
+								}
+								 
+							}
+							echo "\n\n";
+								
+							$msg = $this->project_model->projectCompletion($ProjectID);
 							$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), 'faculty_completed');
 							echo "\n\n";
 							echo $msg;

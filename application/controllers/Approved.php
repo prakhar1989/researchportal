@@ -105,12 +105,11 @@ class Approved extends CI_Controller
 		$Project = $this->input->post('Choice1');
 		header("location:/rp/downloadfile?file=upload/".$Project."_description");
 		}
-		elseif($_POST['Check']=='Print')
+		elseif ($_POST['Check']=='Print')
 		{
 		$Project = $this->input->post('Choice1');
-		header("location:/rp/printfile?file=".$Project.");
+		header("location:/rp/printfile?file=".$Project);
 		}
-		
 	}
 }
 ?>

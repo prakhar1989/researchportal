@@ -26,7 +26,7 @@ class CompletionCheckAdminRequest extends CI_Controller
 						} 
 					else if ($_POST['RequestType'] == 'Check Deliverables') 
 						{
-						//echo $ProjectID;
+						echo '<br><h3>Deliverables Uploaded</h3>';
 						$Path = "upload/".$ProjectID."_";
 						//$Path = "upload/".$ProjectID."_";
 						$Files = glob($Path."*.pdf");
