@@ -31,6 +31,7 @@ class FacultyProjPending extends CI_Controller {
 					echo 'New Applications';
 					foreach($result->result() as $row)
 						{
+						$status = $row->PStatus;
 						echo '<tr>
 						<td>';
 						 print $row->ProjectTitle;
