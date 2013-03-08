@@ -85,7 +85,7 @@ class EditRecurring extends CI_Controller {
 					<tbody>
 						<tr>
 							<td>Work Order Number</td>
-							<td><input type="text" class="large" name="WorkOrderNumber"></input></td>
+							<td><input type="text" class="large" name="WorkOrderId"></input></td>
 						</tr>
 						<tr>
 							<td>Research Assistant Name</td>
@@ -146,7 +146,7 @@ class EditRecurring extends CI_Controller {
 	$data['action']=2;
 	
 	$this->load->model('project_model');
-	$Msg=$this->project_model->editAmount($_POST['WorkOrderNumber'],$_POST['amount']);
+	$Msg=$this->project_model->editAmount($_POST['projectId'],$_POST['amount']);
 	$data['msg']=$Msg;
 	$this->load->view('layout',$data);
 	}

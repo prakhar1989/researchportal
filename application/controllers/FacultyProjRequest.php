@@ -37,7 +37,7 @@ class FacultyProjRequest extends CI_Controller {
 							$msg = $this->project_model->projectExtension($ProjectID,$ExtensionPeriod);
 							$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), 'faculty_extension');
 						echo "\n\n";
-					echo $msg;
+						echo $msg;
 						}
 						
 						} 
@@ -51,14 +51,42 @@ class FacultyProjRequest extends CI_Controller {
 						}
 					else if($_POST['RequestType'] == 'View Detailed Budget')
 						{
+												 $data['query']= $this->project_model->getAccount($ProjectID);
+
 							echo '<h1>Account Details</h1>
 							<table class="table table-bordered">
 						<tr><TD><h4>Date</h4></TD><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</TD><TD><h4>Hardware/Software/Data Costs</h1></TD><TD><h4>Research Dissemination</h1></TD><TD><h4>Contingency</h1></TD></tr>
 						
 						<tbody>';
-						
+						 foreach($data['query'] as $row)
+						 {
+							 
+							 echo '<TR><TD>';
+							 print $row->Date;//vridhi
+							 echo '</TD><TD>';
+							 print $row->ResearchAssistance;
+							 echo '</TD><TD>';
+							 print $row->RCE;
+							 echo '</TD><TD>';
+							 print $row->Investigators;
+							 echo '</TD><TD>';
+							 print $row->TravelAcco;
+							 echo '</TD><TD>';
+							 print $row->Communication;
+							 echo '</TD><TD>';
+							 print $row->ITCosts;
+							 echo '</TD><TD>';
+							 print $row->Dissemination;
+							 echo '</TD><TD>';
+							 print $row->Contingency;
+							 echo '</TD></TR>';
+							 
+						 }
+										 
+						 echo '</tbody>
+						 </TABLE>';
 						}
-					/*foreach($result->result() as $row)
+					/* foreach($result->result() as $row)
 						{
 						echo '<TR><TD>';
 						 print $row->ProjectTitle;

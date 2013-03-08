@@ -57,7 +57,7 @@ class Accounts extends CI_Controller {
 						 print $row->Researcher3;
 					 }
 				echo '</tbody></TABLE>
-				<INPUT TYPE=SUBMIT value="View Account Details" name="Action">     <INPUT TYPE=SUBMIT value="Add Recurring" name="Action">
+				<INPUT TYPE=SUBMIT value="View Account Details" name="Action">    
 					</FORM>';
 				}
 	
