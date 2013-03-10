@@ -38,6 +38,13 @@ class Show_account extends CI_Controller {
 						 echo '
 						 <FORM METHOD=POST ACTION="AddAccount">
 						 <TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
+						 <h1>Budget Details</h1>
+						<table class="table table-bordered">
+						<tr><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</TD><TD><h4>Hardware/Software/Data Costs</h1></TD><TD><h4>Research Dissemination</h1></TD><TD><h4>Contingency</h1></TD></tr>						 
+						 <tbody>
+						 </tbody>
+						 </table>
+						 <input type= submit value= "Edit Budget" name="editBudget"><input type="hidden" name=projectID value="'.$Project.' " >
 						 <h1>Account Details</h1>
 							<table class="table table-bordered">
 						<tr><TD><h4>Date</h4></TD><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</TD><TD><h4>Hardware/Software/Data Costs</h1></TD><TD><h4>Research Dissemination</h1></TD><TD><h4>Contingency</h1></TD></tr>

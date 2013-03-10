@@ -547,7 +547,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='SELECT * FROM project WHERE PStatus = "approved" OR PStatus = "completed";';
+		$queryStr='SELECT * FROM project WHERE PStatus = "approved" OR PStatus = "completed" OR PSTatus = "ongoing";';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -805,6 +805,21 @@ class Project_model extends CI_Model {
  }
  function getWorkOrder($projectId)
  {
+}
+function insertTransaction($data)
+{
+$this->load->database();
+	$queryStr='Insert into transaction (WorkOrderId, Head, Amount, Comment) values ('.$data['WorkOrderId'].', \''.$data['Head'].'\','.$data['Amt'].',\''.$data['Comment'].'\'); ';
+	//echo $queryStr;
+	$query = $this->db->query($queryStr);
+}
+function dumpTransaction($Project, $Head)
+{
+$this->load->database();
+$query='Select * from transaction where Project = '.$Project.'and Head = \''.$Head.'\';';
+$query = $this->db->query($queryStr);
+return $query->result();
+
 }
 }
 ?>
