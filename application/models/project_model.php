@@ -455,6 +455,9 @@ class Project_model extends CI_Model {
 		return $query;
 		}
 	
+	
+	function insertDate(){
+	}
 	// Get the projects at  committee or chairman's approval pending stage	
 	function project_stage($stage)
 		{
