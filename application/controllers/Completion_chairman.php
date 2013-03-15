@@ -21,7 +21,7 @@ class Completion_chairman extends CI_Controller
 		}
 	function load_php()
 				{
-				echo '<h1>Completion Requests</h1>';
+				echo '<h1>Closure Requests</h1>';
 				//echo '<p> This is the Completion page. The Requests for project extensions to be showed here</p>';
 				
 				

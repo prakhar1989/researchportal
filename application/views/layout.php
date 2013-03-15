@@ -44,6 +44,11 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
     <div class="mast_head">
         <div class="container">
             <div id="logo"></div>
+			<?php 
+			//session_start(); 
+			$name = $_SESSION['username'];
+			echo "<font color='black'>$name</font>";
+			?>
             <a class="btn logout_btn" href="/rp/logout">Logout</a>
         </div> <!-- /container -->
     </div>
@@ -59,7 +64,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                     <ul> 
                         <li><a href="/rp/new_application">New Application</a> </li>
                         <li><a href="/rp/extension">Extension</a> </li>
-						<li><a href="/rp/Completion_admin">Completion</a> </li>
+						<li><a href="/rp/Completion_admin">Closure</a> </li>
                         <li><a href="/rp/ongoing">Ongoing</a> </li>
 						<li><a href="/rp/Approved">Approved</a> </li>
                         <li><a href="/rp/completed">Finished</a> </li>
