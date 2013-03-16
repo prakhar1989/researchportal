@@ -21,7 +21,7 @@ class Ongoing extends CI_Controller {
 		}
 	function load_php()
 				{
-				echo '<h1> Ongoing Applications </h1>';
+				echo '<h1> Ongoing Projects </h1>';
 				//Load the project model
                 //Query for the ongoing projects (!= completed and rejected)
 				// Display the results
