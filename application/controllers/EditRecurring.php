@@ -3,15 +3,20 @@ class EditRecurring extends CI_Controller {
 
 	function index()
 	{
-		$data['myClass']=$this; // passing the object for callback
-		$data['action']=0;      // what spl action to do for this layout
-		session_start();
-		if($_SESSION['usertype']==1)
-		{
-		$this->load->view('layout',$data);
-		}
+					$data['myClass']=$this;
+					$data['action']=0;
+					session_start();
+					if($_SESSION['usertype']==1){
+				$this->load->view('layout',$data);
+			} elseif ($_SESSION['usertype']==2){
+				$this->load->view('layoutComm',$data);
+			} elseif($_SESSION['usertype']==3){
+				$this->load->view('layoutChairman',$data);
+			}
 		else{
 		//redirect to login page with a msg
+					header("location:login");
+
 		}
 	}
 
@@ -21,7 +26,10 @@ class EditRecurring extends CI_Controller {
 	if($_POST['Action']=='Edit Amount')
 		{
 			//echo 'Going to edit amount for '.$_POST['Choice'];
-			echo '
+			echo $_POST['Choice'];
+			list($project,$rname)=explode(';',$_POST['Choice']);
+			
+			echo'
 						 <h1>Add Recurring Amount</h1>
 					<p>Please Enter the new Recurring Amount below</p>
 					<form method=POST action="EditRecurring/EditAmount" ><table class="table table-bordered">
@@ -37,7 +45,7 @@ class EditRecurring extends CI_Controller {
          			</tbody>
 					</table>
 
-					<input type="submit" value"Submit" class="btn btn-large btn-primary"></input><input type="hidden" name=projectId value="'.$_POST['Choice'].'"></input></form>';
+					<input type="submit" value"Submit" class="btn btn-large btn-primary"></input><input type="hidden" name=projectId value="'.$project.'"></input><input type="hidden" name=rname value="'.$rname.'"></input></form>';
 			
 		}
 		else
@@ -146,7 +154,7 @@ class EditRecurring extends CI_Controller {
 	$data['action']=2;
 	
 	$this->load->model('project_model');
-	$Msg=$this->project_model->editAmount($_POST['projectId'],$_POST['amount']);
+	$Msg=$this->project_model->editAmount($_POST['projectId'],$_POST['amount'],$_POST['rname']);
 	$data['msg']=$Msg;
 	$this->load->view('layout',$data);
 	}
@@ -200,7 +208,7 @@ class EditRecurring extends CI_Controller {
 			// echo "Stored in: " . "upload/" . $_FILES["cv"]["name"];
 			 require('showMsg.php');
 			 $showMsg=new showMsg();
-			 $showMsg->index($msg,'faculty');
+			 $showMsg->index($msg,'admin');
 			}			
 
 }	

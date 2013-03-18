@@ -355,6 +355,12 @@ class Project_model extends CI_Model {
 			$row=$this->db->query($queryStr1)->result();
 			$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, PAN, Cheque_name, Day_payment) VALUES ('.$row[0]->ProjectId.', \''.$data['WorkOrderId'].'\' , '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\',\''.$data['PAN'].'\', \''.$data['Cheque_name'].'\', '.$data['Day_payment'].');';
 			$query = $this->db->query($queryStr);
+			for($i=0; $i<$data['No_Payments']; $i++)
+			{
+				$ddate=date("Y-m-d",mktime(0,0,0,date("m")+1+$i,$data['Day_payment'],date("Y")));
+				$query1='INSERT INTO transaction (DueDate,WorkOrderId,ProjectId,Head,RA_ID,Amount,Remarks,completed) VALUES (\''.$ddate.'\',\''.$data['WorkOrderId'].'\','.$row[0]->ProjectId.',\'ResearchAssistance\',\''.$data['researcher_id'].'\','.$data['recurring_amt'].',"NA",2);';
+				$query11= $this->db->query($query1);
+			}
 			$msg='The Recurring expense has been added';
 			return $msg;
 		}
@@ -666,12 +672,15 @@ class Project_model extends CI_Model {
 	{
 	$this->load->database();
 	//echo $ProjectId;
-	$queryStr='UPDATE recurring SET recurring_amt='.$amount.' WHERE ProjectId='.$ProjectId.' AND researcher_id='.$name.';';
+	$queryStr='UPDATE recurring SET recurring_amt='.$amount.' WHERE (ProjectId='.$ProjectId.' AND researcher_id="'.$name.'");';
 	//echo $queryStr;
 	$query = $this->db->query($queryStr);
+	$query1='UPDATE transaction SET Amount='.$amount.' WHERE (ProjectId = '.$ProjectId.' AND RA_ID = "'.$name.'" AND completed = 2 AND DueDate >= \''.date("Y-m-d").'\');';
+	$query11=$this->db->query($query1);
 	$msg= 'Edited';
 	return $msg;
 	}
+	
 	//*** Add the projeect for the recurring account and set its amount and total
 	function addProject($ProjectId,$amount,$total)
 	{
@@ -804,9 +813,11 @@ class Project_model extends CI_Model {
 	$query = $this->db->query($queryStr);
 	
  }
+ 
  function getWorkOrder($projectId)
  {
 }
+//not used
 function insertTransaction($data)
 {
 $this->load->database();
@@ -814,6 +825,7 @@ $this->load->database();
 	//echo $queryStr;
 	$query = $this->db->query($queryStr);
 }
+//not used
 function dumpTransaction($Project, $Head)
 {
 $this->load->database();
@@ -850,7 +862,7 @@ return $query->result();
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='UPDATE transaction SET completed = 0 WHERE completed = 2 and DueDate>='.date('Y-m-d').';';
+		$queryStr='UPDATE transaction SET completed = 0 WHERE completed = 2 and DueDate<='.date('Y-m-d').';';
 		$query1='SELECT * FROM transaction WHERE completed = 0;';
 		//echo $queryStr;
 		$query2 = $this->db->query($queryStr);
@@ -858,14 +870,17 @@ return $query->result();
 		return $query3;
 	}
 	
-	function completeTransaction($data)
+	function completeTransaction($tno)
 	{
 	$this->load->database();
-	$queryStr='Insert into budget VALUES (ProjectId='.$data['project'].',ResearchAssistance='.$data['amount'].',Date='.date('Y-m-d h:i:s').');';
-	$query1='UPDATE transaction SET completed = 1 WHERE Tno='.$data['Tno'].';';
-	$query2=$this->db->query($queryStr);
-	$query3=$this->db->query($query1);
-	$msg ='The transactions have been updated';
+	$query0='select * from transaction where tno='.$tno.';';
+	$query01=$this->db->query($query0)->row_array();
+	$query1='Insert into budget VALUES (ProjectId='.$query01['ProjectId'].',ResearchAssistance='.$query01['Amount'].',Date=\''.date('Y-m-d h:i:s').'\', RCE = 0, Investigators =0, TravelAcco =0, Communication =0, ITCosts =0, Dissemination =0, Contingency =0, recurring =0);';
+	$query2='UPDATE transaction SET completed = 1 WHERE Tno='.$tno.';';
+	
+	$query11=$this->db->query($query1);
+	$query21=$this->db->query($query2);
+	$msg ='The transaction has been updated';
 	return $msg;
 	}
 }
