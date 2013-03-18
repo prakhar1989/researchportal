@@ -349,7 +349,7 @@ class ShowProject extends CI_Controller {
 		
 	}
 	
-	function approveMsg($status){
+	function approveMsg($status,$value){
 		if($status=='Approved')
 			{
 			echo 'Project has been sent for consultation.';
@@ -358,6 +358,31 @@ class ShowProject extends CI_Controller {
 			{
 			echo 'Project has been sent for revision.';
 			}
+		/* $queryStr='SELECT PStatus FROM project WHERE ProjectId = "'.$value.'";';
+		// echo $queryStr;
+		$query = $this->db->query($queryStr);
+		
+		if($_SESSION['usertype']==3 && ){
+		if($status=='Approved')
+			{
+			echo 'Project has been approved.';
+			}
+		else
+			{
+			echo 'Project has been sent for revision.';
+			}
+		}
+		else{
+		if($status=='Approved')
+			{
+			echo 'Project has ***** been sent for consultation.';
+			}
+		else
+			{
+			echo 'Project has been sent for revision.';
+			}
+		} */
+		
 	}
 }
 ?>

@@ -446,6 +446,7 @@ class Project_model extends CI_Model {
 		$num = $num + $comm_app;
 		//echo "Project Name:".$Project;
 		$queryStr='UPDATE project SET  comm_approval =\''.$num.'\' WHERE  ProjectId =\''.$Project.'\' ;';
+		$query = $this->db->query($queryStr);
 		if($num == 9)
 			$queryStr='UPDATE project SET  PStatus =\''.$status.'\' WHERE  ProjectId =\''.$Project.'\' ;';
 		
@@ -455,6 +456,9 @@ class Project_model extends CI_Model {
 		return $query;
 		}
 	
+	
+	function insertDate(){
+	}
 	// Get the projects at  committee or chairman's approval pending stage	
 	function project_stage($stage)
 		{

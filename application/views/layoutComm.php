@@ -43,6 +43,11 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
     <div class="mast_head">
         <div class="container">
             <div id="logo"></div>
+			<?php 
+			//session_start(); 
+			$name = $_SESSION['username'];
+			echo "<font color='black'>$name</font>";
+			?>
             <a class="btn logout_btn" href="/rp/logout">Logout</a>
         </div> <!-- /container -->
     </div>
