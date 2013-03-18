@@ -23,7 +23,7 @@ class SearchProject extends CI_Controller{
 	function load_php() {
 			echo '<h1>Search</h1>';
             echo "<p>Please select filter</p>";
-			echo '<FORM name="searchProject" method= POST action="searchProject/search">';
+			echo '<FORM name="searchProject" method= POST action="SearchProject/search_proj">';
             echo '<ul class="radiolist">
                 <!--<li><input type="radio" name="searchBy" value="ProjectId" /> ProjectId </li>-->
                 <li><input type="radio" name="searchBy" value="Researcher" /> Researcher </li>
@@ -40,7 +40,7 @@ class SearchProject extends CI_Controller{
 	
 	
 	// Loads the layout 
-	function search()
+	function search_proj()
 	{
 			$data['myClass']=$this;
 		    $data['action']=3;
@@ -69,10 +69,10 @@ class SearchProject extends CI_Controller{
 		  $Query= $this->project_model->projectSearch($searchBy,$searchValue);
 	      
 		  echo'
-		  <FORM METHOD=POST ACTION="projectDetails">
-		  <TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
-                     ';
-		echo '<TR><TD><h4>Project Title</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Description</h4></TD><TD><h4>Researcher</TD><TD><h4>ProjectGrant</TD><TD><h4>Application Date';
+		  <FORM METHOD=POST ACTION="../projectDetails">
+		  <table class="table table-bordered">
+		  <TR><TD><h4>ProjectTitle</h4></TD><TD><h4>WorkOrder Id</h4></TD><TD><h4>Application Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3</h4></td><TD><h4>Select</h4></TD></tr>';
+		  //<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top">';		echo '<TR><TD><h4>Project Title</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Description</h4></TD><TD><h4>Researcher</TD><TD><h4>ProjectGrant</TD><TD><h4>Application Date</h4></td><TD><h4>Select</h4></td></tr>';
 
 			foreach($Query->result() as $row)
 			 {
@@ -88,7 +88,7 @@ class SearchProject extends CI_Controller{
 				 print $row->Researcher2;
 				 echo '</TD><TD>';
 				 print $row->Researcher3;
-				 echo '<TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ProjectId.'"></TD></TR>';
+				 echo '</td><TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ProjectId.'"></TD></TR>';
 			 }
 					 
 			 echo '</TABLE>

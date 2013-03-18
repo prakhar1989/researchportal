@@ -27,7 +27,7 @@ class App_chairman extends CI_Controller {
 				//echo '<p> App_chairman page </p>';
 				//Load the project model
 				$this->load->model('project_model');
-				$stage='app_chairman_1';
+				$stage='chairman_1';
 				$Query= $this->project_model->project_stage($stage);
 				
                 echo "<h1>Chairman</h1>";
@@ -56,7 +56,7 @@ class App_chairman extends CI_Controller {
 						 echo '</td></tr>';
 					 }
 					 
-				$stage='app_chairman_2';
+				$stage='chairman_2';
 				$Query= $this->project_model->project_stage($stage);
 				foreach($Query->result() as $row)
 					 {

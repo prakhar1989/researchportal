@@ -88,7 +88,6 @@ class Project_model extends CI_Model {
 	// Get Extension Projects pending for chairman approval
 	function project_extension_chairman()
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -102,7 +101,6 @@ class Project_model extends CI_Model {
 	// Get Extension Projects pending for chairman's First approval
 	function project_extension_chairmanFirstApprovals()
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -116,7 +114,6 @@ class Project_model extends CI_Model {
 	// Get the Extension Projects pending Consultation for Committee
 	function project_extension_committee()
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -195,7 +192,6 @@ class Project_model extends CI_Model {
 	//Check for projects pending for completion approval by Admin
 	function project_completion_admin()
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -209,7 +205,6 @@ class Project_model extends CI_Model {
 	//Check for projects pending for completion approval by Chairman
 	function project_completion_chairman()
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -223,7 +218,6 @@ class Project_model extends CI_Model {
 	// Get the Completion Projects pending Consultation for Committee
 	function project_completion_committee()
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -236,7 +230,6 @@ class Project_model extends CI_Model {
 	// Get Extension Revision Projects for Faculty
 	function project_extensionrevision_faculty($user)
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -249,7 +242,6 @@ class Project_model extends CI_Model {
 	// Get CompletionRevision Projects for Faculty
 	function project_completionrevision_faculty($user)
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	

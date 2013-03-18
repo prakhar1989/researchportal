@@ -17,7 +17,7 @@ class Approved extends CI_Controller {
 		}
 	function load_php()
 				{
-				echo '<h1> Approved Applications </h1>';
+				echo '<h1> Approved from Chairman </h1>';
 				//Load the project model
                 //Query for the ongoing projects (!= completed and rejected)
 				// Display the results

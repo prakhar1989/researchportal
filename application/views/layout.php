@@ -67,7 +67,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
 						<li><a href="/rp/Completion_admin">Closure</a> </li>
                         <li><a href="/rp/ongoing">Ongoing</a> </li>
 						<li><a href="/rp/Approved">Approved</a> </li>
-                        <li><a href="/rp/completed">Finished</a> </li>
+                        <li><a href="/rp/completed">Completed</a> </li>
                         <li><a href="/rp/app_chairman">Chairman</a> </li>
                         <li><a href="/rp/app_committee">Committee</a> </li>
                         <li><a href="/rp/Accounts">Accounts</a> </li>
