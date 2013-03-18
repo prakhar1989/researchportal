@@ -632,7 +632,7 @@ class Project_model extends CI_Model {
 		$total=0;
 		foreach($results['query'] as $row)
 					 {
-						 $total=$total + $row->dataset + $row->communication + $row->photocopying + $row->field + $row->stationery +	$row->domestictravel +	$row->localconveyance	+ $row->accomodation	+ $row->contingency	+ $row->software	+ $row->dessimination ;
+						 $total=$total + $row->ResearchAssistance + $row->RCE + $row->Investigators + $row->TravelAcco + $row->Communication +	$row->ITCosts +	$row->Dissemination	+ $row->Contingency;
 					} 
 		$account['spent']=$total;			
 		return $account;
@@ -643,7 +643,7 @@ class Project_model extends CI_Model {
 	{
 		$this->load->database();
 		//--vridhi--added date below
-		$queryStr= 'INSERT INTO budget (Date, ProjectId , ResearchAssistance, RCE, Investigators, TravelAcco, Communication, ITCosts, Dissemination, Contingency) VALUES (\''.$data['projectid'].'\' , \'' .$data['dataset'].'\' , \''.$data['communication'].'\' , \''.$data['photocopying'].'\' , \''.$data['field'].'\' , \''.$data['stationery'].'\' , \''.$data['domestic'].'\' , \''.$data['conveyance'].'\' , \''.$data['accomodation'].'\' , \''.$data['contingency'].'\' , \''.$data['software'].'\' , \''.$data['dessimination'].'\');' ;
+		$queryStr= 'INSERT INTO budget (Date, ProjectId , ResearchAssistance, RCE, Investigators, TravelAcco, Communication, ITCosts, Dissemination, Contingency) VALUES (\''.date('Y-m-d H:i:s').'\','.$data['projectid'].' , ' .$data['RA'].' , '.$data['RCE'].' , '.$data['Investigators'].', '.$data['TravelAcco'].' , '.$data['Communication'].' , '.$data['ITCosts'].' , '.$data['Dissemination'].' , '.$data['Contingency'].');' ;
 		//echo '<br>'.$queryStr;
 		$query = $this->db->query($queryStr);
 		//$result = $query->result();
@@ -662,11 +662,11 @@ class Project_model extends CI_Model {
 		}
  	
 	//*** Edit the amount of recurring that the project will be getting
-	function editAmount($ProjectId,$amount)
+	function editAmount($ProjectId,$amount,$name)
 	{
 	$this->load->database();
 	//echo $ProjectId;
-	$queryStr='UPDATE recurring SET recurring_amt='.$amount.' WHERE ProjectId='.$ProjectId.';';
+	$queryStr='UPDATE recurring SET recurring_amt='.$amount.' WHERE ProjectId='.$ProjectId.' AND researcher_id='.$name.';';
 	//echo $queryStr;
 	$query = $this->db->query($queryStr);
 	$msg= 'Edited';
@@ -822,5 +822,51 @@ $query = $this->db->query($queryStr);
 return $query->result();
 
 }
+// function to insert the account data
+    function insertAccountBudget($data)
+	{
+		$this->load->database();
+		//--vridhi--added date below
+		$queryStr= 'UPDATE project SET ResearchAssistanceBudget='.$data['RA'].', RCEBudget='.$data['RCE'].', InvestigatorsBudget='.$data['Investigators'].', TravelAccoBudget='.$data['TravelAcco'].', CommunicationBudget='.$data['Communication'].', ITCostsBudget='.$data['ITCosts'].', DisseminationBudget='.$data['Dissemination'].', ContingencyBudget='.$data['Contingency'].' WHERE ProjectId='.$data['projectid'].';' ;
+//$queryStr= 'UPDATE project SET (ResearchAssistanceBudget=\''.$data['RA'].'\', RCEBudget=\''.$data['RCE'].'\', InvestigatorsBudget=\''.$data['Investigators'].'\', TravelAccoBudget=\''.$data['TravelAcco'].'\', CommunicationBudget=\''.$data['Communication'].'\', ITCostsBudget=\''.$data['ITCosts'].'\', DisseminationBudget=\''.$data['Dissemination'].'\', ContingencyBudget=\''.$data['Contingency'].'\') WHERE ProjectId='.$data['projectid'].';' ;
+		//echo '<br>'.$queryStr;
+		$query = $this->db->query($queryStr);
+		//$result = $query->result();
+		$msg='The Account Budget Details have been Added';
+		return $msg;
+	}
+	       // Fucntion to get the details of the Project Account 
+	function getAccountBudget($projectId)
+	{
+		$this->load->database();
+		$queryStr='SELECT * FROM project WHERE ProjectID = "'.$projectId.'";';
+	    $query= $this->db->query($queryStr);
+		return $query->result();
+	}
+	// Function to get all the projects
+	function allPending()
+	{
+	//echo 'project_stage called';
+		$this->load->database();
+		//$query= $this->db->get('project');
+		//echo $Project['Id'];	
+		$queryStr='UPDATE transaction SET completed = 0 WHERE completed = 2 and DueDate>='.date('Y-m-d').';';
+		$query1='SELECT * FROM transaction WHERE completed = 0;';
+		//echo $queryStr;
+		$query2 = $this->db->query($queryStr);
+		$query3 = $this->db->query($query1);
+		return $query3;
+	}
+	
+	function completeTransaction($data)
+	{
+	$this->load->database();
+	$queryStr='Insert into budget VALUES (ProjectId='.$data['project'].',ResearchAssistance='.$data['amount'].',Date='.date('Y-m-d h:i:s').');';
+	$query1='UPDATE transaction SET completed = 1 WHERE Tno='.$data['Tno'].';';
+	$query2=$this->db->query($queryStr);
+	$query3=$this->db->query($query1);
+	$msg ='The transactions have been updated';
+	return $msg;
+	}
 }
 ?>

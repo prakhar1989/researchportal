@@ -88,8 +88,8 @@ class Approved extends CI_Controller {
 			$date = new DateTime();
 			$date->setTimezone($timezone );
 			$this->load->model('project_model');
-			$this->project_model->insertWorkOrder($Project,$date);
-			$this->project_model->insertDate($Project,$workId);
+			$this->project_model->insertWorkOrder($Project,$workId);
+			$this->project_model->insertDate($Project,$date);
 			$msg='The Project has been asssigned the Work Order Number';
 			require('showMsg.php');
 			$showMsg=new showMsg();

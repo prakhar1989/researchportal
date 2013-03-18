@@ -69,28 +69,20 @@ class AddAccount extends CI_Controller {
 							<td>ITCosts</td>
 							<td><input type="text" class="large" name="ITCosts"></input></td>
 						<tr>
-							<td>Domestic Travel</td>
-							<td><input type="text" class="large" name="Domestic"></input></td>
-						</tr>
-						<tr>
-							<td>Local Conveyance</td>
-							<td><input type="text" class="large" name="Conveyance"></input></td>
-						</tr>
-						<tr>
-							<td>Accomodation</td>
-							<td><input type="text" class="large" name="Accomodation"></input></td>
+							<td>Research Assistance</td>
+							<td><input type="text" class="large" name="RA"></input></td>
 						</tr>
 						<tr>
 							<td>Contingency</td>
 							<td><input type="text" class="large" name="Contingency"></input></td>
 						</tr>
 						<tr>
-							<td>Software</td>
-							<td><input type="text" class="large" name="Software"></input></td>
+							<td>RCE</td>
+							<td><input type="text" class="large" name="RCE"></input></td>
 						</tr>
 						<tr>
 							<td>Research Dessimination</td>
-							<td><input type="text" class="large" name="Dessimination"></input></td>
+							<td><input type="text" class="large" name="Dissemination"></input></td>
 						</tr>
 					</tbody>
 					</table>
@@ -112,6 +104,7 @@ class AddAccount extends CI_Controller {
 			{
 			 //echo 'The value of Project category is: '.$_POST['category'];
 			 $data['projectid']=$_POST['projectID'];
+			 $data['RA']=$_POST['RA'];
 			 $data['RCE']=$_POST['RCE'];
 			 $data['Investigators']=$_POST['Investigators'];
 			 $data['TravelAcco']=$_POST['TravelAcco'];
