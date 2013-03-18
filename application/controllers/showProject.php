@@ -273,7 +273,7 @@ class ShowProject extends CI_Controller {
 			{
 				
 				$Query= $this->project_model->changeStatus('app_chairman_1',$_POST['projectID']);
-				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"admin_approve");
+				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"admin_forward");
 				$this->load->view('layout',$data);
 			} 
 			elseif ($_SESSION['usertype']==2)
