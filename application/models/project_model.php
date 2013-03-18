@@ -345,7 +345,7 @@ class Project_model extends CI_Model {
 			$this->load->database();
 			$queryStr1='SELECT ProjectId FROM project WHERE WorkOrderId = '.$data['WorkOrderId'].';';
 			$row=$this->db->query($queryStr1)->result();
-			$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, Day_payment, PAN, Cheque_name, Day_payment) VALUES ('.$row[0]->ProjectId.', \''.$data['WorkOrderId'].'\' , '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\', '.$data['Day_payment'].', \''.$data['PAN'].'\', \''.$data['Cheque_name'].'\', '.$data['Day_payment'].');';
+			$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, PAN, Cheque_name, Day_payment) VALUES ('.$row[0]->ProjectId.', \''.$data['WorkOrderId'].'\' , '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\',\''.$data['PAN'].'\', \''.$data['Cheque_name'].'\', '.$data['Day_payment'].');';
 			$query = $this->db->query($queryStr);
 			$msg='The Recurring expense has been added';
 			return $msg;
@@ -635,7 +635,7 @@ class Project_model extends CI_Model {
 	{
 		$this->load->database();
 		//--vridhi--added date below
-		$queryStr= 'INSERT INTO budget (ProjectId , dataset , communication , photocopying ,  field , stationery , domestictravel , localconveyance , accomodation , contingency , software , dessimination) VALUES (\''.$data['projectid'].'\' , \'' .$data['dataset'].'\' , \''.$data['communication'].'\' , \''.$data['photocopying'].'\' , \''.$data['field'].'\' , \''.$data['stationery'].'\' , \''.$data['domestic'].'\' , \''.$data['conveyance'].'\' , \''.$data['accomodation'].'\' , \''.$data['contingency'].'\' , \''.$data['software'].'\' , \''.$data['dessimination'].'\');' ;
+		$queryStr= 'INSERT INTO budget (Date, ProjectId , ResearchAssistance, RCE, Investigators, TravelAcco, Communication, ITCosts, Dissemination, Contingency) VALUES (\''.$data['projectid'].'\' , \'' .$data['dataset'].'\' , \''.$data['communication'].'\' , \''.$data['photocopying'].'\' , \''.$data['field'].'\' , \''.$data['stationery'].'\' , \''.$data['domestic'].'\' , \''.$data['conveyance'].'\' , \''.$data['accomodation'].'\' , \''.$data['contingency'].'\' , \''.$data['software'].'\' , \''.$data['dessimination'].'\');' ;
 		//echo '<br>'.$queryStr;
 		$query = $this->db->query($queryStr);
 		//$result = $query->result();
