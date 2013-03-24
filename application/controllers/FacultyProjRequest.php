@@ -43,8 +43,8 @@ class FacultyProjRequest extends CI_Controller {
 						} 
 					else if ($_POST['RequestType'] == 'Request For Project Closure') 
 						{
-								//echo 'Project Completed Page';
-								$this->load->database();
+							//echo 'Project Completed Page';
+							/*$this->load->database();
 							$this->load->model('project_model');
 							$Path = "upload/".$ProjectID."_";
 							$Files = glob($Path."*.*");
@@ -69,10 +69,12 @@ class FacultyProjRequest extends CI_Controller {
 								$countpromised = $countpromised + $row->paper;
 								$countpromised = $countpromised + $row->books;
 								}
-							echo '<br>Number of Deliverables promised: '.$countpromised;
+							echo '<br>Number of Deliverables promised: '.$countpromised;*/
+							$Check = $_POST['hidden2'];
 							echo '<br><br>';
 							
-							
+							If ($Check)
+							{
 							If ($countpromised > $countuploaded)
 								{
 								for ($i=1; $i <= ($countpromised - $countuploaded); $i++)
@@ -84,6 +86,7 @@ class FacultyProjRequest extends CI_Controller {
 								}
 								 
 							}
+							
 							echo "\n\n";
 								
 							$msg = $this->project_model->projectCompletion($ProjectID);

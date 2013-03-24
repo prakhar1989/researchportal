@@ -101,6 +101,10 @@ function index ()
 			echo '<IMG src="'.$File.'" border="0" width ="100" height="100">';
 			}		
 		 }
+		 else
+		 {
+			echo'<TR><TD align = left colspan=6><br></TD></TR>';
+		 }
 		 echo '</TD><TD align = left colspan=2>';
 		 if($row->comm_approval == 3 || $row->comm_approval == 5 || $row->comm_approval == 7 || $row->comm_approval == 9)
 		 {
@@ -111,6 +115,10 @@ function index ()
 			echo '<IMG src="'.$File.'" border="0" width ="100" height="100">';
 			}		
 		 }
+		 else
+		 {
+			echo '<TR><TD align = left colspan=6><br></TD></TR>';
+		 }
 		 echo '</TD><TD align = left colspan=2>';
 		 if($row->comm_approval == 4 || $row->comm_approval == 6 || $row->comm_approval == 7 || $row->comm_approval == 9)
 		 {
@@ -120,6 +128,10 @@ function index ()
 			{
 			echo '<IMG src="'.$File.'" border="0" width ="100" height="100">';
 			}		
+		 }
+		 else
+		 {
+			echo '<TR><TD align = left colspan=6><br></TD></TR>';
 		 }
 		 echo '</TD></TR>
 		 <TR><TD align = left colspan=2>(Prof. Bhaskar Chakrabarti)</TD><TD align = left colspan=2>(Prof.Somprakash Bandyopadhyay)</TD><TD align = left colspan=2>(Prof.Amit Dhiman)</TD></TR>

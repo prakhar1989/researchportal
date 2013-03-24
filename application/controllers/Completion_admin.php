@@ -29,6 +29,7 @@ class Completion_admin extends CI_Controller
 				$Query= $this->project_model->project_completion_admin();
 				//$count= $this->project_model->getDirectoryList(55);
 				//echo $count;
+				echo '<hr size=10 noshade color="#333333"><h3>New Requests</h3>';
 				echo '<FORM METHOD=POST ACTION="CompletionCheckAdminRequest">
 				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 					 <table class="table table-bordered">

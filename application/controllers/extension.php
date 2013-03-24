@@ -27,7 +27,7 @@ class Extension extends CI_Controller
 				echo '<p> This is the Extension page. The Requests for project extensions to be showed here</p>';
 				$this->load->model('project_model');
 				$Query= $this->project_model->project_extension();
-				
+				echo '<hr size=10 noshade color="#333333"><h3>New Requests</h3>';
 				echo '<FORM METHOD=POST ACTION="ExtensionCheckAdminRequest">
 				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 					 <table class="table table-bordered">
@@ -71,6 +71,7 @@ class Extension extends CI_Controller
 				echo '</tbody></TABLE>		
 				<p>Please enter comments (mandatory)*</p>
 				<p><textarea name="comment" ></textarea></p>
+				<INPUT TYPE=SUBMIT name ="RequestType" value="Check Deliverables">
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Approve and Forward To Chairman">
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Send For Revision">
 				</FORM>';

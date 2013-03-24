@@ -61,12 +61,39 @@ class FacultyProjShowDetails extends CI_Controller {
 						 //echo '</TD>';
 						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
 						}			 
-					 echo '</tbody></TABLE>
+					 echo '</tbody></TABLE>';
 
-					<p>Please enter comments (mandatory)*</p>
+							$this->load->database();
+							$this->load->model('project_model');
+							$Path = "upload/".$ProjectID."_";
+							$Files = glob($Path."*.*");
+							$countuploaded = 0;
+							foreach ($Files as $File)
+								{
+								$countuploaded++;			
+								//echo'<a href="download?file='.$File.'">'.$File.'</a>';
+								echo '<br>';
+								}
+							//echo 'Number of Deliverables uploaded: '.$countuploaded;
+							$queryStr='Select * from project where ProjectId = "'.$ProjectID.'";';
+							$query = $this->db->query($queryStr);
+							$countpromised = 0;
+							foreach($query->result() as $row)
+								{
+								$countpromised = $countpromised + $row->Deliverables;
+								$countpromised = $countpromised + $row->cases;
+								$countpromised = $countpromised + $row->journals;
+								$countpromised = $countpromised + $row->chapters;
+								$countpromised = $countpromised + $row->conference;
+								$countpromised = $countpromised + $row->paper;
+								$countpromised = $countpromised + $row->books;
+								}
+							//echo '<br>Number of Deliverables promised: '.$countpromised;	
+							
+					echo '<p>Please enter comments (mandatory)*</p>
 					<p><textarea name="comment" ></textarea></p>
-					<INPUT TYPE=SUBMIT name ="RequestType" value="Request For Extension" onclick="myFunction()">
-					<INPUT TYPE=SUBMIT name="RequestType" value="Request For Project Closure">
+					<INPUT TYPE=SUBMIT name ="RequestType" value="Request For Extension" onclick="myFunction();return false">
+					<INPUT TYPE=SUBMIT name="RequestType" value="Request For Project Closure" onclick="closureCheck('.$countuploaded.','.$countpromised.'")">
 					<INPUT TYPE=SUBMIT name="RequestType" value="View Detailed Budget">
 					</FORM>';
                 
@@ -83,5 +110,11 @@ function myFunction()
 {
 var period = prompt("Please Enter the Extension Period in Months","0");
 document.form1.hidden1.value = period;
+}
+function closureCheck(countuploaded,countpromised)
+{
+alert ("No of Deliverable uploaded:"countuploaded);
+var check = confirm("Do you want to Upload More Deliverables?");
+document.form1.hidden2.value = check;
 }
 </script>
