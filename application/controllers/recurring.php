@@ -33,7 +33,7 @@ class recurring extends CI_Controller {
 		 <FORM METHOD=POST ACTION="EditRecurring">
 		 <TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 		 <table class="table table-bordered">
-		<tr><TD><h4>Work Order Number</h4></TD><h4>Recurring Amount</h4></TD><TD><h4>Total Withdrawn</TD><TD><h4>Select</h4></TD></tr>
+		<tr><TD><h4>Work Order Number</h4></TD><td><h4>RA Name</h4></td><TD><h4>Recurring Amount</h4></TD><TD><h4>Total Withdrawn</TD><TD><h4>Select</h4></TD></tr>
 		
 		<tbody>';
 		 $flag=0;
@@ -43,10 +43,13 @@ class recurring extends CI_Controller {
 			 echo '</TD><TD>';
 			 print $row->WorkOrderId;
 			  echo '</TD><TD>';
+			  $name=$row->researcher_id;
+			  print $name;
+			  echo '</TD><TD>';
 			 print $row->recurring_amt;
 			 echo '</TD><TD>';
 			 print $row->total;
-			 echo '<TD><INPUT TYPE="RADIO" NAME="Choice" VALUE="'.$row->ProjectId.'"></TD></TR>';
+			 echo '</TD><TD><INPUT TYPE="RADIO" NAME="Choice" VALUE="'.$row->ProjectId.';'.$name.'"></input></TD></TR>';
 		 }
 		 if($flag==0){
 		 echo '<h4>No Recurring Accounts for Projects added yet</h4> <br > </tbody> </TABLE>';

@@ -17,8 +17,9 @@ class Approved extends CI_Controller
 			}
 		}
 	function load_php()
-	{
-				echo '<h1> Approved Applications </h1>';
+				{
+				//echo '<h1> Approved Applications </h1>';
+				echo '<h1> Approved from Chairman </h1>';
 				//Load the project model
                 //Query for the ongoing projects (!= completed and rejected)
 				// Display the results
@@ -92,9 +93,12 @@ class Approved extends CI_Controller
 		{
 			$Project = $this->input->post('Choice1');
 			$workId=$_POST['WorkId'];
-			//echo 'the project Id and WorkorderId : '.$projectId.$workId;
+			$timezone = new DateTimeZone("Asia/Kolkata" );
+			$date = new DateTime();
+			$date->setTimezone($timezone );
 			$this->load->model('project_model');
 			$this->project_model->insertWorkOrder($Project,$workId);
+			$this->project_model->insertDate($Project,$date);
 			$msg='The Project has been asssigned the Work Order Number';
 			require('showMsg.php');
 			$showMsg=new showMsg();

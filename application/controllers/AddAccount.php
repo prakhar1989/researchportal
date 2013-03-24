@@ -43,7 +43,7 @@ class AddAccount extends CI_Controller {
 					 if($account['left']>0)
 					 {
 						 echo '
-						 <h1>Project ID '. $Project.'</h1>';
+						 <h1>Work Order Number '. $Project.'</h1>';
 						 
 						 echo '
 					<p>Please enter the amounts in the Expense heads below</p>
@@ -54,47 +54,35 @@ class AddAccount extends CI_Controller {
 					</thead>
 					<tbody>
 						<tr>
-							<td>Dataset</td>
-							<td><input type="text" class="large" name="Dataset"></input></td>
+							<td>Investigators</td>
+							<td><input type="text" class="large" name="Investigators"></input></td>
+						</tr>
+						<tr>
+							<td>TravelAcco</td>
+							<td><input type="text" class="large" name="TravelAcco"></input></td>
 						</tr>
 						<tr>
 							<td>Communication</td>
 							<td><input type="text" class="large" name="Communication"></input></td>
 						</tr>
 						<tr>
-							<td>Field</td>
-							<td><input type="text" class="large" name="Field"></input></td>
-						</tr>
+							<td>ITCosts</td>
+							<td><input type="text" class="large" name="ITCosts"></input></td>
 						<tr>
-							<td>Photocopying</td>
-							<td><input type="text" class="large" name="Photocopying"></input></td>
-						</tr>
-						<tr>
-							<td>Stationery</td>
-							<td><input type="text" class="large" name="Stationery"></input></td>
-						<tr>
-							<td>Domestic Travel</td>
-							<td><input type="text" class="large" name="Domestic"></input></td>
-						</tr>
-						<tr>
-							<td>Local Conveyance</td>
-							<td><input type="text" class="large" name="Conveyance"></input></td>
-						</tr>
-						<tr>
-							<td>Accomodation</td>
-							<td><input type="text" class="large" name="Accomodation"></input></td>
+							<td>Research Assistance</td>
+							<td><input type="text" class="large" name="RA"></input></td>
 						</tr>
 						<tr>
 							<td>Contingency</td>
 							<td><input type="text" class="large" name="Contingency"></input></td>
 						</tr>
 						<tr>
-							<td>Software</td>
-							<td><input type="text" class="large" name="Software"></input></td>
+							<td>RCE</td>
+							<td><input type="text" class="large" name="RCE"></input></td>
 						</tr>
 						<tr>
 							<td>Research Dessimination</td>
-							<td><input type="text" class="large" name="Dessimination"></input></td>
+							<td><input type="text" class="large" name="Dissemination"></input></td>
 						</tr>
 					</tbody>
 					</table>
@@ -116,18 +104,15 @@ class AddAccount extends CI_Controller {
 			{
 			 //echo 'The value of Project category is: '.$_POST['category'];
 			 $data['projectid']=$_POST['projectID'];
-			 $data['dataset']=$_POST['Dataset'];
-			 $data['communication']=$_POST['Communication'];
-			 $data['field']=$_POST['Field'];
-			 $data['photocopying']=$_POST['Photocopying'];
-			 $data['stationery']=$_POST['Stationery'];
-			 $data['domestic']=$_POST['Domestic'];
-			 $data['conveyance']=$_POST['Conveyance'];
-			 $data['accomodation']=$_POST['Accomodation'];
-			 $data['contingency']=$_POST['Contingency'];
-			 $data['software']=$_POST['Software'];
-			 $data['dessimination']=$_POST['Dessimination'];
-			//$data['']=$_POST[''];
+			 $data['RA']=$_POST['RA'];
+			 $data['RCE']=$_POST['RCE'];
+			 $data['Investigators']=$_POST['Investigators'];
+			 $data['TravelAcco']=$_POST['TravelAcco'];
+			 $data['Communication']=$_POST['Communication'];
+			 $data['ITCosts']=$_POST['ITCosts'];
+			 $data['Dissemination']=$_POST['Dissemination'];
+			 $data['Contingency']=$_POST['Contingency'];
+			 //$data['']=$_POST[''];
 			 $this->load->model('project_model');
 			 $msg=$this->project_model->insertAccount($data);
 			 require('showMsg.php');

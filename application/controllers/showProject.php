@@ -273,7 +273,7 @@ class ShowProject extends CI_Controller {
 			{
 				
 				$Query= $this->project_model->changeStatus('app_chairman_1',$_POST['projectID']);
-				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"admin_approve");
+				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"admin_forward");
 				$this->load->view('layout',$data);
 			} 
 			elseif ($_SESSION['usertype']==2)
@@ -349,7 +349,7 @@ class ShowProject extends CI_Controller {
 		
 	}
 	
-	function approveMsg($status){
+	function approveMsg($status,$value){
 		if($status=='Approved')
 			{
 			echo 'Project has been sent for consultation.';
@@ -358,6 +358,31 @@ class ShowProject extends CI_Controller {
 			{
 			echo 'Project has been sent for revision.';
 			}
+		/* $queryStr='SELECT PStatus FROM project WHERE ProjectId = "'.$value.'";';
+		// echo $queryStr;
+		$query = $this->db->query($queryStr);
+		
+		if($_SESSION['usertype']==3 && ){
+		if($status=='Approved')
+			{
+			echo 'Project has been approved.';
+			}
+		else
+			{
+			echo 'Project has been sent for revision.';
+			}
+		}
+		else{
+		if($status=='Approved')
+			{
+			echo 'Project has ***** been sent for consultation.';
+			}
+		else
+			{
+			echo 'Project has been sent for revision.';
+			}
+		} */
+		
 	}
 }
 ?>

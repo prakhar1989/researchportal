@@ -31,12 +31,13 @@ class ProjectDetails extends CI_Controller {
 					 $Project = $this->input->post('Choice1');
 					 //echo $Project;
 					 $this->load->model('project_model');
-					  //pass the projectId of the selected project
+					 //pass the projectId of the selected project
 					 
 					 //echo '<FORM name="approveProject" method= POST action="ShowProject/approveProject">';
-					 $Query= $this->project_model->projectInfo($Project);
-					 echo '<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
-					 ';
+					 $Query= $this->project_model->projectInfoNewProject($Project);
+					 //echo '<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top">';
+					 echo '<table class="table table-bordered">
+					 <TR><TD><h4>ProjectTitle</h4></TD><TD><h4>WorkOrder Id</h4></TD><TD><h4>Description</h4></TD><TD><h4>Project Category</h4></TD><TD><h4>Project Grant</h4></TD><TD><h4>Application Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3</h4></td></tr>';
 					 foreach($Query->result() as $row)
 					 {
 						 echo '<TR><TD>';

@@ -88,7 +88,6 @@ class Project_model extends CI_Model {
 	// Get Extension Projects pending for chairman approval
 	function project_extension_chairman()
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -102,7 +101,6 @@ class Project_model extends CI_Model {
 	// Get Extension Projects pending for chairman's First approval
 	function project_extension_chairmanFirstApprovals()
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -116,7 +114,6 @@ class Project_model extends CI_Model {
 	// Get the Extension Projects pending Consultation for Committee
 	function project_extension_committee()
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -195,7 +192,6 @@ class Project_model extends CI_Model {
 	//Check for projects pending for completion approval by Admin
 	function project_completion_admin()
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -209,7 +205,6 @@ class Project_model extends CI_Model {
 	//Check for projects pending for completion approval by Chairman
 	function project_completion_chairman()
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -223,7 +218,6 @@ class Project_model extends CI_Model {
 	// Get the Completion Projects pending Consultation for Committee
 	function project_completion_committee()
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -236,7 +230,6 @@ class Project_model extends CI_Model {
 	// Get Extension Revision Projects for Faculty
 	function project_extensionrevision_faculty($user)
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -249,7 +242,6 @@ class Project_model extends CI_Model {
 	// Get CompletionRevision Projects for Faculty
 	function project_completionrevision_faculty($user)
 		{
-		//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -353,8 +345,14 @@ class Project_model extends CI_Model {
 			$this->load->database();
 			$queryStr1='SELECT ProjectId FROM project WHERE WorkOrderId = '.$data['WorkOrderId'].';';
 			$row=$this->db->query($queryStr1)->result();
-			$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, Day_payment, PAN, Cheque_name, Day_payment) VALUES ('.$row[0]->ProjectId.', \''.$data['WorkOrderId'].'\' , '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\', '.$data['Day_payment'].', \''.$data['PAN'].'\', \''.$data['Cheque_name'].'\', '.$data['Day_payment'].');';
+			$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, PAN, Cheque_name, Day_payment) VALUES ('.$row[0]->ProjectId.', \''.$data['WorkOrderId'].'\' , '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\',\''.$data['PAN'].'\', \''.$data['Cheque_name'].'\', '.$data['Day_payment'].');';
 			$query = $this->db->query($queryStr);
+			for($i=0; $i<$data['No_Payments']; $i++)
+			{
+				$ddate=date("Y-m-d",mktime(0,0,0,date("m")+1+$i,$data['Day_payment'],date("Y")));
+				$query1='INSERT INTO transaction (DueDate,WorkOrderId,ProjectId,Head,RA_ID,Amount,Remarks,completed) VALUES (\''.$ddate.'\',\''.$data['WorkOrderId'].'\','.$row[0]->ProjectId.',\'ResearchAssistance\',\''.$data['researcher_id'].'\','.$data['recurring_amt'].',"NA",2);';
+				$query11= $this->db->query($query1);
+			}
 			$msg='The Recurring expense has been added';
 			return $msg;
 		}
@@ -446,6 +444,7 @@ class Project_model extends CI_Model {
 		$num = $num + $comm_app;
 		//echo "Project Name:".$Project;
 		$queryStr='UPDATE project SET  comm_approval =\''.$num.'\' WHERE  ProjectId =\''.$Project.'\' ;';
+		$query = $this->db->query($queryStr);
 		if($num == 9)
 			$queryStr='UPDATE project SET  PStatus =\''.$status.'\' WHERE  ProjectId =\''.$Project.'\' ;';
 		
@@ -455,6 +454,9 @@ class Project_model extends CI_Model {
 		return $query;
 		}
 	
+	
+	function insertDate(){
+	}
 	// Get the projects at  committee or chairman's approval pending stage	
 	function project_stage($stage)
 		{
@@ -544,7 +546,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='SELECT * FROM project WHERE PStatus = "approved" OR PStatus = "completed";';
+		$queryStr='SELECT * FROM project WHERE PStatus = "approved" OR PStatus = "completed" OR PSTatus = "ongoing";';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -628,7 +630,7 @@ class Project_model extends CI_Model {
 		$total=0;
 		foreach($results['query'] as $row)
 					 {
-						 $total=$total + $row->dataset + $row->communication + $row->photocopying + $row->field + $row->stationery +	$row->domestictravel +	$row->localconveyance	+ $row->accomodation	+ $row->contingency	+ $row->software	+ $row->dessimination ;
+						 $total=$total + $row->ResearchAssistance + $row->RCE + $row->Investigators + $row->TravelAcco + $row->Communication +	$row->ITCosts +	$row->Dissemination	+ $row->Contingency;
 					} 
 		$account['spent']=$total;			
 		return $account;
@@ -639,7 +641,7 @@ class Project_model extends CI_Model {
 	{
 		$this->load->database();
 		//--vridhi--added date below
-		$queryStr= 'INSERT INTO budget (ProjectId , dataset , communication , photocopying ,  field , stationery , domestictravel , localconveyance , accomodation , contingency , software , dessimination) VALUES (\''.$data['projectid'].'\' , \'' .$data['dataset'].'\' , \''.$data['communication'].'\' , \''.$data['photocopying'].'\' , \''.$data['field'].'\' , \''.$data['stationery'].'\' , \''.$data['domestic'].'\' , \''.$data['conveyance'].'\' , \''.$data['accomodation'].'\' , \''.$data['contingency'].'\' , \''.$data['software'].'\' , \''.$data['dessimination'].'\');' ;
+		$queryStr= 'INSERT INTO budget (Date, ProjectId , ResearchAssistance, RCE, Investigators, TravelAcco, Communication, ITCosts, Dissemination, Contingency) VALUES (\''.date('Y-m-d H:i:s').'\','.$data['projectid'].' , ' .$data['RA'].' , '.$data['RCE'].' , '.$data['Investigators'].', '.$data['TravelAcco'].' , '.$data['Communication'].' , '.$data['ITCosts'].' , '.$data['Dissemination'].' , '.$data['Contingency'].');' ;
 		//echo '<br>'.$queryStr;
 		$query = $this->db->query($queryStr);
 		//$result = $query->result();
@@ -658,16 +660,19 @@ class Project_model extends CI_Model {
 		}
  	
 	//*** Edit the amount of recurring that the project will be getting
-	function editAmount($ProjectId,$amount)
+	function editAmount($ProjectId,$amount,$name)
 	{
 	$this->load->database();
 	//echo $ProjectId;
-	$queryStr='UPDATE recurring SET recurring_amt='.$amount.' WHERE ProjectId='.$ProjectId.';';
+	$queryStr='UPDATE recurring SET recurring_amt='.$amount.' WHERE (ProjectId='.$ProjectId.' AND researcher_id="'.$name.'");';
 	//echo $queryStr;
 	$query = $this->db->query($queryStr);
+	$query1='UPDATE transaction SET Amount='.$amount.' WHERE (ProjectId = '.$ProjectId.' AND RA_ID = "'.$name.'" AND completed = 2 AND DueDate >= \''.date("Y-m-d").'\');';
+	$query11=$this->db->query($query1);
 	$msg= 'Edited';
 	return $msg;
 	}
+	
 	//*** Add the projeect for the recurring account and set its amount and total
 	function addProject($ProjectId,$amount,$total)
 	{
@@ -800,8 +805,75 @@ class Project_model extends CI_Model {
 	$query = $this->db->query($queryStr);
 	
  }
+ 
  function getWorkOrder($projectId)
  {
 }
+//not used
+function insertTransaction($data)
+{
+$this->load->database();
+	$queryStr='Insert into transaction (WorkOrderId, Head, Amount, Comment) values ('.$data['WorkOrderId'].', \''.$data['Head'].'\','.$data['Amt'].',\''.$data['Comment'].'\'); ';
+	//echo $queryStr;
+	$query = $this->db->query($queryStr);
+}
+//not used
+function dumpTransaction($Project, $Head)
+{
+$this->load->database();
+$query='Select * from transaction where Project = '.$Project.'and Head = \''.$Head.'\';';
+$query = $this->db->query($queryStr);
+return $query->result();
+
+}
+// function to insert the account data
+    function insertAccountBudget($data)
+	{
+		$this->load->database();
+		//--vridhi--added date below
+		$queryStr= 'UPDATE project SET ResearchAssistanceBudget='.$data['RA'].', RCEBudget='.$data['RCE'].', InvestigatorsBudget='.$data['Investigators'].', TravelAccoBudget='.$data['TravelAcco'].', CommunicationBudget='.$data['Communication'].', ITCostsBudget='.$data['ITCosts'].', DisseminationBudget='.$data['Dissemination'].', ContingencyBudget='.$data['Contingency'].' WHERE ProjectId='.$data['projectid'].';' ;
+//$queryStr= 'UPDATE project SET (ResearchAssistanceBudget=\''.$data['RA'].'\', RCEBudget=\''.$data['RCE'].'\', InvestigatorsBudget=\''.$data['Investigators'].'\', TravelAccoBudget=\''.$data['TravelAcco'].'\', CommunicationBudget=\''.$data['Communication'].'\', ITCostsBudget=\''.$data['ITCosts'].'\', DisseminationBudget=\''.$data['Dissemination'].'\', ContingencyBudget=\''.$data['Contingency'].'\') WHERE ProjectId='.$data['projectid'].';' ;
+		//echo '<br>'.$queryStr;
+		$query = $this->db->query($queryStr);
+		//$result = $query->result();
+		$msg='The Account Budget Details have been Added';
+		return $msg;
+	}
+	       // Fucntion to get the details of the Project Account 
+	function getAccountBudget($projectId)
+	{
+		$this->load->database();
+		$queryStr='SELECT * FROM project WHERE ProjectID = "'.$projectId.'";';
+	    $query= $this->db->query($queryStr);
+		return $query->result();
+	}
+	// Function to get all the projects
+	function allPending()
+	{
+	//echo 'project_stage called';
+		$this->load->database();
+		//$query= $this->db->get('project');
+		//echo $Project['Id'];	
+		$queryStr='UPDATE transaction SET completed = 0 WHERE completed = 2 and DueDate<='.date('Y-m-d').';';
+		$query1='SELECT * FROM transaction WHERE completed = 0;';
+		//echo $queryStr;
+		$query2 = $this->db->query($queryStr);
+		$query3 = $this->db->query($query1);
+		return $query3;
+	}
+	
+	function completeTransaction($tno)
+	{
+	$this->load->database();
+	$query0='select * from transaction where tno='.$tno.';';
+	$query01=$this->db->query($query0)->row_array();
+	$query1='Insert into budget VALUES (ProjectId='.$query01['ProjectId'].',ResearchAssistance='.$query01['Amount'].',Date=\''.date('Y-m-d h:i:s').'\', RCE = 0, Investigators =0, TravelAcco =0, Communication =0, ITCosts =0, Dissemination =0, Contingency =0, recurring =0);';
+	$query2='UPDATE transaction SET completed = 1 WHERE Tno='.$tno.';';
+	
+	$query11=$this->db->query($query1);
+	$query21=$this->db->query($query2);
+	$msg ='The transaction has been updated';
+	return $msg;
+	}
 }
 ?>

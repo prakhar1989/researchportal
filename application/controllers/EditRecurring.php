@@ -3,15 +3,20 @@ class EditRecurring extends CI_Controller {
 
 	function index()
 	{
-		$data['myClass']=$this; // passing the object for callback
-		$data['action']=0;      // what spl action to do for this layout
-		session_start();
-		if($_SESSION['usertype']==1)
-		{
-		$this->load->view('layout',$data);
-		}
+					$data['myClass']=$this;
+					$data['action']=0;
+					session_start();
+					if($_SESSION['usertype']==1){
+				$this->load->view('layout',$data);
+			} elseif ($_SESSION['usertype']==2){
+				$this->load->view('layoutComm',$data);
+			} elseif($_SESSION['usertype']==3){
+				$this->load->view('layoutChairman',$data);
+			}
 		else{
 		//redirect to login page with a msg
+					header("location:login");
+
 		}
 	}
 
@@ -21,7 +26,10 @@ class EditRecurring extends CI_Controller {
 	if($_POST['Action']=='Edit Amount')
 		{
 			//echo 'Going to edit amount for '.$_POST['Choice'];
-			echo '
+			echo $_POST['Choice'];
+			list($project,$rname)=explode(';',$_POST['Choice']);
+			
+			echo'
 						 <h1>Add Recurring Amount</h1>
 					<p>Please Enter the new Recurring Amount below</p>
 					<form method=POST action="EditRecurring/EditAmount" ><table class="table table-bordered">
@@ -37,7 +45,7 @@ class EditRecurring extends CI_Controller {
          			</tbody>
 					</table>
 
-					<input type="submit" value"Submit" class="btn btn-large btn-primary"></input><input type="hidden" name=projectId value="'.$_POST['Choice'].'"></input></form>';
+					<input type="submit" value"Submit" class="btn btn-large btn-primary"></input><input type="hidden" name=projectId value="'.$project.'"></input><input type="hidden" name=rname value="'.$rname.'"></input></form>';
 			
 		}
 		else
@@ -85,7 +93,7 @@ class EditRecurring extends CI_Controller {
 					<tbody>
 						<tr>
 							<td>Work Order Number</td>
-							<td><input type="text" class="large" name="WorkOrderNumber"></input></td>
+							<td><input type="text" class="large" name="WorkOrderId"></input></td>
 						</tr>
 						<tr>
 							<td>Research Assistant Name</td>
@@ -146,7 +154,7 @@ class EditRecurring extends CI_Controller {
 	$data['action']=2;
 	
 	$this->load->model('project_model');
-	$Msg=$this->project_model->editAmount($_POST['WorkOrderNumber'],$_POST['amount']);
+	$Msg=$this->project_model->editAmount($_POST['projectId'],$_POST['amount'],$_POST['rname']);
 	$data['msg']=$Msg;
 	$this->load->view('layout',$data);
 	}
@@ -178,7 +186,7 @@ class EditRecurring extends CI_Controller {
 			{
 			session_start();
 			 //echo 'The value of Project category is: '.$_POST['category'];
-			 $data['WorkOrderId']=$_POST['WorkOrderNumber'];
+			 $data['WorkOrderId']=$_POST['WorkOrderId'];
 			 $data['recurring_amt']=$_POST['recurring_amt'];
 			 $data['Userid']=$_SESSION['username'];
 			 $data['Account_Details']=$_POST['Account_details'];
@@ -193,14 +201,14 @@ class EditRecurring extends CI_Controller {
 			 $msg=$this->project_model->insertRecurring($data);
 			 //Uploading the file code... Can be modified to check the file extension if required
 			 $ext=end(explode('/', $_FILES['cv']['type']));
-			 move_uploaded_file($_FILES['cv']["tmp_name"],"upload/" . $_POST['WorkOrderNumber'].'_cv_'.$_POST['RA_id'].'.'.$ext);
+			 move_uploaded_file($_FILES['cv']["tmp_name"],"upload/" . $_POST['WorkOrderId'].'_cv_'.$_POST['RA_id'].'.'.$ext);
 			 $ext=end(explode('/', $_FILES['apt_ltr']['type']));
-			 move_uploaded_file($_FILES['apt_ltr']['tmp_name'],"upload/" . $_POST['WorkOrderNumber'].'_apt_ltr_'.str_replace(" ","_",$_POST['RA_id']).'.'.$ext);
+			 move_uploaded_file($_FILES['apt_ltr']['tmp_name'],"upload/" . $_POST['WorkOrderId'].'_apt_ltr_'.str_replace(" ","_",$_POST['RA_id']).'.'.$ext);
 			 
 			// echo "Stored in: " . "upload/" . $_FILES["cv"]["name"];
 			 require('showMsg.php');
 			 $showMsg=new showMsg();
-			 $showMsg->index($msg,'faculty');
+			 $showMsg->index($msg,'admin');
 			}			
 
 }	

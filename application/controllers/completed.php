@@ -24,7 +24,7 @@ class Completed extends CI_Controller {
 		}
 	function load_php()
 				{
-				echo '<h1> Completed Applications </h1>';
+				echo '<h1> Completed Projects </h1>';
 				//Load the project model
                 //Query for the ongoign projects (PStatus==completed)
 				// Display the results

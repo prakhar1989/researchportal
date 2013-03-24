@@ -54,6 +54,8 @@ class FacultyProjShowDetails extends CI_Controller {
 						 echo '</TD><TD>';
 						 print $row->ProjectGrant;
 						 echo '</TD><TD>';
+						 print $row->BudgetConsumed;
+						 echo '</TD><TD>';
 						 print $row->ProjectCategory;
 						 echo '</TD><TD>';
 
