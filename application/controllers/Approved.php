@@ -80,7 +80,7 @@ class Approved extends CI_Controller
 					 echo'<br><INPUT TYPE=SUBMIT value="Print" name="Check"><br><br>';
 					 //echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p><p><textarea name="comment"></textarea></p>';
 					}
-					 echo '<br><INPUT TYPE=SUBMIT value="Download Project Desciption" name="Check"><br><br>
+					 echo '<br><INPUT TYPE=SUBMIT value="Download Project Description" name="Check"><br><br>
 					 <h3>Enter WorkOrder Number</h3> <input type="text" class="large" name="WorkId"></input> <br><br>
 					 <INPUT TYPE=SUBMIT value="Add WorkOrderId" name="Check">
 					</FORM>';

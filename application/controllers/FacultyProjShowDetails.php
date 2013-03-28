@@ -33,8 +33,36 @@ class FacultyProjShowDetails extends CI_Controller {
 					<tbody>	
 					<INPUT TYPE="HIDDEN" NAME="ProjectSelected" VALUE="'.$ProjectID.'">	
 					<INPUT TYPE="HIDDEN" NAME="hidden1">	
+					<INPUT TYPE="HIDDEN" NAME="hidden2">
 					';
 					//$Period = $_GET['period'];//document.form1.hidden1.value;
+					$this->load->database();
+					$this->load->model('project_model');
+					$Path = "upload/".$ProjectID."_";
+					$Files = glob($Path."*.*");
+					$countuploaded = 0;
+					foreach ($Files as $File)
+						{
+						$countuploaded++;			
+						//echo'<a href="download?file='.$File.'">'.$File.'</a>';
+						echo '<br>';
+						}
+					//echo 'Number of Deliverables uploaded: '.$countuploaded;
+					$queryStr='Select * from project where ProjectId = "'.$ProjectID.'";';
+					$query = $this->db->query($queryStr);
+					$countpromised = 0;
+					foreach($query->result() as $row)
+						{
+						$countpromised = $countpromised + $row->Deliverables;
+						$countpromised = $countpromised + $row->cases;
+						$countpromised = $countpromised + $row->journals;
+						$countpromised = $countpromised + $row->chapters;
+						$countpromised = $countpromised + $row->conference;
+						$countpromised = $countpromised + $row->paper;
+						$countpromised = $countpromised + $row->books;
+						}
+					echo '<INPUT TYPE="HIDDEN" NAME="countpromised" VALUE="'.$countpromised.'">';
+					echo '<INPUT TYPE="HIDDEN" NAME="countuploaded" VALUE="'.$countuploaded.'">';
 					foreach($result->result() as $row)
 						{
 						echo '<TR><TD>';
@@ -63,39 +91,12 @@ class FacultyProjShowDetails extends CI_Controller {
 						 //echo '</TD>';
 						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
 						}			 
-					 echo '</tbody></TABLE>';
+					 echo '</tbody></TABLE>
 
-							$this->load->database();
-							$this->load->model('project_model');
-							$Path = "upload/".$ProjectID."_";
-							$Files = glob($Path."*.*");
-							$countuploaded = 0;
-							foreach ($Files as $File)
-								{
-								$countuploaded++;			
-								//echo'<a href="download?file='.$File.'">'.$File.'</a>';
-								echo '<br>';
-								}
-							//echo 'Number of Deliverables uploaded: '.$countuploaded;
-							$queryStr='Select * from project where ProjectId = "'.$ProjectID.'";';
-							$query = $this->db->query($queryStr);
-							$countpromised = 0;
-							foreach($query->result() as $row)
-								{
-								$countpromised = $countpromised + $row->Deliverables;
-								$countpromised = $countpromised + $row->cases;
-								$countpromised = $countpromised + $row->journals;
-								$countpromised = $countpromised + $row->chapters;
-								$countpromised = $countpromised + $row->conference;
-								$countpromised = $countpromised + $row->paper;
-								$countpromised = $countpromised + $row->books;
-								}
-							//echo '<br>Number of Deliverables promised: '.$countpromised;	
-							
-					echo '<p>Please enter comments (mandatory)*</p>
+					<p>Please enter comments (mandatory)*</p>
 					<p><textarea name="comment" ></textarea></p>
-					<INPUT TYPE=SUBMIT name ="RequestType" value="Request For Extension" onclick="myFunction();return false">
-					<INPUT TYPE=SUBMIT name="RequestType" value="Request For Project Closure" onclick="closureCheck('.$countuploaded.','.$countpromised.'")">
+					<INPUT TYPE=SUBMIT name ="RequestType" value="Request For Extension" onclick="myFunction()">
+					<INPUT TYPE=SUBMIT name="RequestType" value="Request For Project Closure" onclick="checkdeliverables()">
 					<INPUT TYPE=SUBMIT name="RequestType" value="View Detailed Budget">
 					</FORM>';
                 
@@ -113,10 +114,21 @@ function myFunction()
 var period = prompt("Please Enter the Extension Period in Months","0");
 document.form1.hidden1.value = period;
 }
-function closureCheck(countuploaded,countpromised)
+function checkdeliverables()
 {
-alert ("No of Deliverable uploaded:"countuploaded);
-var check = confirm("Do you want to Upload More Deliverables?");
+var countpromised = document.form1.countpromised.value;
+var countuploaded = document.form1.countuploaded.value;
+if (countpromised>countuploaded)
+	{
+	alert("Number of Deliverables Promised: "+countpromised+"\nNumber of Deliverables Uploaded: "+countuploaded+"\n\nPlease Upload the remaining deliverables promised...");
+	var check = true;
+	}
+else 
+	{
+	var check = false;
+	}
 document.form1.hidden2.value = check;
+document.form1.countpromised.value = countpromised;
+document.form1.countuploaded.value = countuploaded;
 }
 </script>

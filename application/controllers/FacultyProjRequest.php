@@ -1,6 +1,7 @@
 <?PHP
 
-class FacultyProjRequest extends CI_Controller {
+class FacultyProjRequest extends CI_Controller 
+	{
 	
 	function index()
 		{
@@ -17,6 +18,7 @@ class FacultyProjRequest extends CI_Controller {
 	function load_php()
 				{
 				$ProjectID = $_POST['ProjectSelected'];
+				$_SESSION['ProjectID'] = $_POST['ProjectSelected'];
 				//echo $ProjectID;
 				//Load the project model
 				$this->load->model('project_model');
@@ -24,7 +26,7 @@ class FacultyProjRequest extends CI_Controller {
 				//echo '<p> hello this is the Project Details Page </p>';
 				// Display the results
 				echo'
-					<FORM METHOD=POST ACTION="#">
+					<FORM method=POST action="FacultyProjRequest/insert"  enctype="multipart/form-data">
 					<p><br><br></p>
 					<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 							';
@@ -43,37 +45,12 @@ class FacultyProjRequest extends CI_Controller {
 						} 
 					else if ($_POST['RequestType'] == 'Request For Project Closure') 
 						{
-							//echo 'Project Completed Page';
-							/*$this->load->database();
-							$this->load->model('project_model');
-							$Path = "upload/".$ProjectID."_";
-							$Files = glob($Path."*.*");
-							$countuploaded = 0;
-							foreach ($Files as $File)
-								{
-								$countuploaded++;			
-								echo'<a href="download?file='.$File.'">'.$File.'</a>';
-								echo '<br>';
-								}
-							echo 'Number of Deliverables uploaded: '.$countuploaded;
-							$queryStr='Select * from project where ProjectId = "'.$ProjectID.'";';
-							$query = $this->db->query($queryStr);
-							$countpromised = 0;
-							foreach($query->result() as $row)
-								{
-								$countpromised = $countpromised + $row->Deliverables;
-								$countpromised = $countpromised + $row->cases;
-								$countpromised = $countpromised + $row->journals;
-								$countpromised = $countpromised + $row->chapters;
-								$countpromised = $countpromised + $row->conference;
-								$countpromised = $countpromised + $row->paper;
-								$countpromised = $countpromised + $row->books;
-								}
-							echo '<br>Number of Deliverables promised: '.$countpromised;*/
 							$Check = $_POST['hidden2'];
+							$countpromised = $_POST['countpromised'];
+							$countuploaded = $_POST['countuploaded'];
 							echo '<br><br>';
 							
-							If ($Check)
+							If ($Check == 'true')
 							{
 							If ($countpromised > $countuploaded)
 								{
@@ -84,15 +61,16 @@ class FacultyProjRequest extends CI_Controller {
 								echo'<input type="hidden" name="i" value="'.$i.'" />
 								<br><input type="SUBMIT" value="Apply" class="btn btn-large btn-primary "></input>';
 								}
-								 
 							}
-							
-							echo "\n\n";
-								
+							else if ($Check == 'false')
+							{
 							$msg = $this->project_model->projectCompletion($ProjectID);
 							$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), 'faculty_completed');
 							echo "\n\n";
-							echo $msg;
+							echo $msg;	
+							}
+							
+							echo "\n\n";
 						}
 					else if($_POST['RequestType'] == 'View Detailed Budget')
 						{
@@ -154,7 +132,28 @@ class FacultyProjRequest extends CI_Controller {
 				
 				}
 	
+	
+		function insert()
+		{
+		session_start();
+			$ProjectId = $_SESSION['ProjectID'];
+			$i = $_POST['i'];
+			//move_uploaded_file($_FILES["element_5"]["tmp_name"],"upload/".$ProjectId.'.'.$ext);
+		
+			for ($j=1; $j < $i ; $j++)
+				{
+				$ext=end(explode('/', $_FILES['file_desc_'.$j]['type']));
+				move_uploaded_file($_FILES['file_desc_'.$j]["tmp_name"],"upload/" . $ProjectId.'_'.$j.'.'.$ext);		           
+				}
+			$this->load->database();
+			$this->load->model('project_model');
+			
+			$msg = $this->project_model->projectCompletion($ProjectId);
+			//$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectId, addslashes(trim($_POST['comment'])), 'faculty_completed');
+			echo "\n\n";
+			echo $msg;
+			
+		}
 	}
-
 
 ?>

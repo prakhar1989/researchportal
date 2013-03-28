@@ -79,7 +79,8 @@ class FacultyRevisionCheck extends CI_Controller
 			{
 			session_start();
 					$ProjectId = $_SESSION['ProjectID'];
-					move_uploaded_file($_FILES["element_5"]["tmp_name"],"upload/".$ProjectId.'.'.$ext);
+					$i = $_POST['i'];
+					//move_uploaded_file($_FILES["element_5"]["tmp_name"],"upload/".$ProjectId.'.'.$ext);
 				
 					for ($j=1; $j < $i ; $j++)
 						{

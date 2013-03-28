@@ -16,10 +16,10 @@ class FacultyRevisionCheckSubmit extends CI_Controller
 		//echo $temp;
 		echo $ProjectId;
 		$i = $_POST['i'];
-		echo $i;
-		$ext = end(explode('.', $_FILES["element_5"]["name"]));
-		echo $ext;
-		move_uploaded_file($_FILES["element_5"]["tmp_name"],"upload/".$ProjectId.'.'.$ext);
+		//echo $i;
+		//$ext = end(explode('.', $_FILES["element_5"]["name"]));
+		//echo $ext;
+		//move_uploaded_file($_FILES["element_5"]["tmp_name"],"upload/".$ProjectId.'.'.$ext);
 	
 		for ($j=1; $j < $i ; $j++)
 			{

@@ -70,12 +70,12 @@ class FacultyProjApp extends CI_Controller {
 							<td>Project Deliverables</td>
 							<td><table>
 							<tr>Please select all the deliverable appilcable from below</tr>
-							<tr><td>Cases</td><td><input type="checkbox" value="1" name="casesCB" onClick="enableMe(\'cases\');" /></td><td><input type="text" disabled="disabled" name="cases" value="No of Cases" ></td></tr>
-							<tr><td>Journal Papers</td><td><input type="checkbox" value="1" name="journalsCB" onClick="enableMe(\'journals\');" /></td><td><input type="text" disabled="disabled" name="journals" value="No of Journals" ></td></tr>
-							<tr><td>Book Chapters</td><td><input type="checkbox" value="1" name="chaptersCB" onClick="enableMe(\'chapters\');" /></td><td><input type="text" disabled="disabled" name="chapters" value="No of Chapters" ></td></tr>
-							<tr><td>Conference Paper</td><td><input type="checkbox" value="1" name="conferencesCB" onClick="enableMe(\'conferences\');" /></td><td><input type="text" disabled="disabled" name="conferences" value="No of Conferences" ></td></tr>
-							<tr><td>Working Paper</td><td><input type="checkbox" value="1" name="papersCB" onClick="enableMe(\'papers\');" /></td><td><input type="text" disabled="disabled" name="papers" value="No of Work Papers" ></td></tr>
-							<tr><td>Books</td><td><input type="checkbox" value="1" name="booksCB" onClick="enableMe(\'books\');" /></td><td><input type="text" disabled="disabled" name="books" value="No of Books" ></td></tr>
+							<tr><td>Cases</td><td><input type="checkbox" value="1" name="casesCB" onClick="enableMe(\'cases\');" /></td><td><input type="text" disabled="disabled" name="cases" placeholder="No of Cases" ></td></tr>
+							<tr><td>Journal Papers</td><td><input type="checkbox" value="1" name="journalsCB" onClick="enableMe(\'journals\');" /></td><td><input type="text" disabled="disabled" name="journals" placeholder="No of Journals" ></td></tr>
+							<tr><td>Book Chapters</td><td><input type="checkbox" value="1" name="chaptersCB" onClick="enableMe(\'chapters\');" /></td><td><input type="text" disabled="disabled" name="chapters" placeholder="No of Chapters" ></td></tr>
+							<tr><td>Conference Paper</td><td><input type="checkbox" value="1" name="conferencesCB" onClick="enableMe(\'conferences\');" /></td><td><input type="text" disabled="disabled" name="conferences" placeholder="No of Conferences" ></td></tr>
+							<tr><td>Working Paper</td><td><input type="checkbox" value="1" name="papersCB" onClick="enableMe(\'papers\');" /></td><td><input type="text" disabled="disabled" name="papers" placeholder="No of Work Papers" ></td></tr>
+							<tr><td>Books</td><td><input type="checkbox" value="1" name="booksCB" onClick="enableMe(\'books\');" /></td><td><input type="text" disabled="disabled" name="books" placeholder="No of Books" ></td></tr>
 							</table></td>													
 						</tr>';
 						
@@ -84,7 +84,7 @@ class FacultyProjApp extends CI_Controller {
 
 							//*******************Uncomment on Server*********************
 
-							$username="ashishkj11";
+							/*$username="ashishkj11";
 							$ldapHost="192.168.1.103";
 							$ldapPort=389;
 							$ds = ldap_connect($ldapHost, $ldapPort) or die('Could not connect to $ldaphost');
@@ -102,7 +102,7 @@ class FacultyProjApp extends CI_Controller {
 								};
 								$namescsv.="\"\"]";
 
-							} else { $member_cn = Nil; }
+							} else { $member_cn = Nil; }*/
 							
 							//*******************Uncomment on Server*********************
 
