@@ -35,13 +35,14 @@ class Ongoing extends CI_Controller {
                 echo '<TR><TD><h4>ProjectTitle</h4></TD>
 					<TD><h4>Work Order Number</h4></TD>
                     <TD><h4>Description</h4></TD>
-                    <TD><h4>Project Category</TD>
-                    <TD><h4>Project Grant</TD>
-                    <TD><h4>Start Date</TD>
-					<TD><h4>End Date</TD>
-                    <TD><h4>Researcher1</TD>
-                    <TD><h4>Researcher2</TD>
-                    <TD><h4>Researcher3</h1></TD></tbody>';
+                    <TD><h4>Project Category</h4></TD>
+                    <TD><h4>Project Grant</h4></TD>
+                    <TD><h4>Start Date</h4></TD>
+					<TD><h4>End Date</h4></TD>
+                    <TD><h4>Researcher1</h4></TD>
+                    <TD><h4>Researcher2</h4></TD>
+                    <TD><h4>Researcher3</h4></TD>
+					<TD><h4>Select</h4></TD></tr></tbody>';
 	 
 					 foreach($Query->result() as $row)
 					 {
@@ -65,7 +66,7 @@ class Ongoing extends CI_Controller {
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
-						 echo '</TD><TD>';
+						 echo '</TD>';
 						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
 					 }
 				echo '</TABLE>';

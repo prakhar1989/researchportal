@@ -6,14 +6,20 @@ class CompletionCheckAdminRequest extends CI_Controller
 		{			
 		$data['myClass']=$this;
 		$data['action']=0;
+		session_start();
+		if($_SESSION['usertype']==1){
 		$this->load->view('layout',$data);
+		} 
+		else{
+		header("location:login");
+		}
 		}
 	function load_php()
 				{
 				$this->load->database();
 				$this->load->model('project_model');
 				$ProjectID = $_POST['ProjectSelected'];
-				session_start();
+				//session_start();
 				echo'
 					<FORM METHOD=POST ACTION="#">
 					<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 

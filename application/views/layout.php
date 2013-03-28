@@ -45,7 +45,10 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
         <div class="container">
             <div id="logo"></div>
 			<?php 
-			//session_start(); 
+			// if(session_id() == '') {
+			// session_start(); 
+			// }
+			
 			$name = $_SESSION['username'];
 			echo "<font color='black'>$name</font>";
 			?>
