@@ -317,7 +317,7 @@ class Project_model extends CI_Model {
 	function projectExtension($value,$period)
 	{
 		$this->load->database();
-		$queryStrCheck = 'Select ProjectId from projectextension where ProjectId = "'.$value.'";';
+		$queryStrCheck = 'Select ProjectId from projectextension where ProjectId = "'.$value.'" and ApprovalPending <> "approved";';
 		$queryCheck = $this->db->query($queryStrCheck);
 		If ( $queryCheck->num_rows() == 0)
 			{
@@ -326,7 +326,7 @@ class Project_model extends CI_Model {
 			$msg='The Request for Project Extension has been sent';
 			}
 		Else
-			$msg='Your Request For Approval Has Already Been Sent';
+			$msg='Your Request For Approval Has Already Been Sent. Please wait while the previous request is approved';
 		return $msg;
 	}	
 	
