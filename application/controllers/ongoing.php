@@ -41,8 +41,9 @@ class Ongoing extends CI_Controller {
 					<TD><h4>End Date</h4></TD>
                     <TD><h4>Researcher1</h4></TD>
                     <TD><h4>Researcher2</h4></TD>
-                    <TD><h4>Researcher3</h4></TD>
-					<TD><h4>Select</h4></TD></tr></tbody>';
+                    <TD><h4>Researcher3</h4></TD>';
+					if($_SESSION['usertype']<>2)
+					echo '<TD><h4>Select</h4></TD></tr></tbody>';
 	 
 					 foreach($Query->result() as $row)
 					 {
@@ -67,11 +68,14 @@ class Ongoing extends CI_Controller {
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
 						 echo '</TD>';
-						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
+						 if($_SESSION['usertype']<>2)
+							echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
 					 }
 				echo '</TABLE>';
 				
+				if($_SESSION['usertype']<>2)
 				echo '<INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables" onClick=checkDeliverables()>';
+				//echo '<INPUT TYPE=SUBMIT name="RequestType" id="Check Deliverables" value="Show Details" onClick=checkDeliverables()>';
 				echo '</FORM>';
 				}
 	

@@ -77,10 +77,6 @@ function index ()
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2>(Prof. Biswatosh Saha)</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
-					 <TR><TD align = left colspan=2><br></TD></TR>
-					 <TR><TD align = left colspan=2><br></TD></TR>
-					 <TR><TD align = left colspan=2>(Prof. Bhaskar Chakrabarti)                (Prof.Somprakash Bandyopadhyay)                  (Prof.Amit Dhiman)</TD></TR>
-					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2><u><b>Encl. : </b>Research Proposal of Prof.............</u></TD></TR>
 					 ';
 					 }

@@ -59,10 +59,12 @@ class Completed extends CI_Controller {
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
 						 echo '</TD><TD>';
-						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
+						 if($_SESSION['usertype']<>2)
+							echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
 					 }
 				echo '</TABLE>';
-				echo '<INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables" onClick=checkDeliverables()>';
+				if($_SESSION['usertype']<>2)
+					echo '<INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables" onClick=checkDeliverables()>';
 				echo '</FORM>';
 				}
 				
