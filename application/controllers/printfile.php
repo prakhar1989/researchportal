@@ -73,7 +73,7 @@ function index ()
 		 <TR><TD align = left colspan=6>Subject : Research Project Application by Prof. '.$row->Researcher1.'</TD></TR>
 		 <TR><TD align = left colspan=6>'.date("Y-m-d").'</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
-		 <TR><TD align = left colspan=6>The Research Subcommittee of the FPR Committee has approved the following Research Project proposal submitted by Prof........... Please issue a Work Order for the project.</TD></TR>
+		 <TR><TD align = left colspan=6>The Research Subcommittee of the FPR Committee has approved the following Research Project proposal submitted by Prof. '.$row->Researcher1.'. Please issue a Work Order for the project.</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
 		 <TR><TD align = left colspan=6>Title of the Project : '.$row->ProjectTitle.'</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
