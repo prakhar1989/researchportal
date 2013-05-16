@@ -29,7 +29,7 @@ class CompletionCheckAdminRequest extends CI_Controller
 					<FORM METHOD=POST ACTION="#">
 					<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 							';
-					if ($_POST['RequestType'] == 'Approve and Forward To Chairman')
+					if ($_POST['RequestType'] == 'Checked and Forward To Chairman')
 						{
 						$this->project_model->projectCompletionAdminResponse('Approve',$ProjectID);
 						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_approve_completion");

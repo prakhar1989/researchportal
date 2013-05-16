@@ -31,10 +31,10 @@ class Project_model extends CI_Model {
 		$query= $this->db->query($queryStr);
 		return $query->result();
 	}
-	function getCommProjects()//for projects pending with committee, which can be directly approved by chairman(called from 'committee' tab for user: chairman)
+	function getCommProjects()//for projects pending with committee, which can be directly approved by chairman(called from 'committee' tab for user: chairman & admin)
 	{
 		$this->load->database();
-		if ($_SESSION['usertype']==3)
+		if ($_SESSION['usertype']==3 || $_SESSION['usertype']==1)
 		{
 			$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" OR PStatus = "app_chairman_2";';
 		}

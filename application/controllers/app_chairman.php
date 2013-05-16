@@ -60,6 +60,8 @@ class App_chairman extends CI_Controller {
 				$Query= $this->project_model->project_stage($stage);
 				foreach($Query->result() as $row)
 					 {
+						if($row->comm_approval==9)
+						 {
 						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
 						 echo '</TD><TD>';
@@ -77,6 +79,7 @@ class App_chairman extends CI_Controller {
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
 						 echo '</td></tr>';
+						}
 					 }
 				
 				echo '</TABLE>';
