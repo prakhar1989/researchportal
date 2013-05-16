@@ -70,7 +70,7 @@ function index ()
 		 <TR><TD align = left colspan=6><br></TD></TR>
 		 <TR><TD align = left colspan=3><u>To : </TD><TD align = left colspan=3>C.C : </TD></TR>
 		 <TR><TD align = left colspan=6>From : </TD></TR>
-		 <TR><TD align = left colspan=6>Subject : Research Project Application by Prof.................</TD></TR>
+		 <TR><TD align = left colspan=6>Subject : Research Project Application by Prof. '.$row->Researcher1.'</TD></TR>
 		 <TR><TD align = left colspan=6>'.date("Y-m-d").'</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
 		 <TR><TD align = left colspan=6>The Research Subcommittee of the FPR Committee has approved the following Research Project proposal submitted by Prof........... Please issue a Work Order for the project.</TD></TR>
@@ -85,8 +85,14 @@ function index ()
 		 <TR><TD align = left colspan=6><br></TD></TR>';
 		//$date1 = new DateTime("2007-03-24");
 		//$date2 = new DateTime("2009-06-26");
+		//$datetime = strtotime($row->createdate);
+		//$mysqldate = date("Y-m-d H:i:s", $datetime);
+		//strtotime($row->App_Date)
+		//strtotime($row->End_Date)
 		//$interval = $date1->diff($date2);
-		 echo '<TR><TD align = left colspan=6>Proposed Time Frame : '.$row->ProjectGrant.'</TD></TR>';
+		 //echo '<TR><TD align = left colspan=6>Proposed Time Frame : '.date_diff(date_create(date("Y-m-d H:i:s",strtotime($row->Start_Date))),date_create(date("Y-m-d H:i:s",strtotime($row->End_Date)))).'</TD></TR>';
+		 $interval = date_diff(date_create($row->Start_Date),date_create($row->End_Date));
+		 echo '<TR><TD align = left colspan=6>Proposed Time Frame : '.$interval->format('%d days').'</TD></TR>';
 		 if($row->PStatus == "approved")
 		 {
 		 $path = "image/chairman";
