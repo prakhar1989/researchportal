@@ -19,13 +19,15 @@ class FacultyReviseApp extends CI_Controller {
 				{
 				//echo 'jai mata di';
 				$ProjectID = $_SESSION['ProjectID'];
+				echo '<INPUT TYPE="HIDDEN" NAME="ProjectSelected" VALUE="'.$ProjectID.'">	';
 				//echo $ProjectID;
 				//echo 'jai mata di';
 				//Load the project model
 				$this->load->model('project_model');
 				$result= $this->project_model->projectSearchByID($ProjectID);
 				foreach ($result->result() as $row){
-				$status=$row->PStatus;
+				//if ($row->PStatus = "")
+				$status= "app_admin";
 				//echo '<p> hello this is the Project Details Page </p>';
 				// Display the results
 					 echo '
@@ -57,6 +59,7 @@ class FacultyReviseApp extends CI_Controller {
 							<tr><td>Book Chapters</td><td><input type="checkbox" value="1" name="chaptersCB" onClick="enableMe(\'chapters\');" /></td><td><input type="text" disabled="disabled" name="chapters" value="No of Chapters" ></td></tr>
 							<tr><td>Conference</td><td><input type="checkbox" value="1" name="conferencesCB" onClick="enableMe(\'conferences\');" /></td><td><input type="text" disabled="disabled" name="conferences" value="No of Conferences" ></td></tr>
 							<tr><td>Work Paper</td><td><input type="checkbox" value="1" name="papersCB" onClick="enableMe(\'papers\');" /></td><td><input type="text" disabled="disabled" name="papers" value="No of Work Papers" ></td></tr>
+							<tr><td>Books</td><td><input type="checkbox" value="1" name="booksCB" onClick="enableMe(\'books\');" /></td><td><input type="text" disabled="disabled" name="books" value="No of Books" ></td></tr>
 							</table></td>													
 						</tr>';
 						
@@ -128,6 +131,7 @@ class FacultyReviseApp extends CI_Controller {
 function insert()
 			{
 			 session_start();
+			 $ProjectID = $_SESSION['ProjectID'];
 			 //echo 'The value of Project category is: '.$_POST['category'];
 			 if(isset($_POST['casesCB']))
 			 {
@@ -179,6 +183,16 @@ function insert()
 			 $data['papers']=0;
 			 }
 			 
+			 if(isset($_POST['booksCB']))
+			 {
+				$data['books']=$_POST['books'];
+				//echo 'papers CB is it checked ? ';
+			 }
+			 else
+			 {
+			 $data['books']=0;
+			 }
+			 
 			 //$data['title']=$_POST['title'];
 			 //$data['desc']=$_POST['desc'];
 			 //$data['researcher2']=$_POST['researcher2'];
@@ -190,12 +204,12 @@ function insert()
 			
 			$this->load->model('project_model');
 			
-		    $this->project_model->insertProjectRevision($_SESSION['username'],$data,$_POST['status'],$_POST['ProjectID']);
+		    $this->project_model->insertProjectRevision($_SESSION['username'],$data,$_POST['status'],$ProjectID);
 			//	$ProjectId=900;
 			 //$ProjectId=$this->project_model->insertProject($_SESSION['username'],$data);
 			 //Uploading the file code... Can be modified to check the file extension if required
 			 $ext=end(explode('/', $_FILES['file_desc']['type']));
-			 move_uploaded_file($_FILES['file_desc']["tmp_name"],"upload/" . $ProjectId.'_description.'.$ext);
+			 move_uploaded_file($_FILES['file_desc']["tmp_name"],"upload/" . $ProjectID.'_description.'.$ext);
 			// echo "Stored in: " . "upload/" . $_FILES["file_desc"]["name"];
 
 			//if(isset($_POST['commentCB']))

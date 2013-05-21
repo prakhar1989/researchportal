@@ -26,11 +26,7 @@ class FacultyProjShowDetails extends CI_Controller {
 				// Display the results
 				echo'
 					<FORM name = "form1" METHOD=POST ACTION="FacultyProjRequest">
-					<table class="table table-bordered">
-					<tr<><td></td></tr>
-					<TD><h4>Project Title</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3</h4></TD><TD><h4>Total Grant</h4></TD><TD><h4>Budget Consumed</h4></TD><TD><h4>Project Category</h1></TD>
 				
-					<tbody>	
 					<INPUT TYPE="HIDDEN" NAME="ProjectSelected" VALUE="'.$ProjectID.'">	
 					<INPUT TYPE="HIDDEN" NAME="hidden1">	
 					<INPUT TYPE="HIDDEN" NAME="hidden2">
@@ -53,6 +49,13 @@ class FacultyProjShowDetails extends CI_Controller {
 					$countpromised = 0;
 					foreach($query->result() as $row)
 						{
+						echo '<INPUT TYPE="HIDDEN" NAME="Deliverables" VALUE="'.$row->Deliverables.'">';
+						echo '<INPUT TYPE="HIDDEN" NAME="cases" VALUE="'.$row->cases.'">';
+						echo '<INPUT TYPE="HIDDEN" NAME="journals" VALUE="'.$row->journals.'">';
+						echo '<INPUT TYPE="HIDDEN" NAME="chapters" VALUE="'.$row->chapters.'">';
+						echo '<INPUT TYPE="HIDDEN" NAME="conference" VALUE="'.$row->conference.'">';
+						echo '<INPUT TYPE="HIDDEN" NAME="paper" VALUE="'.$row->paper.'">';
+						echo '<INPUT TYPE="HIDDEN" NAME="books" VALUE="'.$row->books.'">';
 						$countpromised = $countpromised + $row->Deliverables;
 						$countpromised = $countpromised + $row->cases;
 						$countpromised = $countpromised + $row->journals;
@@ -63,35 +66,129 @@ class FacultyProjShowDetails extends CI_Controller {
 						}
 					echo '<INPUT TYPE="HIDDEN" NAME="countpromised" VALUE="'.$countpromised.'">';
 					echo '<INPUT TYPE="HIDDEN" NAME="countuploaded" VALUE="'.$countuploaded.'">';
-					foreach($result->result() as $row)
+					
+					 $Query= $this->project_model->projectInfoNewProject($ProjectID);
+					 echo '<table class="table table-bordered"> 
+					
+					 <thead>
+							<tr>
+							</tr>
+					</thead>
+					<tbody>';
+					 
+					 foreach($Query->result() as $row)
+					 {
+					If ($row->cases!=0 OR  $row->journals!=0 OR $row->chapters!=0 OR $row->conference!=0 OR $row->paper!=0 OR $row->books!=0)
 						{
-						echo '<TR><TD>';
+						$tableHeader= '<TR><TD rowspan="2"><h4>ProjectTitle</h4></TD><TD rowspan="2"><h4>Work Order Number</h4></TD><TD rowspan="2"><h4>ProjectCategory</TD><TD rowspan="2"><h4>ProjectGrant</TD><TD rowspan="2"><h4>App_Date</TD><TD rowspan="2"><h4>Researcher1</TD><TD rowspan="2"><h4>Researcher2</TD><TD rowspan="2"><h4>Researcher3 </h4>';
+						/*if ($_SESSION['usertype']==3)
+						{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
+						}*/
+						$tableHeader= $tableHeader.'<TD><h4>Deliverables</h4></TD></TR><TR>';
+						if ($row->cases!=0)
+						{
+						 $tableHeader= $tableHeader.'<TD><h4>Cases</h4>';
+						}
+						if ($row->journals!=0)
+						{
+						 $tableHeader= $tableHeader.'<TD><h4>Journals</h4>';
+						}
+						if ($row->chapters!=0)
+						{
+						 $tableHeader= $tableHeader.'<TD><h4>Chapters</h4>';
+						}
+						if ($row->conference!=0)
+						{
+						 $tableHeader= $tableHeader.'<TD><h4>Conferences</h4>';
+						}
+						if ($row->paper!=0)
+						{
+						 $tableHeader= $tableHeader.'<TD><h4>Papers</h4>';
+						}
+						if ($row->books!=0)
+						{
+						 $tableHeader= $tableHeader.'<TD><h4>Books</h4>';
+						}
+						$tableHeader= $tableHeader.'</TR>';
+						}
+					else
+						{
+						$tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD ><h4>Researcher3 </h4>';
+						/*if ($_SESSION['usertype']==3)
+						{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
+						}*/
+						}
+						$tableHeader= $tableHeader.'</TR>';
+					 }
+					 $tableHeader= $tableHeader.'</TR>';
+					 echo $tableHeader;
+					 //echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Id</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1>';
+					 foreach($Query->result() as $row)
+					 {
+						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
-						  echo '</TD><TD>';
+						 echo '</TD><TD>';
 						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
-						 print $row->Start_Date;
+						 print $row->ProjectCategory;
 						 echo '</TD><TD>';
-						 print $row->End_Date;
+						 print $row->ProjectGrant;
+						 echo '</TD><TD>';
+						 print $row->App_Date;
 						 echo '</TD><TD>';
 						 print $row->Researcher1;
 						 echo '</TD><TD>';
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
-						 echo '</TD><TD>';
-						 print $row->ProjectGrant;
-						 echo '</TD><TD>';
-						 print $row->BudgetConsumed;
-						 echo '</TD><TD>';
-						 print $row->ProjectCategory;
-						 echo '</TD><TD>';
+						 echo '</TD>';
+						 /*if ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_2')
+						 {
+							echo 'YES';
+						 }
+						 else if ($_SESSION['usertype']=='3' && $row->PStatus!='app_chairman_2')
+						 {
+							echo 'NO';
+						 }*/
+						 
+						 
+						if ($row->cases!=0)
+						{
+						 echo '</td><TD>';
+						 print $row->cases;
+						}
+						if ($row->journals!=0)
+						{
+						 echo '</td><TD>';
+						 print $row->journals;
+						}
+						if ($row->chapters!=0)
+						{
+						 echo '</td><TD>';
+						 print $row->chapters;
+						}
+						if ($row->conference!=0)
+						{
+						 echo '</td><TD>';
+						 print $row->conference;
+						}
+						if ($row->paper!=0)
+						{
+						 echo '</td><TD>';
+						 print $row->paper;
+						}
+						if ($row->books!=0)
+						{
 
-						 //print $this->project_model->budgetConsumed($ProjectID);
-						 //echo '</TD>';
-						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
-						}			 
-					 echo '</tbody></TABLE>
+						 echo '</td><TD>';
+
+						 print $row->books;
+						 echo '</td>';
+						}
+					 }
+					 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
+					 echo '</tbody> </TABLE>
+					 
 
 					<p>Please enter comments (mandatory)*</p>
 					<p><textarea name="comment" ></textarea></p>
@@ -116,11 +213,21 @@ document.form1.hidden1.value = period;
 }
 function checkdeliverables()
 {
+var Deliverables = document.form1.Deliverables.value;
+var cases = document.form1.cases.value;
+var journals = document.form1.journals.value;
+var chapters = document.form1.chapters.value;
+var conference = document.form1.conference.value;
+var paper = document.form1.paper.value;
+var books = document.form1.books.value;
+
 var countpromised = document.form1.countpromised.value;
 var countuploaded = document.form1.countuploaded.value;
+if (countuploaded > 0)
+	countuploaded = countuploaded - 1;
 if (countpromised>countuploaded)
 	{
-	alert("Number of Deliverables Promised: "+countpromised+"\nNumber of Deliverables Uploaded: "+countuploaded+"\n\nPlease Upload the remaining deliverables promised...");
+	alert("Number of Deliverables Promised: "+countpromised+"\nNumber of Deliverables Uploaded: "+countuploaded+"\nNumber of Cases Promised: "+cases+"\nNumber of Journals Promised: "+journals+"\nNumber of Chapters Promised: "+chapters+"\nNumber of Conference Promised: "+conference+"\nNumber of Paper Promised: "+paper+"\nNumber of Books Promised: "+books+"\n\nPlease Upload the remaining deliverables promised...");
 	var check = true;
 	}
 else 

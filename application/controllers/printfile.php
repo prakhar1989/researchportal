@@ -86,11 +86,23 @@ function index ()
 		//$date1 = new DateTime("2007-03-24");
 		//$date2 = new DateTime("2009-06-26");
 		//$interval = $date1->diff($date2);
-		 echo '<TR><TD align = left colspan=6>Proposed Time Frame : '.$row->ProjectGrant.'</TD></TR>
-		 <TR><TD align = left colspan=6><br></TD></TR>
-		 <TR><TD align = left colspan=6><br></TD></TR>
-		 <TR><TD align = left colspan=6><br></TD></TR>
-		 <TR><TD align = left colspan=6>(Prof. Biswatosh Saha)</TD></TR>
+		 echo '<TR><TD align = left colspan=6>Proposed Time Frame : '.$row->ProjectGrant.'</TD></TR>';
+		 if($row->PStatus == "approved")
+		 {
+		 $path = "image/chairman";
+		 $Files = glob($path."*.*");
+		 foreach ($Files as $File)
+			{
+			echo '<IMG src="'.$File.'" border="0" width ="100" height="100">';
+			}		
+		 }
+		 else
+		 {
+			echo'<TR><TD align = left colspan=6><br></TD></TR><TR><TD align = left colspan=6><br></TD></TR><TR><TD align = left colspan=6><br></TD></TR>';
+		 }
+		 echo '</TD><TD align = left colspan=2>';
+		 
+		 echo '<TR><TD align = left colspan=6>(Prof. Biswatosh Saha)</TD></TR>
 		 <TR><TD align = left colspan=2>';
 		 if($row->comm_approval == 2 || $row->comm_approval == 5 || $row->comm_approval == 6 || $row->comm_approval == 9)
 		 {
