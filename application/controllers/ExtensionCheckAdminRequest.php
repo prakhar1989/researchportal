@@ -36,7 +36,7 @@ class ExtensionCheckAdminRequest extends CI_Controller
 							//echo $File;
 							//$Files=(explode('.', $File));
 							$countuploaded++;			
-							echo'<a href="download?file='.$File.'">'.$File.'</a><br><br>';
+							echo'<a href="download?file='.$File.'">'.$File.'</a>';
 							echo '<br>';
 							}
 						echo 'Number of Deliverables uploaded: '.$countuploaded;

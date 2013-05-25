@@ -66,7 +66,8 @@ class FacultyRevisionCheck extends CI_Controller
 							echo'<input type="hidden" name="i" value="'.$i.'" />
 							<br><input type="SUBMIT" value="Apply" class="btn btn-large btn-primary "></input>';
 							}
-							 
+						else
+							echo '<input type="SUBMIT" value="Resend Completion Request" class="btn btn-large btn-primary "></input>';
 						}
 					echo "\n\n";
 					 echo '</TABLE>

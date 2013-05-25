@@ -73,8 +73,11 @@ class Ongoing extends CI_Controller {
 					 }
 				echo '</TABLE>';
 				
+				 echo '<br><INPUT TYPE=SUBMIT value="Download Project Description" name="RequestType"><br><br>';
+				
 				if($_SESSION['usertype']<>2)
-				echo '<INPUT TYPE=SUBMIT name="RequestType" id="Check Deliverables" value="Show Details" onClick=checkDeliverables()>';
+				echo '<INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables" onClick=checkDeliverables()>';
+				//echo '<INPUT TYPE=SUBMIT name="RequestType" id="Check Deliverables" value="Show Details" onClick=checkDeliverables()>';
 				echo '</FORM>';
 				}
 	

@@ -31,10 +31,10 @@ class Project_model extends CI_Model {
 		$query= $this->db->query($queryStr);
 		return $query->result();
 	}
-	function getCommProjects()//for projects pending with committee, which can be directly approved by chairman(called from 'committee' tab for user: chairman)
+	function getCommProjects()//for projects pending with committee, which can be directly approved by chairman(called from 'committee' tab for user: chairman & admin)
 	{
 		$this->load->database();
-		if ($_SESSION['usertype']==3)
+		if ($_SESSION['usertype']==3 || $_SESSION['usertype']==1)
 		{
 			$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" OR PStatus = "app_chairman_2";';
 		}
@@ -546,7 +546,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='SELECT * FROM project WHERE PStatus = "approved" OR PStatus = "completed" OR PStatus = "ongoing";';
+		$queryStr='SELECT * FROM project WHERE PStatus = "approved" OR PStatus = "completed" OR PSTatus = "ongoing";';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -601,7 +601,7 @@ class Project_model extends CI_Model {
 		
 		//2. Insert value into the project table
 		//INSERT INTO `researchportal`.`project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`) VALUES ('Business Leasdership Study', 'P33333', 'Leadership traits study on current business leaders', '2012-09-29', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', '100000', 'app_admin', '1 Leadership report');
-		 $queryStr= 'UPDATE project SET ProjectCategory = "'.$data['category'].'", ProjectGrant = '.$data['grant'].', PStatus = "'.$status.'", cases = '.$data['cases'].', journals = '.$data['journals'].', chapters = '.$data['chapters'].', conference = '.$data['conferences'].', paper = '.$data['papers'].', books = '.$data['books'].' WHERE ProjectId = '.$projectid.';';
+		 $queryStr= 'UPDATE project SET ProjectCategory = "'.$data['category'].'", ProjectGrant = '.$data['grant'].', PStatus = "'.$status.'", cases = '.$data['cases'].', journals = '.$data['journals'].', chapters = '.$data['chapters'].', conference = '.$data['conferences'].', paper = '.$data['papers'].', , books = '.$data['books'].' WHERE ProjectId = '.$projectid.';';
 		//echo '<br>'.$queryStr;
 		$query = $this->db->query($queryStr);
 		//$result = $query->result();

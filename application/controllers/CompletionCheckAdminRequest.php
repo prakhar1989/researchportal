@@ -29,12 +29,17 @@ class CompletionCheckAdminRequest extends CI_Controller
 					<FORM METHOD=POST ACTION="#">
 					<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 							';
-					if ($_POST['RequestType'] == 'Approve and Forward To Chairman')
+					if ($_POST['RequestType'] == 'Checked and Forward To Chairman')
 						{
 						$this->project_model->projectCompletionAdminResponse('Approve',$ProjectID);
 						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_approve_completion");
 						header("Location: /rp/Completion_admin");
-						} 
+						}
+					else if ($_POST['RequestType'] == 'Download Project Description')
+						{
+						//$Project = $this->input->post('Choice1');
+						header("location:/rp/downloadfile?file=upload/".$ProjectID."_description");
+						}
 					else if ($_POST['RequestType'] == 'Check Deliverables') 
 						{
 						echo '<br><h3>Deliverables Uploaded</h3>';
@@ -47,8 +52,8 @@ class CompletionCheckAdminRequest extends CI_Controller
 							//echo $File;
 							//$Files=(explode('.', $File));
 							$countuploaded++;			
-							echo'<a href="download?file='.$File.'">'.$File.'</a><br><br>';
-							echo '<br>';
+							echo'<a href="download?file='.$File.'">'.$File.'</a><br>';
+							//echo '<br>';
 							}
 						echo 'Number of Deliverables uploaded: '.$countuploaded;
 						$queryStr='Select * from project where ProjectId = "'.$ProjectID.'";';

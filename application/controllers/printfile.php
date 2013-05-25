@@ -70,10 +70,10 @@ function index ()
 		 <TR><TD align = left colspan=6><br></TD></TR>
 		 <TR><TD align = left colspan=3><u>To : </TD><TD align = left colspan=3>C.C : </TD></TR>
 		 <TR><TD align = left colspan=6>From : </TD></TR>
-		 <TR><TD align = left colspan=6>Subject : Research Project Application by Prof.................</TD></TR>
+		 <TR><TD align = left colspan=6>Subject : Research Project Application by Prof. '.$row->Researcher1.'</TD></TR>
 		 <TR><TD align = left colspan=6>'.date("Y-m-d").'</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
-		 <TR><TD align = left colspan=6>The Research Subcommittee of the FPR Committee has approved the following Research Project proposal submitted by Prof........... Please issue a Work Order for the project.</TD></TR>
+		 <TR><TD align = left colspan=6>The Research Subcommittee of the FPR Committee has approved the following Research Project proposal submitted by Prof. '.$row->Researcher1.'. Please issue a Work Order for the project.</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
 		 <TR><TD align = left colspan=6>Title of the Project : '.$row->ProjectTitle.'</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
@@ -85,15 +85,21 @@ function index ()
 		 <TR><TD align = left colspan=6><br></TD></TR>';
 		//$date1 = new DateTime("2007-03-24");
 		//$date2 = new DateTime("2009-06-26");
+		//$datetime = strtotime($row->createdate);
+		//$mysqldate = date("Y-m-d H:i:s", $datetime);
+		//strtotime($row->App_Date)
+		//strtotime($row->End_Date)
 		//$interval = $date1->diff($date2);
-		 echo '<TR><TD align = left colspan=6>Proposed Time Frame : '.$row->ProjectGrant.'</TD></TR>';
+		 //echo '<TR><TD align = left colspan=6>Proposed Time Frame : '.date_diff(date_create(date("Y-m-d H:i:s",strtotime($row->Start_Date))),date_create(date("Y-m-d H:i:s",strtotime($row->End_Date)))).'</TD></TR>';
+		 $interval = date_diff(date_create($row->Start_Date),date_create($row->End_Date));
+		 echo '<TR><TD align = left colspan=6>Proposed Time Frame : '.$interval->format('%d days').'</TD></TR>';
 		 if($row->PStatus == "approved")
 		 {
 		 $path = "image/chairman";
 		 $Files = glob($path."*.*");
 		 foreach ($Files as $File)
 			{
-			echo '<IMG src="'.$File.'" border="0" width ="100" height="100">';
+			echo '<TR><TD align = left colspan=6><IMG src="'.$File.'" border="0" width ="100" height="100"></TD></TR>';
 			}		
 		 }
 		 else
@@ -115,7 +121,8 @@ function index ()
 		 }
 		 else
 		 {
-			echo'<TR><TD align = left colspan=6><br></TD></TR>';
+			echo '';
+			//echo'<TR><TD align = left colspan=6><br></TD></TR>';
 		 }
 		 echo '</TD><TD align = left colspan=2>';
 		 if($row->comm_approval == 3 || $row->comm_approval == 5 || $row->comm_approval == 7 || $row->comm_approval == 9)
@@ -129,7 +136,8 @@ function index ()
 		 }
 		 else
 		 {
-			echo '<TR><TD align = left colspan=6><br></TD></TR>';
+			echo '';
+			//echo '<TR><TD align = left colspan=6><br></TD></TR>';
 		 }
 		 echo '</TD><TD align = left colspan=2>';
 		 if($row->comm_approval == 4 || $row->comm_approval == 6 || $row->comm_approval == 7 || $row->comm_approval == 9)
@@ -143,7 +151,8 @@ function index ()
 		 }
 		 else
 		 {
-			echo '<TR><TD align = left colspan=6><br></TD></TR>';
+			echo '';
+			//echo '<TR><TD align = left colspan=6><br></TD></TR>';
 		 }
 		 echo '</TD></TR>
 		 <TR><TD align = left colspan=2>(Prof. Bhaskar Chakrabarti)</TD><TD align = left colspan=2>(Prof.Somprakash Bandyopadhyay)</TD><TD align = left colspan=2>(Prof.Amit Dhiman)</TD></TR>

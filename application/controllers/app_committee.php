@@ -94,14 +94,14 @@ class App_committee extends CI_Controller {
 				}
 				else if($_SESSION['usertype']==1){
 					$stage='comm';
-					$Query= $this->project_model->project_stage($stage);
+					$data['query']= $this->project_model->getCommProjects();
 					echo'
 						<table class="table table-bordered">
 						<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>ProjectGrant</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3</h4></td><TD><h4>Approved by </h4></td></tr>
 						<tbody>';
 						$flag=0;
 
-					foreach($Query->result() as $row)
+					foreach($data['query'] as $row)
 					{
 						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
