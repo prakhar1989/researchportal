@@ -21,7 +21,7 @@ class ShowMsg extends CI_Controller {
 		function load_php($msg)
 		{
 		 
-		 echo '<h4>'.$msg.'</h4>';  
+		 echo '<h3>'.$msg.'</h3>';  
 		}
 }
 ?>

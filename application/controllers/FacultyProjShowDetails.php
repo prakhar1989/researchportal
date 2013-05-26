@@ -189,10 +189,11 @@ class FacultyProjShowDetails extends CI_Controller {
 						
 					 }
 					 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
-					 echo '</tbody> </TABLE>
+					 echo '</tbody> </TABLE>';
 					 
-
-					<p>Please enter comments (mandatory)*</p>
+					echo'<a href="downloadfile?file=upload/'.$ProjectID.'_description">Download Project Description file</a><br><br>';
+					
+					echo '<p>Please enter comments (mandatory)*</p>
 					<p><textarea name="comment" ></textarea></p>
 					<INPUT TYPE=SUBMIT name ="RequestType" value="Request For Extension" onclick="myFunction()">
 					<INPUT TYPE=SUBMIT name="RequestType" value="Request For Project Closure" onclick="checkdeliverables()">

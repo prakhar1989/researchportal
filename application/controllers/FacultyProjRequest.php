@@ -5,7 +5,7 @@ class FacultyProjRequest extends CI_Controller
 	
 	function index()
 		{
-			
+		
 		$data['myClass']=$this;
 		$data['action']=0;
 		session_start();
@@ -39,7 +39,7 @@ class FacultyProjRequest extends CI_Controller
 							$msg = $this->project_model->projectExtension($ProjectID,$ExtensionPeriod);
 							$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), 'faculty_extension');
 						echo "\n\n";
-						echo "Extension";
+						//echo "Extension";
 						echo $msg;
 						}
 						
@@ -137,6 +137,7 @@ class FacultyProjRequest extends CI_Controller
 		function insert()
 		{
 		session_start();
+		
 			$ProjectId = $_SESSION['ProjectID'];
 			$i = $_POST['i'];
 			//move_uploaded_file($_FILES["element_5"]["tmp_name"],"upload/".$ProjectId.'.'.$ext);
@@ -152,8 +153,16 @@ class FacultyProjRequest extends CI_Controller
 			$msg = $this->project_model->projectCompletion($ProjectId);
 			//$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectId, addslashes(trim($_POST['comment'])), 'faculty_completed');
 			echo "\n\n";
+<<<<<<< HEAD
 			echo $msg;
 			header("Location: /rp/FacultyProjOngoing");
+=======
+			//echo $msg;
+			require('showMsg.php');
+			$showMsg=new showMsg();
+			$showMsg->index($msg,'faculty');
+			
+>>>>>>> 1aabd25eb8b340928440d5f67bd99d3c634a5e02
 		}
 	}
 

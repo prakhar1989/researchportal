@@ -34,7 +34,12 @@ class CompletionCheckAdminRequest extends CI_Controller
 						$this->project_model->projectCompletionAdminResponse('Approve',$ProjectID);
 						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_approve_completion");
 						header("Location: /rp/Completion_admin");
-						} 
+						}
+					else if ($_POST['RequestType'] == 'Download Project Description')
+						{
+						//$Project = $this->input->post('Choice1');
+						header("location:/rp/downloadfile?file=upload/".$ProjectID."_description");
+						}
 					else if ($_POST['RequestType'] == 'Check Deliverables') 
 						{
 						echo '<br><h3>Deliverables Uploaded</h3>';
@@ -47,8 +52,8 @@ class CompletionCheckAdminRequest extends CI_Controller
 							//echo $File;
 							//$Files=(explode('.', $File));
 							$countuploaded++;			
-							echo'<a href="download?file='.$File.'">'.$File.'</a><br><br>';
-							echo '<br>';
+							echo'<a href="download?file='.$File.'">'.$File.'</a><br>';
+							//echo '<br>';
 							}
 						echo 'Number of Deliverables uploaded: '.$countuploaded;
 						$queryStr='Select * from project where ProjectId = "'.$ProjectID.'";';

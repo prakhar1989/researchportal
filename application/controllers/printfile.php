@@ -99,7 +99,7 @@ function index ()
 		 $Files = glob($path."*.*");
 		 foreach ($Files as $File)
 			{
-			echo '<IMG src="'.$File.'" border="0" width ="100" height="100">';
+			echo '<TR><TD align = left colspan=6><IMG src="'.$File.'" border="0" width ="100" height="100"></TD></TR>';
 			}		
 		 }
 		 else
@@ -121,7 +121,8 @@ function index ()
 		 }
 		 else
 		 {
-			echo'<TR><TD align = left colspan=6><br></TD></TR>';
+			echo '';
+			//echo'<TR><TD align = left colspan=6><br></TD></TR>';
 		 }
 		 echo '</TD><TD align = left colspan=2>';
 		 if($row->comm_approval == 3 || $row->comm_approval == 5 || $row->comm_approval == 7 || $row->comm_approval == 9)
@@ -135,7 +136,8 @@ function index ()
 		 }
 		 else
 		 {
-			echo '<TR><TD align = left colspan=6><br></TD></TR>';
+			echo '';
+			//echo '<TR><TD align = left colspan=6><br></TD></TR>';
 		 }
 		 echo '</TD><TD align = left colspan=2>';
 		 if($row->comm_approval == 4 || $row->comm_approval == 6 || $row->comm_approval == 7 || $row->comm_approval == 9)
@@ -149,7 +151,8 @@ function index ()
 		 }
 		 else
 		 {
-			echo '<TR><TD align = left colspan=6><br></TD></TR>';
+			echo '';
+			//echo '<TR><TD align = left colspan=6><br></TD></TR>';
 		 }
 		 echo '</TD></TR>
 		 <TR><TD align = left colspan=2>(Prof. Bhaskar Chakrabarti)</TD><TD align = left colspan=2>(Prof.Somprakash Bandyopadhyay)</TD><TD align = left colspan=2>(Prof.Amit Dhiman)</TD></TR>
