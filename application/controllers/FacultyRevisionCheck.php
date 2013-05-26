@@ -3,16 +3,23 @@
 class FacultyRevisionCheck extends CI_Controller 
 {
 	function index()
-		{			
+		{	
 		$data['myClass']=$this;
 		$data['action']=0;
+		session_start();
+		if($_SESSION['usertype']==4){
 		$this->load->view('layoutFaculty',$data);
+		} 
+		else{
+		header("location:login");
+		}
+		
 		}
 	function load_php()
 				{
 				echo '<FORM METHOD=POST action="FacultyRevisionCheck/insert" enctype="multipart/form-data">';
 				$this->load->model('project_model');
-				session_start();
+				//session_start();
 				$_SESSION['ProjectID'] = $_POST['ProjectSelected'];
 				$ProjectID = $_POST['ProjectSelected'];
 				//echo $ProjectID;

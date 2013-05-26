@@ -30,7 +30,7 @@ class FacultyProjRequest extends CI_Controller
 					<p><br><br></p>
 					<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 							';
-					if ($_POST['RequestType'] == 'Request For Extension')
+					if ($_POST['RequestType'] == "Request For Extension")
 						{
 						$ExtensionPeriod = $_POST['hidden1'];
 						//echo $ExtensionPeriod;
@@ -153,7 +153,7 @@ class FacultyProjRequest extends CI_Controller
 			//$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectId, addslashes(trim($_POST['comment'])), 'faculty_completed');
 			echo "\n\n";
 			echo $msg;
-			
+			header("Location: /rp/FacultyProjOngoing");
 		}
 	}
 
