@@ -153,16 +153,16 @@ class FacultyProjRequest extends CI_Controller
 			$msg = $this->project_model->projectCompletion($ProjectId);
 			//$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectId, addslashes(trim($_POST['comment'])), 'faculty_completed');
 			echo "\n\n";
-<<<<<<< HEAD
-			echo $msg;
-			header("Location: /rp/FacultyProjOngoing");
-=======
+
+
 			//echo $msg;
 			require('showMsg.php');
 			$showMsg=new showMsg();
 			$showMsg->index($msg,'faculty');
-			
->>>>>>> 1aabd25eb8b340928440d5f67bd99d3c634a5e02
+			//echo $msg;
+			//header("Location: /rp/FacultyProjOngoing");
+
+
 		}
 	}
 
