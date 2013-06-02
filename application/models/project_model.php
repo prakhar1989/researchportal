@@ -374,7 +374,7 @@ class Project_model extends CI_Model {
 		}
 		
 	
-	//get a project's details
+	//get a extension project's details
 	function projectInfo($Project)
 		{
 		//echo 'projectInfo called';
@@ -386,7 +386,19 @@ class Project_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query;
 		}
-	
+
+		//get a completed project's details
+	function projectInfoCompletion($Project)
+		{
+		//echo 'projectInfo called';
+		$this->load->database();
+		//$query= $this->db->get('project');
+		//echo $Project['Id'];	
+		$queryStr='Select project.*,projectcompleted.* From project Inner Join projectcompleted On project.ProjectId = projectcompleted.ProjectId where  project.ProjectID = "'.$Project.'" order by project.ProjectId;';
+		//echo $queryStr;
+		$query = $this->db->query($queryStr);
+		return $query;
+		}
 	// Function to change the status of the project
 	function changeStatus($status,$Project)//changing the status of the project
 		{
@@ -833,7 +845,6 @@ return $query->result();
     function insertAccountBudget($data)
 	{
 		$this->load->database();
-		//--vridhi--added date below
 		$queryStr= 'UPDATE project SET ResearchAssistanceBudget='.$data['RA'].', RCEBudget='.$data['RCE'].', InvestigatorsBudget='.$data['Investigators'].', TravelAccoBudget='.$data['TravelAcco'].', CommunicationBudget='.$data['Communication'].', ITCostsBudget='.$data['ITCosts'].', DisseminationBudget='.$data['Dissemination'].', ContingencyBudget='.$data['Contingency'].' WHERE ProjectId='.$data['projectid'].';' ;
 //$queryStr= 'UPDATE project SET (ResearchAssistanceBudget=\''.$data['RA'].'\', RCEBudget=\''.$data['RCE'].'\', InvestigatorsBudget=\''.$data['Investigators'].'\', TravelAccoBudget=\''.$data['TravelAcco'].'\', CommunicationBudget=\''.$data['Communication'].'\', ITCostsBudget=\''.$data['ITCosts'].'\', DisseminationBudget=\''.$data['Dissemination'].'\', ContingencyBudget=\''.$data['Contingency'].'\') WHERE ProjectId='.$data['projectid'].';' ;
 		//echo '<br>'.$queryStr;
@@ -850,6 +861,17 @@ return $query->result();
 	    $query= $this->db->query($queryStr);
 		return $query->result();
 	}
+	
+	//Function to update edited budget
+	function editBudget($data)
+	{
+		$this->load->database();
+		$queryStr= 'UPDATE project SET ResearchAssistanceBudget='.$data['RA'].', RCEBudget='.$data['RCE'].', InvestigatorsBudget='.$data['Investigators'].', TravelAccoBudget='.$data['TravelAcco'].', CommunicationBudget='.$data['Communication'].', ITCostsBudget='.$data['ITCosts'].', DisseminationBudget='.$data['Dissemination'].', ContingencyBudget='.$data['Contingency'].' WHERE ProjectId='.$data['projectid'].';' ;
+		$query = $this->db->query($queryStr);
+		$msg='The Account Budget Details have been Updated';
+		return $msg;
+	}
+	
 	// Function to get all the projects
 	function allPending()
 	{

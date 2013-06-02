@@ -45,6 +45,7 @@ function index ()
 							</tr>
 					</thead>
 					<tbody>';
+					
 					foreach($Query->result() as $row)
 					 {
 					 echo '<Table>
@@ -55,10 +56,10 @@ function index ()
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left><u>To : </TD><TD align = left>C.C : </TD></TR>
 					 <TR><TD align = left colspan=2>From : </TD></TR>
-					 <TR><TD align = left colspan=2>Subject : Research Project Application by Prof.................</TD></TR>
+					 <TR><TD align = left colspan=2>Subject : Research Project Application by Prof.'.$row->Researcher1.'</TD></TR>
 					 <TR><TD align = left colspan=2>'.date("Y-m-d").'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
-					 <TR><TD align = left colspan=2>The Research Subcommittee of the FPR Committee has approved the extension of the following Research Project proposal submitted by Prof............</TD></TR>
+					 <TR><TD align = left colspan=2>The Research Subcommittee of the FPR Committee has approved the extension of the following Research Project proposal submitted by Prof.'.$row->Researcher1.'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2>Title of the Project : '.$row->ProjectTitle.'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
@@ -77,8 +78,9 @@ function index ()
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2>(Prof. Biswatosh Saha)</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
-					 <TR><TD align = left colspan=2><u><b>Encl. : </b>Research Proposal of Prof.............</u></TD></TR>
+					 <TR><TD align = left colspan=2><u><b>Encl. : </b>Research Proposal of Prof.'.$row->Researcher1.'</u></TD></TR>
 					 ';
+					 break;
 					 }
 					 echo '</tbody> ';
 					echo '<TR><TD align = center colspan=2><INPUT TYPE="button" onClick="window.print()" value="  Print  "></TR></Table></TABLE>';

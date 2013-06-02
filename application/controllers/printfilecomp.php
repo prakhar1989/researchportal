@@ -23,21 +23,22 @@ function index ()
 
 	session_start();
 	$projectID = $_POST['ProjectSelected'];
+	//echo $projectID;
 	$err = '<p style="color:#990000">Sorry, please try again later.</p>';
 	//echo 'File is '.$projectID;
 	if (!$projectID) 
 	{
 	// if variable $projectID is NULL or false display the message
-	//echo $err;
 	} 
 	else 
 	{			
+	
 	$this->load->model('project_model');
 					  //pass the projectId of the selected project
 					 
 					 echo '<FORM name="approveProject" method= POST action="">';
 
-					 $Query= $this->project_model->projectInfo($projectID);
+					 $Query= $this->project_model->projectInfoCompletion($projectID);
 					 echo '<table class="table table-bordered"> 
 					
 					 <thead>
@@ -47,6 +48,7 @@ function index ()
 					<tbody>';
 					foreach($Query->result() as $row)
 					 {
+					 
 					 echo '<Table>
 					 <TR><TD style="font-weight:bold" align = center colspan=2>INDIAN INSTITUE OF MANAGEMENT CALCUTTA</TD></TR>
 					 <TR><TD style="font-weight:bold" align = center colspan=2>Fellow Programme and Research</TD></TR>
@@ -55,10 +57,10 @@ function index ()
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left><u>To : </TD><TD align = left>C.C : </TD></TR>
 					 <TR><TD align = left colspan=2>From : </TD></TR>
-					 <TR><TD align = left colspan=2>Subject : Research Project Application by Prof.................</TD></TR>
+					 <TR><TD align = left colspan=2>Subject : Research Project Application by Prof. '.$row->Researcher1.'</TD></TR>
 					 <TR><TD align = left colspan=2>'.date("Y-m-d").'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
-					 <TR><TD align = left colspan=2>The following Project by Prof............ has been reviewed. Please grant the closure of the project.</TD></TR>
+					 <TR><TD align = left colspan=2>The following Project by Prof. '.$row->Researcher1.' has been reviewed. Please grant the closure of the project.</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2>Title of the Project : '.$row->ProjectTitle.'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
@@ -77,8 +79,9 @@ function index ()
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2>(Prof. Biswatosh Saha)</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
-					 <TR><TD align = left colspan=2><u><b>Encl. : </b>Research Proposal of Prof.............</u></TD></TR>
+					 <TR><TD align = left colspan=2><u><b>Encl. : </b>Research Proposal of Prof. '.$row->Researcher1.'</u></TD></TR>
 					 ';
+					 
 					 }
 					 echo '</tbody> ';
 					echo '<TR><TD align = center colspan=2><INPUT TYPE="button" onClick="window.print()" value="  Print  "></TR></Table></TABLE>';

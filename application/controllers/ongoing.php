@@ -34,7 +34,7 @@ class Ongoing extends CI_Controller {
 				echo '<TABLE class="table table-bordered"><tbody>';
                 echo '<TR><TD><h4>ProjectTitle</h4></TD>
 					<TD><h4>Work Order Number</h4></TD>
-                    <TD><h4>Description</h4></TD>
+                    
                     <TD><h4>Project Category</h4></TD>
                     <TD><h4>Project Grant</h4></TD>
                     <TD><h4>Start Date</h4></TD>
@@ -52,8 +52,8 @@ class Ongoing extends CI_Controller {
 						 echo '</TD><TD>';
 						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
-						 print $row->Description;
-						 echo '</TD><TD>';
+						 //print $row->Description;
+						 //echo '</TD><TD>';
 						 print $row->ProjectCategory;
 						 echo '</TD><TD>';
 						 print $row->ProjectGrant;

@@ -87,7 +87,7 @@ class Completion_admin extends CI_Controller
 					
 					<tbody>';
 					echo '<p></br></p>';
-					echo '<hr size=10 noshade color="#333333"><h3>Projects Approved for Extension</h3>';
+					echo '<hr size=10 noshade color="#333333"><h3>Projects Approved for Closure</h3>';
 					foreach($result1->result() as $row)
 						{
 						echo '<tr>

@@ -101,6 +101,41 @@ class FacultyProjRequest extends CI_Controller
 						}	
 					else if($_POST['RequestType'] == 'View Detailed Budget')
 						{
+						
+						$data['query']= $this->project_model->getAccountBudget($ProjectID);
+						 
+						 echo '<h1>Budget Details</h1>
+						<table class="table table-bordered">
+						<tr><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</TD><TD><h4>Hardware/Software/Data Costs</h1></TD><TD><h4>Research Dissemination</h1></TD><TD><h4>Contingency</h1></TD></tr>						 
+						 <tbody>';
+						 foreach($data['query'] as $row)
+						 {
+							 
+							 echo '<TR><TD>';
+							 print $row->ResearchAssistanceBudget;
+							 echo '</TD><TD>';
+							 print $row->RCEBudget;
+							 echo '</TD><TD>';
+							 print $row->InvestigatorsBudget;
+							 echo '</TD><TD>';
+							 print $row->TravelAccoBudget;
+							 echo '</TD><TD>';
+							 print $row->CommunicationBudget;
+							 echo '</TD><TD>';
+							 print $row->ITCostsBudget;
+							 echo '</TD><TD>';
+							 print $row->DisseminationBudget;
+							 echo '</TD><TD>';
+							 print $row->ContingencyBudget;
+							 echo '</TD></TR>';
+							 
+						 }
+						 echo'
+						 </tbody>
+						 </table>
+						 ';
+						 
+						echo '<hr size=10 noshade color="#333333">'; 
 						 $data['query']= $this->project_model->getAccount($ProjectID);
 						echo '<h1>Account Details</h1>
 							<table class="table table-bordered">
