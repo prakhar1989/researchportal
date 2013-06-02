@@ -24,7 +24,8 @@ class FacultyProjRevision extends CI_Controller {
 				//echo $ProjectID;
 				//Load the project model
 				$this->load->model('project_model');
-				$result= $this->project_model->projectRevise($ProjectID);
+				//$result= $this->project_model->projectRevise($ProjectID);  //Why was projectid passed to this function?
+				$result= $this->project_model->projectRevise($_SESSION['username']);
 				$result1= $this->project_model-> project_extensionrevision_faculty($_SESSION['username']);
 				$result2= $this->project_model-> project_completionrevision_faculty($_SESSION['username']);
 				//echo '<p> hello this is the Project Details Page </p>';

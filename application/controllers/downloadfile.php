@@ -15,7 +15,7 @@ function index ()
 	//echo 'File is '.$filename;
 
 	if (!$filename) {
-			// if variable $filename is NULL or false display the message
+	// if variable $filename is NULL or false display the message
 	//echo $err;
 		} else {
 			// define the path to your download folder plus assign the file name
@@ -39,7 +39,7 @@ function index ()
 			if (file_exists($path) && is_readable($path)) {
 				// get the file size and send the http headers
 				$size = filesize($path);
-				$size = $size + 3000;     // Extra 3 kb to esure that the full file is transferred bcz there is a diff bw size on disk and actual size 
+				$size = $size + 3000;     // Extra 3 kb to ensure that the full file is transferred bcz there is a diff bw size on disk and actual size 
 				header('Content-Type: application/octet-stream');
 				header('Content-Length: '.$size);
 				header('Content-Disposition: attachment; filename='.$path);

@@ -51,12 +51,13 @@ class FacultyProjCompleted extends CI_Controller {
 						 print $row->ProjectGrant;
 						 echo '</TD><TD>';
 						 print $row->ProjectCategory;
-						 echo '</tr>';
+						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
+						 
 						}			 
 					 echo '</tbody>
-					</table>';
-					
-					echo '<br><hr size=10 noshade color="#333333"><h3>Files Uploaded</h3>';
+					</table>
+					<INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables">';
+					/*echo '<br><hr size=10 noshade color="#333333"><h3>Files Uploaded</h3>';
 					$queryStr='Select * from project where ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND PStatus = "completed")';
 					$query = $this->db->query($queryStr);
 					If ($query->num_rows() == 0)
@@ -76,7 +77,7 @@ class FacultyProjCompleted extends CI_Controller {
 							}
 						echo '<br><br>';
 						}
-					}
+					}*/
 					echo '</FORM>';
                 
 				

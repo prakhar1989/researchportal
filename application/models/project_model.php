@@ -269,10 +269,12 @@ class Project_model extends CI_Model {
 
 		}
 		// Search for project by Project ID
-	function projectRevise($value)
+	function projectRevise($user)
 		{
 		$this->load->database();
-		$queryStr='SELECT * FROM project WHERE PStatus = "revisionAdmin" OR PStatus = "revisionChairman";';	
+		//$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  (PStatus = "revisionAdmin" OR PStatus = "revisionChairman") AND (Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\');';
+		$queryStr='Select * FROM project where (PStatus = "revisionAdmin" OR PStatus = "revisionChairman") AND (Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\');';
+		//$queryStr='SELECT * FROM project WHERE PStatus = "revisionAdmin" OR PStatus = "revisionChairman";';	
 		$query = $this->db->query($queryStr);
 		return $query;
 
@@ -290,8 +292,8 @@ class Project_model extends CI_Model {
 	function projectPendingFaculty($user)
 	{
 		$this->load->database();
-		$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus <> \'completed\' AND PStatus <> \'ongoing\'))';
-		//echo $queryStr;
+		//$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus <> \'completed\' AND PStatus <> \'ongoing\'))';
+		$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus = \'app_chairman_1\' OR PStatus = \'app_chairman_1\' OR PStatus = \'app_admin\' OR PStatus = \'app_comm\'))';
 		$query = $this->db->query($queryStr);
 		return $query;
 	}

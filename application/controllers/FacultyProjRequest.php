@@ -74,11 +74,35 @@ class FacultyProjRequest extends CI_Controller
 							
 							echo "\n\n";
 						}
+					else if ($_POST['RequestType'] == 'Check Deliverables') 
+						{
+							//echo '<br><hr size=10 noshade color="#333333"><h3>Files Uploaded</h3>';
+							$queryStr='Select * from project where ((ProjectId =\''.$_POST['ProjectChoice'].'\') AND PStatus = "completed")';
+							$query = $this->db->query($queryStr);
+							If ($query->num_rows() == 0)
+							{//echo 'No deliverables for this project are Complete as of today.';
+							}
+							Else
+							{
+								foreach ($query->result() as $row)
+								{
+								echo 'Project Title: '.$row->ProjectTitle;
+								echo '<br>';
+								$Path = "upload/".$row->ProjectId."_";
+								$Files = glob($Path."*.pdf");
+								foreach ($Files as $File)
+									{	
+									echo'<a href="download?file='.$File.'">'.$File.'</a><br><br>';
+									echo '<br>';
+									}
+							echo '<br><br>';
+								}
+							}
+						}	
 					else if($_POST['RequestType'] == 'View Detailed Budget')
 						{
-												 $data['query']= $this->project_model->getAccount($ProjectID);
-
-							echo '<h1>Account Details</h1>
+						 $data['query']= $this->project_model->getAccount($ProjectID);
+						echo '<h1>Account Details</h1>
 							<table class="table table-bordered">
 						<tr><TD><h4>Date</h4></TD><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</TD><TD><h4>Hardware/Software/Data Costs</h1></TD><TD><h4>Research Dissemination</h1></TD><TD><h4>Contingency</h1></TD></tr>
 						

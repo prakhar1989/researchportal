@@ -73,13 +73,13 @@ class FacultyReviseApp extends CI_Controller {
 							<tr>
 							<td>Co-Researcher 1 ID</td>
 							<td><b>'
-							.$row->Researcher1.
+							.$row->Researcher2.
 							'</b></td>
 							</tr>
 							<tr>
 							<td>Co-Researcher 2 ID</td>
 								<td><b>'
-							.$row->Researcher2.
+							.$row->Researcher3.
 							'</b></td>
 							</tr>
 							';
