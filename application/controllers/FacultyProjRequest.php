@@ -77,7 +77,7 @@ class FacultyProjRequest extends CI_Controller
 					else if ($_POST['RequestType'] == 'Check Deliverables') 
 						{
 							//echo '<br><hr size=10 noshade color="#333333"><h3>Files Uploaded</h3>';
-							$queryStr='Select * from project where ((ProjectId =\''.$_POST['ProjectChoice'].'\') AND PStatus = "completed")';
+							$queryStr='Select * from project where ((ProjectId =\''.$ProjectID.'\') AND PStatus = "completed")';
 							$query = $this->db->query($queryStr);
 							If ($query->num_rows() == 0)
 							{//echo 'No deliverables for this project are Complete as of today.';

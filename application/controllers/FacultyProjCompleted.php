@@ -51,7 +51,7 @@ class FacultyProjCompleted extends CI_Controller {
 						 print $row->ProjectGrant;
 						 echo '</TD><TD>';
 						 print $row->ProjectCategory;
-						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
+						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
 						 
 						}			 
 					 echo '</tbody>
