@@ -32,16 +32,17 @@ class FacultyProjRequest extends CI_Controller
 							';
 					if ($_POST['RequestType'] == "Request For Extension")
 						{
+						
 						$ExtensionPeriod = $_POST['hidden1'];
 						//echo $ExtensionPeriod;
-						if(strlen(trim($_POST['comment']))!=0)
-						{
+						//if(strlen(trim($_POST['comment']))!=0)
+						//{
 							$msg = $this->project_model->projectExtension($ProjectID,$ExtensionPeriod);
 							$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), 'faculty_extension');
 						echo "\n\n";
 						//echo "Extension";
 						echo $msg;
-						}
+						//}
 						
 						} 
 					else if ($_POST['RequestType'] == 'Request For Project Closure') 

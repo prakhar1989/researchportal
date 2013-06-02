@@ -70,14 +70,25 @@ function index ()
 		 <TR><TD align = left colspan=6><br></TD></TR>
 		 <TR><TD align = left colspan=3><u>To : </TD><TD align = left colspan=3>C.C : </TD></TR>
 		 <TR><TD align = left colspan=6>From : </TD></TR>
-		 <TR><TD align = left colspan=6>Subject : Research Project Application by Prof. '.$row->Researcher1.'</TD></TR>
+		 <TR><TD align = left colspan=6>Subject : Research Project Application by Prof. '.$row->Researcher1.'';
+		 if ($row->Researcher2 != '')
+			echo ', Prof.'.$row->Researcher2;
+		if ($row->Researcher3 != '')
+			echo ', Prof.'.$row->Researcher3;
+		
+		 
+		 echo '</TD></TR>
 		 <TR><TD align = left colspan=6>'.date("Y-m-d").'</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
 		 <TR><TD align = left colspan=6>The Research Subcommittee of the FPR Committee has approved the following Research Project proposal submitted by Prof. '.$row->Researcher1.'. Please issue a Work Order for the project.</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
 		 <TR><TD align = left colspan=6>Title of the Project : '.$row->ProjectTitle.'</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
-		 <TR><TD align = left colspan=6>Researcher : Prof.'.$row->Researcher1.'   Prof.'.$row->Researcher2.'  Prof.'.$row->Researcher3.'</TD></TR>
+		 <TR><TD align = left colspan=6>Researcher : Prof.'.$row->Researcher1.'';
+		 if ($row->Researcher2 != '')
+		echo '   Prof.'.$row->Researcher2;
+		 if ($row->Researcher3 != '')
+		echo 'Prof.'.$row->Researcher3.'</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
 		 <TR><TD align = left colspan=6>Project Category : '.$row->ProjectCategory.'</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>

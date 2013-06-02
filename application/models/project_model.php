@@ -319,13 +319,14 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		$queryStrCheck = 'Select ProjectId from projectextension where ProjectId = "'.$value.'" and ApprovalPending <> "approved";';
 		$queryCheck = $this->db->query($queryStrCheck);
+		
 		If ( $queryCheck->num_rows() == 0)
 			{
 			$queryStr= 'INSERT INTO projectextension (ProjectId, Period , ApprovalPending) VALUES (\''.$value.'\',\''.$period.'\' , \'admin\' );' ;
 			$query = $this->db->query($queryStr);
 			$msg='The Request for Project Extension has been sent';
 			}
-		Else
+		else
 			$msg='Your Request For Approval Has Already Been Sent. Please wait while the previous request is approved';
 		return $msg;
 	}	
