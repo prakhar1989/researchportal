@@ -352,7 +352,7 @@ class ShowProject extends CI_Controller {
 	function approveMsg($status){
 		if($status=='Approved')
 			{
-			echo 'Project has been approved.';
+			echo 'Project has been sent for consultation.';
 			}
 		else
 			{
