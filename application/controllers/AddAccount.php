@@ -42,8 +42,9 @@ class AddAccount extends CI_Controller {
 					 
 					 if($account['left']>0)
 					 {
+					     $Work= $this->project_model->getWorkOrder($Project);
 						 echo '
-						 <h1>Work Order Number '. $Project.'</h1>';
+						 <h1>Work Order Number '. $Work.'</h1>';
 						 
 						 echo '
 					<p>Please enter the amounts in the Expense heads below</p>

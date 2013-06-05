@@ -551,6 +551,14 @@ class Project_model extends CI_Model {
 	    $query= $this->db->query($queryStr);
 		return $query->result();
 	}
+	 // Function to get sum of particular head of accounts of a project 
+	function getAccountHead($projectId,$head)
+	{
+		$this->load->database();
+		$queryStr='SELECT SUM('.$head.') AS sumhead FROM budget WHERE ProjectID = "'.$projectId.'";';
+	    $query= $this->db->query($queryStr);
+		return $query->result()[0]->sumhead;
+	}
 	
 	
 	
@@ -823,7 +831,13 @@ class Project_model extends CI_Model {
  
  function getWorkOrder($projectId)
  {
+    $this->load->database();
+	$queryStr='Select WorkOrderId from project WHERE ProjectId ='.$projectId.';';
+	//echo $queryStr;
+	$query = $this->db->query($queryStr);
+	return $query->result()[0]->WorkOrderId;
 }
+
 //not used
 function insertTransaction($data)
 {
