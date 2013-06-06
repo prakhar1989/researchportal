@@ -89,6 +89,7 @@ class Approved extends CI_Controller
 	}
 	function AddWorkOrder()
 	{
+		session_start();
 		if($_POST['Check']=='Add WorkOrderId')
 		{
 			$Project = $this->input->post('Choice1');

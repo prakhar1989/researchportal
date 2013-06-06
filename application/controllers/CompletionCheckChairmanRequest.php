@@ -17,7 +17,8 @@ class CompletionCheckChairmanRequest extends CI_Controller
 			else{
 			
 			header("location:login");
-			}}
+			}
+			}
 	function load_php()
 				{
 				$ProjectID = $_POST['ProjectSelected'];
