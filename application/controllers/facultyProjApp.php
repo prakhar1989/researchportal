@@ -146,7 +146,7 @@ class FacultyProjApp extends CI_Controller {
 						</tr>
 						<tr>
 							<td>Proposed Time Frame after project initiation (in months) </td>
-							<td><input type="text" class="large"></input></td>
+							<td><input type="text" class="large" name= "time"></input></td>
 						</tr>
 						<tr>
 							<td>Extra comments</td>

@@ -46,6 +46,35 @@ class CompletionCheckChairmanRequest extends CI_Controller
 						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "chairman_consult_extension");
 						header("Location: /rp/extension_chairman");
 						}
+					else if ($_POST['RequestType'] == 'Check Deliverables') 
+						{
+						echo '<br><h3>Deliverables Uploaded</h3>';
+						$Path = "upload/".$ProjectID."_";
+						//$Path = "upload/".$ProjectID."_";
+						$Files = glob($Path."*.pdf");
+						$countuploaded = 0;
+						foreach ($Files as $File)
+							{
+							//echo $File;
+							//$Files=(explode('.', $File));
+							$countuploaded++;			
+							echo'<a href="download?file='.$File.'">'.$File.'</a><br>';
+							//echo '<br>';
+							}
+						echo 'Number of Deliverables uploaded: '.$countuploaded;
+						$query = $this->project_model->projectSearchById($ProjectID);
+						$countpromised = 0;
+						foreach($query->result() as $row)
+							{
+							$countpromised = $countpromised + $row->Deliverables;
+							$countpromised = $countpromised + $row->cases;
+							$countpromised = $countpromised + $row->journals;
+							$countpromised = $countpromised + $row->chapters;
+							$countpromised = $countpromised + $row->conference;
+							$countpromised = $countpromised + $row->paper;
+							}
+						echo '<br>Number of Deliverables promised: '.$countpromised;
+						}
 					echo "\n\n";
 					 echo '</TABLE>
 					</FORM>';

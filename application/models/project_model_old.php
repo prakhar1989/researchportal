@@ -31,10 +31,10 @@ class Project_model extends CI_Model {
 		$query= $this->db->query($queryStr);
 		return $query->result();
 	}
-	function getCommProjects()//for projects pending with committee, which can be directly approved by chairman(called from 'committee' tab for user: chairman & admin)
+	function getCommProjects()//for projects pending with committee, which can be directly approved by chairman(called from 'committee' tab for user: chairman)
 	{
 		$this->load->database();
-		if ($_SESSION['usertype']==3 || $_SESSION['usertype']==1)
+		if ($_SESSION['usertype']==3)
 		{
 			$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" OR PStatus = "app_chairman_2";';
 		}
@@ -269,12 +269,10 @@ class Project_model extends CI_Model {
 
 		}
 		// Search for project by Project ID
-	function projectRevise($user)
+	function projectRevise($value)
 		{
 		$this->load->database();
-		//$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  (PStatus = "revisionAdmin" OR PStatus = "revisionChairman") AND (Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\');';
-		$queryStr='Select * FROM project where (PStatus = "revisionAdmin" OR PStatus = "revisionChairman") AND (Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\');';
-		//$queryStr='SELECT * FROM project WHERE PStatus = "revisionAdmin" OR PStatus = "revisionChairman";';	
+		$queryStr='SELECT * FROM project WHERE PStatus = "revisionAdmin" OR PStatus = "revisionChairman";';	
 		$query = $this->db->query($queryStr);
 		return $query;
 
@@ -292,8 +290,8 @@ class Project_model extends CI_Model {
 	function projectPendingFaculty($user)
 	{
 		$this->load->database();
-		//$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus <> \'completed\' AND PStatus <> \'ongoing\'))';
-		$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus = \'app_chairman_1\' OR PStatus = \'app_chairman_1\' OR PStatus = \'app_admin\' OR PStatus = \'app_comm\'))';
+		$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus <> \'completed\' AND PStatus <> \'ongoing\'))';
+		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
 	}
@@ -321,14 +319,13 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		$queryStrCheck = 'Select ProjectId from projectextension where ProjectId = "'.$value.'" and ApprovalPending <> "approved";';
 		$queryCheck = $this->db->query($queryStrCheck);
-		
 		If ( $queryCheck->num_rows() == 0)
 			{
 			$queryStr= 'INSERT INTO projectextension (ProjectId, Period , ApprovalPending) VALUES (\''.$value.'\',\''.$period.'\' , \'admin\' );' ;
 			$query = $this->db->query($queryStr);
 			$msg='The Request for Project Extension has been sent';
 			}
-		else
+		Else
 			$msg='Your Request For Approval Has Already Been Sent. Please wait while the previous request is approved';
 		return $msg;
 	}	
@@ -374,7 +371,7 @@ class Project_model extends CI_Model {
 		}
 		
 	
-	//get a extension project's details
+	//get a project's details
 	function projectInfo($Project)
 		{
 		//echo 'projectInfo called';
@@ -386,19 +383,7 @@ class Project_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query;
 		}
-
-		//get a completed project's details
-	function projectInfoCompletion($Project)
-		{
-		//echo 'projectInfo called';
-		$this->load->database();
-		//$query= $this->db->get('project');
-		//echo $Project['Id'];	
-		$queryStr='Select project.*,projectcompleted.* From project Inner Join projectcompleted On project.ProjectId = projectcompleted.ProjectId where  project.ProjectID = "'.$Project.'" order by project.ProjectId;';
-		//echo $queryStr;
-		$query = $this->db->query($queryStr);
-		return $query;
-		}
+	
 	// Function to change the status of the project
 	function changeStatus($status,$Project)//changing the status of the project
 		{
@@ -470,26 +455,8 @@ class Project_model extends CI_Model {
 		}
 	
 	
-	function insertDate($projectId, $date){
-	/*$this->load->database();
-	$queryStr3 = 'Select Period from projectextension where ProjectId = "'.$projectid.'";';
-	$query3 = $this->db->query($queryStr3);
-	foreach($query3->result() as $row)
-	{
-		$period = $row->Period;
+	function insertDate(){
 	}
-	$new_date = new DateTime($date);
-	$this->new_date = $new_date->format('Y/m/d');
-	$newdate = date('Y-m-d', $date);
-	$queryStr='Update project set Start_Date = \''.$new_date.'\' WHERE ProjectId ='.$projectId.';';
-	$query = $this->db->query($queryStr);
-	$queryStr1='UPDATE project SET End_Date = DATE_ADD(End_Date,Interval '.$period.' MONTH) where ProjectId = "'.$projectid.'";';
-	$query1 = $this->db->query($queryStr1);
-			
-	return $query;	
-	*/
-	}
-	
 	// Get the projects at  committee or chairman's approval pending stage	
 	function project_stage($stage)
 		{
@@ -570,16 +537,6 @@ class Project_model extends CI_Model {
 		return $query->result();
 	}
 	
-	 // Function to get sum of particular head of accounts of a project 
-	function getAccountHead($projectId,$head)
-	{
-		$this->load->database();
-		$queryStr='SELECT SUM('.$head.') AS sumhead FROM budget WHERE ProjectID = "'.$projectId.'";';
-	    $query= $this->db->query($queryStr);
-		//return $query->result()[0]->sumhead;
-		return $query->result(0)->sumhead;
-	}
-	
 	
 	
 	// Function to get all the projects
@@ -616,9 +573,7 @@ class Project_model extends CI_Model {
 		
 		//2. Insert value into the project table
 		//INSERT INTO `researchportal`.`project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`) VALUES ('Business Leasdership Study', 'P33333', 'Leadership traits study on current business leaders', '2012-09-29', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', '100000', 'app_admin', '1 Leadership report');
-		 
-		 //$queryStr= 'INSERT INTO project (ProjectTitle , Researcher1 , Researcher2 ,  Researcher3 , ProjectCategory , ProjectGrant , PStatus , cases , journals , chapters , conference , paper, books ) VALUES (\''.$data['title'].'\' , \''.$user.'\' , \''.$data['researcher2'].'\' , \''.$data['researcher3'].'\' , \''.$data['category'].'\' , \''.$data['grant'].'\' , \'app_admin\' , \''.$data['cases'].'\' , \''.$data['journals'].'\' , \''.$data['chapters'].'\' , \''.$data['conferences'].'\' , \''.$data['papers'].'\', \''.$data['books'].'\');' ;
-		 $queryStr= 'INSERT INTO project (ProjectTitle , Researcher1 , Researcher2 ,  Researcher3 , ProjectCategory , ProjectGrant, App_Date , PStatus , cases , journals , chapters , conference , paper, books ) VALUES (\''.$data['title'].'\' , \''.$user.'\' , \''.$data['researcher2'].'\' , \''.$data['researcher3'].'\' , \''.$data['category'].'\' , \''.$data['grant'].'\' ,\''.date('Y-m-d H:i:s').'\', \'app_admin\' , \''.$data['cases'].'\' , \''.$data['journals'].'\' , \''.$data['chapters'].'\' , \''.$data['conferences'].'\' , \''.$data['papers'].'\', \''.$data['books'].'\');' ;
+		 $queryStr= 'INSERT INTO project (ProjectTitle , Researcher1 , Researcher2 ,  Researcher3 , ProjectCategory , ProjectGrant , PStatus , cases , journals , chapters , conference , paper, books ) VALUES (\''.$data['title'].'\' , \''.$user.'\' , \''.$data['researcher2'].'\' , \''.$data['researcher3'].'\' , \''.$data['category'].'\' , \''.$data['grant'].'\' , \'app_admin\' , \''.$data['cases'].'\' , \''.$data['journals'].'\' , \''.$data['chapters'].'\' , \''.$data['conferences'].'\' , \''.$data['papers'].'\', \''.$data['books'].'\');' ;
 		//echo '<br>'.$queryStr;
 		$query = $this->db->query($queryStr);
 		//$result = $query->result();
@@ -646,7 +601,7 @@ class Project_model extends CI_Model {
 		
 		//2. Insert value into the project table
 		//INSERT INTO `researchportal`.`project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`) VALUES ('Business Leasdership Study', 'P33333', 'Leadership traits study on current business leaders', '2012-09-29', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', '100000', 'app_admin', '1 Leadership report');
-		 $queryStr= 'UPDATE project SET ProjectCategory = "'.$data['category'].'", ProjectGrant = '.$data['grant'].', PStatus = "'.$status.'", cases = '.$data['cases'].', journals = '.$data['journals'].', chapters = '.$data['chapters'].', conference = '.$data['conferences'].', paper = '.$data['papers'].', books = '.$data['books'].' WHERE ProjectId = '.$projectid.';';
+		 $queryStr= 'UPDATE project SET ProjectCategory = "'.$data['category'].'", ProjectGrant = '.$data['grant'].', PStatus = "'.$status.'", cases = '.$data['cases'].', journals = '.$data['journals'].', chapters = '.$data['chapters'].', conference = '.$data['conferences'].', paper = '.$data['papers'].', , books = '.$data['books'].' WHERE ProjectId = '.$projectid.';';
 		//echo '<br>'.$queryStr;
 		$query = $this->db->query($queryStr);
 		//$result = $query->result();
@@ -853,14 +808,7 @@ class Project_model extends CI_Model {
  
  function getWorkOrder($projectId)
  {
-    $this->load->database();
-	$queryStr='Select WorkOrderId from project WHERE ProjectId ='.$projectId.';';
-	//echo $queryStr;
-	$query = $this->db->query($queryStr);
-	//return $query->result()[0]->WorkOrderId;
-	return $query->result(0)->WorkOrderId;
 }
-
 //not used
 function insertTransaction($data)
 {
@@ -882,6 +830,7 @@ return $query->result();
     function insertAccountBudget($data)
 	{
 		$this->load->database();
+		//--vridhi--added date below
 		$queryStr= 'UPDATE project SET ResearchAssistanceBudget='.$data['RA'].', RCEBudget='.$data['RCE'].', InvestigatorsBudget='.$data['Investigators'].', TravelAccoBudget='.$data['TravelAcco'].', CommunicationBudget='.$data['Communication'].', ITCostsBudget='.$data['ITCosts'].', DisseminationBudget='.$data['Dissemination'].', ContingencyBudget='.$data['Contingency'].' WHERE ProjectId='.$data['projectid'].';' ;
 //$queryStr= 'UPDATE project SET (ResearchAssistanceBudget=\''.$data['RA'].'\', RCEBudget=\''.$data['RCE'].'\', InvestigatorsBudget=\''.$data['Investigators'].'\', TravelAccoBudget=\''.$data['TravelAcco'].'\', CommunicationBudget=\''.$data['Communication'].'\', ITCostsBudget=\''.$data['ITCosts'].'\', DisseminationBudget=\''.$data['Dissemination'].'\', ContingencyBudget=\''.$data['Contingency'].'\') WHERE ProjectId='.$data['projectid'].';' ;
 		//echo '<br>'.$queryStr;
@@ -898,17 +847,6 @@ return $query->result();
 	    $query= $this->db->query($queryStr);
 		return $query->result();
 	}
-	
-	//Function to update edited budget
-	function editBudget($data)
-	{
-		$this->load->database();
-		$queryStr= 'UPDATE project SET ResearchAssistanceBudget='.$data['RA'].', RCEBudget='.$data['RCE'].', InvestigatorsBudget='.$data['Investigators'].', TravelAccoBudget='.$data['TravelAcco'].', CommunicationBudget='.$data['Communication'].', ITCostsBudget='.$data['ITCosts'].', DisseminationBudget='.$data['Dissemination'].', ContingencyBudget='.$data['Contingency'].' WHERE ProjectId='.$data['projectid'].';' ;
-		$query = $this->db->query($queryStr);
-		$msg='The Account Budget Details have been Updated';
-		return $msg;
-	}
-	
 	// Function to get all the projects
 	function allPending()
 	{

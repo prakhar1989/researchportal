@@ -40,7 +40,8 @@ class Show_account extends CI_Controller {
 						 <TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 						 <h1>Budget Details</h1>
 						<table class="table table-bordered">
-						<tr><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</TD><TD><h4>Hardware/Software/Data Costs</h1></TD><TD><h4>Research Dissemination</h1></TD><TD><h4>Contingency</h1></TD></tr>						 
+						
+						<tr><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</TD><TD><h4>Hardware/Software/Data Costs</h1></TD><TD><h4>Research Dissemination</h1></TD><TD><h4>Contingency</h1></TD><td><h4>Total Grant</h4></td></tr>						 
 						 <tbody>';
 						 foreach($data['query'] as $row)
 						 {
@@ -61,6 +62,8 @@ class Show_account extends CI_Controller {
 							 print $row->DisseminationBudget;
 							 echo '</TD><TD>';
 							 print $row->ContingencyBudget;
+							 echo '</TD><TD>';
+							 print $row->ProjectGrant;
 							 echo '</TD></TR>';
 							 
 						 }
@@ -75,6 +78,15 @@ class Show_account extends CI_Controller {
 						<tr><TD><h4>Date</h4></TD><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</TD><TD><h4>Hardware/Software/Data Costs</h1></TD><TD><h4>Research Dissemination</h1></TD><TD><h4>Contingency</h1></TD></tr>
 						
 						<tbody>';
+						echo '<tr><td><h4>Total</h4></td><td>'.$this->project_model->getAccountHead($Project,'ResearchAssistance').'</td>';
+						echo '<td>'.$this->project_model->getAccountHead($Project,'RCE').'</td>';
+						echo '<td>'.$this->project_model->getAccountHead($Project,'Investigators').'</td>';
+						echo '<td>'.$this->project_model->getAccountHead($Project,'TravelAcco').'</td>';
+						echo '<td>'.$this->project_model->getAccountHead($Project,'Communication').'</td>';
+						echo '<td>'.$this->project_model->getAccountHead($Project,'ITCosts').'</td>';
+						echo '<td>'.$this->project_model->getAccountHead($Project,'Dissemination').'</td>';
+						echo '<td>'.$this->project_model->getAccountHead($Project,'Contingency').'</td>';
+						echo '</tr>';
 						
 						$data['query']= $this->project_model->getAccount($Project);
 						
