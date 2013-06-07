@@ -244,6 +244,14 @@ class FacultyProjApp extends CI_Controller {
 			 $data['category']=$_POST['category'];			
 			//$data['']=$_POST[''];
 			
+			$timezone = new DateTimeZone("Asia/Kolkata" );
+			$date = new DateTime();
+			$date->setTimezone($timezone );
+			$data['startdate'] = $date;
+			$date->add(new DateInterval('P'.$_POST['time'].'M'));
+			$data['enddate'] = $date;
+			//$data['enddate'] = $date.AddMonths($_POST['time']);
+			
 			$this->load->model('project_model');
 			$ProjectId=$this->project_model->insertProject($_SESSION['username'],$data);
 		//	$ProjectId=900;

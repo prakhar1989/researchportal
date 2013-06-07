@@ -54,16 +54,33 @@ function index ()
 					 <TR><TD style="font-weight:bold" align = center colspan=2></TD></TR>
 					 <TR><TD align = center colspan=2><u>Intet-office Memo</u></TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
-					 <TR><TD align = left><u>To : </TD><TD align = left>C.C : </TD></TR>
-					 <TR><TD align = left colspan=2>From : </TD></TR>
-					 <TR><TD align = left colspan=2>Subject : Research Project Application by Prof.'.$row->Researcher1.'</TD></TR>
+					 <TR><TD align = left><u>To : </TD><TR></TR><TR></TR>
+					 <TD align = left>C.C : </TD></TR><TR></TR><TR></TR>
+					 <TR><TD align = left colspan=2>From : </TD></TR><TR></TR><TR></TR>
+					 <TR><TD align = left colspan=2>Subject : Research Project Extension by Prof.'.$row->Researcher1.'';
+					 if ($row->Researcher2 != '')
+						echo ', Prof.'.$row->Researcher2;
+					if ($row->Researcher3 != '')
+						echo ', Prof.'.$row->Researcher3;
+					 
+					 echo '</TD></TR>
 					 <TR><TD align = left colspan=2>'.date("Y-m-d").'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
-					 <TR><TD align = left colspan=2>The Research Subcommittee of the FPR Committee has approved the extension of the following Research Project proposal submitted by Prof.'.$row->Researcher1.'</TD></TR>
+					 <TR><TD align = left colspan=2>The FPR Chair has approved the extension of the following Research Project proposal submitted by Prof.'.$row->Researcher1.'';
+					 if ($row->Researcher2 != '')
+						echo ', Prof.'.$row->Researcher2;
+					if ($row->Researcher3 != '')
+						echo ', Prof.'.$row->Researcher3;
+					 echo '</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2>Title of the Project : '.$row->ProjectTitle.'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
-					 <TR><TD align = left colspan=2>Researcher : Prof.'.$row->Researcher1.'   Prof.'.$row->Researcher2.'  Prof.'.$row->Researcher3.'</TD></TR>
+					 <TR><TD align = left colspan=2>Researcher : Prof.'.$row->Researcher1.'';
+					 if ($row->Researcher2 != '')
+						echo ', Prof.'.$row->Researcher2;
+					if ($row->Researcher3 != '')
+						echo ', Prof.'.$row->Researcher3;
+					echo'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2>Project Category : '.$row->ProjectCategory.'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
@@ -74,8 +91,14 @@ function index ()
 					//$interval = $date1->diff($date2);
 					 echo '<TR><TD align = left colspan=2>Proposed Time Frame : '.$row->Period.'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
-					 <TR><TD align = left colspan=2><br></TD></TR>
-					 <TR><TD align = left colspan=2><br></TD></TR>
+					 <TR><TD align = left colspan=2><br></TD></TR>';
+					 $path = "image/chairman";
+					$Files = glob($path."*.*");
+					foreach ($Files as $File)
+					{
+						echo '<TR><TD align = left colspan=6><IMG src="'.$File.'" border="0" width ="100" height="100"></TD></TR>';
+					}	
+					 echo '<TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2>(Prof. Biswatosh Saha)</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2><u><b>Encl. : </b>Research Proposal of Prof.'.$row->Researcher1.'</u></TD></TR>
