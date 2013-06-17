@@ -12,21 +12,21 @@ class Project_model extends CI_Model {
 		//echo '@#usertype is :'.$_SESSION['usertype'];
 		if($_SESSION['usertype']==1)
 		{
-			$queryStr='SELECT * FROM project WHERE PStatus = "app_admin" ; ';
+			$queryStr='SELECT * FROM project WHERE PStatus = "app_admin" ORDER BY App_Date DESC; ';
 		} 
 		elseif ($_SESSION['usertype']==2)
 		{
 			
 			if($_SESSION['username']=="comm")
-				$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 3 OR comm_approval = 4 OR comm_approval = 7);';
+				$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 3 OR comm_approval = 4 OR comm_approval = 7) ORDER BY App_Date DESC;';
 			elseif($_SESSION['username']=="comm1")
-				$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 2 OR comm_approval = 4 OR comm_approval = 6); ';
+				$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 2 OR comm_approval = 4 OR comm_approval = 6) ORDER BY App_Date DESC; ';
 			elseif($_SESSION['username']=="comm2")
-				$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 2 OR comm_approval = 3 OR comm_approval = 5); ';
+				$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 2 OR comm_approval = 3 OR comm_approval = 5) ORDER BY App_Date DESC; ';
 		}
 		elseif ($_SESSION['usertype']==3)
 		{
-			$queryStr='SELECT * FROM project WHERE PStatus = "app_chairman_1";';
+			$queryStr='SELECT * FROM project WHERE PStatus = "app_chairman_1" ORDER BY App_Date DESC;';
 		}
 		$query= $this->db->query($queryStr);
 		return $query->result();
@@ -36,7 +36,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		if ($_SESSION['usertype']==3 || $_SESSION['usertype']==1)
 		{
-			$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" OR PStatus = "app_chairman_2";';
+			$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" OR PStatus = "app_chairman_2" ORDER BY App_Date DESC;';
 		}
 		$query= $this->db->query($queryStr);
 		return $query->result();
@@ -49,7 +49,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='SELECT * FROM project WHERE PStatus = "'.$status.'";';
+		$queryStr='SELECT * FROM project WHERE PStatus = "'.$status.'" ORDER BY App_Date DESC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -60,7 +60,7 @@ class Project_model extends CI_Model {
 	function project_extension()
 		{
 		$this->load->database();
-		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  ApprovalPending = "admin" order by project.ProjectId';
+		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  ApprovalPending = "admin" order by project.App_Date';
 		//$queryStr='Select * from project where ProjectId IN (SELECT ProjectId FROM projectextension where  ApprovalPending = "admin");';
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -79,7 +79,7 @@ class Project_model extends CI_Model {
 	function projectCompletionApproved()
 		{
 		$this->load->database();
-		$queryStr='Select project.*,projectcompleted.* From project Inner Join projectcompleted On project.ProjectId = projectcompleted.ProjectId where  ApprovalPending = "approved" order by project.ProjectId';
+		$queryStr='Select project.*,projectcompleted.* From project Inner Join projectcompleted On project.ProjectId = projectcompleted.ProjectId where  ApprovalPending = "approved" order by project.App_Date DESC';
 		$query = $this->db->query($queryStr);
 		return $query;
 		}
@@ -91,7 +91,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  ApprovalPending = "chairman" order by project.ProjectId';
+		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  ApprovalPending = "chairman" order by project.App_Date DESC';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -104,7 +104,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='Select * from project where ProjectId IN (SELECT ProjectId FROM projectextension where  ApprovalPending = "chairmanFirstApproval");';
+		$queryStr='Select * from project where ProjectId IN (SELECT ProjectId FROM projectextension where  ApprovalPending = "chairmanFirstApproval") ORDER BY App_Date DESC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -117,7 +117,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='Select * from project where ProjectId IN (SELECT ProjectId FROM projectextension where  ApprovalPending = "ConsultCommittee");';
+		$queryStr='Select * from project where ProjectId IN (SELECT ProjectId FROM projectextension where  ApprovalPending = "ConsultCommittee") ORDER BY App_Date DESC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -195,7 +195,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='Select project.*,projectcompleted.* From project Inner Join projectcompleted On project.ProjectId = projectcompleted.ProjectId where  ApprovalPending = "admin" Order By projectcompleted.ProjectId;';
+		$queryStr='Select project.*,projectcompleted.* From project Inner Join projectcompleted On project.ProjectId = projectcompleted.ProjectId where  ApprovalPending = "admin" Order By project.App_Date DESC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -208,7 +208,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='Select project.*,projectcompleted.* From project Inner Join projectcompleted On project.ProjectId = projectcompleted.ProjectId where  ApprovalPending = "chairman" Order By projectcompleted.ProjectId;';
+		$queryStr='Select project.*,projectcompleted.* From project Inner Join projectcompleted On project.ProjectId = projectcompleted.ProjectId where  ApprovalPending = "chairman" Order By project.App_Date DESC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -221,7 +221,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='Select * from project where ProjectId IN (SELECT ProjectId FROM projectcompleted where  ApprovalPending = "ConsultCommittee");';
+		$queryStr='Select * from project where ProjectId IN (SELECT ProjectId FROM projectcompleted where  ApprovalPending = "ConsultCommittee") ORDER BY App_Date DESC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -233,7 +233,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  (projectextension.ApprovalPending = "revisionAdmin" OR projectextension.ApprovalPending = "revisionChairman") AND (Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\');';
+		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  (projectextension.ApprovalPending = "revisionAdmin" OR projectextension.ApprovalPending = "revisionChairman") AND (Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') ORDER BY project.App_Date DESC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -245,7 +245,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='Select project.*,projectcompleted.* From project Inner Join projectcompleted On project.ProjectId = projectcompleted.ProjectId where  (projectcompleted.ApprovalPending = "revisionAdmin" OR projectcompleted.ApprovalPending = "revisionChairman") AND (Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\');';
+		$queryStr='Select project.*,projectcompleted.* From project Inner Join projectcompleted On project.ProjectId = projectcompleted.ProjectId where  (projectcompleted.ApprovalPending = "revisionAdmin" OR projectcompleted.ApprovalPending = "revisionChairman") AND (Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') ORDER BY project.App_Date DESC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -254,7 +254,7 @@ class Project_model extends CI_Model {
 	function ongoingFacultyProjects($user)
 	{
 		$this->load->database();
-		$queryStr='SELECT * FROM project WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'ongoing\')';
+		$queryStr='SELECT * FROM project WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'ongoing\') ORDER BY App_Date DESC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -273,8 +273,8 @@ class Project_model extends CI_Model {
 		{
 		$this->load->database();
 		//$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  (PStatus = "revisionAdmin" OR PStatus = "revisionChairman") AND (Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\');';
-		$queryStr='Select * FROM project where (PStatus = "revisionAdmin" OR PStatus = "revisionChairman") AND (Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\');';
-		//$queryStr='SELECT * FROM project WHERE PStatus = "revisionAdmin" OR PStatus = "revisionChairman";';	
+		$queryStr='Select * FROM project where (PStatus = "revisionAdmin" OR PStatus = "revisionChairman") AND (Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') ORDER BY project.App_Date DESC;';
+		//$queryStr='SELECT * FROM project WHERE PStatus = "revisionAdmin" OR PStatus = "revisionChairman" ORDER BY App_Date DESC;';	
 		$query = $this->db->query($queryStr);
 		return $query;
 
@@ -283,7 +283,7 @@ class Project_model extends CI_Model {
 	function projectCompleteFaculty($user)
 	{
 		$this->load->database();
-		$queryStr='SELECT * FROM project WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'completed\')';
+		$queryStr='SELECT * FROM project WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'completed\') ORDER BY App_Date DESC';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -293,7 +293,7 @@ class Project_model extends CI_Model {
 	{
 		$this->load->database();
 		//$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus <> \'completed\' AND PStatus <> \'ongoing\'))';
-		$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus = \'app_chairman_1\' OR PStatus = \'app_chairman_1\' OR PStatus = \'app_admin\' OR PStatus = \'app_comm\'))';
+		$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus = \'app_chairman_1\' OR PStatus = \'app_chairman_1\' OR PStatus = \'app_admin\' OR PStatus = \'app_comm\')) ORDER BY App_Date DESC';
 		$query = $this->db->query($queryStr);
 		return $query;
 	}
@@ -498,7 +498,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='SELECT * FROM project WHERE PStatus = "app_'.$stage.'";';
+		$queryStr='SELECT * FROM project WHERE PStatus = "app_'.$stage.'" ORDER BY App_Date DESC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -590,7 +590,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='SELECT * FROM project WHERE PStatus = "approved" OR PStatus = "completed" OR PSTatus = "ongoing";';
+		$queryStr='SELECT * FROM project WHERE PStatus = "approved" OR PStatus = "completed" OR PSTatus = "ongoing" ORDER BY App_Date DESC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;

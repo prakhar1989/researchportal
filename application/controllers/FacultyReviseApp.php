@@ -15,9 +15,20 @@ class FacultyReviseApp extends CI_Controller {
 		header("location:login");
 		}
 		}
+	function explode_dn($dn, $with_attributes=0)
+						{
+							ini_set( "display_errors", 0); 
+							$result = ldap_explode_dn($dn, $with_attributes);
+							foreach($result as $key=>$value){
+							  $result[$key] = preg_replace("/\\\([0-9A-Fa-f]{2})/e", "''.chr(hexdec('\\1')).''", $value);
+							}
+							return $result;
+						}	
 	function load_php()
 				{
-				//echo 'jai mata di';
+				error_reporting(E_ERROR | E_PARSE);
+				ini_set( "display_errors", 0);  
+					
 				$ProjectID = $_SESSION['ProjectID'];
 				echo '<INPUT TYPE="HIDDEN" NAME="ProjectSelected" VALUE="'.$ProjectID.'">	';
 				//echo $ProjectID;
@@ -53,18 +64,43 @@ class FacultyReviseApp extends CI_Controller {
 						<tr>
 							<td>Project Deliverables</td>
 							<td><table>
-							<tr>Please select all the deliverable appilcable from below</tr>
-							<tr><td>Cases</td><td><input type="checkbox" value="1" name="casesCB" onClick="enableMe(\'cases\');" /></td><td><input type="text" disabled="disabled" name="cases" value="No of Cases" ></td></tr>
-							<tr><td>Journals</td><td><input type="checkbox" value="1" name="journalsCB" onClick="enableMe(\'journals\');" /></td><td><input type="text" disabled="disabled" name="journals" value="No of Journals" ></td></tr>
-							<tr><td>Book Chapters</td><td><input type="checkbox" value="1" name="chaptersCB" onClick="enableMe(\'chapters\');" /></td><td><input type="text" disabled="disabled" name="chapters" value="No of Chapters" ></td></tr>
-							<tr><td>Conference</td><td><input type="checkbox" value="1" name="conferencesCB" onClick="enableMe(\'conferences\');" /></td><td><input type="text" disabled="disabled" name="conferences" value="No of Conferences" ></td></tr>
-							<tr><td>Work Paper</td><td><input type="checkbox" value="1" name="papersCB" onClick="enableMe(\'papers\');" /></td><td><input type="text" disabled="disabled" name="papers" value="No of Work Papers" ></td></tr>
-							<tr><td>Books</td><td><input type="checkbox" value="1" name="booksCB" onClick="enableMe(\'books\');" /></td><td><input type="text" disabled="disabled" name="books" value="No of Books" ></td></tr>
+							<tr>Please select all the deliverable applicable from below</tr>
+							<tr><td>Cases</td><td><input type="checkbox" value="1" name="casesCB" onClick="enableMe(\'cases\');" /></td><td><input type="text" disabled="disabled" name="cases" placeholder="No of Cases" ></td></tr>
+							<tr><td>Journals</td><td><input type="checkbox" value="1" name="journalsCB" onClick="enableMe(\'journals\');" /></td><td><input type="text" disabled="disabled" name="journals" placeholder="No of Journals" ></td></tr>
+							<tr><td>Book Chapters</td><td><input type="checkbox" value="1" name="chaptersCB" onClick="enableMe(\'chapters\');" /></td><td><input type="text" disabled="disabled" name="chapters" placeholder="No of Chapters" ></td></tr>
+							<tr><td>Conference</td><td><input type="checkbox" value="1" name="conferencesCB" onClick="enableMe(\'conferences\');" /></td><td><input type="text" disabled="disabled" name="conferences" placeholder="No of Conferences" ></td></tr>
+							<tr><td>Work Paper</td><td><input type="checkbox" value="1" name="papersCB" onClick="enableMe(\'papers\');" /></td><td><input type="text" disabled="disabled" name="papers" placeholder="No of Work Papers" ></td></tr>
+							<tr><td>Books</td><td><input type="checkbox" value="1" name="booksCB" onClick="enableMe(\'books\');" /></td><td><input type="text" disabled="disabled" name="books" placeholder="No of Books" ></td></tr>
 							</table></td>													
 						</tr>';
 						
 						
-							
+						// LDAP Connection
+
+							//*******************Uncomment on Server*********************
+/*
+							$username="ashishkj11";
+							$ldapHost="192.168.1.103";
+							$ldapPort=389;
+							$ds = ldap_connect($ldapHost, $ldapPort) or die('Could not connect to $ldaphost');
+							if ($ds) {
+								$r = ldap_bind($ds);
+								$query = ldap_search($ds, "ou=Group,dc=iimcal,dc=ac,dc=in", "cn=Faculty");
+								$data = ldap_get_entries($ds, $query);
+								$namescsv ="[";
+								$namesarray= array();
+								foreach($data[0]['member'] as $member) {
+									$member_dn = $this->explode_dn($member);
+									$member_cn = str_replace("cn=","",$member_dn[0]);
+									$namescsv.="\"".$member_cn."\", ";
+									array_push($namesarray, $member_cn);
+								};
+								$namescsv.="\"\"]";
+
+							} else { $member_cn = Nil; }
+							*/
+							//*******************Uncomment on Server*********************
+
 							
 
 							
@@ -72,15 +108,15 @@ class FacultyReviseApp extends CI_Controller {
 							<div class="container-narrow">
 							<tr>
 							<td>Co-Researcher 1 ID</td>
-							<td><b>'
-							.$row->Researcher2.
-							'</b></td>
+							<td>
+							<input type="text" name="researcher2" placeholder = "'.$row->Researcher2.'" class="names_text" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source=\''.$namescsv.'\'></input> 
+							</td>
 							</tr>
 							<tr>
 							<td>Co-Researcher 2 ID</td>
-								<td><b>'
-							.$row->Researcher3.
-							'</b></td>
+							<td>
+							<input type="text" name="researcher3" placeholder = "'.$row->Researcher3.'" class="names_text" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source=\''.$namescsv.'\'></input> 
+							</td>
 							</tr>
 							';
 						  

@@ -84,7 +84,7 @@ class FacultyProjApp extends CI_Controller {
 
 							//*******************Uncomment on Server*********************
 
-							/*$username="ashishkj11";
+							$username="ashishkj11";
 							$ldapHost="192.168.1.103";
 							$ldapPort=389;
 							$ds = ldap_connect($ldapHost, $ldapPort) or die('Could not connect to $ldaphost');
@@ -106,7 +106,7 @@ class FacultyProjApp extends CI_Controller {
 							
 							//*******************Uncomment on Server*********************
 
-							*/
+							
 
 
 							
