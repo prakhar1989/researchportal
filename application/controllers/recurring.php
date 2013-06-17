@@ -58,7 +58,7 @@ class recurring extends CI_Controller {
 		 {
 		 echo '</tbody>
 		 </TABLE>
-		 <input type= submit value= "Edit Amount" name="Action"><input type= submit value= "Add Project" name="Action">
+		 <input type= submit value= "Edit Amount" name="Action"><input type= submit value= "Add Project" name="Action"><input type= submit value= "View Details" name="Action"><input type= submit value= "Approve Payment" name="Action">
 		</FORM>';
 		 }
 	}

@@ -48,7 +48,7 @@ class EditRecurring extends CI_Controller {
 					<input type="submit" value"Submit" class="btn btn-large btn-primary"></input><input type="hidden" name=projectId value="'.$project.'"></input><input type="hidden" name=rname value="'.$rname.'"></input></form>';
 			
 		}
-		else
+	else if ($_POST['Action']=='Add Project')
 		{
 		    /*echo 'Going to add a new project into recurring';
 			echo '
@@ -108,6 +108,10 @@ class EditRecurring extends CI_Controller {
 							<td><input type="text" class="large" name="recurring_amt"></input></td>
 						</tr>
 						<tr>
+							<td>Start payment from month (1 - Jan, 2 Feb etc.)</td>
+							<td><input type="text" class="large" name="Start_payment"></input></td>
+						</tr>
+						<tr>
 							<td>Number of months</td>
 							<td><input type="text" class="large" name="No_payments"></input></td>
 						</tr>
@@ -145,6 +149,77 @@ class EditRecurring extends CI_Controller {
 					<input type="submit" value"Submit" class="btn btn-large btn-primary"></input></form>';
 									
 					
+		}
+	else if($_POST['Action']=='View Details')
+		{
+			
+			echo '<table class="table table-bordered">
+						  
+						
+					<p>Details of RA</p>
+					<thead>
+						<tr>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Work Order Number</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Research Assistant Name</td>
+							<td><input type="text" class="large" name="RA_id"></input></td>
+						</tr>
+						<tr>
+							<td>Research Assistant Date of Birth</td>
+							<td><input type="text" class="large" name="DOB"></input></td>
+						</tr>
+						<tr>
+							<td>Recurring Amount</td>
+							<td><input type="text" class="large" name="recurring_amt"></input></td>
+						</tr>
+						<tr>
+							<td>Start payment from month (1 - Jan, 2 Feb etc.)</td>
+							<td><input type="text" class="large" name="Start_payment"></input></td>
+						</tr>
+						<tr>
+							<td>Number of months</td>
+							<td><input type="text" class="large" name="No_payments"></input></td>
+						</tr>
+						<tr>
+							<td>Day when payment is to be made</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Account Details (Enter Account number, Bank name, Bank branch, Name of Account Holder)</td>
+							<td></td>
+						<tr>
+							<td>Payment Method</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>In case of cheque transfer: the cheque would be in the name of</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>PAN number</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Download CV</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>Upload Appointment Letter</td>
+							<td></td>
+						</tr>
+							
+					</tbody>
+					</table>';
+		}
+	else if ($_POST['Action']=='Approve Payment')
+		{
+			
 		}
 	}
     
