@@ -947,11 +947,20 @@ return $query->result();
 	$this->load->database();
 	$query0='select * from transaction where tno='.$tno.';';
 	$query01=$this->db->query($query0)->row_array();
-	$query1='Insert into budget VALUES (ProjectId='.$query01['ProjectId'].',ResearchAssistance='.$query01['Amount'].',Date=\''.date('Y-m-d h:i:s').'\', RCE = 0, Investigators =0, TravelAcco =0, Communication =0, ITCosts =0, Dissemination =0, Contingency =0, recurring =0);';
+	
+
+	 $query1='Insert into budget VALUES (\''.date('Y-m-d h:i:s').'\',"'.$query01['ProjectId'].'",'.$query01['Amount'].',0 , 0, 0, 0, 0, 0, 0, 0);';
+
 	$query2='UPDATE transaction SET completed = 1 WHERE Tno='.$tno.';';
 	
 	$query11=$this->db->query($query1);
 	$query21=$this->db->query($query2);
+	
+	$query3='select * from recurring where ProjectID='.$query01['ProjectId'].' and researcher_id="'.$query01['RA_ID'].'";';
+	$query31=$this->db->query($query3)->row_array();
+	$query4='Update recurring SET total = '.($query31['total']+$query01['Amount']).' WHERE ProjectID='.$query01['ProjectId'].' AND researcher_id = "'.$query01['RA_ID'].'";';
+	$query41=$this->db->query($query4);
+	
 	$msg ='The transaction has been updated';
 	return $msg;
 	}

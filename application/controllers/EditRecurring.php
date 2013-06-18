@@ -177,14 +177,6 @@ class EditRecurring extends CI_Controller {
 							<td>PAN number</td>
 							<td>'.$res[0]->PAN.'</td>
 						</tr>
-						<tr>
-							<td>Download CV</td>
-							<td></td>
-						</tr>
-						<tr>
-							<td>Download Appointment Letter</td>
-							<td></td>
-						</tr>
 							
 					</tbody>
 					</table>';
@@ -255,10 +247,6 @@ class EditRecurring extends CI_Controller {
 		 $showMsg->index($msg,'admin');
 	}	
 
-	function view() 
-	{
-		//$this->project_model->get
-	}
-
+	
 }	
 ?>

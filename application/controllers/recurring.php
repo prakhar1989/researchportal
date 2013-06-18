@@ -29,7 +29,7 @@ class recurring extends CI_Controller {
 		 $pending = $this->project_model->allPending();
 		 echo '
 		 <h1>Pending Payments</h1>
-		  <FORM METHOD=POST ACTION="recurring/ApprovePayment">
+		  <FORM METHOD=POST ACTION="PendingRecurring">
 		 <TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 		 <table class="table table-bordered">
 		<tr><TD><h4>Due Date</TD><TD><h4>Work Order Number</h4></TD><td><h4>RA Name</h4></td><TD><h4>Amount</h4></TD><TD><h4>Select</h4></TD></tr>
@@ -48,7 +48,7 @@ class recurring extends CI_Controller {
 		}
 		echo '</tbody>
 		 </TABLE>
-		 <input type= submit value= "View Details" name="Action"><input type= submit value= "Approve Payment" name="Action">
+		 <input type= submit value= "Approve Payment" name="Action">
 		</FORM>';
 		
 		 
