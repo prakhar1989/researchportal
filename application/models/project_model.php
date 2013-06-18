@@ -342,13 +342,13 @@ class Project_model extends CI_Model {
 		return $query;
 		}
 		
-	// insert recurring record in the table-- called from faculty page
+	// insert recurring record in the table-- called from faculty page as well as admin page
 	function insertRecurring($data)
 		{
 			$this->load->database();
 			$queryStr1='SELECT ProjectId FROM project WHERE WorkOrderId = '.$data['WorkOrderId'].';';
 			$row=$this->db->query($queryStr1)->result();
-			$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, PAN, Cheque_name, Day_payment) VALUES ('.$row[0]->ProjectId.', \''.$data['WorkOrderId'].'\' , '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\',\''.$data['PAN'].'\', \''.$data['Cheque_name'].'\', '.$data['Day_payment'].');';
+			$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, PAN, Cheque_name, Day_payment, Month_payment) VALUES ('.$row[0]->ProjectId.', \''.$data['WorkOrderId'].'\' , '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\',\''.$data['PAN'].'\', \''.$data['Cheque_name'].'\', '.$data['Day_payment'].','.$data['Month_payment'].');';
 			$query = $this->db->query($queryStr);
 			for($i=0; $i<$data['No_Payments']; $i++)
 			{
@@ -566,7 +566,7 @@ class Project_model extends CI_Model {
 	function getAccount($projectId)
 	{
 		$this->load->database();
-		$queryStr='SELECT * FROM budget WHERE ProjectID = "'.$projectId.'";';
+		$queryStr='SELECT * FROM budget WHERE ProjectID = "'.$projectId.'" ORDER BY Date DESC;';
 	    $query= $this->db->query($queryStr);
 		return $query->result();
 	}
@@ -697,7 +697,8 @@ class Project_model extends CI_Model {
 		$msg='The Account Details have been Added';
 		return $msg;
 	}
-	// function to extract the recurring Amount for a project
+	// function to extract the recurring Amount for all projects
+	//recurring table contains details of all RAs for all projects
 	function getRecurring()
 		{
 		//echo 'getRecurring Called';
@@ -707,8 +708,20 @@ class Project_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query->result();
 		}
+		
+		// function to extract the recurring Amount for all projects
+	//recurring table contains details of all RAs for all projects
+	function getSpecificRecurring($project, $name)
+		{
+		//echo 'getRecurring Called';
+		$this->load->database();
+		$queryStr='SELECT * FROM recurring WHERE (ProjectID = "'.$project.'" AND researcher_id = "'.$name.'");';
+		//echo $queryStr;
+		$query = $this->db->query($queryStr);
+		return $query->result();
+		}
  	
-	//*** Edit the amount of recurring that the project will be getting
+	//*** Edit the amount of recurring that the project will be getting effective from current date
 	function editAmount($ProjectId,$amount,$name)
 	{
 	$this->load->database();
@@ -716,21 +729,21 @@ class Project_model extends CI_Model {
 	$queryStr='UPDATE recurring SET recurring_amt='.$amount.' WHERE (ProjectId='.$ProjectId.' AND researcher_id="'.$name.'");';
 	//echo $queryStr;
 	$query = $this->db->query($queryStr);
-	$query1='UPDATE transaction SET Amount='.$amount.' WHERE (ProjectId = '.$ProjectId.' AND RA_ID = "'.$name.'" AND completed = 2 AND DueDate >= \''.date("Y-m-d").'\');';
+	$query1='UPDATE transaction SET Amount='.$amount.' WHERE (ProjectId = '.$ProjectId.' AND RA_ID = "'.$name.'" AND completed !=1 AND DueDate >= \''.date("Y-m-d").'\');';
 	$query11=$this->db->query($query1);
 	$msg= 'Edited';
 	return $msg;
 	}
 	
-	//*** Add the projeect for the recurring account and set its amount and total
-	function addProject($ProjectId,$amount,$total)
-	{
-	$this->load->database();
-	//echo $ProjectId.' '.$amount;
-	$queryStr='INSERT INTO recurring (ProjectId,recurring_amt,total) values ( '.$ProjectId.', '.$amount.' , '.$total.' );';
-	$query = $this->db->query($queryStr);
-	$msg= 'Added';
-	}
+	// //*** Add the projeect for the recurring account and set its amount and total
+	// function addProject($ProjectId,$amount,$total)
+	// {
+	// $this->load->database();
+	// //echo $ProjectId.' '.$amount;
+	// $queryStr='INSERT INTO recurring (ProjectId,recurring_amt,total) values ( '.$ProjectId.', '.$amount.' , '.$total.' );';
+	// $query = $this->db->query($queryStr);
+	// $msg= 'Added';
+	// }
 	
 	//*** Enter the recurring expenses to the project
 	function addRecurring($Project)
@@ -862,7 +875,7 @@ class Project_model extends CI_Model {
 	//echo $queryStr;
 	$query = $this->db->query($queryStr);
 	//return $query->result()[0]->WorkOrderId;
-	return $query->result(0)->WorkOrderId;
+	return $query->result()[0]->WorkOrderId;
 }
 
 //not used
@@ -913,19 +926,20 @@ return $query->result();
 		return $msg;
 	}
 	
-	// Function to get all the projects
+	// Function to get all the projects: called by admin
 	function allPending()
 	{
 	//echo 'project_stage called';
 		$this->load->database();
 		//$query= $this->db->get('project');
-		//echo $Project['Id'];	
-		$queryStr='UPDATE transaction SET completed = 0 WHERE completed = 2 and DueDate<='.date('Y-m-d').';';
-		$query1='SELECT * FROM transaction WHERE completed = 0;';
+		//echo $Project['Id'];
+		$queryStr='UPDATE transaction SET completed = 0 WHERE (completed = 2 AND DueDate<="'.date('Y-m-d').'");';
+		//**********NOTE:completed values:0=>payment due but pending;1=>payment complete;2=>not yet due
+		$query1='SELECT * FROM transaction WHERE completed = 0 ORDER BY DueDate DESC;';
 		//echo $queryStr;
 		$query2 = $this->db->query($queryStr);
 		$query3 = $this->db->query($query1);
-		return $query3;
+		return $query3->result();
 	}
 	
 	function completeTransaction($tno)

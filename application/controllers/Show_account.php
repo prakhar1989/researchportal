@@ -138,10 +138,7 @@ class Show_account extends CI_Controller {
 						 <input type= submit value= "ADD" name="add"><input type="hidden" name=projectID value="'.$Project.' " >
 						</FORM>';
 					}
-					else{
-						$Result= $this->project_model->addRecurring($Project);
-						echo'<h4>The Recurring amount added for the project</h4>';
-					}
+					
 				
 				 
 				 

@@ -24,12 +24,38 @@ class recurring extends CI_Controller {
 		// $name = $_SESSION['name'];
 		// echo "WELCOME $name!!! Please select the options from Menu form Left ";
 		
-		// *** Table for the Pending recurring amounts  Display
 		 $this->load->model('project_model');
-		 $Query= $this->project_model->getRecurring(); //*** Gets recurring projectId, amount pending and  total withdrawn
-		 
+		 //*** Table showing Pending Payments till today***
+		 $pending = $this->project_model->allPending();
 		 echo '
-		 <h1>Recurring Expenses </h1>
+		 <h1>Pending Payments</h1>
+		  <FORM METHOD=POST ACTION="recurring/ApprovePayment">
+		 <TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
+		 <table class="table table-bordered">
+		<tr><TD><h4>Due Date</TD><TD><h4>Work Order Number</h4></TD><td><h4>RA Name</h4></td><TD><h4>Amount</h4></TD><TD><h4>Select</h4></TD></tr>
+		<tbody>';
+		foreach ($pending as $rec)
+		{
+			echo '</TD><TD>';
+			print $rec->DueDate;
+			echo '</TD><TD>';
+			print $rec->WorkOrderId;
+			echo '</TD><TD>';
+			print $rec->RA_ID;
+			echo '</TD><TD>';
+			print $rec->Amount;
+			echo '</TD><TD><INPUT TYPE="RADIO" NAME="Choice" VALUE='.$rec->Tno.'></input></TD></TR>';
+		}
+		echo '</tbody>
+		 </TABLE>
+		 <input type= submit value= "View Details" name="Action"><input type= submit value= "Approve Payment" name="Action">
+		</FORM>';
+		
+		 
+		 $Query= $this->project_model->getRecurring(); //*** Gets recurring projectId, amount pending and  total withdrawn
+		// *** Table for the Recurring amounts  Display..one record for one RA*** 
+		 echo '
+		 <h1>Research Assistants </h1>
 		 <FORM METHOD=POST ACTION="EditRecurring">
 		 <TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 		 <table class="table table-bordered">
@@ -58,7 +84,7 @@ class recurring extends CI_Controller {
 		 {
 		 echo '</tbody>
 		 </TABLE>
-		 <input type= submit value= "Edit Amount" name="Action"><input type= submit value= "Add Project" name="Action"><input type= submit value= "View Details" name="Action"><input type= submit value= "Approve Payment" name="Action">
+		 <input type= submit value= "Edit Amount" name="Action"><input type= submit value= "Add Project" name="Action"><input type= submit value= "View Details" name="Action">
 		</FORM>';
 		 }
 	}

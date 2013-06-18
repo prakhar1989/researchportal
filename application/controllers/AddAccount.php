@@ -93,7 +93,7 @@ class AddAccount extends CI_Controller {
 					}
 				    else 
 					 {
-						echo '<h3>You cant apply any more projects as of now</h3>';
+						echo '<h3>The project grant has been consumed. You can\'t add more accounts as of now</h3>';
 					 }
 				 
 				 
