@@ -53,7 +53,7 @@ function index ()
 					 <TR><TD style="font-weight:bold" align = center colspan=2>INDIAN INSTITUE OF MANAGEMENT CALCUTTA</TD></TR>
 					 <TR><TD style="font-weight:bold" align = center colspan=2>Fellow Programme and Research</TD></TR>
 					 <TR><TD style="font-weight:bold" align = center colspan=2></TD></TR>
-					 <TR><TD align = center colspan=2><u>Intet-office Memo</u></TD></TR>
+					 <TR><TD align = center colspan=2><u>Inter-office Memo</u></TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left><u>To : </TD></TR><TR></TR><TR></TR>
 					 <TR><TD align = left>C.C : </TD></TR><TR></TR><TR></TR>
@@ -105,9 +105,9 @@ function index ()
 					}		
 		 
 					 echo'<TR><TD align = left colspan=2>(Prof. Biswatosh Saha)</TD></TR>
-					 <TR><TD align = left colspan=2><br></TD></TR>
-					 <TR><TD align = left colspan=2><u><b>Encl. : </b>Research Proposal of Prof. '.$row->Researcher1.'</u></TD></TR>
-					 ';
+					 <TR><TD align = left colspan=2><br></TD></TR>';
+					 //<TR><TD align = left colspan=2><u><b>Encl. : </b>Research Proposal of Prof. '.$row->Researcher1.'</u></TD></TR>
+					 
 					 
 					 }
 					 echo '</tbody> ';

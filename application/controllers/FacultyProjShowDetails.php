@@ -17,7 +17,7 @@ class FacultyProjShowDetails extends CI_Controller {
 }
 	function load_php()
 				{
-				$ProjectID = $this->input->post('ProjectChoice');
+				$ProjectID = $this->input->post('ProjectSelected');
 				//echo $ProjectID;
 				//Load the project model
 				$this->load->model('project_model');
@@ -25,6 +25,7 @@ class FacultyProjShowDetails extends CI_Controller {
 				//echo '<p> hello this is the Project Details Page </p>';
 				// Display the results
 				echo'
+				
 					<FORM name = "form1" METHOD=POST ACTION="FacultyProjRequest">
 				
 					<INPUT TYPE="HIDDEN" NAME="ProjectSelected" VALUE="'.$ProjectID.'">	
@@ -75,7 +76,7 @@ class FacultyProjShowDetails extends CI_Controller {
 							</tr>
 					</thead>
 					<tbody>';
-					 
+					 $tableHeader = '';
 					 foreach($Query->result() as $row)
 					 {
 					If ($row->cases!=0 OR  $row->journals!=0 OR $row->chapters!=0 OR $row->conference!=0 OR $row->paper!=0 OR $row->books!=0)
@@ -118,11 +119,13 @@ class FacultyProjShowDetails extends CI_Controller {
 						/*if ($_SESSION['usertype']==3)
 						{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
 						}*/
-						}
+						
 						$tableHeader= $tableHeader.'</TR>';
-					 }
-					 $tableHeader= $tableHeader.'</TR>';
+						}
 					 echo $tableHeader;
+					 }
+					 //$tableHeader= $tableHeader.'</TR>';
+					 
 					 //echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Id</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1>';
 					 foreach($Query->result() as $row)
 					 {
@@ -186,9 +189,9 @@ class FacultyProjShowDetails extends CI_Controller {
 						 print $row->books;
 						 echo '</td>';
 						}
-						
+					echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
+					 	
 					 }
-					 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
 					 echo '</tbody> </TABLE>';
 					 
 					echo'<a href="downloadfile?file=upload/'.$ProjectID.'_description">Download Project Description file</a><br><br>';

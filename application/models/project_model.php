@@ -60,7 +60,7 @@ class Project_model extends CI_Model {
 	function project_extension()
 		{
 		$this->load->database();
-		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  ApprovalPending = "admin" order by project.App_Date';
+		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  ApprovalPending = "admin" order by project.App_Date DESC';
 		//$queryStr='Select * from project where ProjectId IN (SELECT ProjectId FROM projectextension where  ApprovalPending = "admin");';
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -577,8 +577,8 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		$queryStr='SELECT SUM('.$head.') AS sumhead FROM budget WHERE ProjectID = "'.$projectId.'";';
 	    $query= $this->db->query($queryStr);
-		return $query->result()[0]->sumhead;
-		//return $query->result(0)->sumhead;
+		//return $query->result()[0]->sumhead;
+		return $query->result(0)->sumhead;
 	}
 	
 	
@@ -875,7 +875,7 @@ class Project_model extends CI_Model {
 	//echo $queryStr;
 	$query = $this->db->query($queryStr);
 	//return $query->result()[0]->WorkOrderId;
-	return $query->result()[0]->WorkOrderId;
+	return $query->result(0)->WorkOrderId;
 }
 
 //not used

@@ -66,7 +66,7 @@ function index ()
 		 <TR><TD style="font-weight:bold" align = center colspan=6>INDIAN INSTITUE OF MANAGEMENT CALCUTTA</TD></TR>
 		 <TR><TD style="font-weight:bold" align = center colspan=6>Fellow Programme and Research</TD></TR>
 		 <TR><TD style="font-weight:bold" align = center colspan=6></TD></TR>
-		 <TR><TD align = center colspan=6><u>Intet-office Memo</u></TD></TR>
+		 <TR><TD align = center colspan=6><u>Inter-office Memo</u></TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
 		 <TR><TD align = left colspan=3><u>To : </TD><TR></TR><TR></TR>
 		 <TR><TD align = left colspan=3>C.C : </TD></TR><TR></TR><TR></TR>
@@ -115,8 +115,10 @@ function index ()
 		 {
 		 $path = "image/chairman";
 		 $Files = glob($path."*.*");
+		 //echo '$$$$$$';
 		 foreach ($Files as $File)
 			{
+			
 			echo '<TR><TD align = left colspan=6><IMG src="'.$File.'" border="0" width ="100" height="100"></TD></TR>';
 			}		
 		 }
@@ -175,7 +177,7 @@ function index ()
 		 echo '</TD></TR>
 		 <TR><TD align = left colspan=2>(Prof. Bhaskar Chakrabarti)</TD><TD align = left colspan=2>(Prof.Somprakash Bandyopadhyay)</TD><TD align = left colspan=2>(Prof.Amit Dhiman)</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
-		 <TR><TD align = left colspan=6><u><b>Encl. : </b>Research Proposal of Prof.............</u></TD></TR>
+		 <TR><TD align = left colspan=6><u><b>Encl. : </b>Research Proposal of Prof.'.$row->Researcher1.'</u></TD></TR>
 		 ';
 		 }
 		 echo '</tbody> ';
