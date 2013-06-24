@@ -161,7 +161,7 @@ class Project_model extends CI_Model {
 		If ($row->ApprovalPending == 'revisionAdmin')
 			$queryStr1='UPDATE projectcompleted SET ApprovalPending = "admin" where ProjectId = "'.$projectid.'";';
 		ElseIf ($row->ApprovalPending == 'revisionChairman')
-			$queryStr1='UPDATE projectcompleted SET ApprovalPending = "chairman" where ProjectId = "'.$projectid.'";';
+			$queryStr1='UPDATE projectcompleted SET ApprovalPending = "admin" where ProjectId = "'.$projectid.'";';
 		}
 		$query1 = $this->db->query($queryStr1);
 		return $query1;
@@ -245,7 +245,7 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='Select project.*,projectcompleted.* From project Inner Join projectcompleted On project.ProjectId = projectcompleted.ProjectId where  (projectcompleted.ApprovalPending = "revisionAdmin" OR projectcompleted.ApprovalPending = "revisionChairman") AND (Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') ORDER BY project.App_Date DESC;';
+		$queryStr='Select project.*,projectcompleted.* From project Inner Join projectcompleted On project.ProjectId = projectcompleted.ProjectId where  (projectcompleted.ApprovalPending = "revisionAdmin" OR projectcompleted.ApprovalPending = "revisionChairman") AND (project.Researcher1 =\''.$user.'\' OR project.Researcher2 = \''.$user.'\' OR project.Researcher3 = \''.$user.'\') ORDER BY project.App_Date DESC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;

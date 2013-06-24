@@ -95,7 +95,8 @@ function index ()
 		 if ($row->Researcher2 != '')
 		echo '   Prof.'.$row->Researcher2;
 		 if ($row->Researcher3 != '')
-		echo 'Prof.'.$row->Researcher3.'</TD></TR>
+		echo 'Prof.'.$row->Researcher3;
+		echo '</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
 		 <TR><TD align = left colspan=6>Project Category : '.$row->ProjectCategory.'</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>

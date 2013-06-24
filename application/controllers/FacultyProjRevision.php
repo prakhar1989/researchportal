@@ -61,12 +61,13 @@ class FacultyProjRevision extends CI_Controller {
 						 {
 							 echo '<p>'.$row1->Date.' ; '.$row1->User.': '.$row1->Comment.'</p>';
 						 }
-						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
+						 echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD>';
+						echo '<TD><INPUT TYPE=SUBMIT name ="RequestType" value="Edit New Application"></TD></TR>';
 						}			 
-					 echo '</tbody></TABLE>
-					<INPUT TYPE=SUBMIT name ="RequestType" value="Edit New Application">
+					 echo '</tbody></TABLE>';
+					//<INPUT TYPE=SUBMIT name ="RequestType" value="Edit New Application">
 					
-					<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
+					echo '<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 				
 						<table class="table table-bordered">
 					<TD><h4>Project Title</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD><TD><h4>Comments</h1></TD><TD><h4>Select</h1></TD>
@@ -99,13 +100,14 @@ class FacultyProjRevision extends CI_Controller {
 						 {
 							 echo '<p>'.$row1->Date.' ; '.$row1->User.': '.$row1->Comment.'</p>';
 						 }
-						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
+						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD>';
+						 echo '</TD><TD><INPUT TYPE=SUBMIT name ="RequestType" value="Edit Extension"></TD></TR>';
 						}			 
 					 echo '</tbody>
-					</table>
-					<INPUT TYPE=SUBMIT name ="RequestType" value="Edit Extension">
+					</table>';
+					//<INPUT TYPE=SUBMIT name ="RequestType" value="Edit Extension">
 
-				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
+				echo '<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 				
 						<table class="table table-bordered">
 					<TD><h4>Project Title</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h4></TD><TD><h4>Comments</h4></TD><TD><h4>Select</h1></TD>
@@ -138,13 +140,14 @@ class FacultyProjRevision extends CI_Controller {
 						 {
 							 echo '<p>'.$row1->Date.' ; '.$row1->User.': '.$row1->Comment.'</p>';
 						 }
-						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
+						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD>';
+						 echo '</TD><TD><INPUT TYPE=SUBMIT name ="RequestType" value="Edit Completion"></TD></TR>';
 						}			 
 					 echo '</tbody>
-					</table>
-					<INPUT TYPE=SUBMIT name ="RequestType" value="Edit Completion">
+					</table>';
+					//<INPUT TYPE=SUBMIT name ="RequestType" value="Edit Completion">
 
-					</FORM>';
+					echo '</FORM>';
                 
 				
 				}

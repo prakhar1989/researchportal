@@ -106,11 +106,12 @@ class Ongoing extends CI_Controller {
 						 print $row->Researcher3;
 						 */
 						 //if($_SESSION['usertype']<>2)
-							echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
+							echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD>';
+							echo '</TD><TD><INPUT TYPE=SUBMIT value="Download Project Description" name="RequestType"></TD></TR>';
 					 }
 				echo '</TBODY></TABLE>';
 				
-				 echo '<br><INPUT TYPE=SUBMIT value="Download Project Description" name="RequestType"><br><br>';
+				 //echo '<br><INPUT TYPE=SUBMIT value="Download Project Description" name="RequestType"><br><br>';
 				
 				//if($_SESSION['usertype']<>2)
 				//echo '<INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables" onClick=checkDeliverables()>';

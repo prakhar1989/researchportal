@@ -93,11 +93,12 @@ class FacultyProjCompleted extends CI_Controller {
 						 echo '</TD><TD>';
 						 $deliverablesCount = $row->cases + $row->journals + $row->chapters + $row->conference + $row->paper + $row->books;
 						 echo $deliverablesCount;
-						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
+						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD>';
+						 echo '</TD><TD><INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables"></TD></TR>';
 						}			 
 					 echo '</tbody>
-					</table>
-					<INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables">';
+					</table>';
+					//<INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables">
 					/*echo '<br><hr size=10 noshade color="#333333"><h3>Files Uploaded</h3>';
 					$queryStr='Select * from project where ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND PStatus = "completed")';
 					$query = $this->db->query($queryStr);

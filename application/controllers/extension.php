@@ -126,12 +126,13 @@ class Extension extends CI_Controller
 						 {
 							 echo '<p>'.$row1->Date.' ; '.$row1->User.': '.$row1->Comment.'</p>';
 						 }
-						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
+						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD>';
+						 echo '</TD><TD><INPUT TYPE=SUBMIT name ="RequestType" value="Print"></TD></TR>';
 						}			 
 					 echo '</tbody>
-					</table>
-				<INPUT TYPE=SUBMIT name ="RequestType" value="Print">
-				</Form>';
+					</table>';
+				//<INPUT TYPE=SUBMIT name ="RequestType" value="Print">
+				echo '</Form>';
 				}
 	}
 

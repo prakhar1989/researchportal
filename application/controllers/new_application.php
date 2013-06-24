@@ -64,7 +64,8 @@ class New_application extends CI_Controller {
 						 print $row->Researcher1;
 						 echo '</TD><TD>';
 						 print $row->Researcher2;
-					     echo '<TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ProjectId.'"></TD></TR>';
+					     echo '<TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ProjectId.'"></TD>';
+						 echo '<TD><INPUT TYPE=SUBMIT value="VIEW"></TD></TR>';
 					 }
 					 if($flag==0){
 					 echo '<h4>No New Applications</h4> <br > </tbody> </TABLE>';
@@ -72,9 +73,9 @@ class New_application extends CI_Controller {
 					 else
 					 {
 					 echo '</tbody>
-					 </TABLE>
-					 <INPUT TYPE=SUBMIT value="VIEW">
-					</FORM>';
+					 </TABLE>';
+					 //<INPUT TYPE=SUBMIT value="VIEW">
+					echo '</FORM>';
 					
 				}
 				

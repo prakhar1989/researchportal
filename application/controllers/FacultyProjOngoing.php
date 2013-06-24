@@ -90,14 +90,15 @@ class FacultyProjOngoing extends CI_Controller {
 						 echo '</TD><TD>';
 						 $deliverablesCount = $row->cases + $row->journals + $row->chapters + $row->conference + $row->paper + $row->books;
 						 echo $deliverablesCount;
-						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
+						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD>';
+						 echo '</TD><TD><INPUT TYPE=SUBMIT value="Show Details"></TD></TR>';
 						}
 							 
 					 echo '
 					 </tbody>
-					 </TABLE>
-					<INPUT TYPE=SUBMIT value="Show Details">
-					</FORM>';
+					 </TABLE>';
+					//<INPUT TYPE=SUBMIT value="Show Details">
+					echo '</FORM>';
                 // For help: new_application.php
 				
 				}

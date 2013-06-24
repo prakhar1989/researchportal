@@ -101,11 +101,12 @@ class Completed extends CI_Controller {
 						 echo $deliverablesCount;
 						 echo '</TD>';
 						 //if($_SESSION['usertype']<>2)
-							echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD></TR>';
+							echo '<TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD>';
+							echo '<TD><INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables" onClick=checkDeliverables()></TD></TR>';
 					 }
 				echo '</TABLE>';
 				//if($_SESSION['usertype']<>2)
-					echo '<INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables" onClick=checkDeliverables()>';
+					//echo '<INPUT TYPE=SUBMIT name="RequestType" value="Check Deliverables" onClick=checkDeliverables()>';
 				echo '</FORM>';
 				}
 				

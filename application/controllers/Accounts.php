@@ -33,13 +33,12 @@ class Accounts extends CI_Controller {
 				echo ' <h1>Account Details</h1>';
 				echo ' <p>Choose Project to view details</p>';
 				echo '<FORM METHOD=POST ACTION="Show_account"> <table class="table table-bordered">
-				<TR><TD><h4>Select</h1></TD><TD><h4>ProjectTitle</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1>
+				<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1><TD><h4>Select</h1></TD>
 				<tbody>';
 	 
 					 foreach($Query->result() as $row)
 					 {
-					     echo '<TR><TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ProjectId.'"></TD>';
-						 echo '<TD>';
+						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
 						 echo '</TD><TD>';
 						 print $row->Description;
@@ -55,9 +54,11 @@ class Accounts extends CI_Controller {
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Researcher3;
+						 echo '<TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ProjectId.'"></TD>';
+						 echo '<TD><INPUT TYPE=SUBMIT value="View Account Details" name="Action"></TD></TR>';
 					 }
 				echo '</tbody></TABLE>
-				<INPUT TYPE=SUBMIT value="View Account Details" name="Action">    
+				    
 					</FORM>';
 				}
 	
