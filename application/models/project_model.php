@@ -933,7 +933,8 @@ return $query->result();
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];
-		$queryStr='UPDATE transaction SET completed = 0 WHERE (completed = 2 AND DueDate<="'.date('Y-m-d').'");';
+		$queryStr='UPDATE transaction SET completed = 0 WHERE (completed = 2 AND DueDate<="'.(date_sub(new DateTime('now', new DateTimeZone('Asia/Kolkata')),new DateInterval('P2D'))->format('Y-m-d')).'");';
+		echo $queryStr;
 		//**********NOTE:completed values:0=>payment due but pending;1=>payment complete;2=>not yet due
 		$query1='SELECT * FROM transaction WHERE completed = 0 ORDER BY DueDate DESC;';
 		//echo $queryStr;
