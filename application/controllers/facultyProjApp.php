@@ -82,29 +82,37 @@ class FacultyProjApp extends CI_Controller {
 						
 							// LDAP Connection
 
-							//*******************Uncomment on Server*********************
+							/*******************Uncomment on Server*********************
 
 							$username="ashishkj11";
 							$ldapHost="192.168.1.103";
 							$ldapPort=389;
+							
 							$ds = ldap_connect($ldapHost, $ldapPort) or die('Could not connect to $ldaphost');
 							if ($ds) {
-								$r = ldap_bind($ds);
-								$query = ldap_search($ds, "ou=Group,dc=iimcal,dc=ac,dc=in", "cn=Faculty");
-								$data = ldap_get_entries($ds, $query);
-								$namescsv ="[";
-								$namesarray= array();
-								foreach($data[0]['member'] as $member) {
-									$member_dn = $this->explode_dn($member);
-									$member_cn = str_replace("cn=","",$member_dn[0]);
-									$namescsv.="\"".$member_cn."\", ";
-									array_push($namesarray, $member_cn);
-								};
-								$namescsv.="\"\"]";
-
-							} else { $member_cn = Nil; }
+								$r = ldap_bind($ds) or  die ("Error trying to bind: ".ldap_error($ds));
+								if ($r) {
+									$query = ldap_search($ds, "ou=Group,dc=iimcal,dc=ac,dc=in", "cn=Faculty")  or die ("Error in search query: ".ldap_error($ds));;
+									if ($query) {
+										$data = ldap_get_entries($ds, $query);
+										$namescsv ="[";
+										$namesarray= array();
+										foreach($data[0]['member'] as $member) {
+											$member_dn = $this->explode_dn($member);
+											$member_cn = str_replace("cn=","",$member_dn[0]);
+											$namescsv.="\"".$member_cn."\", ";
+											array_push($namesarray, $member_cn);
+										};
+										$namescsv.="\"\"]";
+									} else {
+										echo "Error in ldap search";
+									}
+								} else {
+									echo "Error in ldap binding";
+								}
+							} else { echo "Error in ldap connect"; $member_cn = Nil; }
 							
-							//*******************Uncomment on Server*********************
+							//*******************Uncomment on Server*********************/
 
 							
 
@@ -247,10 +255,13 @@ class FacultyProjApp extends CI_Controller {
 			$timezone = new DateTimeZone("Asia/Kolkata" );
 			$date = new DateTime();
 			$date->setTimezone($timezone );
-			$data['startdate'] = $date;
-			$date->add(new DateInterval('P'.$_POST['time'].'M'));
-			$data['enddate'] = $date;
-			//$data['enddate'] = $date.AddMonths($_POST['time']);
+			//$data['startdate'] = date("Y-m-d");
+			//echo $data['startdate'];
+			$data['enddate']=date_add($date, new DateInterval('P'.$_POST['time'].'M'))->format("Y-m-d");
+			echo $data['enddate'];
+			$data['ProjectDuration']=$_POST['time'];
+			//$data['enddate'] = date("Y-m-d",$date);
+			//echo $date;
 			
 			$this->load->model('project_model');
 			$ProjectId=$this->project_model->insertProject($_SESSION['username'],$data);
