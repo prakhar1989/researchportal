@@ -578,7 +578,8 @@ class Project_model extends CI_Model {
 		$queryStr='SELECT SUM('.$head.') AS sumhead FROM budget WHERE ProjectID = "'.$projectId.'";';
 	    $query= $this->db->query($queryStr);
 		//return $query->result()[0]->sumhead;
-		return $query->result(0)->sumhead;
+		$result=$query->row_array();
+		return $result['sumhead'];
 	}
 	
 	
