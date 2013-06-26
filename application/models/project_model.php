@@ -352,7 +352,7 @@ class Project_model extends CI_Model {
 			$query = $this->db->query($queryStr);
 			for($i=0; $i<$data['No_Payments']; $i++)
 			{
-				$ddate=date("Y-m-d",mktime(0,0,0,date("m")+1+$i,$data['Day_payment'],date("Y")));
+				$ddate=date("Y-m-d",mktime(0,0,0,$data['Month_payment']+$i,$data['Day_payment'],date("Y")));
 				$query1='INSERT INTO transaction (DueDate,WorkOrderId,ProjectId,Head,RA_ID,Amount,Remarks,completed) VALUES (\''.$ddate.'\',\''.$data['WorkOrderId'].'\','.$row[0]->ProjectId.',\'ResearchAssistance\',\''.$data['researcher_id'].'\','.$data['recurring_amt'].',"NA",2);';
 				$query11= $this->db->query($query1);
 			}
