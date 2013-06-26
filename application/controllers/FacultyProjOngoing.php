@@ -70,7 +70,8 @@ class FacultyProjOngoing extends CI_Controller {
 							{
 							$diff = $row1->diff;
 							}
-						print intval($diff/31);
+						//print intval($diff/31);
+						print $row->ProjectDuration;
 						 echo '</TD><TD>';
 						 print $row->Start_Date;
 						 echo '</TD><TD>';

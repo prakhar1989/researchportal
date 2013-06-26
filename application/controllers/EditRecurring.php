@@ -128,7 +128,7 @@ class EditRecurring extends CI_Controller {
 			list($project,$rname)=explode(';',$_POST['Choice']);
 			$res= $this->project_model->getSpecificRecurring($project,$rname);
 			
-			echo '<table class="table table-bordered">
+			echo '<FORM METHOD=POST ACTION="EditRecurring/Download"><table class="table table-bordered">
 						  
 					<p></p>	
 					<p>Details of Research Assistant</p>
@@ -177,11 +177,18 @@ class EditRecurring extends CI_Controller {
 							<td>PAN number</td>
 							<td>'.$res[0]->PAN.'</td>
 						</tr>
-							
+						<tr>
+						 <td>CV of RA</td><td>
+						 <INPUT TYPE=SUBMIT value="Download CV" name="Check"></input><input type = "hidden" name=WorkOderId value="'.$res[0]->WorkOrderId.'"></input><input type = "hidden" name=RA_id value = "'.$res[0]->researcher_id.'"></input></td>
+						</tr>
+						<tr>
+						<td>Appointment Letter of RA</td>
+						<td><INPUT TYPE=SUBMIT VALUE="Download apt" name="Check"></input></td></tr>
 					</tbody>
-					</table>';
+					</table></form>';
 		}
 	}
+	
     
 	//*** this will change the recurring amount for the selected project
 	function EditAmount(){
@@ -246,6 +253,20 @@ class EditRecurring extends CI_Controller {
 		 $showMsg=new showMsg();
 		 $showMsg->index($msg,'admin');
 	}	
+	function Download()
+	{
+	    if($_POST['Check']=='Download CV')
+		{
+		//$Project = $this->input->post('Choice1');
+		//header("location:/rp/downloadfile?file=upload/".$Project."_description");
+		header("location:/rp/downloadfile?file=upload/".$_POST['WorkOrderId']."_cv_".str_replace(" ","_",$_POST['RA_id']));
+		}
+		elseif($_POST['Check']=='Download apt')
+		{
+		//$Project = $this->input->post('Choice1');
+		header("location:/rp/downloadfile?file=upload/".$_POST['WorkOrderId']."_apt_ltr_".str_replace(" ","_",$_POST['RA_id']));
+		}
+	}
 
 	
 }	
