@@ -297,7 +297,7 @@ class ShowProject extends CI_Controller {
 			}
 			elseif($_SESSION['usertype']==3 && $_POST['approve']=='Forward To Committee')
 			{
-				$to = "nikhil.labh@gmail.com";
+				$to = "nippagupta@iimcal.ac.in";
 				$subject = "New Project Consultation";
 				$message = "Hello,
 				Chairman has sent a new project for consultation";
