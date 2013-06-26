@@ -46,12 +46,12 @@ class Extension extends CI_Controller
 						 print $row->Researcher3;
 						 echo '</TD><TD>';
 						 
-						$queryStr1='SELECT DATEDIFF(End_Date,Start_Date) AS diff FROM project WHERE ProjectId = "'.$row->ProjectId.'";';
+						/*$queryStr1='SELECT DATEDIFF(End_Date,Start_Date) AS diff FROM project WHERE ProjectId = "'.$row->ProjectId.'";';
 						$query1= $this->db->query($queryStr1);
 						foreach($query1->result() as $row1)
 							{
 							$diff = $row1->diff;
-							}
+							}*/
 						//print intval($diff/31);
 						 print $row->ProjectDuration;
 						 echo '</TD><TD>';
