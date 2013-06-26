@@ -45,7 +45,7 @@ class CompletionCheckAdminRequest extends CI_Controller
 						echo '<br><h3>Deliverables Uploaded</h3>';
 						$Path = "upload/".$ProjectID."_";
 						//$Path = "upload/".$ProjectID."_";
-						$Files = glob($Path."*.pdf");
+						$Files = glob($Path."*.*");
 						$countuploaded = 0;
 						foreach ($Files as $File)
 							{

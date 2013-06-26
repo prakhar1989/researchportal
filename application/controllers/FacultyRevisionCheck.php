@@ -39,16 +39,6 @@ class FacultyRevisionCheck extends CI_Controller
 						
 						$this->load->database();
 						$this->load->model('project_model');
-						$Path = "upload/".$ProjectID."_";
-						$Files = glob($Path."*.*");
-						$countuploaded = 0;
-						foreach ($Files as $File)
-							{
-							$countuploaded++;			
-							echo'<a href="download?file='.$File.'">'.$File.'</a>';
-							echo '<br>';
-							}
-						echo 'Number of Deliverables uploaded: '.$countuploaded;
 						$queryStr='Select * from project where ProjectId = "'.$ProjectID.'";';
 						$query = $this->db->query($queryStr);
 						$countpromised = 0;
@@ -64,18 +54,43 @@ class FacultyRevisionCheck extends CI_Controller
 							}
 						echo '<br>Number of Deliverables promised: '.$countpromised;
 						echo '<br><br>';
-						If ($countpromised > $countuploaded)
+						$Path = "upload/".$ProjectID."_";
+						$Files = glob($Path."*.*");
+						$countuploaded = 0;
+						foreach ($Files as $File)
 							{
-							for ($i=1; $i <= ($countpromised - $countuploaded); $i++)
+							$countuploaded++;			
+							echo'<a href="download?file='.$File.'">'.$File.'</a>';
+							echo '<input type="file" name="file_replace_'.$countuploaded.'" id="file_replace_'.$countuploaded.'" />';
+							echo '<br>';
+							}
+						echo'<input type="hidden" name="countuploaded" value="'.$countuploaded.'" />';
+						echo 'Number of Deliverables uploaded: '.$countuploaded;
+						echo '<br><br>';
+						If ($countpromised > ($countuploaded-1))
+							{
+							echo '<br>Please Upload the remaining promised deliverables.<br>';
+							for ($i=1; $i <= ($countpromised - ($countuploaded-1)); $i++)
 								{
 								echo '<br><input type="file" name="file_desc_'.$i.'" id="file_desc_'.$i.'" />';
 								}
 							echo'<input type="hidden" name="i" value="'.$i.'" />
 							<br><input type="SUBMIT" value="Apply" class="btn btn-large btn-primary "></input>';
 							}
+						
+						/*If ($countpromised > 0)
+							{
+							for ($i=1; $i <= ($countpromised); $i++)
+								{
+								echo '<br><input type="file" name="file_desc_'.$i.'" id="file_desc_'.$i.'" />';
+								}
+							echo'<input type="hidden" name="i" value="'.$i.'" />
+							<br><input type="SUBMIT" value="Apply" class="btn btn-large btn-primary "></input>';
+							}*/
 						else
 							echo '<input type="SUBMIT" value="Resend Completion Request" class="btn btn-large btn-primary "></input>';
 						}
+					echo '<br>';
 					echo "\n\n";
 					 echo '</TABLE>
 					</FORM>';
@@ -88,6 +103,7 @@ class FacultyRevisionCheck extends CI_Controller
 			session_start();
 					$ProjectId = $_SESSION['ProjectID'];
 					$i = $_POST['i'];
+					$k = $_POST['countuploaded'];
 					//move_uploaded_file($_FILES["element_5"]["tmp_name"],"upload/".$ProjectId.'.'.$ext);
 				
 					for ($j=1; $j < $i ; $j++)
@@ -95,10 +111,30 @@ class FacultyRevisionCheck extends CI_Controller
 						$ext=end(explode('/', $_FILES['file_desc_'.$j]['type']));
 						move_uploaded_file($_FILES['file_desc_'.$j]["tmp_name"],"upload/" . $ProjectId.'_'.$j.'.'.$ext);		           
 						}
+						
+					for ($l=1; $l <= $k ; $l++)
+						{
+						$Path = "upload/".$ProjectId."_";
+						//$Files = glob($Path."*.*");
+						$Files = glob($Path.$l.".*");
+						//echo'<a href="download?file='.$File.'">'.$File.'</a>';
+						//echo '<input type="file" name="file_replace_'.$countuploaded.'" id="file_replace_'.$countuploaded.'" />';
+						foreach ($Files as $File)
+							{
+							$ext=end(explode('/', $_FILES['file_replace_'.$l]['type']));
+							echo "Extension:".$ext;
+							If ($ext <> "")
+								{
+								echo "Path".$File;	
+								unlink ($File);
+								move_uploaded_file($_FILES['file_replace_'.$l]["tmp_name"],"upload/" . $ProjectId.'_'.$l.'.'.$ext);		           
+								}
+							}
+						}
 			$this->load->database();
 			$this->load->model('project_model');
 			$result= $this->project_model->projectCompletionFacultyResponse($ProjectId);
-			header("Location: /rp/FacultyProjRevision");
+			//header("Location: /rp/FacultyProjRevision");
 			}
 }
 ?>
