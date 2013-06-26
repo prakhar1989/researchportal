@@ -136,12 +136,42 @@ class FacultyProjRequest extends CI_Controller
 						 ';
 						 
 						echo '<hr size=10 noshade color="#333333">'; 
-						 $data['query']= $this->project_model->getAccount($ProjectID);
-						echo '<h1>Account Details</h1>
+			echo '<h1>Account Details</h1>
 							<table class="table table-bordered">
 						<tr><TD><h4>Date</h4></TD><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</TD><TD><h4>Hardware/Software/Data Costs</h1></TD><TD><h4>Research Dissemination</h1></TD><TD><h4>Contingency</h1></TD></tr>
 						
 						<tbody>';
+			$ResearchAssistanceTotal=$this->project_model->getAccountHead($ProjectID,'ResearchAssistance');
+						$RCETotal=$this->project_model->getAccountHead($ProjectID,'RCE');
+						$InvestigatorsTotal=$this->project_model->getAccountHead($ProjectID,'Investigators');
+						$TravelAccoTotal=$this->project_model->getAccountHead($ProjectID,'TravelAcco');
+						$CommunicationTotal=$this->project_model->getAccountHead($ProjectID,'Communication');
+						$ITCostsTotal=$this->project_model->getAccountHead($ProjectID,'ITCosts');
+						$DisseminationTotal=$this->project_model->getAccountHead($ProjectID,'Dissemination');
+						$ContingencyTotal=$this->project_model->getAccountHead($ProjectID,'Contingency');
+
+						echo '<tr><td><h4>Total Consumed</h4></td><td>'.$ResearchAssistanceTotal.'</td>';
+						echo '<td>'.$RCETotal.'</td>';
+						echo '<td>'.$InvestigatorsTotal.'</td>';
+						echo '<td>'.$TravelAccoTotal.'</td>';
+						echo '<td>'.$CommunicationTotal.'</td>';
+						echo '<td>'.$ITCostsTotal.'</td>';
+						echo '<td>'.$DisseminationTotal.'</td>';
+						echo '<td>'.$ContingencyTotal.'</td>';
+						echo '</tr>';
+						
+						echo '<tr><td><h4>Total Left</h4></td><td>'.($row->ResearchAssistanceBudget-$ResearchAssistanceTotal).'</td>';
+						echo '<td>'.($row->RCEBudget-$RCETotal).'</td>';
+						echo '<td>'.($row->InvestigatorsBudget-$InvestigatorsTotal).'</td>';
+						echo '<td>'.($row->TravelAccoBudget-$TravelAccoTotal).'</td>';
+						echo '<td>'.($row->CommunicationBudget-$CommunicationTotal).'</td>';
+						echo '<td>'.($row->ITCostsBudget-$ITCostsTotal).'</td>';
+						echo '<td>'.($row->DisseminationBudget-$DisseminationTotal).'</td>';
+						echo '<td>'.($row->ContingencyBudget-$ContingencyTotal).'</td>';
+						echo '</tr>';
+						
+						$data['query']= $this->project_model->getAccount($ProjectID);
+						
 						 foreach($data['query'] as $row)
 						 {
 							 
