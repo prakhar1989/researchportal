@@ -30,38 +30,75 @@ class Accounts extends CI_Controller {
 				//$status='approved';
 				$Query= $this->project_model->allProjects();
 				
-				echo ' <h1>Account Details</h1>';
+				echo ' <h1>Account Details of Ongoing and Approved Projects</h1>';
 				echo ' <p>Choose Project to view details</p>';
 				echo '<FORM METHOD=POST ACTION="Show_account"> <table class="table table-bordered">
-				<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1><TD><h4>Select</h1></TD>
+				<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1><TD><h4>Select</h1></TD>
 				<tbody>';
 	 
 					 foreach($Query->result() as $row)
 					 {
-						 echo '<TR><TD>';
-						 print $row->ProjectTitle;
-						 echo '</TD><TD>';
-						 print $row->Description;
-						 echo '</TD><TD>';
-						 print $row->ProjectCategory;
-						 echo '</TD><TD>';
-						 print $row->ProjectGrant;
-						 echo '</TD><TD>';
-						 print $row->App_Date;
-						 echo '</TD><TD>';
-						 print $row->Researcher1;
-						 echo '</TD><TD>';
-						 print $row->Researcher2;
-						 echo '</TD><TD>';
-						 print $row->Researcher3;
-						 echo '<TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ProjectId.'"></TD>';
-						 echo '<TD><INPUT TYPE=SUBMIT value="View Account Details" name="Action"></TD></TR>';
+						if ($row->PStatus == "ongoing" OR $row->PStatus == "approved")
+						{
+							 echo '<TR><TD>';
+							 print $row->ProjectTitle;
+							 echo '</TD><TD>';
+							 print $row->WorkOrderId;
+							 echo '</TD><TD>';
+							 print $row->ProjectCategory;
+							 echo '</TD><TD>';
+							 print $row->ProjectGrant;
+							 echo '</TD><TD>';
+							 print $row->App_Date;
+							 echo '</TD><TD>';
+							 print $row->Researcher1;
+							 echo '</TD><TD>';
+							 print $row->Researcher2;
+							 echo '</TD><TD>';
+							 print $row->Researcher3;
+							 echo '<TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ProjectId.'"></TD>';
+							 echo '<TD><INPUT TYPE=SUBMIT value="View Account Details" name="Action"></TD></TR>';
+						}
+					 }
+				echo '</tbody></TABLE>
+				    
+					</FORM>';
+				
+				
+				echo ' <h1>Account Details of Completed Projects</h1>';
+				echo ' <p>Choose Project to view details</p>';
+				echo '<FORM METHOD=POST ACTION="Show_account"> <table class="table table-bordered">
+				<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1><TD><h4>Select</h1></TD>
+				<tbody>';
+	 
+					 foreach($Query->result() as $row)
+					 {
+						if ($row->PStatus == "completed")
+						{
+							 echo '<TR><TD>';
+							 print $row->ProjectTitle;
+							 echo '</TD><TD>';
+							 print $row->WorkOrderId;
+							 echo '</TD><TD>';
+							 print $row->ProjectCategory;
+							 echo '</TD><TD>';
+							 print $row->ProjectGrant;
+							 echo '</TD><TD>';
+							 print $row->App_Date;
+							 echo '</TD><TD>';
+							 print $row->Researcher1;
+							 echo '</TD><TD>';
+							 print $row->Researcher2;
+							 echo '</TD><TD>';
+							 print $row->Researcher3;
+							 echo '<TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ProjectId.'"></TD>';
+							 echo '<TD><INPUT TYPE=SUBMIT value="View Account Details" name="Action"></TD></TR>';
+						}
 					 }
 				echo '</tbody></TABLE>
 				    
 					</FORM>';
 				}
-	
 	}
 
 
