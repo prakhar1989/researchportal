@@ -73,7 +73,7 @@ class EditRecurring extends CI_Controller {
 							<td><input type="text" class="large" name="RA_id"></input></td>
 						</tr>
 						<tr>
-							<td>Research Assistant Date of Birth</td>
+							<td>Research Assistant Date of Birth (YYYY-MM-DD)</td>
 							<td><input type="text" class="large" name="DOB"></input></td>
 						</tr>
 						<tr>
@@ -232,7 +232,7 @@ class EditRecurring extends CI_Controller {
 		 $data['DOB']=$_POST['DOB'];
 		 $data['PAN']=$_POST['PAN'];
 		 $data['Cheque_name']=$_POST['Cheque_name'];
-		 $data['Month_payment']=$_POST['Start_Payment'];
+		 $data['Month_payment']=$_POST['Start_payment'];
 		 $this->load->model('project_model');
 		 $msg=$this->project_model->insertRecurring($data);
 		 //Uploading the file code... Can be modified to check the file extension if required

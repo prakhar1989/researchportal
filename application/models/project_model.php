@@ -936,7 +936,7 @@ return $query->result();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];
 		$queryStr='UPDATE transaction SET completed = 0 WHERE (completed = 2 AND DueDate<="'.(date_sub(new DateTime('now', new DateTimeZone('Asia/Kolkata')),new DateInterval('P2D'))->format('Y-m-d')).'");';
-		echo $queryStr;
+		//echo $queryStr;
 		//**********NOTE:completed values:0=>payment due but pending;1=>payment complete;2=>not yet due
 		$query1='SELECT * FROM transaction WHERE completed = 0 ORDER BY DueDate DESC;';
 		//echo $queryStr;
@@ -959,10 +959,14 @@ return $query->result();
 	$query11=$this->db->query($query1);
 	$query21=$this->db->query($query2);
 	
-	$query3='select * from recurring where ProjectID='.$query01['ProjectId'].' and researcher_id="'.$query01['RA_ID'].'";';
+	$query3='select * from recurring where ProjectID=\''.$query01['ProjectId'].'\' and researcher_id="'.$query01['RA_ID'].'";';
 	$query31=$this->db->query($query3)->row_array();
+	if (array_key_exists('total', $query31)) {
+	
 	$query4='Update recurring SET total = '.($query31['total']+$query01['Amount']).' WHERE ProjectID='.$query01['ProjectId'].' AND researcher_id = "'.$query01['RA_ID'].'";';
 	$query41=$this->db->query($query4);
+		
+	} 
 	
 	$msg ='The transaction has been updated';
 	return $msg;
