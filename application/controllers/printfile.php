@@ -79,7 +79,8 @@ function index ()
 		
 		 
 		 echo '</TD></TR>
-		 <TR><TD align = left colspan=6>'.date("Y-m-d").'</TD></TR>
+		<TR><TD align = left colspan=6></TD></TR>
+		  <TR><TD align = left colspan=6>Date : '.date("Y-m-d").'</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
 		 <TR><TD align = left colspan=6>The Research Subcommittee of the FPR Committee has approved the following Research Project proposal submitted by Prof. '.$row->Researcher1.'';
 		 if ($row->Researcher2 != '')
@@ -111,7 +112,6 @@ function index ()
 		//$interval = $date1->diff($date2);
 		 //echo '<TR><TD align = left colspan=6>Proposed Time Frame : '.date_diff(date_create(date("Y-m-d H:i:s",strtotime($row->Start_Date))),date_create(date("Y-m-d H:i:s",strtotime($row->End_Date)))).'</TD></TR>';
 		 $interval = date_diff(date_create($row->Start_Date),date_create($row->End_Date));
-		 //echo '<TR><TD align = left colspan=6>Proposed Time Frame : '.$interval->format('%d days').'</TD></TR>';
 		 echo '<TR><TD align = left colspan=6>Proposed Time Frame : '.$row->ProjectDuration.'</TD></TR>';
 		 if($row->PStatus == "approved")
 		 {
