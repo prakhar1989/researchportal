@@ -119,7 +119,7 @@ class EditRecurring extends CI_Controller {
 					</tbody>
 					</table>
 
-					<input type="submit" value"Submit" class="btn btn-large btn-primary"></input></form>';
+					<input type="submit" value="Submit" class="btn btn-large btn-primary"></input></form>';
 									
 					
 		}
@@ -266,6 +266,15 @@ class EditRecurring extends CI_Controller {
 		//$Project = $this->input->post('Choice1');
 		header("location:/rp/downloadfile?file=upload/".$_POST['WorkOrderId']."_apt_ltr_".str_replace(" ","_",$_POST['RA_id']));
 		}
+		
+		$Path = "upload/".$ProjectID."_";
+						$Files = glob($Path."*.*");
+						foreach ($Files as $File)
+							{
+							echo'<a href="download?file='.$File.'">'.$File.'</a>';
+							echo '<br>';
+							}
+		
 	}
 
 	
