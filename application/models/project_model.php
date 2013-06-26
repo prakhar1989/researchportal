@@ -49,7 +49,8 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='SELECT * FROM project WHERE PStatus = "'.$status.'" ORDER BY App_Date DESC;';
+		//$queryStr='SELECT * FROM project WHERE PStatus = "'.$status.'" ORDER BY App_Date DESC;';
+		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId WHERE PStatus = "'.$status.'" ORDER BY App_Date DESC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -254,7 +255,9 @@ class Project_model extends CI_Model {
 	function ongoingFacultyProjects($user)
 	{
 		$this->load->database();
-		$queryStr='SELECT * FROM project WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'ongoing\') ORDER BY App_Date DESC;';
+		 
+		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'ongoing\') ORDER BY App_Date DESC;';
+		//$queryStr='SELECT * FROM project WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'ongoing\') ORDER BY App_Date DESC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;

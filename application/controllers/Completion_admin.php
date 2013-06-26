@@ -138,7 +138,7 @@ class Completion_admin extends CI_Controller
 						 echo '</TD><TD>';
 						 print $row->End_Date;
 						 echo '</TD><TD>';
-						 print $row->Period;
+						 print $row->ProjectDuration;
 						 echo '</TD><TD>';
 						 print $row->Researcher1;
 						 echo '</TD><TD>';

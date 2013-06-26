@@ -64,7 +64,8 @@ function index ()
 						echo ', Prof.'.$row->Researcher3;
 					 
 					 echo '</TD></TR>
-					 <TR><TD align = left colspan=2>'.date("Y-m-d").'</TD></TR>
+					<BR>
+					 <TR><TD align = left colspan=2>Date : '.date("Y-m-d").'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2>The FPR Chair has approved the extension of the following Research Project proposal submitted by Prof.'.$row->Researcher1.'';
 					 if ($row->Researcher2 != '')

@@ -111,7 +111,8 @@ function index ()
 		//$interval = $date1->diff($date2);
 		 //echo '<TR><TD align = left colspan=6>Proposed Time Frame : '.date_diff(date_create(date("Y-m-d H:i:s",strtotime($row->Start_Date))),date_create(date("Y-m-d H:i:s",strtotime($row->End_Date)))).'</TD></TR>';
 		 $interval = date_diff(date_create($row->Start_Date),date_create($row->End_Date));
-		 echo '<TR><TD align = left colspan=6>Proposed Time Frame : '.$interval->format('%d days').'</TD></TR>';
+		 //echo '<TR><TD align = left colspan=6>Proposed Time Frame : '.$interval->format('%d days').'</TD></TR>';
+		 echo '<TR><TD align = left colspan=6>Proposed Time Frame : '.$row->ProjectDuration.'</TD></TR>';
 		 if($row->PStatus == "approved")
 		 {
 		 $path = "image/chairman";
