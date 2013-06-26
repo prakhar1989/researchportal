@@ -64,7 +64,7 @@ function index ()
 					if ($row->Researcher3 != '')
 						echo ', Prof.'.$row->Researcher3;
 					 echo '</TD></TR>
-					 <TR><TD align = left colspan=2>'.date("Y-m-d").'</TD></TR>
+					 <TR><TD align = left colspan=2>Date : '.date("Y-m-d").'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2>The following Project by Prof. '.$row->Researcher1.'';
 					if ($row->Researcher2 != '')
@@ -72,7 +72,7 @@ function index ()
 					if ($row->Researcher3 != '')
 						echo ', Prof.'.$row->Researcher3;
 					 
-					echo 'has been completed and the required deliverables submitted to the FPR office. Please grant the closure of the project.</TD></TR>
+					echo ' has been completed and the required deliverables submitted to the FPR office. Please grant the closure of the project.</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2>Title of the Project : '.$row->ProjectTitle.'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
@@ -86,14 +86,16 @@ function index ()
 					 echo '</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2>Project Category : '.$row->ProjectCategory.'</TD></TR>
-					 <TR><TD align = left colspan=2><br></TD></TR>
-					 <TR><TD align = left colspan=2>Project Grant : '.$row->ProjectGrant.'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>';
+					 
+					 
+					 //echo '<TR><TD align = left colspan=2>Project Grant : '.$row->ProjectGrant.'</TD></TR>
+					 //echo '<TR><TD align = left colspan=2><br></TD></TR>';
 					//$date1 = new DateTime("2007-03-24");
 					//$date2 = new DateTime("2009-06-26");
 					//$interval = $date1->diff($date2);
-					 echo '<TR><TD align = left colspan=2>Proposed Time Frame : '.$row->ProjectGrant.'</TD></TR>
-					 <TR><TD align = left colspan=2><br></TD></TR>
+					 //echo '<TR><TD align = left colspan=2>Proposed Time Frame : '.$row->ProjectGrant.'</TD></TR>
+					 echo '<TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>';
 					 
