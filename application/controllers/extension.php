@@ -31,7 +31,7 @@ class Extension extends CI_Controller
 				echo '<FORM METHOD=POST ACTION="ExtensionCheckAdminRequest">
 				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 					 <table class="table table-bordered">
-					<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Project Duration</TD><TD><h4>Start Date</TD><TD><h4>End Date</TD><TD><h4>Work Order</h4></TD><TD><h4>Funding</h4></TD><TD><h4>Project Category</h4></TD><TD><h4>Budget</h4><TD><h4>Deliverables</h4></TD><TD><h4>Select</h1></TD></tr>
+					<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Project Duration</TD><TD><h4>Start Date</TD><TD><h4>End Date</TD><TD><h4>Work Order</h4></TD><TD><h4>Funding</h4></TD><TD><h4>Project Category</h4></TD><TD><h4>Budget</h4><TD><h4>Deliverables</h4></TD><TD><h4>Extension Request Period (months)</h4></TD><TD><h4>Select</h1></TD></tr>
 					
 					<tbody>';
 					 foreach($Query->result() as $row)
@@ -52,7 +52,8 @@ class Extension extends CI_Controller
 							{
 							$diff = $row1->diff;
 							}
-						print intval($diff/31);
+						//print intval($diff/31);
+						 print $row->ProjectDuration;
 						 echo '</TD><TD>';
 						 print $row->Start_Date;
 						 echo '</TD><TD>';
@@ -72,6 +73,7 @@ class Extension extends CI_Controller
 						 echo '</TD><TD>';
 						 $deliverablesCount = $row->cases + $row->journals + $row->chapters + $row->conference + $row->paper + $row->books;
 						 echo $deliverablesCount;
+						 echo '<TD>'.$row->Period.'</TD>';
 						 //print $row->; deliverables
 						 
 						 //vridhi--display comments
@@ -85,9 +87,9 @@ class Extension extends CI_Controller
 
 				echo '</tbody></TABLE>		
 				<p>Please enter comments (mandatory)*</p>
-				<p><textarea name="comment" ></textarea></p>
-				<INPUT TYPE=SUBMIT name ="RequestType" value="Check Deliverables">
-				<INPUT TYPE=SUBMIT name ="RequestType" value="Approve and Forward To Chairman">
+				<p><textarea name="comment" ></textarea></p>';
+				//<INPUT TYPE=SUBMIT name ="RequestType" value="Check Deliverables">
+				echo '<INPUT TYPE=SUBMIT name ="RequestType" value="Approve and Forward To Chairman">
 				<INPUT TYPE=SUBMIT name ="RequestType" value="Send For Revision">
 				</FORM>';
 				
