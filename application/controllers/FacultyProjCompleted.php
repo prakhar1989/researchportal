@@ -85,7 +85,7 @@ class FacultyProjCompleted extends CI_Controller {
 
 						print $row->ProjectDuration;
 						 echo '</TD><TD>';
-						print $row->$total_ext;
+						print $total_ext;
 						 echo '</TD><TD>';
 						 print $row->Start_Date;
 						 echo '</TD><TD>';

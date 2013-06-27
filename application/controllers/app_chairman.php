@@ -32,7 +32,7 @@ class App_chairman extends CI_Controller {
 				
                 echo "<h1>Chairman</h1>";
 				echo '<TABLE class="table table-bordered">';
-                echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>ProjectGrant</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3 </h4></td></TR>';
+                echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>ProjectGrant</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3 </h4></td></TR>';
 
 					 foreach($Query->result() as $row)
 					 {
@@ -40,7 +40,7 @@ class App_chairman extends CI_Controller {
 						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
 						 echo '</TD><TD>';
-						 print $row->Description;
+						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
 						 print $row->ProjectCategory;
 						 echo '</TD><TD>';
