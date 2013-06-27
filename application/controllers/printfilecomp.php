@@ -64,6 +64,8 @@ function index ()
 					if ($row->Researcher3 != '')
 						echo ', Prof.'.$row->Researcher3;
 					 echo '</TD></TR>
+					<TR><TD align = left colspan=2><br></TD></TR>
+
 					 <TR><TD align = left colspan=2>Date : '.date("Y-m-d").'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2>The following Project by Prof. '.$row->Researcher1.'';
@@ -84,7 +86,7 @@ function index ()
 					 
 					 
 					 echo '</TD></TR>
-					 <TR><TD align = left colspan=2><br></TD></TR>
+					 <TR><TD align = left colspan=2></TD></TR>
 					 <TR><TD align = left colspan=2>Project Category : '.$row->ProjectCategory.'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>';
 					 

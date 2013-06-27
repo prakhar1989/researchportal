@@ -67,6 +67,7 @@ class FacultyRevisionCheck extends CI_Controller
 						echo'<input type="hidden" name="countuploaded" value="'.$countuploaded.'" />';
 						echo 'Number of Deliverables uploaded: '.$countuploaded;
 						echo '<br><br>';
+						$i = 0;
 						If ($countpromised > ($countuploaded-1))
 							{
 							echo '<br>Please Upload the remaining promised deliverables.<br>';
@@ -108,8 +109,15 @@ class FacultyRevisionCheck extends CI_Controller
 				
 					for ($j=1; $j < $i ; $j++)
 						{
-						$ext=end(explode('/', $_FILES['file_desc_'.$j]['type']));
+						//$fileTypes = array('doc','docx','ppt','pptx','pdf'); // file extensions allowed
+						//$fileParts = pathinfo($_FILES['file_desc_'.$j]['name']);
+						if(in_array($fileParts['extension'],$fileTypes))
+						{
+						$ext=end(explode('/', $_FILES['file_desc_'.$j]['name']));
 						move_uploaded_file($_FILES['file_desc_'.$j]["tmp_name"],"upload/" . $ProjectId.'_'.$j.'.'.$ext);		           
+						}
+						//$ext=end(explode('/', $_FILES['file_desc_'.$j]['type']));
+						//move_uploaded_file($_FILES['file_desc_'.$j]["tmp_name"],"upload/" . $ProjectId.'_'.$j.'.'.$ext);		           
 						}
 						
 					for ($l=1; $l <= $k ; $l++)
@@ -121,11 +129,11 @@ class FacultyRevisionCheck extends CI_Controller
 						//echo '<input type="file" name="file_replace_'.$countuploaded.'" id="file_replace_'.$countuploaded.'" />';
 						foreach ($Files as $File)
 							{
-							$ext=end(explode('/', $_FILES['file_replace_'.$l]['type']));
-							echo "Extension:".$ext;
+							$ext=end(explode('/', $_FILES['file_replace_'.$l]['name']));
+							//echo "Extension:".$ext;
 							If ($ext <> "")
 								{
-								echo "Path".$File;	
+								//echo "Path".$File;	
 								unlink ($File);
 								move_uploaded_file($_FILES['file_replace_'.$l]["tmp_name"],"upload/" . $ProjectId.'_'.$l.'.'.$ext);		           
 								}
@@ -134,7 +142,7 @@ class FacultyRevisionCheck extends CI_Controller
 			$this->load->database();
 			$this->load->model('project_model');
 			$result= $this->project_model->projectCompletionFacultyResponse($ProjectId);
-			//header("Location: /rp/FacultyProjRevision");
+			header("Location: /rp/FacultyProjRevision");
 			}
 }
 ?>
