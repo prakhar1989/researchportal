@@ -50,9 +50,9 @@ class EditAccount extends CI_Controller {
 							<TR><TD>IT Costs Budget</TD><TD><input type="text" class="large" value="'.$row->ITCostsBudget.'" name="ITCostsBudget"  /></td></TR>
 							<TR><TD>Dissemination Budget</TD><TD><input type="text" class="large" value="'.$row->DisseminationBudget.'" name="DisseminationBudget"  /></td></TR>
 							<TR><TD>Contingency Budget</TD><TD><input type="text" class="large" value="'.$row->ContingencyBudget.'" name="ContingencyBudget"  /></td></TR>
-						';
+						
 							<TR><TD>Overhead Charges Budget</TD><TD><input type="text" class="large" value="'.$row->OverheadChargesBudget.'" name="OverheadChargesBudget"  /></td></TR>
-
+';
 						}	 
 						
 						  
