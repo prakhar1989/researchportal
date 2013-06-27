@@ -105,6 +105,7 @@ class Show_account extends CI_Controller {
 						echo '<td>'.($row->ITCostsBudget-$ITCostsTotal).'</td>';
 						echo '<td>'.($row->DisseminationBudget-$DisseminationTotal).'</td>';
 						echo '<td>'.($row->ContingencyBudget-$ContingencyTotal).'</td>';
+						echo '<td>'.($row->OverheadChargesBudget-$OverheadChargesTotal).'</td>';
 						echo '</tr>';
 						$data['query']= $this->project_model->getAccount($Project);
 						
@@ -129,6 +130,8 @@ class Show_account extends CI_Controller {
 							 print $row->Dissemination;
 							 echo '</TD><TD>';
 							 print $row->Contingency;
+							 echo '</TD><TD>';
+							 print $row->OverheadCharges;
 							 echo '</TD></TR>';
 							 
 						 }

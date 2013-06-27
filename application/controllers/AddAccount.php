@@ -85,6 +85,10 @@ class AddAccount extends CI_Controller {
 							<td>Research Dessimination</td>
 							<td><input type="text" class="large" name="Dissemination"></input></td>
 						</tr>
+						<tr>
+							<td>Overhead Charges</td>
+							<td><input type="text" class="large" name="OverheadCharges"></input></td>
+						</tr>
 					</tbody>
 					</table>
 

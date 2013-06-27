@@ -368,6 +368,7 @@ class Project_model extends CI_Model {
 			$this->load->database();
 			$queryStr1='SELECT ProjectId FROM project WHERE WorkOrderId = '.$data['WorkOrderId'].';';
 			$row=$this->db->query($queryStr1)->result();
+			if ($row) {
 			$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, PAN, Cheque_name, Day_payment, Month_payment) VALUES ('.$row[0]->ProjectId.', \''.$data['WorkOrderId'].'\' , '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\',\''.$data['PAN'].'\', \''.$data['Cheque_name'].'\', '.$data['Day_payment'].','.$data['Month_payment'].');';
 			$query = $this->db->query($queryStr);
 			for($i=0; $i<$data['No_Payments']; $i++)
@@ -377,6 +378,9 @@ class Project_model extends CI_Model {
 				$query11= $this->db->query($query1);
 			}
 			$msg='The Recurring expense has been added';
+			} else {
+			$msg='The work order number '.$data['WorkOrderId'].' was not found.';
+			}
 			return $msg;
 		}
 		
