@@ -80,6 +80,7 @@ function index ()
 		 
 		 echo '</TD></TR>
 		<TR><TD align = left colspan=6></TD></TR>
+		<TR><TD align = left colspan=6></TD></TR>
 		  <TR><TD align = left colspan=6>Date : '.date("Y-m-d").'</TD></TR>
 		 <TR><TD align = left colspan=6><br></TD></TR>
 		 <TR><TD align = left colspan=6>The Research Subcommittee of the FPR Committee has approved the following Research Project proposal submitted by Prof. '.$row->Researcher1.'';

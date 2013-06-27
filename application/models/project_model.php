@@ -49,13 +49,27 @@ class Project_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		//$queryStr='SELECT * FROM project WHERE PStatus = "'.$status.'" ORDER BY App_Date DESC;';
-		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId WHERE PStatus = "'.$status.'" ORDER BY App_Date DESC;';
+		$queryStr='SELECT * FROM project WHERE PStatus = "'.$status.'" ORDER BY App_Date DESC;';
+		//$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId WHERE PStatus = "'.$status.'" ORDER BY App_Date DESC;';
 		//echo $queryStr;
+	
 		$query = $this->db->query($queryStr);
 		return $query;
 		}
+	
+	// function to get extension period by projectid
+	function get_extension($projectid)
+		{
+			$this->load->database();
+			$queryStr='SELECT SUM (period) AS totalext FROM projectextension WHERE ProjectID = "'.$projectid.'";';
+			//$queryStr='SELECT SUM('.$head.') AS sumhead FROM budget WHERE ProjectID = "'.$projectId.'";';
+			$query = $this->db->query($queryStr);
 		
+			$result=$query->row_array();
+			
+			return $result['totalext'];
+
+		}	
 	// Code added by Pratik
 	// Get extension projects
 	function project_extension()
@@ -256,8 +270,8 @@ class Project_model extends CI_Model {
 	{
 		$this->load->database();
 		 
-		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'ongoing\') ORDER BY App_Date DESC;';
-		//$queryStr='SELECT * FROM project WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'ongoing\') ORDER BY App_Date DESC;';
+		//$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'ongoing\') ORDER BY App_Date DESC;';
+		$queryStr='SELECT * FROM project WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'ongoing\') ORDER BY App_Date DESC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -287,9 +301,9 @@ class Project_model extends CI_Model {
 	{
 		$this->load->database();
 		//Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId
-		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'completed\') ORDER BY App_Date DESC';
+		//$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'completed\') ORDER BY App_Date DESC';
 
-		//$queryStr='SELECT * FROM project WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'completed\') ORDER BY App_Date DESC';
+		$queryStr='SELECT * FROM project WHERE ((Researcher1 LIKE \'%'.$user.'%\' OR Researcher2 LIKE \'%'.$user.'%\' OR Researcher3 LIKE \'%'.$user.'%\') AND PStatus = \'completed\') ORDER BY App_Date DESC';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
