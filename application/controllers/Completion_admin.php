@@ -33,7 +33,7 @@ class Completion_admin extends CI_Controller
 				echo '<FORM METHOD=POST ACTION="CompletionCheckAdminRequest">
 				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 					 <table class="table table-bordered">
-					<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Project Duration</TD><TD><h4>Start Date</TD><TD><h4>End Date</TD><TD><h4>Work Order</h4></TD><TD><h4>Funding</h4></TD><TD><h4>Project Category</h4></TD><TD><h4>Budget</h4><TD><h4>Deliverables</h4></TD><TD><h4>Select</h1></TD></tr>';
+					<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Project Duration</TD><TD><h4>Extension (if any)</TD><TD><h4>Start Date</TD><TD><h4>End Date</TD><TD><h4>Work Order</h4></TD><TD><h4>Funding</h4></TD><TD><h4>Project Category</h4></TD><TD><h4>Budget</h4><TD><h4>Deliverables</h4></TD><TD><h4>Select</h1></TD></tr>';
 					//echo '<tr><TD><h4>Project Title</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Description</h4></TD><TD><h4>Project Category</h4></TD><TD><h4>Project Grant</h4><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Comments</h4></TD><TD><h4>Select</h1></TD></tr>';
 					
 					echo '<tbody>';
@@ -78,16 +78,21 @@ class Completion_admin extends CI_Controller
 						 print $row->Researcher3;
 						 echo '</TD><TD>';
 						 
-						$queryStr1='SELECT DATEDIFF(End_Date,Start_Date) AS diff FROM project WHERE ProjectId = "'.$row->ProjectId.'";';
+						$queryStr1='SELECT * FROM projectextension WHERE ProjectId = "'.$row->ProjectId.'";';
 						$query1= $this->db->query($queryStr1);
+						$total_ext = 0;
 						foreach($query1->result() as $row1)
 							{
-							$diff = $row1->diff;
+							$total_ext = $total_ext + $row1->Period;
 							}
-						//print intval($diff/31);
+
+
 						print $row->ProjectDuration;
 						 echo '</TD><TD>';
-						 print $row->Start_Date;
+						print $total_ext;
+						 echo '</TD><TD>';
+						 
+						print $row->Start_Date;
 						 echo '</TD><TD>';
 						 print $row->End_Date;
 						 
