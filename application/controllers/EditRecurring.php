@@ -128,7 +128,7 @@ class EditRecurring extends CI_Controller {
 			list($project,$rname)=explode(';',$_POST['Choice']);
 			$res= $this->project_model->getSpecificRecurring($project,$rname);
 			
-			echo '<FORM METHOD=POST ACTION="EditRecurring/Download"><table class="table table-bordered">
+			echo '<FORM METHOD=POST ACTION="EditRecurring/Download1"><table class="table table-bordered">
 						  
 					<p></p>	
 					<p>Details of Research Assistant</p>
@@ -179,11 +179,11 @@ class EditRecurring extends CI_Controller {
 						</tr>
 						<tr>
 						 <td>CV of RA</td><td>
-						 <INPUT TYPE=SUBMIT value="Download CV" name="Check"></input><input type = "hidden" name=WorkOderId value="'.$res[0]->WorkOrderId.'"></input><input type = "hidden" name=RA_id value = "'.$res[0]->researcher_id.'"></input></td>
+						 <INPUT TYPE=SUBMIT value="Download CV" name="Check"></input><input type = "hidden" name="WorkOrderId" value="'.$res[0]->WorkOrderId.'"></input><input type = "hidden" name="RA_id" value = "'.$res[0]->researcher_id.'"></input></td>
 						</tr>
 						<tr>
 						<td>Appointment Letter of RA</td>
-						<td><INPUT TYPE=SUBMIT VALUE="Download apt" name="Check"></input></td></tr>
+						<td><INPUT TYPE=SUBMIT VALUE="Download Appointment Letter" name="Check"></input></td></tr>
 					</tbody>
 					</table></form>';
 		}
@@ -243,9 +243,9 @@ class EditRecurring extends CI_Controller {
 		 $this->load->model('project_model');
 		 $msg=$this->project_model->insertRecurring($data);
 		 //Uploading the file code... Can be modified to check the file extension if required
-		 $ext=end(explode('/', $_FILES['cv']['type']));
+		 $ext=end(explode('/', $_FILES['cv']['name']));
 		 move_uploaded_file($_FILES['cv']["tmp_name"],"upload/" . $_POST['WorkOrderId'].'_cv_'.$_POST['RA_id'].'.'.$ext);
-		 $ext=end(explode('/', $_FILES['apt_ltr']['type']));
+		 $ext=end(explode('.', $_FILES['apt_ltr']['name']));
 		 move_uploaded_file($_FILES['apt_ltr']['tmp_name'],"upload/" . $_POST['WorkOrderId'].'_apt_ltr_'.str_replace(" ","_",$_POST['RA_id']).'.'.$ext);
 		 
 		// echo "Stored in: " . "upload/" . $_FILES["cv"]["name"];
@@ -253,28 +253,30 @@ class EditRecurring extends CI_Controller {
 		 $showMsg=new showMsg();
 		 $showMsg->index($msg,'admin');
 	}	
-	function Download()
+	function Download1()
 	{
 	    if($_POST['Check']=='Download CV')
 		{
 		//$Project = $this->input->post('Choice1');
 		//header("location:/rp/downloadfile?file=upload/".$Project."_description");
-		header("location:/rp/downloadfile?file=upload/".$_POST['WorkOrderId']."_cv_".str_replace(" ","_",$_POST['RA_id']));
+		//header("location:/rp/downloadfile?file=upload/".$_POST['WorkOrderId']."_cv_".str_replace(" ","_",$_POST['RA_id']));
 		}
-		elseif($_POST['Check']=='Download apt')
+		elseif($_POST['Check']=='Download Appointment Letter')
 		{
 		//$Project = $this->input->post('Choice1');
-		header("location:/rp/downloadfile?file=upload/".$_POST['WorkOrderId']."_apt_ltr_".str_replace(" ","_",$_POST['RA_id']));
-		}
+		//header("location:/rp/downloadfile?file=upload/".$_POST['WorkOrderId']."_apt_ltr_".str_replace(" ","_",$_POST['RA_id']));
 		
-		$Path = "upload/".$ProjectID."_";
+		if ($_POST['WorkOrderId']) $work="0"; else $work=$_POST['WorkOrderId'];
+		$Path = "upload/".$work."_apt_ltr_".str_replace(" ","_",$_POST['RA_id']);
+		echo $Path;
 						$Files = glob($Path."*.*");
 						foreach ($Files as $File)
 							{
-							echo'<a href="download?file='.$File.'">'.$File.'</a>';
-							echo '<br>';
+							header("location:/rp/".$Path);
+							//echo'<a href="download?file='.$File.'">'.$File.'</a>';
+							//echo '<br>';
 							}
-		
+		}
 	}
 
 	
