@@ -246,7 +246,7 @@ class ShowProject extends CI_Controller {
 							echo '<h4>Approved by ';
 							echo $commStr;
 							echo '</h4>';
-							echo '<input type= submit value= "Approve" name="approve"><input type= submit value= "Reject" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >';
+							echo '<input type= submit value= "Approve" name="approve"><input type= submit value= "Revision" name="approve"><input type="hidden" name=projectID value="'.$Project.' " >';
 						}
 						elseif ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_1')
 						{
