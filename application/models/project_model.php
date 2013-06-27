@@ -976,7 +976,7 @@ return $query->result();
 	$query01=$this->db->query($query0)->row_array();
 	
 
-	 $query1='Insert into budget VALUES (\''.date('Y-m-d h:i:s').'\',"'.$query01['ProjectId'].'",'.$query01['Amount'].',0 , 0, 0, 0, 0, 0, 0, 0);';
+	 $query1='Insert into budget VALUES (\''.date('Y-m-d h:i:s').'\',"'.$query01['ProjectId'].'",'.$query01['Amount'].',0 , 0, 0, 0, 0, 0, 0, 0, 0);';
 
 	$query2='UPDATE transaction SET completed = 1 WHERE Tno='.$tno.';';
 	
