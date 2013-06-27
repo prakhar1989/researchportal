@@ -37,7 +37,7 @@ class App_committee extends CI_Controller {
 						
 						<FORM METHOD=POST ACTION="ShowProject">
 						<table class="table table-bordered">
-						<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>ProjectGrant</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3</h4></td><TD><h4>Approved By</h4></TD><TD><h4>Select</h4></TD></tr>
+						<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>ProjectGrant</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3</h4></td><TD><h4>Approved By</h4></TD><TD><h4>Select</h4></TD></tr>
 						<tbody>';
 						$flag=0;
 
@@ -46,7 +46,7 @@ class App_committee extends CI_Controller {
 						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
 						 echo '</TD><TD>';
-						 print $row->Description;
+						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
 						 print $row->ProjectCategory;
 						 echo '</TD><TD>';
@@ -97,7 +97,7 @@ class App_committee extends CI_Controller {
 					$data['query']= $this->project_model->getCommProjects();
 					echo'
 						<table class="table table-bordered">
-						<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Description</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>ProjectGrant</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3</h4></td><TD><h4>Approved by </h4></td></tr>
+						<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>ProjectGrant</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3</h4></td><TD><h4>Approved by </h4></td></tr>
 						<tbody>';
 						$flag=0;
 
@@ -106,7 +106,7 @@ class App_committee extends CI_Controller {
 						 echo '<TR><TD>';
 						 print $row->ProjectTitle;
 						 echo '</TD><TD>';
-						 print $row->Description;
+						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
 						 print $row->ProjectCategory;
 						 echo '</TD><TD>';
