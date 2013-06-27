@@ -704,7 +704,7 @@ class Project_model extends CI_Model {
 		$total=0;
 		foreach($results['query'] as $row)
 					 {
-						 $total=$total + $row->ResearchAssistance + $row->RCE + $row->Investigators + $row->TravelAcco + $row->Communication +	$row->ITCosts +	$row->Dissemination	+ $row->Contingency;
+						 $total=$total + $row->ResearchAssistance + $row->RCE + $row->Investigators + $row->TravelAcco + $row->Communication +	$row->ITCosts +	$row->Dissemination	+ $row->Contingency + $row->OverheadCharges;
 					} 
 		$account['spent']=$total;			
 		return $account;
@@ -715,7 +715,7 @@ class Project_model extends CI_Model {
 	{
 		$this->load->database();
 		//--vridhi--added date below
-		$queryStr= 'INSERT INTO budget (Date, ProjectId , ResearchAssistance, RCE, Investigators, TravelAcco, Communication, ITCosts, Dissemination, Contingency) VALUES (\''.date('Y-m-d H:i:s').'\','.$data['projectid'].' , ' .$data['RA'].' , '.$data['RCE'].' , '.$data['Investigators'].', '.$data['TravelAcco'].' , '.$data['Communication'].' , '.$data['ITCosts'].' , '.$data['Dissemination'].' , '.$data['Contingency'].');' ;
+		$queryStr= 'INSERT INTO budget (Date, ProjectId , ResearchAssistance, RCE, Investigators, TravelAcco, Communication, ITCosts, Dissemination, Contingency, OverheadCharges) VALUES (\''.date('Y-m-d H:i:s').'\','.$data['projectid'].' , ' .$data['RA'].' , '.$data['RCE'].' , '.$data['Investigators'].', '.$data['TravelAcco'].' , '.$data['Communication'].' , '.$data['ITCosts'].' , '.$data['Dissemination'].' , '.$data['Contingency'].' , '.$data['OverheadCharges'].');' ;
 		//echo '<br>'.$queryStr;
 		$query = $this->db->query($queryStr);
 		//$result = $query->result();
@@ -925,7 +925,7 @@ return $query->result();
     function insertAccountBudget($data)
 	{
 		$this->load->database();
-		$queryStr= 'UPDATE project SET ResearchAssistanceBudget='.$data['RA'].', RCEBudget='.$data['RCE'].', InvestigatorsBudget='.$data['Investigators'].', TravelAccoBudget='.$data['TravelAcco'].', CommunicationBudget='.$data['Communication'].', ITCostsBudget='.$data['ITCosts'].', DisseminationBudget='.$data['Dissemination'].', ContingencyBudget='.$data['Contingency'].' WHERE ProjectId='.$data['projectid'].';' ;
+		$queryStr= 'UPDATE project SET ResearchAssistanceBudget='.$data['RA'].', RCEBudget='.$data['RCE'].', InvestigatorsBudget='.$data['Investigators'].', TravelAccoBudget='.$data['TravelAcco'].', CommunicationBudget='.$data['Communication'].', ITCostsBudget='.$data['ITCosts'].', DisseminationBudget='.$data['Dissemination'].', ContingencyBudget='.$data['Contingency'].', OverheadCharges='.$data['OverheadCharges'].' WHERE ProjectId='.$data['projectid'].';' ;
 //$queryStr= 'UPDATE project SET (ResearchAssistanceBudget=\''.$data['RA'].'\', RCEBudget=\''.$data['RCE'].'\', InvestigatorsBudget=\''.$data['Investigators'].'\', TravelAccoBudget=\''.$data['TravelAcco'].'\', CommunicationBudget=\''.$data['Communication'].'\', ITCostsBudget=\''.$data['ITCosts'].'\', DisseminationBudget=\''.$data['Dissemination'].'\', ContingencyBudget=\''.$data['Contingency'].'\') WHERE ProjectId='.$data['projectid'].';' ;
 		//echo '<br>'.$queryStr;
 		$query = $this->db->query($queryStr);
@@ -946,7 +946,7 @@ return $query->result();
 	function editBudget($data)
 	{
 		$this->load->database();
-		$queryStr= 'UPDATE project SET ResearchAssistanceBudget='.$data['RA'].', RCEBudget='.$data['RCE'].', InvestigatorsBudget='.$data['Investigators'].', TravelAccoBudget='.$data['TravelAcco'].', CommunicationBudget='.$data['Communication'].', ITCostsBudget='.$data['ITCosts'].', DisseminationBudget='.$data['Dissemination'].', ContingencyBudget='.$data['Contingency'].' WHERE ProjectId='.$data['projectid'].';' ;
+		$queryStr= 'UPDATE project SET ResearchAssistanceBudget='.$data['RA'].', RCEBudget='.$data['RCE'].', InvestigatorsBudget='.$data['Investigators'].', TravelAccoBudget='.$data['TravelAcco'].', CommunicationBudget='.$data['Communication'].', ITCostsBudget='.$data['ITCosts'].', DisseminationBudget='.$data['Dissemination'].', ContingencyBudget='.$data['Contingency'].', OverheadChargesBudget='.$data['OverheadCharges'].' WHERE ProjectId='.$data['projectid'].';' ;
 		$query = $this->db->query($queryStr);
 		$msg='The Account Budget Details have been Updated';
 		return $msg;

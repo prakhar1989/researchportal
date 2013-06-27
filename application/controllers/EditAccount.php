@@ -51,6 +51,8 @@ class EditAccount extends CI_Controller {
 							<TR><TD>Dissemination Budget</TD><TD><input type="text" class="large" value="'.$row->DisseminationBudget.'" name="DisseminationBudget"  /></td></TR>
 							<TR><TD>Contingency Budget</TD><TD><input type="text" class="large" value="'.$row->ContingencyBudget.'" name="ContingencyBudget"  /></td></TR>
 						';
+							<TR><TD>Overhead Charges Budget</TD><TD><input type="text" class="large" value="'.$row->OverheadChargesBudget.'" name="OverheadChargesBudget"  /></td></TR>
+
 						}	 
 						
 						  
@@ -85,6 +87,7 @@ class EditAccount extends CI_Controller {
 			 $data['ITCosts']=$_POST['ITCostsBudget'];
 			 $data['Dissemination']=$_POST['DisseminationBudget'];
 			 $data['Contingency']=$_POST['ContingencyBudget'];
+			 $data['OverheadCharges']=$_POST['OverheadChargesBudget'];
 			 
 			 //$data['title']=$_POST['title'];
 			 //$data['desc']=$_POST['desc'];

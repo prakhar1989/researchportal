@@ -117,6 +117,7 @@ class AddAccount extends CI_Controller {
 			 $data['ITCosts']=$_POST['ITCosts'];
 			 $data['Dissemination']=$_POST['Dissemination'];
 			 $data['Contingency']=$_POST['Contingency'];
+			 $data['OverheadCharges']=$_POST['OverheadCharges'];
 			 //$data['']=$_POST[''];
 			 $this->load->model('project_model');
 			 $msg=$this->project_model->insertAccount($data);

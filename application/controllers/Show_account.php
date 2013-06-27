@@ -41,7 +41,7 @@ class Show_account extends CI_Controller {
 						 <h1>Budget Details</h1>
 						<table class="table table-bordered">
 						
-						<tr><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</TD><TD><h4>Hardware/Software/Data Costs</h1></TD><TD><h4>Research Dissemination</h1></TD><TD><h4>Contingency</h1></TD><td><h4>Total Grant</h4></td></tr>						 
+						<tr><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</TD><TD><h4>Hardware/Software/Data Costs</h1></TD><TD><h4>Research Dissemination</h1></TD><TD><h4>Contingency</h1></TD><td><h4>Overhead Charges</h4></td><td><h4>Total Grant</h4></td></tr>						 
 						 <tbody>';
 						 foreach($data['query'] as $row)
 						 {
@@ -63,6 +63,8 @@ class Show_account extends CI_Controller {
 							 echo '</TD><TD>';
 							 print $row->ContingencyBudget;
 							 echo '</TD><TD>';
+							 print $row->OverheadChargesBudget;
+							 echo '</TD><TD>';
 							 print $row->ProjectGrant;
 							 echo '</TD></TR>';
 							 
@@ -75,7 +77,7 @@ class Show_account extends CI_Controller {
 						 <form method =post action="AddAccount">
 						 <h1>Account Details</h1>
 							<table class="table table-bordered">
-						<tr><TD><h4>Date</h4></TD><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</TD><TD><h4>Hardware/Software/Data Costs</h1></TD><TD><h4>Research Dissemination</h1></TD><TD><h4>Contingency</h1></TD></tr>
+						<tr><TD><h4>Date</h4></TD><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</TD><TD><h4>Hardware/Software/Data Costs</h1></TD><TD><h4>Research Dissemination</h1></TD><TD><h4>Contingency</h1></TD><td><h4>Overhead Charges</h4></td></tr>
 						
 						<tbody>';
 						$ResearchAssistanceTotal=$this->project_model->getAccountHead($Project,'ResearchAssistance');
@@ -86,6 +88,7 @@ class Show_account extends CI_Controller {
 						$ITCostsTotal=$this->project_model->getAccountHead($Project,'ITCosts');
 						$DisseminationTotal=$this->project_model->getAccountHead($Project,'Dissemination');
 						$ContingencyTotal=$this->project_model->getAccountHead($Project,'Contingency');
+						$OverheadChargesTotal=$this->project_model->getAccountHead($Project,'OverheadCharges');
 
 						echo '<tr><td><h4>Total Consumed</h4></td><td>'.$ResearchAssistanceTotal.'</td>';
 						echo '<td>'.$RCETotal.'</td>';
@@ -95,6 +98,7 @@ class Show_account extends CI_Controller {
 						echo '<td>'.$ITCostsTotal.'</td>';
 						echo '<td>'.$DisseminationTotal.'</td>';
 						echo '<td>'.$ContingencyTotal.'</td>';
+						echo '<td>'.$OverheadChargesTotal.'</td>';
 						echo '</tr>';
 						
 						echo '<tr><td><h4>Total Left</h4></td><td>'.($row->ResearchAssistanceBudget-$ResearchAssistanceTotal).'</td>';
