@@ -106,7 +106,7 @@ class FacultyProjRequest extends CI_Controller
 						 
 						 echo '<h1>Budget Details</h1>
 						<table class="table table-bordered">
-						<tr><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</h4></TD><TD><h4>Hardware/Software/Data Costs</h4></TD><TD><h4>Research Dissemination</h4></TD><TD><h4>Contingency</h4></TD><TD><h4>Overhead Charges</h4><</tr>						 
+						<tr><TD><h4>Research Assistance</h4></TD><TD><h4>Research Collaboration Expense</h4></TD><TD><h4>Payment to Investigators</h4></TD><TD><h4>Travel & Accommodation</h4></TD><TD><h4>Communication Cost</h4></TD><TD><h4>Hardware/Software/Data Costs</h4></TD><TD><h4>Research Dissemination</h4></TD><TD><h4>Contingency</h4></TD><TD><h4>Overhead Charges</h4></tr>						 
 						 <tbody>';
 						 foreach($data['query'] as $row)
 						 {

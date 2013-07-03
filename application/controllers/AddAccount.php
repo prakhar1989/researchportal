@@ -56,38 +56,38 @@ class AddAccount extends CI_Controller {
 					<tbody>
 						<tr>
 							<td>Investigators</td>
-							<td><input type="text" class="large" name="Investigators"></input></td>
+							<td><input type="text" class="large" name="Investigators" value="0"></input></td>
 						</tr>
 						<tr>
 							<td>TravelAcco</td>
-							<td><input type="text" class="large" name="TravelAcco"></input></td>
+							<td><input type="text" class="large" name="TravelAcco" value="0"></input></td>
 						</tr>
 						<tr>
 							<td>Communication</td>
-							<td><input type="text" class="large" name="Communication"></input></td>
+							<td><input type="text" class="large" name="Communication" value="0"></input></td>
 						</tr>
 						<tr>
 							<td>ITCosts</td>
-							<td><input type="text" class="large" name="ITCosts"></input></td>
+							<td><input type="text" class="large" name="ITCosts" value="0"></input></td>
 						<tr>
 							<td>Research Assistance</td>
-							<td><input type="text" class="large" name="RA"></input></td>
+							<td><input type="text" class="large" name="RA" value="0"></input></td>
 						</tr>
 						<tr>
 							<td>Contingency</td>
-							<td><input type="text" class="large" name="Contingency"></input></td>
+							<td><input type="text" class="large" name="Contingency" value="0"></input></td>
 						</tr>
 						<tr>
 							<td>RCE</td>
-							<td><input type="text" class="large" name="RCE"></input></td>
+							<td><input type="text" class="large" name="RCE" value="0"></input></td>
 						</tr>
 						<tr>
 							<td>Research Dessimination</td>
-							<td><input type="text" class="large" name="Dissemination"></input></td>
+							<td><input type="text" class="large" name="Dissemination"  value="0"></input></td>
 						</tr>
 						<tr>
 							<td>Overhead Charges</td>
-							<td><input type="text" class="large" name="OverheadCharges"></input></td>
+							<td><input type="text" class="large" name="OverheadCharges" value="0"></input></td>
 						</tr>
 					</tbody>
 					</table>
@@ -108,6 +108,20 @@ class AddAccount extends CI_Controller {
 			function insert()
 			{
 			 //echo 'The value of Project category is: '.$_POST['category'];
+			session_start();
+			 $data['projectid']=0;
+			 $data['RA']=0;
+			 $data['RCE']=0;
+			 $data['Investigators']=0;
+			 $data['TravelAcco']=0;
+			 $data['Communication']=0;
+			 $data['ITCosts']=0;
+			 $data['Dissemination']=0;
+			 $data['Contingency']=0;
+			 $data['OverheadCharges']=0;
+
+
+
 			 $data['projectid']=$_POST['projectID'];
 			 $data['RA']=$_POST['RA'];
 			 $data['RCE']=$_POST['RCE'];

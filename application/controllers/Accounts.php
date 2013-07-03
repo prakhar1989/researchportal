@@ -30,7 +30,7 @@ class Accounts extends CI_Controller {
 				//$status='approved';
 				$Query= $this->project_model->allProjects();
 				
-				echo ' <h1>Account Details of Ongoing and Approved Projects</h1>';
+				echo ' <h1>Account Details of Ongoing Projects</h1>';
 				echo ' <p>Choose Project to view details</p>';
 				echo '<FORM METHOD=POST ACTION="Show_account"> <table class="table table-bordered">
 				<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1><TD><h4>Select</h1></TD>
