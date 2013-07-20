@@ -9,25 +9,31 @@ class Conference_model extends CI_Model {
 	function getConferences()
 		{
 		$this->load->database();
-		
+		//echo '@#usertype is :'.$_SESSION['usertype'];
 		if($_SESSION['usertype']==1)
 		{
-			$queryStr='SELECT * FROM conference WHERE CStatus = "app_admin" ; ';
-		}
+			$queryStr='SELECT * FROM conference WHERE CStatus = "app_admin" ORDER BY App_Date DESC; ';
+		} 
 		elseif ($_SESSION['usertype']==2)
 		{
-			$queryStr='SELECT * FROM conference WHERE CStatus = "app_comm" ; ';
+			
+			if($_SESSION['username']=="comm")
+				$queryStr='SELECT * FROM conference WHERE CStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 3 OR comm_approval = 4 OR comm_approval = 7) ORDER BY App_Date DESC;';
+			elseif($_SESSION['username']=="comm1")
+				$queryStr='SELECT * FROM conference WHERE CStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 2 OR comm_approval = 4 OR comm_approval = 6) ORDER BY App_Date DESC; ';
+			elseif($_SESSION['username']=="comm2")
+				$queryStr='SELECT * FROM conference WHERE CStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 2 OR comm_approval = 3 OR comm_approval = 5) ORDER BY App_Date DESC; ';
 		}
 		elseif ($_SESSION['usertype']==3)
 		{
-			$queryStr='SELECT * FROM conference WHERE CStatus = "app_chairman" ; ';
+			$queryStr='SELECT * FROM conference WHERE CStatus = "app_chairman_1" ORDER BY App_Date DESC;';
 		}
 		$query= $this->db->query($queryStr);
-		
 		return $query->result();
+		
 		}
 	
-	//get a project's details
+	//get a conference details
 	function conferenceInfo($Conference)
 		{
 		//echo 'projectInfo called';
@@ -39,6 +45,15 @@ class Conference_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query;
 		}
+	//get comments related to the specific conference	
+	function getcomment($ConferenceID, $usertype)
+	{
+		$this->load->database();
+		$queryStr='SELECT * FROM conferencecomment WHERE Conference_ID='.$ConferenceID.';';
+		$query = $this->db->query($queryStr);
+		return $query->result();
+		
+	}
 	
 	// Function to change the status of the project
 	function changeStatus($status,$Conference)//changing the status of the project
@@ -52,6 +67,7 @@ class Conference_model extends CI_Model {
 		return $query;
 		}
 	
+		
 	// Get the projects at  committee or chairman's approval pending stage	
 	function conference_stage($stage)
 		{

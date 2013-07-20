@@ -35,7 +35,7 @@ class New_application extends CI_Controller {
                      <h1>New Applications</h1>
 					 <FORM METHOD=POST ACTION="ShowProject">
                     <table class="table table-bordered">
-					<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>Application Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Select</h1></TD></tr>
+					<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>Application Date</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Select</h4></TD></tr>
 					
 					<tbody>';
 					 $flag=0;
