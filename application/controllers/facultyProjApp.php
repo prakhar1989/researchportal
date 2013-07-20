@@ -139,7 +139,7 @@ class FacultyProjApp extends CI_Controller {
 						echo '
 							<td>Project Category</td>
 							<td>
-							<select name="category" onchange = "MyFunction1()">
+							<select name="category" id = "cat" onchange = "MyFunction1()">
 							  <option>Category 1 (IIM C)</option>
 							  <option>Category 2 (IIM C)</option>
 							  <option>Category 3 (IIM C)</option>
@@ -183,8 +183,8 @@ class FacultyProjApp extends CI_Controller {
 			function insert()
 			{
 			 session_start();
-			 //echo 'The value of Project category is: '.$_POST['category'];
-			 echo $_POST['hidden2'];
+			 //echo $_POST['hidden2'];
+			 $data['reference'] = $_POST['hidden2'];
 			 if(isset($_POST['casesCB']))
 			 {
 				//echo 'cases CB is it chcked ? ';
@@ -194,7 +194,7 @@ class FacultyProjApp extends CI_Controller {
 			 {
 			 $data['cases']=0;
 			 }
-			 
+			
 			 if(isset($_POST['journalsCB']))
 			 {
 				//echo 'journals CB is it checked ? ';
@@ -300,8 +300,13 @@ class FacultyProjApp extends CI_Controller {
 <script>
 function MyFunction1()
 {
-var names = prompt("Please Enter external reference name and email","");
-document.application.hidden2.value = names;
+	var names = "";
+	var sel = document.getElementById("cat");
+	if (sel.options[sel.selectedIndex].value == "Category 2 (IIM C)" || sel.options[sel.selectedIndex].value == "Category 3 (IIM C)")
+	{
+	names = prompt("Please Enter external reference name and email","");
+	}
+	document.application.hidden2.value = names;
 
 }
 function checkdeliverables()

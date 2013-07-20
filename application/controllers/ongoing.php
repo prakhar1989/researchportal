@@ -32,7 +32,7 @@ class Ongoing extends CI_Controller {
 				
 				echo '<FORM METHOD=POST ACTION="CompletionCheckAdminRequest">';
 				echo '<TABLE class="table table-bordered"><tbody>';
-                echo '<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Project Duration</TD><TD><h4>Extension (if any)</TD><TD><h4>Start Date</TD><TD><h4>End Date</TD><TD><h4>Work Order</h4></TD><TD><h4>Funding</h4></TD><TD><h4>Project Category</h4></TD><TD><h4>Budget</h4><TD><h4>Deliverables (Promised)</h4></TD><TD><h4>Select</h1></TD></tr>';
+                echo '<tr><TD><h4>ProjectTitle</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</TD><TD><h4>Project Duration</TD><TD><h4>Extension (if any)</TD><TD><h4>Start Date</TD><TD><h4>End Date</TD><TD><h4>Work Order</h4></TD><TD><h4>Funding</h4></TD><TD><h4>Project Category</h4></TD><TD><h4>Reference Details (Category 2,3)</h4></TD><TD><h4>Budget</h4><TD><h4>Deliverables (Promised)</h4></TD><TD><h4>Select</h1></TD></tr>';
 				/*echo '<TR><TD><h4>ProjectTitle</h4></TD>
 					<TD><h4>Work Order Number</h4></TD>
                     
@@ -89,6 +89,8 @@ class Ongoing extends CI_Controller {
 							echo 'IIMC';
 						 echo '</TD><TD>';
 						 print $row->ProjectCategory;
+						 echo '</TD><TD>';
+						 print $row->Reference;
 						 echo '</TD><TD>';
 						 print $row->ProjectGrant;
 						 echo '</TD><TD>';

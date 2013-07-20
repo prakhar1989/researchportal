@@ -29,6 +29,7 @@ class SearchProject extends CI_Controller{
                 <li><input type="radio" name="searchBy" value="Researcher" /> Researcher </li>
                 <li><input type="radio" name="searchBy" value="ProjectType" /> Project Type </li>
                 <li><input type="radio" name="searchBy" value="ProjectCategory" /> Project Category </li>
+                <li><input type="radio" name="searchBy" value="ReferenceDetails" /> Reference Details</li>
                 <li><input type="radio" name="searchBy" value="Budget" /> Budget </li>
                 <li><input type="radio" name="searchBy" value="Deliverable" /> Deliverable </li>
                 <li><input type="radio" name="searchBy" value="ProjectName" /> Project Name </li>

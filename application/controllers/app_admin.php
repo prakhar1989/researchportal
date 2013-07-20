@@ -36,7 +36,7 @@ class App_admin extends CI_Controller {
 				<table class="table table-bordered">';
 				//<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 					 
-					 echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1;</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1></TR>
+					 echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>Reference Details (Category 2,3)</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1;</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1></TR>
 					 <tbody>';
 
 					 foreach($Query->result() as $row)
@@ -47,6 +47,8 @@ class App_admin extends CI_Controller {
 						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
 						 print $row->ProjectCategory;
+						 echo '</TD><TD>';
+						 print $row->Reference;
 						 echo '</TD><TD>';
 						 print $row->ProjectGrant;
 						 echo '</TD><TD>';

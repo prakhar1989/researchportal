@@ -99,7 +99,7 @@ class ShowProject extends CI_Controller {
 						}
 					else
 						{
-						$tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD ><h4>Researcher3 </h4>';
+						$tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>Reference Details (Category 2,3)</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD ><h4>Researcher3 </h4>';
 						/*if ($_SESSION['usertype']==3)
 						{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
 						}*/
@@ -117,6 +117,8 @@ class ShowProject extends CI_Controller {
 						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
 						 print $row->ProjectCategory;
+						 echo '</TD><TD>';
+						 print $row->Reference;
 						 echo '</TD><TD>';
 						 print $row->ProjectGrant;
 						 echo '</TD><TD>';
