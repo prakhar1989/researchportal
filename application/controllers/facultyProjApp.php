@@ -48,6 +48,7 @@ class FacultyProjApp extends CI_Controller {
 					<p>Please use the form below to enter details of a new project</p>
 					 
 					<form name="application" id="commentForm" method=POST action="FacultyProjApp/insert"  enctype="multipart/form-data">
+					<INPUT TYPE="HIDDEN" NAME="hidden2">
 					<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -138,7 +139,7 @@ class FacultyProjApp extends CI_Controller {
 						echo '
 							<td>Project Category</td>
 							<td>
-							<select name="category">
+							<select name="category" onchange = "MyFunction1()">
 							  <option>Category 1 (IIM C)</option>
 							  <option>Category 2 (IIM C)</option>
 							  <option>Category 3 (IIM C)</option>
@@ -183,6 +184,7 @@ class FacultyProjApp extends CI_Controller {
 			{
 			 session_start();
 			 //echo 'The value of Project category is: '.$_POST['category'];
+			 echo $_POST['hidden2'];
 			 if(isset($_POST['casesCB']))
 			 {
 				//echo 'cases CB is it chcked ? ';
@@ -258,7 +260,7 @@ class FacultyProjApp extends CI_Controller {
 			//$data['startdate'] = date("Y-m-d");
 			//echo $data['startdate'];
 			$data['enddate']=date_add($date, new DateInterval('P'.$_POST['time'].'M'))->format("Y-m-d");
-			echo $data['enddate'];
+			//echo $data['enddate'];
 			$data['ProjectDuration']=$_POST['time'];
 			//$data['enddate'] = date("Y-m-d",$date);
 			//echo $date;
@@ -295,3 +297,38 @@ class FacultyProjApp extends CI_Controller {
 
 
 ?>
+<script>
+function MyFunction1()
+{
+var names = prompt("Please Enter external reference name and email","");
+document.application.hidden2.value = names;
+
+}
+function checkdeliverables()
+{
+var Deliverables = document.form1.Deliverables.value;
+var cases = document.form1.cases.value;
+var journals = document.form1.journals.value;
+var chapters = document.form1.chapters.value;
+var conference = document.form1.conference.value;
+var paper = document.form1.paper.value;
+var books = document.form1.books.value;
+
+var countpromised = document.form1.countpromised.value;
+var countuploaded = document.form1.countuploaded.value;
+if (countuploaded > 0)
+	countuploaded = countuploaded - 1;
+if (countpromised>countuploaded)
+	{
+	alert("Number of Deliverables Promised: "+countpromised+"\nNumber of Deliverables Uploaded: "+countuploaded+"\nNumber of Cases Promised: "+cases+"\nNumber of Journals Promised: "+journals+"\nNumber of Chapters Promised: "+chapters+"\nNumber of Conference Promised: "+conference+"\nNumber of Paper Promised: "+paper+"\nNumber of Books Promised: "+books+"\n\nPlease Upload the remaining deliverables promised...");
+	var check = true;
+	}
+else 
+	{
+	var check = false;
+	}
+document.form1.hidden2.value = check;
+document.form1.countpromised.value = countpromised;
+document.form1.countuploaded.value = countuploaded;
+}
+</script>
