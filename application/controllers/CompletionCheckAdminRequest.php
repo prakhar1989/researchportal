@@ -72,6 +72,14 @@ class CompletionCheckAdminRequest extends CI_Controller
 						}
 					else if ($_POST['RequestType'] == 'Send For Revision') 
 						{
+						$to = "nikhil.labh@gmail.com";
+						$subject = "Project Application Sent for Revision";
+						$message = "Hello,
+						
+						Admin has sent your project application for Revision.";
+						$from = "fpoffice@iimcal.ac.in";
+						$headers = "From:" . $from;
+						$stat = mail($to,$subject,$message,$headers);
 						$this->project_model->projectCompletionAdminResponse('Send For Revision',$ProjectID);
 						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_reject_extension");
 						header("Location: /rp/Completion_admin");

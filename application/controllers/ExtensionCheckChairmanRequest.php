@@ -37,6 +37,13 @@ class ExtensionCheckChairmanRequest extends CI_Controller
 						}*/
 					else if ($_POST['RequestType'] == 'Send For Revision') 
 						{
+						$to = "nikhil.labh@gmail.com";
+						$subject = "Extension Request Sent for Revision";
+						$message = "Hello,
+						Chairman has sent your extension request for Revision.";
+						$from = "fpoffice@iimcal.ac.in";
+						$headers = "From:" . $from;
+						$stat = mail($to,$subject,$message,$headers);
 						$this->project_model->projectExtensionChairmanResponse('Send For Revision',$ProjectID);
 						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "chairman_consult_extension");
 						header("Location: /rp/extension_chairman");
