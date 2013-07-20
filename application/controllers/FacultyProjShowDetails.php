@@ -216,6 +216,7 @@ function myFunction()
 {
 var period = prompt("Please Enter the Extension Period in Months","0");
 document.form1.hidden1.value = period;
+
 }
 function checkdeliverables()
 {
