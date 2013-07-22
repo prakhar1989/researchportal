@@ -280,11 +280,11 @@ class Conf_show extends CI_Controller {
 	function approveMsg($status){
 		if($status=='Approved')
 			{
-			echo 'conference has been sent for consultation.';
+			echo 'Conference has been sent for consultation.';
 			}
 		else
 			{
-			echo 'conference has been sent for revision.';
+			echo 'Conference has been sent for revision.';
 			}
 		/* $queryStr='SELECT PStatus FROM conference WHERE conferenceId = "'.$value.'";';
 		// echo $queryStr;

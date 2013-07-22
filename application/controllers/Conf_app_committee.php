@@ -33,11 +33,15 @@ class Conf_app_committee extends CI_Controller {
 					$data['query']= $this->conference_model->getCommConf();
 				
 					echo'
-						<h1>Committee Projects</h1>
-						<FORM METHOD=POST ACTION="ShowProject">
-						<table class="table table-bordered">
-						<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD></TR>
-						<tbody>';
+						<h1>Committee</h1>
+						<FORM METHOD=POST ACTION="Conf_show">
+						<table class="table table-bordered"> 
+						<thead>
+							<tr>
+							</tr>
+					</thead><tbody>
+						<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD><TD><h4>Approved By</h4></TD><TD></TD></TR>
+						';
 						$flag=0;
 
 					 foreach($data['query'] as $row)
@@ -58,7 +62,7 @@ class Conf_app_committee extends CI_Controller {
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Funding;
-						 echo '</TD></tr>';
+						 echo '</TD><TD>';
 						 /*if ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_2')
 						 {
 							echo 'YES';
@@ -67,15 +71,43 @@ class Conf_app_committee extends CI_Controller {
 						 {
 							echo 'NO';
 						 }*/
+						  $commStr= '';
+							if($row->comm_approval == 0){
+							$commStr = $commStr."No Committee Member ";
+							}
+							
+							if($row->comm_approval == 2 || $row->comm_approval == 5 || $row->comm_approval == 6 || $row->comm_approval == 9){
+							$commStr = $commStr."Committee1 ";
+							}
+							if($row->comm_approval == 3 || $row->comm_approval == 5 || $row->comm_approval == 7 || $row->comm_approval == 9){
+							$commStr = $commStr."Committee2 ";
+							}
+							if($row->comm_approval == 4 || $row->comm_approval == 6 || $row->comm_approval == 7 || $row->comm_approval == 9){
+							$commStr = $commStr."Committee3";
+							}
+						 print $commStr;
 						 
+						 echo '</td><TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ConferenceId.'"></TD></TR>';
+						 
+						$flag++;
 						 }
-				echo '</tbody></TABLE>';
+					if($flag==0){
+						echo '<h4>No applications pending with committee</h4> <br > </tbody> </TABLE>';
+						}
+					else
+					{
+						echo '</tbody></TABLE><INPUT TYPE=SUBMIT value="VIEW">
+						</FORM>';
+					};
 				}
 				else if($_SESSION['usertype']==1){
 					$stage='comm';
 					$data['query']= $this->conference_model->getCommConf();
-					echo'
-						<table class="table table-bordered">
+					echo'<h1>Committee</h1>
+						<table class="table table-bordered"><thead>
+							<tr>
+							</tr>
+					</thead>
 						<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD></TR>
 						<tbody>';
 						$flag=0;
@@ -125,6 +157,7 @@ class Conf_app_committee extends CI_Controller {
 							$commStr = $commStr."Committee3";
 							}
 						 print $commStr;
+						 
 						 echo '</TD></TR>';
 						 $flag++;
 					 }

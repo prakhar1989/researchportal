@@ -30,7 +30,7 @@ class Conf_ongoing extends CI_Controller {
 				$status='approved';
 				$Query= $this->conference_model->conference_status($status);
 				
-				 echo '					 <FORM METHOD=POST ACTION=""><table class="table table-bordered"> 
+				 echo '					 <FORM METHOD=POST ACTION="Conf_ongoing/archived"><table class="table table-bordered"> 
 					
 					 <thead>
 							<tr>
@@ -86,12 +86,28 @@ class Conf_ongoing extends CI_Controller {
 					 
 					 echo '</tbody> </TABLE>';
 					 if($_SESSION['usertype']==1){
-						echo '<input type=submit name = "Print" value = "Print"><input type=submit name = "Send to Archive" value = "OK"></FORM>';
+						echo '<input type=submit name = "submit" value = "Print"><input type=submit name = "submit" value = "Send to Archive"></FORM>';
 					}
 				}
-	
-	function approved()
+	//only called by admin
+	function archived()
 	{
+			session_start();
+		$data['myClass']=$this;
+		//$data['action']=1;
+		$this->load->model('conference_model');
+		if($_POST['submit']=='Print'){
+		
+		} else if($_POST['submit']=='Send to Archive') {
+		echo "1";
+			//$data['msg']='Archived';
+			$Query= $this->conference_model->changeStatus('completed',$_POST['Choice1']);
+			//$this->load->view('layout',$data);
+			$msg='The Project has been sent to Archives';
+			require('showMsg.php');
+			$showMsg=new showMsg();
+			$showMsg->index($msg,'admin');
+		}
 	}
 	}
 

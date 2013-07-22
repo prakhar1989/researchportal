@@ -42,6 +42,7 @@ class Conf_Completed extends CI_Controller {
 					 foreach($Query->result() as $row)
 					 {
 						 echo '<TR><TD>';
+						 echo 'Apr '.(2010+3*($row->Block_number)).' to Mar '.(2013+3*($row->Block_number));
 						 echo '</TD><TD>';
 						 print $row->Researcher1;
 						 echo '</TD><TD>';
