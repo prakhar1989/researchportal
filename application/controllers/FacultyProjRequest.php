@@ -56,12 +56,18 @@ class FacultyProjRequest extends CI_Controller
 							{
 							If ($countpromised > $countuploaded)
 								{
+								
 								for ($i=1; $i <= ($countpromised - $countuploaded); $i++)
 									{
-									echo '<br><input type="file" name="file_desc_'.$i.'" id="file_desc_'.$i.'" />';
+									echo '<input type="file" name="file_desc_'.$i.'" id="file_desc_'.$i.'" />';
+									echo '<input type="text" name="citation'.$i.'" placeholder="Citation" >';
+									echo '<br>';
+									
 									}
+								 	
 								echo'<input type="hidden" name="i" value="'.$i.'" />
-								<br><input type="SUBMIT" value="Apply" class="btn btn-large btn-primary "></input>';
+								<br>
+								<tr><input type="SUBMIT" value="Apply" class="btn btn-large btn-primary "></input></tr>';
 								}
 							}
 							else if ($Check == 'false')
@@ -230,7 +236,8 @@ class FacultyProjRequest extends CI_Controller
 				
 				}
 	
-	
+		
+		
 		function insert()
 		{
 		session_start();
@@ -238,15 +245,18 @@ class FacultyProjRequest extends CI_Controller
 			$ProjectId = $_SESSION['ProjectID'];
 			$i = $_POST['i'];
 			//move_uploaded_file($_FILES["element_5"]["tmp_name"],"upload/".$ProjectId.'.'.$ext);
-		
+			$data['projectID'] = $ProjectId;
+			$data['count'] = $i;
 			for ($j=1; $j < $i ; $j++)
 				{
 				$ext=end(explode('/', $_FILES['file_desc_'.$j]['type']));
 				move_uploaded_file($_FILES['file_desc_'.$j]["tmp_name"],"upload/" . $ProjectId.'_'.$j.'.'.$ext);		           
-				}
+				$data['filename'.$j] = ''.$ProjectId.'_'.$j.'.'.$ext;
+				$data['citation'.$j] = $_POST['citation'.$j];
+			}
 			$this->load->database();
 			$this->load->model('project_model');
-			
+			$msg1 = $this->project_model->addCitation($data);
 			$msg = $this->project_model->projectCompletion($ProjectId);
 			//$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectId, addslashes(trim($_POST['comment'])), 'faculty_completed');
 			echo "\n\n";
