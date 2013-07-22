@@ -17,10 +17,14 @@ class Conf_Completed extends CI_Controller {
 			} elseif($_SESSION['usertype']==3){
 				$this->load->view('layoutChairman',$data);
 			}
+			else{
+			
+			header("location:/rp/login");
+			}
 		}
 	function load_php()
 				{
-				echo '<h1> Completed </h1>';
+				echo '<h1> Archived </h1>';
 				//Load the project model
                 //Query for the ongoign projects (PStatus==completed)
 				// Display the results
@@ -29,24 +33,32 @@ class Conf_Completed extends CI_Controller {
 				$status='completed';
 				$Query= $this->conference_model->conference_status($status);
 				
-                    echo '<TABLE class="table table-bordered">';
-					 echo '<TR><TD><h4>ConferenceTitle</h4></TD><TD><h4>ConferenceId</h4></TD><TD><h4>Description</h4></TD><TD><h4>ConferenceCategory</TD><TD><h4>ConferenceGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1 </h1>';
+                    echo '<TABLE class="table table-bordered"> <thead>
+							<tr>
+							</tr>
+					</thead>
+					<tbody>';
+					echo '<TR><TD><h4>Block</h4></TD><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD></TR>';
 					 foreach($Query->result() as $row)
 					 {
 						 echo '<TR><TD>';
+						 echo '</TD><TD>';
+						 print $row->Researcher1;
+						 echo '</TD><TD>';
 						 print $row->ConferenceTitle;
-						 echo '</TD><TD>';
-						 print $row->ConferenceId;
-						 echo '</TD><TD>';
-						 print $row->Description;
-						 echo '</TD><TD>';
-						 print $row->ConferenceCategory;
-						 echo '</TD><TD>';
-						 print $row->ConferenceGrant;
 						 echo '</TD><TD>';
 						 print $row->App_Date;
 						 echo '</TD><TD>';
-						 print $row->Researcher1;
+						 print $row->Start_Date;
+						 echo ' to ';
+						 print $row->End_Date;
+						 echo '</TD><TD>';
+						 print $row->PaperTitle;
+						 echo '</TD><TD>';
+						 print $row->Researcher2;
+						 echo '</TD><TD>';
+						 print $row->Funding;
+						 echo '</TD></tr>';
 					 }
 				echo '</TABLE>';
 				}

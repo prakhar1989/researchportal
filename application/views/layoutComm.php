@@ -69,12 +69,10 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                 </div>
                 <div id="confs" style="display: block">
                     <ul >
-                        <li><a  href="/rp/new_Capplication">New Application</a> </li>
-						<li><a  href="/rp/Congoing">Ongoing</a> </li>
-						<li><a  href="/rp/Ccompleted">Completed</a> </li>
-						<li><a  href="/rp/Capp_chairman">Chairman</a> </li>
-						<li><a  href="/rp/Capp_admin">Admin</a> </li>
-						<li><a  href="/rp/searchConference">Search</a> </li>
+                        <li><a  href="/rp/Conf_new_application">New Application</a> </li>
+						<li><a  href="/rp/Conf_ongoing">Approved</a> </li>
+						<li><a href="/rp/Conf_completed">Archives</a> </li>
+						<li><a  href="/rp/Conf_search">Search</a> </li>
                     </ul>
                 </div>
            </div> 

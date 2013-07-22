@@ -269,5 +269,51 @@ class Conference_model extends CI_Model {
 			return $query;
 		
 		}
+		//function to insert comment into the comment table for conferences
+	function insertComment($user, $usertype, $ID, $comment, $comment_type)
+	{
+		$this->load->database();
+		$queryStr= 'INSERT INTO conferencecomment (Conference_ID , Comment, Comment_type, User, User_type) VALUES ('.$ID.' , \''.$comment.'\' , \''.$comment_type.'\' , \''.$user.'\' , '.$usertype.');' ;
+		//echo '<br>'.$queryStr;
+		$query = $this->db->query($queryStr);
+		//$result = $query->result();
+		//$msg='The Comments have been Added';
+		//return $msg;
+	}
+	function getCommConf()//for confs pending with committee, which can be directly approved by chairman(called from 'committee' tab for user: chairman & admin)
+	{
+		$this->load->database();
+		if ($_SESSION['usertype']==3 || $_SESSION['usertype']==1)
+		{
+			$queryStr='SELECT * FROM conference WHERE CStatus = "app_comm" OR CStatus = "app_chairman_2" ORDER BY App_Date DESC;';
+		}
+		$query= $this->db->query($queryStr);
+		return $query->result();
+	}	
+	
+	function changeStatusComm($comm_app,$status,$ID)//changing the status of the conf
+		{
+		
+		$this->load->database();
+		//$num = 0;
+		$queryStr = 'SELECT comm_approval FROM conference WHERE ConferenceId =\''.$ID.'\' ;';
+		$query = $this->db->query($queryStr);
+		$result=$query->result();
+		foreach($result as $row)
+		{
+		$num=$row->comm_approval;
+		}
+		$num = $num + $comm_app;
+		//echo "Project Name:".$Project;
+		$queryStr='UPDATE conference SET  comm_approval =\''.$num.'\' WHERE  ConferenceId =\''.$ID.'\' ;';
+		$query = $this->db->query($queryStr);
+		if($num == 9)
+			$queryStr='UPDATE conference SET  CStatus =\''.$status.'\' WHERE  ConferenceId =\''.$ID.'\' ;';
+		
+		
+		//echo $queryStr;
+		$query = $this->db->query($queryStr);
+		return $query;
+		}
 }
 ?>
