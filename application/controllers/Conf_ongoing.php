@@ -38,7 +38,10 @@ class Conf_ongoing extends CI_Controller {
 					</thead>
 					<tbody>';
 					 
-					$tableHeader= '<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD><TD></TD>';
+					$tableHeader= '<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD>';
+					if($_SESSION['usertype']==1){
+						$tableHeader=$tableHeader.'<TD></TD>';
+					}
 					/*if ($_SESSION['usertype']==3)
 					{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
 					}*/
@@ -64,7 +67,10 @@ class Conf_ongoing extends CI_Controller {
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Funding;
-					     echo '</TD><TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ConferenceId.'"></TD></TR>';
+						 if($_SESSION['usertype']==1){
+							echo '</TD><TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ConferenceId.'"></TD>';
+						 }
+						 echo '</TR>';
 
 						 /*if ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_2')
 						 {
@@ -79,7 +85,9 @@ class Conf_ongoing extends CI_Controller {
 					
 					 
 					 echo '</tbody> </TABLE>';
-					 echo '<input type=submit name = "Print" value = "Print"><input type=submit name = "Send to Archive" value = "OK"></FORM>';
+					 if($_SESSION['usertype']==1){
+						echo '<input type=submit name = "Print" value = "Print"><input type=submit name = "Send to Archive" value = "OK"></FORM>';
+					}
 				}
 	
 	function approved()

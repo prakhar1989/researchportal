@@ -48,7 +48,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
 			// if(session_id() == '') {
 			// session_start(); 
 			// }
-			session_start();
+			//session_start();
 			$name = $_SESSION['username'];
 			echo "<font color='black'>$name</font>";
 			?>

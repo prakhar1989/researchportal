@@ -51,7 +51,7 @@ class Conf_show extends CI_Controller {
 				   $("#commentForm").validate();
 				   });
 				   </script>
-				   <FORM name="approveConference" class = "cmxform" id="commentForm" method= "POST" action="Conf_show/approve">';
+				   <FORM name="approveConference" class = "cmxform" id="commentForm" method= "POST" action="Conf_show/approveConference">';
 
 					 $Query= $this->conference_model->conferenceInfo($Conf);
 					 echo '<table class="table table-bordered"> 
@@ -226,7 +226,7 @@ class Conf_show extends CI_Controller {
 			elseif($_SESSION['usertype']==3 && $_POST['approve']=='Forward To Committee')
 			{
 				$to = "nippagupta@iimcal.ac.in";
-				$subject = "New conference Consultation";
+				$subject = "New Conference Consultation";
 				$message = "Hello,
 				Chairman has sent a new conference for consultation";
 				$from = "fpoffice@iimcal.ac.in";
