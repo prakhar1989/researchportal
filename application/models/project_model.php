@@ -318,6 +318,19 @@ class Project_model extends CI_Model {
 		return $query;
 	}
 	
+	
+	function addCitation($data)
+	{
+		$queryStr1 = 'SELECT ProjectTitle from project WHERE ProjectId= "'.$data['projectID'].'"';
+		$row=$this->db->query($queryStr1)->result();
+		for($j=1; $j<$data['count']; $j++)
+		{
+		
+		$queryStr= 'INSERT INTO citation (ProjectTitle , FileName , ProjectId,  citation_text) VALUES (\''.$row[0]->ProjectTitle.'\' , \''.$data['filename'.$j].'\' , \''.$data['projectID'].'\' , \''.$data['citation'.$j].'\');';
+		$query = $this->db->query($queryStr);
+		
+		}
+	}
 	// Request for Project Completion
 	function projectCompletion($value)
 	{
