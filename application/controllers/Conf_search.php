@@ -26,9 +26,8 @@ class Conf_search extends CI_Controller{
             echo '<li><input type="radio" name="searchBy" value="ConferenceId" /> ConferenceId </li>
                 <li><input type="radio" name="searchBy" value="Researcher" /> Researcher </li>
                 <li><input type="radio" name="searchBy" value="ConferenceTitle" /> ConferenceTitle </li>
-                <li><input type="radio" name="searchBy" value="ConferenceCategory" /> Conference Category </li>
-                <li><input type="radio" name="searchBy" value="ConferenceGrant" /> Conference Grant </li>
-                <li><input type="radio" name="searchBy" value="CStatus" /> Status</li></ul>';
+                <li><input type="radio" name="searchBy" value="Funding" /> Source of Funding </li>
+                <li><input type="radio" name="searchBy" value="PaperTitle" /> Paper Title </li>';
 			echo '<input type=text class="searchbox" name="searchValue" placeholder="Enter Search Term">';
 			echo '<input type= submit value= "Search" name="search">'; 
 		    echo '</FORM>';

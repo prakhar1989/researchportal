@@ -93,6 +93,20 @@ class Conference_model extends CI_Model {
 		{
 		   $queryStr='SELECT * FROM conference WHERE Researcher1 LIKE \'%'.$value.'%\';';
 		}
+		elseif ($type == 'ConferenceTitle')
+		{
+		   $queryStr='SELECT * FROM conference WHERE ConferenceTitle LIKE \'%'.$value.'%\';';
+		}
+		elseif ($type == 'Funding')
+		{
+		   $queryStr='SELECT * FROM conference WHERE Researcher1 LIKE \'%'.$value.'%\';';
+		}
+		elseif ($type == 'PaperTitle')
+		{
+		   $queryStr='SELECT * FROM conference WHERE PaperTitle LIKE \'%'.$value.'%\';';
+		}
+
+	
 		
 		$query = $this->db->query($queryStr);
 		return $query;
