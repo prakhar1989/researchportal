@@ -62,7 +62,7 @@ class Conf_show extends CI_Controller {
 					</thead>
 					<tbody>';
 					 
-					$tableHeader= '<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Source of Funding</h4></TD>';
+					$tableHeader= '<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD>';
 					/*if ($_SESSION['usertype']==3)
 					{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
 					}*/
@@ -129,7 +129,7 @@ class Conf_show extends CI_Controller {
 					 
 					 echo '</tbody> </TABLE>';
 					
-					echo'<a href="downloadfile?file=upload/'.$Conf.'_description">Download Project Description file</a><br><br>';
+					echo'<a href="downloadfile?file=upload/'.$Conf.'_description">Download Conference Description file</a><br><br>';
 					
 					if ($_SESSION['usertype']==1)
 					{
@@ -178,7 +178,7 @@ class Conf_show extends CI_Controller {
 						}
 						elseif ($_SESSION['usertype']=='3' && $row->CStatus=='app_chairman_1')
 						{
-							echo '<input type= submit value= "Forward To Committee" name="approve"><input type= submit value= "Review" name="approve"><input type="hidden" name=conferenceID value="'.$Conf.' " >';
+							echo '<input type= submit value= "Forward" name="approve"><input type= submit value= "Revision" name="approve"><input type="hidden" name=conferenceID value="'.$Conf.' " >';
 						}						
 					 }
 					 echo '</FORM>';

@@ -72,7 +72,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                 </div>
                 <div id="confs" style="display: none">
                     <ul >
-                        <li><a  href="/rp/new_Capplication">New Application</a> </li>
+                        <li><a  href="/rp/Conf_new_application">New Application</a> </li>
 						<li><a  href="/rp/Congoing">Ongoing</a> </li>
 						<li><a  href="/rp/Ccompleted">Completed</a> </li>
 						<li><a  href="/rp/Capp_admin">Admin</a> </li>
