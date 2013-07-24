@@ -331,6 +331,12 @@ class Project_model extends CI_Model {
 		
 		}
 	}
+	function getCitationByFile($file, $ID)
+	{
+	$query= 'SELECT * FROM citation WHERE (ProjectID = '.$ID.' AND FileName = "'.$file.'");';
+	$res = $this->db->query($query);
+	return $res;
+	}
 	// Request for Project Completion
 	function projectCompletion($value)
 	{
