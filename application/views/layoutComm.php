@@ -70,9 +70,6 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                 <div id="confs" style="display: block">
                     <ul >
                         <li><a  href="/rp/Conf_new_application">New Application</a> </li>
-						<li><a  href="/rp/Conf_ongoing">Approved</a> </li>
-						<li><a href="/rp/Conf_completed">Archives</a> </li>
-						<li><a  href="/rp/Conf_search">Search</a> </li>
                     </ul>
                 </div>
            </div> 

@@ -73,11 +73,9 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                 <div id="confs" style="display: none">
                     <ul >
                         <li><a  href="/rp/Conf_new_application">New Application</a> </li>
-						<li><a  href="/rp/Conf_ongoing">Ongoing</a> </li>
-						<li><a  href="/rp/Conf_completed">Archives</a> </li>
 						<li><a  href="/rp/Conf_app_admin">Admin</a> </li>
 						<li><a  href="/rp/Conf_app_committee">Committee</a> </li>
-						<li><a  href="/rp/Conf_search">Search</a> </li>
+						
                         </li>
                     </ul>
                 </div>

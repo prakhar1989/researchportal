@@ -60,7 +60,7 @@ class CompletionCheckChairmanRequest extends CI_Controller
 					<tr><TD><h4>Download File</h4></TD><TD><h4>Citations (If Any)</h4></TD></TR>';
 						$Path = "upload/".$ProjectID."_";
 						//$Path = "upload/".$ProjectID."_";
-						$Files = glob($Path."*.pdf");
+						$Files = glob($Path."*.*");
 						$countuploaded = 0;
 						foreach ($Files as $File)
 							{
