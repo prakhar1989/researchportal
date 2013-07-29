@@ -55,19 +55,30 @@ class CompletionCheckChairmanRequest extends CI_Controller
 						}
 					else if ($_POST['RequestType'] == 'Check Deliverables') 
 						{
-						echo '<br><h3>Deliverables Uploaded</h3>';
+						echo '<br><h1>Deliverables Uploaded</h1> <TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
+					 <table class="table table-bordered">
+					<tr><TD><h4>Download File</h4></TD><TD><h4>Citations (If Any)</h4></TD></TR>';
 						$Path = "upload/".$ProjectID."_";
 						//$Path = "upload/".$ProjectID."_";
-						$Files = glob($Path."*.pdf");
+						$Files = glob($Path."*.*");
 						$countuploaded = 0;
 						foreach ($Files as $File)
 							{
 							//echo $File;
 							//$Files=(explode('.', $File));
 							$countuploaded++;			
-							echo'<a href="download?file='.$File.'">'.$File.'</a><br>';
-							//echo '<br>';
+							echo'<tr><td><a href="download?file='.$File.'">'.$File.'</a><br></td><td>';
+							$tempFile=explode('/',$File);
+							$res = $this->project_model->getCitationByFile($tempFile[1],$ProjectID);
+							foreach($res->result() as $row)
+							{
+								echo '<p>';
+								print $row->citation_text;
+								echo '</p>';
 							}
+							echo '</td></tr>';
+							}
+							echo '</table>';
 						echo 'Number of Deliverables uploaded: '.$countuploaded;
 						$query = $this->project_model->projectSearchById($ProjectID);
 						$countpromised = 0;
