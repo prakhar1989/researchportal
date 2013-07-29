@@ -60,6 +60,7 @@ class FacultyProjRequest extends CI_Controller
 								for ($i=1; $i <= ($countpromised - $countuploaded); $i++)
 									{
 									echo '<input type="file" name="file_desc_'.$i.'" id="file_desc_'.$i.'" />';
+									echo'<input type="hidden" name="fileDesc_'.$i.'" value="file_desc_'.$i.'" />';
 									echo '<input type="text" name="citation'.$i.'" placeholder="Citation" >';
 									echo '<br>';
 									
@@ -253,6 +254,7 @@ class FacultyProjRequest extends CI_Controller
 				move_uploaded_file($_FILES['file_desc_'.$j]["tmp_name"],"upload/" . $ProjectId.'_'.$j.'.'.$ext);		           
 				$data['filename'.$j] = ''.$ProjectId.'_'.$j.'.'.$ext;
 				$data['citation'.$j] = $_POST['citation'.$j];
+				$data['fileDesc_'.$j] = $_POST['fileDesc_'.$j];
 			}
 			$this->load->database();
 			$this->load->model('project_model');
