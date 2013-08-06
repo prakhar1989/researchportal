@@ -128,10 +128,11 @@ class Approved extends CI_Controller
 			$showMsg=new showMsg();
 			$showMsg->index($msg,'admin');
 		}
-		elseif($_POST['Check']=='Download Project Desciption')
+		elseif($_POST['Check']=='Download Project Description')
 		{
 		$Project = $this->input->post('Choice1');
 		header("location:/rp/downloadfile?file=upload/".$Project."_description");
+		
 		}
 		elseif ($_POST['Check']=='Print')
 		{

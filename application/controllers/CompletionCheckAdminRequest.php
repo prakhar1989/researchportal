@@ -32,7 +32,7 @@ class CompletionCheckAdminRequest extends CI_Controller
 					if ($_POST['RequestType'] == 'Checked and Forward To Chairman')
 						{
 						$this->project_model->projectCompletionAdminResponse('Approve',$ProjectID);
-						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_approve_completion");
+						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim(nl2br($_POST['comment']))), "admin_approve_completion");
 						header("Location: /rp/Completion_admin");
 						}
 					else if ($_POST['RequestType'] == 'Download Project Description')
@@ -95,7 +95,33 @@ class CompletionCheckAdminRequest extends CI_Controller
 							$countpromised = $countpromised + $row->paper;
 							}
 						echo '<br>Number of Deliverables promised: '.$countpromised;
-						}
+						
+						$Res= $this->project_model->getcomment($ProjectID, $_SESSION['usertype']);
+					 echo '<p>					 </p><table class="table table-bordered"> 
+					
+					 <thead>
+							<tr>
+							</tr>
+					</thead>
+					<tbody>';
+					 $tableHeader= '<TR><TD><h4>Comment</h4></TD><TD><h4>Comment Type</h4></TD><TD><h4>Added by user</h4></TD><TD><h4>Added on</h4>';
+					 
+					 echo $tableHeader;
+					 foreach($Res as $row1)
+					 {
+						 echo '<TR><TD>';
+						 print $row1->Comment;
+						 echo '</TD><TD>';
+						 print $row1->Comment_type;
+						 echo '</TD><TD>';
+						 print $row1->User;
+						 echo '</TD><TD>';
+						 print $row1->Date;
+						
+					 }
+					 
+					 echo '</tbody> </TABLE>';
+					}
 					else if ($_POST['RequestType'] == 'Send For Revision') 
 						{
 						$to = "nikhil.labh@gmail.com";
@@ -107,7 +133,7 @@ class CompletionCheckAdminRequest extends CI_Controller
 						$headers = "From:" . $from;
 						$stat = mail($to,$subject,$message,$headers);
 						$this->project_model->projectCompletionAdminResponse('Send For Revision',$ProjectID);
-						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "admin_reject_extension");
+						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim(nl2br($_POST['comment']))), "admin_reject_extension");
 						header("Location: /rp/Completion_admin");
 						}
 					echo "\n\n";

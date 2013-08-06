@@ -31,13 +31,13 @@ class CompletionCheckChairmanRequest extends CI_Controller
 					if ($_POST['RequestType'] == 'Approve')
 						{
 						$this->project_model->projectCompletionChairmanResponse('Approve',$ProjectID);
-						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "chairman_approve_completion");
+						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim(nl2br($_POST['comment']))), "chairman_approve_completion");
 						header("Location: /rp/Completion_chairman");
 						} 
 					else if ($_POST['RequestType'] == 'Reject') 
 						{
 						$this->project_model->projectCompletionChairmanResponse('Reject',$ProjectID);
-						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "chairman_reject_completion");
+						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim(nl2br($_POST['comment']))), "chairman_reject_completion");
 						header("Location: /rp/Completion_chairman");
 						}
 					else if ($_POST['RequestType'] == 'Send For Revision') 
@@ -50,7 +50,7 @@ class CompletionCheckChairmanRequest extends CI_Controller
 						$headers = "From:" . $from;
 						$stat = mail($to,$subject,$message,$headers);
 						$this->project_model->projectCompletionChairmanResponse('Send For Revision',$ProjectID);
-						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "chairman_consult_extension");
+						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim(nl2br($_POST['comment']))), "chairman_consult_extension");
 						header("Location: /rp/Completion_chairman");
 						}
 					else if ($_POST['RequestType'] == 'Check Deliverables') 

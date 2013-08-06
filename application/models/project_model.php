@@ -647,8 +647,11 @@ class Project_model extends CI_Model {
 		{
 		//1. Check if co researchers are doing more than 3 projects
 		//echo 'insertProject called';
+<<<<<<< HEAD
 		$this->load->database();
 		/*********While deployement uncomment the 2 if conditions
+=======
+>>>>>>> 37fc7aaa3e006d3fa49684317cb9d4899320d35e
 		if (! $this->getNoProj($data['researcher2']) && $data['researcher2']!='')
 		{
 			$msg='The co researcher '.$data['researcher2'].' is already doing 3 project';
