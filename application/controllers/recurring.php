@@ -25,7 +25,7 @@ class recurring extends CI_Controller {
 		// echo "WELCOME $name!!! Please select the options from Menu form Left ";
 		
 		 $this->load->model('project_model');
-		 //*** Table showing Pending Payments till two days before***
+		 //*** Table showing Pending Payments till today***
 		 $pending = $this->project_model->allPending();
 		 echo '
 		 <h1>Pending Payments</h1>

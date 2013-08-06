@@ -73,9 +73,11 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                 <div id="confs" style="display: none">
                     <ul >
                         <li><a  href="/rp/Conf_facultyApp">Apply for Conference</a> </li>
-						<li><a  href="/rp/Conf_facultyongoing">Ongoing Conferences</a> </li>
-						<li><a  href="/rp/Conf_facultycompleted">Past Conferences</a> </li>
-                        </li>
+						<li><a  href="/rp/Conf_facultyongoing">Approved Conferences</a> </li>
+						<li><a  href="/rp/Conf_facultycompleted">Cancelled Conferences</a> </li>
+						<li><a  href="/rp/Conf_facultycompleted">Pending for Approval</a> </li>
+						<li><a  href="/rp/Conf_facultycompleted">Revision Conference</a> </li>
+                        
                     </ul>
                 </div>
            </div> 

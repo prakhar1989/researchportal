@@ -1,7 +1,7 @@
 
 <?PHP
 
-// Connect to the database. To tweak the database settings goto applciation/config/database.php 
+// Connect to the database. To tweak the database settings goto application/config/database.php 
 
 class Project_model extends CI_Model {
      

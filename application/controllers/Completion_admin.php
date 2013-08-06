@@ -24,7 +24,7 @@ class Completion_admin extends CI_Controller
 	function load_php()
 				{
 				echo '<h1>Closure Requests</h1>';
-				//echo '<p> This is the Closure page. The Requests for project extenions to be showed here</p>';
+				echo '<p> This is the Closure page. The Requests for project extenions to be showed here</p>';
 				$this->load->model('project_model');
 				$Query= $this->project_model->project_completion_admin();
 				//$count= $this->project_model->getDirectoryList(55);

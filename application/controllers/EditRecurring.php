@@ -176,14 +176,15 @@ class EditRecurring extends CI_Controller {
 						<tr>
 							<td>PAN number</td>
 							<td>'.$res[0]->PAN.'</td>
-						</tr>
-						<tr>
+						</tr>';
+						/*<tr>
 						 <td>CV of RA</td><td>
 						 <INPUT TYPE=SUBMIT value="Download CV" name="Check"></input><input type = "hidden" name="WorkOrderId" value="'.$res[0]->WorkOrderId.'"></input><input type = "hidden" name="RA_id" value = "'.$res[0]->researcher_id.'"></input></td>
 						</tr>
 						<tr>
 						<td>Appointment Letter of RA</td>
-						<td><INPUT TYPE=SUBMIT VALUE="Download Appointment Letter" name="Check"></input></td></tr>
+						<td><INPUT TYPE=SUBMIT VALUE="Download Appointment Letter" name="Check"></input></td></tr>*/
+						echo'
 					</tbody>
 					</table></form>';
 		}
