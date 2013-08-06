@@ -36,7 +36,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    <script language="javascript" src="/rp/static/js/checkboxes.js"></script>
+
   </head>
   <body>
 
@@ -82,6 +82,8 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
         </div>
     </div>
 
+	
+	
     <div class="container">
         <div>
 			<?php
@@ -89,11 +91,14 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
 					{
 					$myClass->load_php();
 					}
-					elseif ($action==1)
+					elseif ($action==2)
 					{
-					$myClass->load_php($msg);
+					$myClass->approveMsg($msg);
 					}
-					
+					elseif ($action==3)
+					{
+					$myClass->load_search($searchBy,$searchValue);
+					}
 			?>
              </div>
         </div>
@@ -101,10 +106,12 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
 	<footer>
         <p>Handcrafted by Internet Solutions Group &copy; 2012</p>
     </footer>
+	
+	
+	
     <script src="/rp/static/js/jquery.min.js"></script>
     <script src="/rp/static/js/bootstrap.min.js"></script>
     <script src="/rp/static/js/tabs.min.js"></script>
     <script src="/rp/static/js/application.js"></script>
-	<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
   </body>
 </html> 

@@ -217,6 +217,7 @@ class FacultyProjShowDetails extends CI_Controller {
 function myFunction()
 {
 var period = prompt("Please Enter the Extension Period in Months","0");
+//if(period!=null)
 document.form1.hidden1.value = period;
 
 }

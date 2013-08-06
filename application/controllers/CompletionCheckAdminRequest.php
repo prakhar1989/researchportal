@@ -80,6 +80,7 @@ class CompletionCheckAdminRequest extends CI_Controller
 //>>>>>>> d4c56d1471d32b8a4ad7b2260f39cfb7f344ae1e
 							}
 							echo '</table>';
+							$countuploaded--;
 						echo 'Number of Deliverables uploaded: '.$countuploaded;
 						$queryStr='Select * from project where ProjectId = "'.$ProjectID.'";';
 						$query = $this->db->query($queryStr);

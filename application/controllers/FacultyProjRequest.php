@@ -34,16 +34,23 @@ class FacultyProjRequest extends CI_Controller
 						{
 						
 						$ExtensionPeriod = $_POST['hidden1'];
+						echo $ExtensionPeriod;
+						if($ExtensionPeriod!=0){
+						//header("location:/rp/FacultyProjShowDetails?ProjectSelected=".$ProjectID);
 						//echo $ExtensionPeriod;
 						//if(strlen(trim($_POST['comment']))!=0)
 						//{
-							$msg = $this->project_model->projectExtension($ProjectID,$ExtensionPeriod);
+						$msg = $this->project_model->projectExtension($ProjectID,$ExtensionPeriod);
 							$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), 'faculty_extension');
 						echo "\n\n";
 						//echo "Extension";
 						echo $msg;
 						//}
-						
+						}
+						else
+						{
+						//Redirect to FacultyProjShowDetails with projectID
+						}
 						} 
 					else if ($_POST['RequestType'] == 'Request For Project Closure') 
 						{
@@ -59,14 +66,16 @@ class FacultyProjRequest extends CI_Controller
 								
 								for ($i=1; $i <= ($countpromised - $countuploaded); $i++)
 									{
-									echo '<input type="file" name="file_desc_'.$i.'" id="file_desc_'.$i.'" />';
-									echo'<input type="hidden" name="fileDesc_'.$i.'" value="file_desc_'.$i.'" />';
-									echo '<input type="text" name="citation'.$i.'" placeholder="Citation" >';
+									$filename = $countuploaded + $i;
+									echo '<input type="file" name="file_desc_'.$filename.'" id="file_desc_'.$filename.'" />';
+									echo'<input type="hidden" name="fileDesc_'.$filename.'" value="file_desc_'.$filename.'" />';
+									echo '<input type="text" name="citation'.$filename.'" placeholder="Citation" >';
 									echo '<br>';
 									
 									}
 								 	
 								echo'<input type="hidden" name="i" value="'.$i.'" />
+								<input type="hidden" name="countuploaded" value="'.$countuploaded.'" />
 								<br>
 								<tr><input type="SUBMIT" value="Apply" class="btn btn-large btn-primary "></input></tr>';
 								}
@@ -245,10 +254,11 @@ class FacultyProjRequest extends CI_Controller
 		
 			$ProjectId = $_SESSION['ProjectID'];
 			$i = $_POST['i'];
+			$countuploaded = $_POST['countuploaded'];
 			//move_uploaded_file($_FILES["element_5"]["tmp_name"],"upload/".$ProjectId.'.'.$ext);
 			$data['projectID'] = $ProjectId;
-			$data['count'] = $i;
-			for ($j=1; $j < $i ; $j++)
+			//$data['count'] = $i;
+			for ($j=($countuploaded + 1); $j < ($i + $countuploaded); $j++)
 				{
 				$ext=end(explode('/', $_FILES['file_desc_'.$j]['type']));
 				move_uploaded_file($_FILES['file_desc_'.$j]["tmp_name"],"upload/" . $ProjectId.'_'.$j.'.'.$ext);		           
@@ -256,6 +266,8 @@ class FacultyProjRequest extends CI_Controller
 				$data['citation'.$j] = $_POST['citation'.$j];
 				$data['fileDesc_'.$j] = $_POST['fileDesc_'.$j];
 			}
+			$data['count'] = $i;
+			$data['countuploaded'] = $countuploaded;
 			$this->load->database();
 			$this->load->model('project_model');
 			$msg1 = $this->project_model->addCitation($data);

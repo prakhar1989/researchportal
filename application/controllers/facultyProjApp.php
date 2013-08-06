@@ -200,8 +200,15 @@ class FacultyProjApp extends CI_Controller {
 			{
 			 session_start();
 			 //echo $_POST['hidden2'];
-			 $data['reference'] = $_POST['Reference'];
-			 if(isset($_POST['casesCB']))
+
+			 if (isset($_POST['Reference'])) {
+			 $data['reference'] = addslashes(trim(nl2br($_POST['Reference'])));
+			 } else {
+			 $data['reference'] = "";
+
+			 }
+
+			 if(isset($_POST['casesCB'])&&isset($_POST['cases']))
 			 {
 				//echo 'cases CB is it chcked ? ';
 				$data['cases']=$_POST['cases'];
@@ -211,7 +218,7 @@ class FacultyProjApp extends CI_Controller {
 			 $data['cases']=0;
 			 }
 			
-			 if(isset($_POST['journalsCB']))
+			 if(isset($_POST['journalsCB'])&&isset($_POST['journals']))
 			 {
 				//echo 'journals CB is it checked ? ';
 				$data['journals']=$_POST['journals'];
@@ -221,7 +228,7 @@ class FacultyProjApp extends CI_Controller {
 			 $data['journals']=0;
 			 }
 			 
-			 if(isset($_POST['booksCB']))
+			 if(isset($_POST['booksCB'])&&isset($_POST['books']))
 			 {
 				//echo 'journals CB is it checked ? ';
 				$data['books']=$_POST['books'];
@@ -231,7 +238,7 @@ class FacultyProjApp extends CI_Controller {
 			 $data['books']=0;
 			 }
 			 
-			 if(isset($_POST['chaptersCB']))
+			 if(isset($_POST['chaptersCB'])&&isset($_POST['chapters']))
 			 {
 				$data['chapters']=$_POST['chapters'];
 				//echo 'chapters CB is it checked ? ';
@@ -240,8 +247,9 @@ class FacultyProjApp extends CI_Controller {
 			 {
 			 $data['chapters']=0;
 			 }
+
 			 
-			 if(isset($_POST['conferencesCB']))
+			 if(isset($_POST['conferencesCB'])&&isset($_POST['conferences']))
 			 {
 				$data['conferences']=$_POST['conferences'];
 				//echo 'conference CB is it checked ? ';
@@ -251,7 +259,7 @@ class FacultyProjApp extends CI_Controller {
 			 $data['conferences']=0;
 			 }
 			 
-			 if(isset($_POST['papersCB']))
+			 if(isset($_POST['papersCB'])&&isset($_POST['papers']))
 			 {
 				$data['papers']=$_POST['papers'];
 				//echo 'papers CB is it checked ? ';
@@ -283,7 +291,6 @@ class FacultyProjApp extends CI_Controller {
 			
 			$this->load->model('project_model');
 			$ProjectId=$this->project_model->insertProject($_SESSION['username'],$data);
-		//	$ProjectId=900;
 			 //$ProjectId=$this->project_model->insertProject($_SESSION['username'],$data);
 			 //Uploading the file code... Can be modified to check the file extension if required
 			 $ext=end(explode('/', $_FILES['file_desc']['type']));

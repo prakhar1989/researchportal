@@ -60,12 +60,14 @@ class FacultyRevisionCheck extends CI_Controller
 						foreach ($Files as $File)
 							{
 							$countuploaded++;			
+							if($File!="upload/".$ProjectID."_description.pdf"){
 							echo'<a href="download?file='.$File.'">'.$File.'</a>';
 							echo '<input type="file" name="file_replace_'.$countuploaded.'" id="file_replace_'.$countuploaded.'" />';
 							echo '<br>';
-							}
+							}}
 						echo'<input type="hidden" name="countuploaded" value="'.$countuploaded.'" />';
-						echo 'Number of Deliverables uploaded: '.$countuploaded;
+						$c = $countuploaded-1;
+						echo 'Number of Deliverables uploaded: '.$c;
 						echo '<br><br>';
 						$i = 0;
 						If ($countpromised > ($countuploaded-1))

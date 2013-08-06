@@ -324,7 +324,7 @@ class Project_model extends CI_Model {
 	$this->load->database();
 		$queryStr1 = 'SELECT ProjectTitle from project WHERE ProjectId= "'.$data['projectID'].'"';
 		$row=$this->db->query($queryStr1)->result();
-		for($j=1; $j<$data['count']; $j++)
+		for($j=($data['countuploaded']+1); $j<($data['count']+$data['countuploaded']); $j++)
 		{
 		
 		$queryStr= 'INSERT INTO citation (ProjectTitle , FileName , ProjectId,  citation_text, FileDescriptor) VALUES (\''.$row[0]->ProjectTitle.'\' , \''.$data['filename'.$j].'\' , \''.$data['projectID'].'\' , \''.$data['citation'.$j].'\', \''.$data['fileDesc_'.$j].'\');';
@@ -596,12 +596,12 @@ class Project_model extends CI_Model {
 		{
 		 // SELECT Count(*) from `project` WHERE Researcher1='ankushv' or Researcher2='ankushv'or Researcher3='ankushv'
 		 $this->load->database();
-		 $queryStr='SELECT Count(*) as "total" from `project` WHERE (Researcher1=\''.$user.'\' OR Researcher2=\''.$user.'\' OR Researcher3=\''.$user.'\') And (ProjectCategory = "Category 1 (IIM C)" OR ProjectCategory = "Category 2 (IIM C)" OR ProjectCategory = "Category 3 (IIM C)")';
+		 $queryStr='SELECT Count(*) as "total" from `project` WHERE (Researcher1=\''.$user.'\' OR Researcher2=\''.$user.'\' OR Researcher3=\''.$user.'\') And (ProjectCategory = "Category 1 (IIM C)" OR ProjectCategory = "Category 2 (IIM C)" OR ProjectCategory = "Category 3 (IIM C)") AND (PStatus = "ongoing")';
 		 //echo $queryStr;
 		 $query = $this->db->query($queryStr);
 		 $result = $query->row_array();
 		 //echo 'The count of projects is '.$result['total'];
-		 if ($result['total']>=2)
+		 if ($result['total']>=3)
 			return False;
 		 else
 		   return True;
@@ -647,7 +647,9 @@ class Project_model extends CI_Model {
 		{
 		//1. Check if co researchers are doing more than 3 projects
 		//echo 'insertProject called';
-		if (! $this->getNoProj($data['researcher2']) && $data['researcher3']!='')
+		$this->load->database();
+		/*********While deployement uncomment the 2 if conditions
+		if (! $this->getNoProj($data['researcher2']) && $data['researcher2']!='')
 		{
 			$msg='The co researcher '.$data['researcher2'].' is already doing 3 project';
 			//echo $msg;
@@ -658,7 +660,7 @@ class Project_model extends CI_Model {
 			$msg='The co researcher '.$data['researcher3'].' is already doing 3 project';
 			//echo $msg;
 			return $msg;
-		}
+		}*/
 		
 		
 		//2. Insert value into the project table

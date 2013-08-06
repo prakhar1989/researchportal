@@ -67,7 +67,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
 						<li><a  href="/rp/searchProject">Search</a> </li>
                     </ul>
                 </div>
-                <div id="confs" style="display: block">
+                <div id="confs" style="display: none">
                     <ul >
                         <li><a  href="/rp/Conf_new_application">New Application</a> </li>
                     </ul>

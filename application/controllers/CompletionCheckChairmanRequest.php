@@ -79,7 +79,8 @@ class CompletionCheckChairmanRequest extends CI_Controller
 							echo '</td></tr>';
 							}
 							echo '</table>';
-						echo 'Number of Deliverables uploaded: '.$countuploaded;
+							$c = $countuploaded -1;
+						echo 'Number of Deliverables uploaded: '.$c;
 						$query = $this->project_model->projectSearchById($ProjectID);
 						$countpromised = 0;
 						foreach($query->result() as $row)
