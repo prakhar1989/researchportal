@@ -30,7 +30,7 @@ class CompletionCheckCommitteeRequest extends CI_Controller
 					if ($_POST['RequestType'] == 'Send')
 						{
 						$this->project_model->projectCompletionCommitteeResponse('Send',$ProjectID);
-						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim($_POST['comment'])), "chairman");
+						$this->project_model->insertComment($_SESSION['username'], $_SESSION['usertype'], $ProjectID, addslashes(trim(nl2br(($_POST['comment']))), "chairman");
 						header("Location: /rp/completion_committee");
 						} 
 					echo "\n\n";
