@@ -200,12 +200,14 @@ class FacultyProjApp extends CI_Controller {
 			{
 			 session_start();
 			 //echo $_POST['hidden2'];
+
 			 if (isset($_POST['Reference'])) {
 			 $data['reference'] = $_POST['Reference'];
 			 } else {
 			 $data['reference'] = "";
 
 			 }
+
 			 if(isset($_POST['casesCB']))
 			 {
 				//echo 'cases CB is it chcked ? ';

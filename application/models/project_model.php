@@ -327,7 +327,7 @@ class Project_model extends CI_Model {
 		for($j=1; $j<$data['count']; $j++)
 		{
 		
-		$queryStr= 'INSERT INTO citation (ProjectTitle , FileName , ProjectId,  citation_text) VALUES (\''.$row[0]->ProjectTitle.'\' , \''.$data['filename'.$j].'\' , \''.$data['projectID'].'\' , \''.$data['citation'.$j].'\');';
+		$queryStr= 'INSERT INTO citation (ProjectTitle , FileName , ProjectId,  citation_text, FileDescriptor) VALUES (\''.$row[0]->ProjectTitle.'\' , \''.$data['filename'.$j].'\' , \''.$data['projectID'].'\' , \''.$data['citation'.$j].'\', \''.$data['fileDesc_'.$j].'\');';
 		$query = $this->db->query($queryStr);
 		
 		}

@@ -54,6 +54,19 @@ class CompletionCheckAdminRequest extends CI_Controller
 							//echo $File;
 							//$Files=(explode('.', $File));
 							$countuploaded++;			
+/*<<<<<<< HEAD
+							$citation = '';
+							echo'<a href="download?file='.$File.'">'.$File.'</a>';
+							
+							$queryStr1='Select citation_text from citation where FileName = "'.substr($File, 7).'";';
+							$query1 = $this->db->query($queryStr1);
+							foreach($query1->result() as $row)
+							{
+								$citation = $row->citation_text;
+							}
+							echo '         Citation:<b>'.$citation.'</b><br>';
+							//echo '<br>';
+=======*/
 							echo'<tr><td><a href="download?file='.$File.'">'.$File.'</a><br></td><td>';
 							$tempFile=explode('/',$File);
 							$res = $this->project_model->getCitationByFile($tempFile[1],$ProjectID);
@@ -64,6 +77,7 @@ class CompletionCheckAdminRequest extends CI_Controller
 								echo '</p>';
 							}
 							echo '</td></tr>';
+//>>>>>>> d4c56d1471d32b8a4ad7b2260f39cfb7f344ae1e
 							}
 							echo '</table>';
 						echo 'Number of Deliverables uploaded: '.$countuploaded;
