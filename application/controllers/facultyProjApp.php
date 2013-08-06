@@ -83,7 +83,7 @@ class FacultyProjApp extends CI_Controller {
 						
 							// LDAP Connection
 
-							//*******************Uncomment on Server*********************
+							/*******************Uncomment on Server*********************
 
 							$username="ashishkj11";
 							$ldapHost="192.168.1.103";
@@ -113,7 +113,7 @@ class FacultyProjApp extends CI_Controller {
 								}
 							} else { echo "Error in ldap connect"; $member_cn = Nil; }
 							
-							//*******************Uncomment on Server*********************
+							//*******************Uncomment on Server*********************/
 
 							
 
