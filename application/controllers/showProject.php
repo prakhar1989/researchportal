@@ -66,11 +66,8 @@ class ShowProject extends CI_Controller {
 					 {
 					If ($row->cases!=0 OR  $row->journals!=0 OR $row->chapters!=0 OR $row->conference!=0 OR $row->paper!=0 OR $row->books!=0)
 						{
-<<<<<<< HEAD
-						$tableHeader= '<TR><TD rowspan="2"><h4>ProjectTitle</h4></TD><TD rowspan="2"><h4>Work Order Number</h4></TD><TD rowspan="2"><h4>ProjectCategory</TD><TD rowspan="2"><h4>Reference Details</TD><TD rowspan="2"><h4>ProjectGrant</TD><TD rowspan="2"><h4>App_Date</TD><TD rowspan="2"><h4>Researcher1</TD><TD rowspan="2"><h4>Researcher2</TD><TD rowspan="2"><h4>Researcher3 </h4>';
-=======
+
 						$tableHeader= '<TR><TD rowspan="2"><h4>ProjectTitle</h4></TD><TD rowspan="2"><h4>Work Order Number</h4></TD><TD rowspan="2"><h4>ProjectCategory</TD><TD rowspan="2"><h4>Reference Details (Category 2,3)</TD><TD rowspan="2"><h4>ProjectGrant</TD><TD rowspan="2"><h4>App_Date</TD><TD rowspan="2"><h4>Researcher1</TD><TD rowspan="2"><h4>Researcher2</TD><TD rowspan="2"><h4>Researcher3 </h4>';
->>>>>>> 37fc7aaa3e006d3fa49684317cb9d4899320d35e
 						/*if ($_SESSION['usertype']==3)
 						{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
 						}*/

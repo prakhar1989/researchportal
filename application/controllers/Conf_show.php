@@ -220,7 +220,7 @@ class Conf_show extends CI_Controller {
 			{
 				
 				$Query= $this->conference_model->changeStatus('approved',$_POST['conferenceID']);
-				$this->conference_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['conferenceID'],addslashes(trim($_POST['comment'])),"chairman_approve");
+				$this->conference_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['conferenceID'],addslashes(trim(nl2br($_POST['comment']))),"chairman_approve");
 				$this->load->view('layoutChairman',$data);
 			}
 			elseif($_SESSION['usertype']==3 && $_POST['approve']=='Forward To Committee')
@@ -234,7 +234,7 @@ class Conf_show extends CI_Controller {
 				$stat = mail($to,$subject,$message,$headers);
 				//echo $stat;
 				$Query= $this->conference_model->changeStatus('app_comm',$_POST['conferenceID']);
-				$this->conference_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['conferenceID'],addslashes(trim($_POST['comment'])),"chairman_approve");
+				$this->conference_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['conferenceID'],addslashes(trim(nl2br($_POST['comment']))),"chairman_approve");
 				$this->load->view('layoutChairman',$data);
 			}
 			else
@@ -253,19 +253,19 @@ class Conf_show extends CI_Controller {
 			if($_SESSION['usertype']==1)
 			{
 							$Query= $this->conference_model->changeStatus('revisionAdmin',$_POST['conferenceID']);
-							$this->conference_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['conferenceID'],addslashes(trim($_POST['comment'])),"admin_reject");
+							$this->conference_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['conferenceID'],addslashes(trim(nl2br($_POST['comment']))),"admin_reject");
 							$this->load->view('layout',$data);
 			}
 			elseif ($_SESSION['usertype']==2)
 			{
 							
-							$this->conference_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['conferenceID'],addslashes(trim($_POST['comment'])),"committee_reject");
+							$this->conference_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['conferenceID'],addslashes(trim(nl2br($_POST['comment']))),"committee_reject");
 							$this->load->view('layoutComm',$data);
 			}
 			elseif ($_SESSION['usertype']==3)
 			{
 							$Query= $this->conference_model->changeStatus('revisionChairman',$_POST['conferenceID']);
-							$this->conference_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['conferenceID'],addslashes(trim($_POST['comment'])),"chairmain_reject");
+							$this->conference_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['conferenceID'],addslashes(trim(nl2br($_POST['comment']))),"chairmain_reject");
 							$this->load->view('layoutChairman',$data);
 			}
 			else{
