@@ -81,7 +81,7 @@ class FacultyProjShowDetails extends CI_Controller {
 					 {
 					If ($row->cases!=0 OR  $row->journals!=0 OR $row->chapters!=0 OR $row->conference!=0 OR $row->paper!=0 OR $row->books!=0)
 						{
-						$tableHeader= '<TR><TD rowspan="2"><h4>ProjectTitle</h4></TD><TD rowspan="2"><h4>Work Order Number</h4></TD><TD rowspan="2"><h4>ProjectCategory</TD><TD rowspan="2"><h4>Reference Details (Category 2,3)</TD><TD rowspan="2"><h4>ProjectGrant</h4></TD><TD rowspan="2"><h4>App_Date</TD><TD rowspan="2"><h4>Researcher1</TD><TD rowspan="2"><h4>Researcher2</TD><TD rowspan="2"><h4>Researcher3 </h4></TD>';
+						$tableHeader= '<TR><TD rowspan="2"><h4>ProjectTitle</h4></TD><TD rowspan="2"><h4>Work Order Number</h4></TD><TD rowspan="2"><h4>ProjectCategory</TD><TD rowspan="2"><h4>Reference Details (Category 2,3)</TD><TD rowspan="2"><h4>ProjectGrant</h4></TD><TD rowspan="2"><h4>App_Date</TD><TD rowspan="2"><h4>Project Duration</TD><TD rowspan="2"><h4>Researcher1</TD><TD rowspan="2"><h4>Researcher2</TD><TD rowspan="2"><h4>Researcher3 </h4></TD>';
 						/*if ($_SESSION['usertype']==3)
 						{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
 						}*/
@@ -115,7 +115,7 @@ class FacultyProjShowDetails extends CI_Controller {
 						}
 					else
 						{
-						$tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h4></TD><TD><h4>Select</h4></TD>';
+						$tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>Reference Details (Category 2,3)</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Project Duration</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h4></TD><TD><h4>Select</h4></TD>';
 						/*if ($_SESSION['usertype']==3)
 						{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
 						}*/
@@ -141,6 +141,8 @@ class FacultyProjShowDetails extends CI_Controller {
 						 print $row->ProjectGrant;
 						 echo '</TD><TD>';
 						 print $row->App_Date;
+						 echo '</TD><TD>';
+						 print $row->ProjectDuration;
 						 echo '</TD><TD>';
 						 print $row->Researcher1;
 						 echo '</TD><TD>';

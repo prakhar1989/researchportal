@@ -260,7 +260,7 @@ class FacultyProjRequest extends CI_Controller
 			//$data['count'] = $i;
 			for ($j=($countuploaded + 1); $j < ($i + $countuploaded); $j++)
 				{
-				$ext=end(explode('/', $_FILES['file_desc_'.$j]['type']));
+				$ext=end(explode('/', $_FILES['file_desc_'.$j]['name']));
 				move_uploaded_file($_FILES['file_desc_'.$j]["tmp_name"],"upload/" . $ProjectId.'_'.$j.'.'.$ext);		           
 				$data['filename'.$j] = ''.$ProjectId.'_'.$j.'.'.$ext;
 				$data['citation'.$j] = $_POST['citation'.$j];
