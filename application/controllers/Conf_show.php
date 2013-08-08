@@ -133,7 +133,7 @@ class Conf_show extends CI_Controller {
 					
 					if ($_SESSION['usertype']==1)
 					{
-					 echo'<a href="printfile?file='.$Conf.'" target="_blank">Print</a><br><br>';
+					 echo'<a href="Conf_printfile?file='.$Conf.'" target="_blank">Print</a><br><br>';
 					 //echo '<p>Please enter comments for appoving/rejecting (mandatory)*</p><p><textarea name="comment"></textarea></p>';
 					}
 					
