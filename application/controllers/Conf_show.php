@@ -201,7 +201,7 @@ class Conf_show extends CI_Controller {
 			{
 				
 				$Query= $this->conference_model->changeStatus('app_chairman_1',$_POST['conferenceID']);
-				$this->conference_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['conferenceID'],addslashes(trim(nl2br(($_POST['comment']))),"admin_forward");
+				$this->conference_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['conferenceID'],addslashes(trim(nl2br($_POST['comment']))),"admin_forward");
 				$this->load->view('layout',$data);
 			} 
 			elseif ($_SESSION['usertype']==2)
