@@ -116,18 +116,18 @@ class Conf_facultyApp extends CI_Controller {
 					}
 			
 					$data['block_num']=$block_num;
-			//		if (($_FILES['file_title']['error'] === UPLOAD_ERR_OK)||($_FILES['file_fees']['error'] === UPLOAD_ERR_OK)||($_FILES['file_budget']['error'] === UPLOAD_ERR_OK)||($_FILES['file_acceptance']['error'] === UPLOAD_ERR_OK)){
+					if (($_FILES['file_title']['error'] === UPLOAD_ERR_OK)||($_FILES['file_fees']['error'] === UPLOAD_ERR_OK)||($_FILES['file_budget']['error'] === UPLOAD_ERR_OK)||($_FILES['file_acceptance']['error'] === UPLOAD_ERR_OK)){
 						$this->load->model('conference_model');
 						$ConfId=$this->conference_model->insertConference($_SESSION['username'],$data);
 						$ext=end(explode('/', $_FILES['file_title']['name']));
-						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload/" . $ConfId.'_title.'.$ext);		           
+						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/" . $ConfId.'_title.'.$ext);		           
 						$ext=end(explode('/', $_FILES['file_fees']['name']));
-						move_uploaded_file($_FILES['file_fees']["tmp_name"],"upload/" . $ConfId.'_fees.'.$ext);		           
+						move_uploaded_file($_FILES['file_fees']["tmp_name"],"upload_conf/" . $ConfId.'_fees.'.$ext);		           
 						$ext=end(explode('/', $_FILES['file_budget']['name']));
-						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload/" . $ConfId.'_budget.'.$ext);		           
+						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/" . $ConfId.'_budget.'.$ext);		           
 						$ext=end(explode('/', $_FILES['file_acceptance']['name']));
-						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload/" . $ConfId.'_acceptance.'.$ext);		           
-				//	}
+						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/" . $ConfId.'_acceptance.'.$ext);		           
+					}
 					
 					//$data['']=$_POST[''];
 					//$this->load->model('conference_model');

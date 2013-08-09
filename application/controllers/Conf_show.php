@@ -129,7 +129,11 @@ class Conf_show extends CI_Controller {
 					 
 					 echo '</tbody> </TABLE>';
 					
-					echo'<a href="downloadfile?file=upload/'.$Conf.'_description">Download Conference Description file</a><br><br>';
+					echo'<p><a href="downloadfile?file=upload/'.$Conf.'_title">Download Conference Paper</a><br><br></p>';
+					echo'<p><a href="downloadfile?file=upload/'.$Conf.'_fees">Download Conference Registration Fees Details</a><br><br></p>';
+					echo'<p><a href="downloadfile?file=upload/'.$Conf.'_budget">Download Conference Budget Details</a><br><br></p>';
+					echo'<p><a href="downloadfile?file=upload/'.$Conf.'_acceptance">Download Acceptance Letter</a><br><br></p>';
+
 					
 					if ($_SESSION['usertype']==1)
 					{
