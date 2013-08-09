@@ -122,7 +122,7 @@ class Conf_facultyApp extends CI_Controller {
 						$ext=end(explode('/', $_FILES['file_title']['name']));
 						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload/" . $ConfId.'_title.'.$ext);		           
 						$ext=end(explode('/', $_FILES['file_fees']['name']));
-						move_uploaded_file($_FILES['file_fees']["tmp_name"],"upload/" . $ConfId.'fees.'.$ext);		           
+						move_uploaded_file($_FILES['file_fees']["tmp_name"],"upload/" . $ConfId.'_fees.'.$ext);		           
 						$ext=end(explode('/', $_FILES['file_budget']['name']));
 						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload/" . $ConfId.'_budget.'.$ext);		           
 						$ext=end(explode('/', $_FILES['file_acceptance']['name']));
