@@ -65,7 +65,7 @@ class Conf_new_application extends CI_Controller {
 					 else
 					 {
 					 echo '</TABLE>
-					 <INPUT TYPE=SUBMIT>
+					 <INPUT TYPE=SUBMIT value= "View Details" name="View">
 					</FORM>';
 					 }
 				

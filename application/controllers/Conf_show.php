@@ -88,7 +88,12 @@ class Conf_show extends CI_Controller {
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Funding;
-						 echo '</TD></tr>';
+						 if ($row->Funding == 'IIMC'){
+							echo ' (Number = ';
+							print $row->No_Conferences;
+							echo ')';
+						}
+						echo '</TD></tr>';
 						 /*if ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_2')
 						 {
 							echo 'YES';
