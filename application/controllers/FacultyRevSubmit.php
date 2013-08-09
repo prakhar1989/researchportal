@@ -39,7 +39,7 @@ class FacultyRevSubmit extends CI_Controller {
 					{
 					If ($row->ApprovalPending == 'revisionChairman')
 						{
-						$queryStr2='UPDATE projectextension SET ApprovalPending = "chairman", Period =  "'.$Period.'" where ProjectId = "'.$ProjectID.'";';
+						$queryStr2='UPDATE projectextension SET ApprovalPending = "admin", Period =  "'.$Period.'" where ProjectId = "'.$ProjectID.'";';
 						$query2 = $this->db->query($queryStr2);
 						echo 'Extension:Project Sent Back For Revision';
 						}

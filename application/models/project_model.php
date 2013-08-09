@@ -324,12 +324,25 @@ class Project_model extends CI_Model {
 	$this->load->database();
 		$queryStr1 = 'SELECT ProjectTitle from project WHERE ProjectId= "'.$data['projectID'].'"';
 		$row=$this->db->query($queryStr1)->result();
-		for($j=($data['countuploaded']+1); $j<($data['count']+$data['countuploaded']); $j++)
+		//for($j=($data['countuploaded']+1); $j<($data['count']+$data['countuploaded']); $j++)
+		for($j=1; $j<$data['count']+1; $j++)
 		{
-		
 		$queryStr= 'INSERT INTO citation (ProjectTitle , FileName , ProjectId,  citation_text, FileDescriptor) VALUES (\''.$row[0]->ProjectTitle.'\' , \''.$data['filename'.$j].'\' , \''.$data['projectID'].'\' , \''.$data['citation'.$j].'\', \''.$data['fileDesc_'.$j].'\');';
 		$query = $this->db->query($queryStr);
-		
+		//echo 'Newwwwww';
+		}
+		//echo '---CountUploaded---'.$data['countuploaded'];
+		for($j=1; $j<$data['countuploaded']; $j++)
+		{
+		//echo 'trying to replace';
+		//echo $data['replaceflag'.$j];
+		If ($data['replaceflag'.$j] == 1)
+		{
+		$queryStr= 'UPDATE citation SET FileName = "'.$data['filenamereplace'.$j].'",citation_text = "'.$data['citationreplace'.$j].'" WHERE citation_id = '.$data['citationreplaceid'.$j].';';
+		//$queryStr= 'INSERT INTO citation (ProjectTitle , FileName , ProjectId,  citation_text, FileDescriptor) VALUES (\''.$row[0]->ProjectTitle.'\' , \''.$data['filename'.$j].'\' , \''.$data['projectID'].'\' , \''.$data['citation'.$j].'\', \''.$data['fileDesc_'.$j].'\');';
+		$query = $this->db->query($queryStr);
+		//echo 'Replaceeee';
+		}
 		}
 	}
 	function getCitationByFile($file, $ID)

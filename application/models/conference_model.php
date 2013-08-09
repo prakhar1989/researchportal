@@ -329,5 +329,16 @@ class Conference_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query;
 		}
+	function conferenceInfoNewConference($ConferenceID)
+		{
+		//echo 'projectInfo called';
+		$this->load->database();
+		//$query= $this->db->get('project');
+		//echo $Project['Id'];	
+		$queryStr='Select *From conference where  conference.conferenceID = "'.$ConferenceID.'" order by conference.conferenceId;';
+		//echo $queryStr;
+		$query = $this->db->query($queryStr);
+		return $query;
+		}
 }
 ?>
