@@ -345,6 +345,7 @@ class Project_model extends CI_Model {
 		}
 		}
 	}
+
 	function getCitationByFile($file, $ID)
 	{
 	$this->load->database();
@@ -352,6 +353,7 @@ class Project_model extends CI_Model {
 	$res = $this->db->query($query);
 	return $res;
 	}
+
 	// Request for Project Completion
 	function projectCompletion($value)
 	{

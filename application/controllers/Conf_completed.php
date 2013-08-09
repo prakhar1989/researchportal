@@ -33,12 +33,14 @@ class Conf_Completed extends CI_Controller {
 				$status='completed';
 				$Query= $this->conference_model->conference_status($status);
 				
-                    echo '<TABLE class="table table-bordered"> <thead>
+                    echo '
+					<FORM METHOD=POST ACTION="ShowArchiveConf">
+					<TABLE class="table table-bordered"> <thead>
 							<tr>
 							</tr>
 					</thead>
 					<tbody>';
-					echo '<TR><TD><h4>Block</h4></TD><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD><TD><h4>Select</h4></TD></TR>';
+					echo '<TR><TD><h4>Block</h4></TD><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD><TD><h4>Select</h4></TD><TD></TD></TR>';
 					 foreach($Query->result() as $row)
 					 {
 						 echo '<TR><TD>';
@@ -60,8 +62,8 @@ class Conf_Completed extends CI_Controller {
 						 echo '</TD><TD>';
 						 print $row->Funding;
 						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ConferenceId;
-						 
-						 echo '"></TD></tr>';
+						 echo '"></TD>';
+						 echo '<TD><INPUT TYPE=SUBMIT value="VIEW"></TD></TR>';
 					 }
 				echo '</TABLE>';
 				}
