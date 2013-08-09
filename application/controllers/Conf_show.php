@@ -88,7 +88,12 @@ class Conf_show extends CI_Controller {
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Funding;
-						 echo '</TD></tr>';
+						 if ($row->Funding == 'IIMC'){
+							echo ' (Number = ';
+							print $row->No_Conferences;
+							echo ')';
+						}
+						echo '</TD></tr>';
 						 /*if ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_2')
 						 {
 							echo 'YES';
@@ -129,7 +134,11 @@ class Conf_show extends CI_Controller {
 					 
 					 echo '</tbody> </TABLE>';
 					
-					echo'<a href="downloadfile?file=upload/'.$Conf.'_description">Download Conference Description file</a><br><br>';
+					echo'<p><a href="downloadfile?file=upload/'.$Conf.'_title">Download Conference Paper</a><br><br></p>';
+					echo'<p><a href="downloadfile?file=upload/'.$Conf.'_fees">Download Conference Registration Fees Details</a><br><br></p>';
+					echo'<p><a href="downloadfile?file=upload/'.$Conf.'_budget">Download Conference Budget Details</a><br><br></p>';
+					echo'<p><a href="downloadfile?file=upload/'.$Conf.'_acceptance">Download Acceptance Letter</a><br><br></p>';
+
 					
 					if ($_SESSION['usertype']==1)
 					{

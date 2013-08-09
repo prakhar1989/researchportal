@@ -28,7 +28,7 @@ class Conf_facultyApp extends CI_Controller {
 						 echo '
 						 <h1>New Conference</h1>
 					<p>Please use the form below to enter details of a new conference</p>
-				    <form method=POST action="Conf_facultyApp/insert" ><table class="table table-bordered">
+				    <form name ="c_application" method=POST action="Conf_facultyApp/insert" enctype="multipart/form-data"><table class="table table-bordered">
 					<thead>
 						<tr>
 						</tr>
@@ -95,6 +95,7 @@ class Conf_facultyApp extends CI_Controller {
 					
 				function insert()
 				{
+					session_start();
 					//echo 'The value of Project category is: '.$_POST['category'];
 					$data['conf_name']=$_POST['conf_name'];
 					$data['conf_venue']=$_POST['conf_venue'];
@@ -102,6 +103,7 @@ class Conf_facultyApp extends CI_Controller {
 					$data['category']=$_POST['category'];
 					$data['conf_date']=$_POST['conf_date'];
 					$data['co_author']=$_POST['co_author'];
+					$data['funding']=$_POST['funding'];
 					$block_num= (date("Y")-2013)/3;
 					if ((date("Y")-2013)%3==0){
 						if (date("m")>=4) {
@@ -118,18 +120,19 @@ class Conf_facultyApp extends CI_Controller {
 						$this->load->model('conference_model');
 						$ConfId=$this->conference_model->insertConference($_SESSION['username'],$data);
 						$ext=end(explode('/', $_FILES['file_title']['name']));
-						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload/" . $ConfId.'_title.'.$ext);		           
+						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/" . $ConfId.'_title.'.$ext);		           
 						$ext=end(explode('/', $_FILES['file_fees']['name']));
-						move_uploaded_file($_FILES['file_fees']["tmp_name"],"upload/" . $ConfId.'fees.'.$ext);		           
+						move_uploaded_file($_FILES['file_fees']["tmp_name"],"upload_conf/" . $ConfId.'_fees.'.$ext);		           
 						$ext=end(explode('/', $_FILES['file_budget']['name']));
-						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload/" . $ConfId.'_budget.'.$ext);		           
+						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/" . $ConfId.'_budget.'.$ext);		           
 						$ext=end(explode('/', $_FILES['file_acceptance']['name']));
-						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload/" . $ConfId.'_acceptance.'.$ext);		           
+						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/" . $ConfId.'_acceptance.'.$ext);		           
 					}
 					
 					//$data['']=$_POST[''];
 					//$this->load->model('conference_model');
 					//$msg=$this->conference_model->insertConference('absdfsf',$data); // insert the real username from session
+					$msg='The Conference has been sent for approval ';
 					require('showMsg.php');
 					$showMsg=new showMsg();
 					$showMsg->index($msg,'faculty');

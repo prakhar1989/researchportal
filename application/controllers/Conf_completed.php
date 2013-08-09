@@ -32,10 +32,11 @@ class Conf_Completed extends CI_Controller {
 				$this->load->model('conference_model');
 				$status='completed';
 				$Query= $this->conference_model->conference_status($status);
-				
-                    echo '
-					<FORM METHOD=POST ACTION="ShowArchiveConf">
-					<TABLE class="table table-bordered"> <thead>
+
+					echo '<FORM name="archived" class = "cmxform" id="archivedForm" method= "POST" action="ShowArchiveConf">';
+
+                    echo '<TABLE class="table table-bordered"> <thead>
+
 							<tr>
 							</tr>
 					</thead>
@@ -65,7 +66,7 @@ class Conf_Completed extends CI_Controller {
 						 echo '"></TD>';
 						 echo '<TD><INPUT TYPE=SUBMIT value="VIEW"></TD></TR>';
 					 }
-				echo '</TABLE>';
+				echo '</TABLE></FORM>';
 				}
 				
 				

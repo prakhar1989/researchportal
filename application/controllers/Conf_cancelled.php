@@ -24,13 +24,13 @@ class Conf_cancelled extends CI_Controller {
 		}
 	function load_php()
 				{
-				echo '<h1> Archived </h1>';
+				echo '<h1> Cancelled </h1>';
 				//Load the project model
                 //Query for the ongoign projects (PStatus==completed)
 				// Display the results
                 // For help: new_application.php
 				$this->load->model('conference_model');
-				$status='completed';
+				$status='cancelled';
 				$Query= $this->conference_model->conference_status($status);
 				
                     echo '<TABLE class="table table-bordered"> <thead>
