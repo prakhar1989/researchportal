@@ -239,18 +239,22 @@ class Conference_model extends CI_Model {
 		 	//1. Check if co researchers are doing more than 3 projects
 		 	//echo 'insertProject called';
 			//no logic of co researcher here
-		 
+			$queryStr2='SELECT COUNT(ConferenceId) FROM conference WHERE (Researcher1=\''.$user.'\' AND Funding = \'IIMC\' AND Block_number = '.$data['block_num'].');'; 
+			$query2 = $this->db->query($queryStr2);
+			$result2=$query2->row_array();
+			$No_conference = $result2['COUNT(ConferenceId)']+1;
 		 	//2. Insert value into the project table
+		
 		 	//INSERT INTO `researchportal`.`project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`) VALUES ('Business Leasdership Study', 'P33333', 'Leadership traits study on current business leaders', '2012-09-29', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', '100000', 'app_admin', '1 Leadership report');
-		 	$queryStr= 'INSERT INTO conference (ConferenceTitle , Description , Start_Date, End_Date, Researcher1 , ConferenceCategory , ConferenceGrant , CStatus) VALUES (\''.$data['title'].'\' , \'' .$data['desc'].'\' , \''.$data['start_date'].'\' , \''.$data['end_date'].'\' , \''.$user.'\' , \''.$data['category'].'\' , \''.$data['grant'].'\' , \'app_admin\' );' ;
-		 	//echo '<br>'.$queryStr;
+		 	$queryStr= 'INSERT INTO conference (ConferenceTitle , Start_Date, Researcher1 , Category , CStatus, Block_number, PaperTitle, No_Conferences, Funding, Venue, Researcher2) VALUES (\''.$data['conf_name'].'\' , \'' .$data['conf_date'].'\' , \''.$user.'\' , \''.$data['category'].'\' , \'app_admin\' , '.$data['block_num'].' , \''.$data['paper_title'].'\' , '.$No_conference.' , \''.$data['funding'].'\' , \''.$data['conf_venue'].'\' , \''.$data['co_author'].'\' );' ; 	
+			$data['conf_name']=$_POST['conf_name'];
 		 	$query = $this->db->query($queryStr);
 			$queryStr1 = 'SELECT ConferenceId FROM conference WHERE ConferenceId = (SELECT MAX(ConferenceId)  FROM conference)';
 			$query1 = $this->db->query($queryStr1);
 			$result1=$query1->result();
 			foreach($result1 as $row)
 						{
-							 $ConfId=$row->ConfId;
+							 $ConfId=$row->ConferenceId;
 						}
 			
 			return $ConfId;
