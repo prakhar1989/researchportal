@@ -67,7 +67,16 @@ class Conf_facultyApp extends CI_Controller {
 							</select>
 						</td>
 						</tr>
-						
+						<tr>
+						<td>
+						Funding from
+						</td><td><select name = "funding"><option>IIMC</option><option>External</option>
+						</td>
+						</tr>
+						<tr><td>Upload Title of Paper (Full Paper)</td><td><input type="file" name="file_title" id="file_title" /></td></tr>
+						<tr><td>Upload Website Registration Fees Page</td><td><input type="file" name="file_fees" id="file_fees" /></td></tr>
+						<tr><td>Upload Budget Declaration Page</td><td><input type="file" name="file_budget" id="file_budget" /></td></tr>
+						<tr><td>Upload Acceptance Letter</td><td><input type="file" name="file_acceptance" id="file_acceptance" /></td></tr>
 					</tbody>
 					</table>
 
@@ -93,12 +102,34 @@ class Conf_facultyApp extends CI_Controller {
 					$data['category']=$_POST['category'];
 					$data['conf_date']=$_POST['conf_date'];
 					$data['co_author']=$_POST['co_author'];
-					//vridhi
-					//block number depending on format of date
-					$data['block_num']=1+floor((date("Y")-2001)/3);
+					$block_num= (date("Y")-2013)/3;
+					if ((date("Y")-2013)%3==0){
+						if (date("m")>=4) {
+							$block_num= 2+floor($block_num);
+						} else {
+							$block_num=1+floor($block_num);
+						}
+					} else {
+						$block_num=1+floor($block_num);
+					}
+			
+					$data['block_num']=$block_num;
+					if (($_FILES['file_title']['error'] === UPLOAD_ERR_OK)||($_FILES['file_fees']['error'] === UPLOAD_ERR_OK)||($_FILES['file_budget']['error'] === UPLOAD_ERR_OK)||($_FILES['file_acceptance']['error'] === UPLOAD_ERR_OK)){
+						$this->load->model('conference_model');
+						$ConfId=$this->conference_model->insertConference($_SESSION['username'],$data);
+						$ext=end(explode('/', $_FILES['file_title']['name']));
+						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload/" . $ConfId.'_title.'.$ext);		           
+						$ext=end(explode('/', $_FILES['file_fees']['name']));
+						move_uploaded_file($_FILES['file_fees']["tmp_name"],"upload/" . $ConfId.'fees.'.$ext);		           
+						$ext=end(explode('/', $_FILES['file_budget']['name']));
+						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload/" . $ConfId.'_budget.'.$ext);		           
+						$ext=end(explode('/', $_FILES['file_acceptance']['name']));
+						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload/" . $ConfId.'_acceptance.'.$ext);		           
+					}
+					
 					//$data['']=$_POST[''];
-					$this->load->model('conference_model');
-					$msg=$this->conference_model->insertConference('absdfsf',$data); // insert the real username from session
+					//$this->load->model('conference_model');
+					//$msg=$this->conference_model->insertConference('absdfsf',$data); // insert the real username from session
 					require('showMsg.php');
 					$showMsg=new showMsg();
 					$showMsg->index($msg,'faculty');

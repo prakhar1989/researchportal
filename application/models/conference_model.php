@@ -154,7 +154,18 @@ class Conference_model extends CI_Model {
 		 }
 		  function getNoConfInBlock($user)
 		 {
-		 	$curr_block_num=1+floor((date("Y")-2001)/3);//first block is from 1/1/2001 to 31/12/2003
+		 	//$curr_block_num=1+floor((date("Y")-2001)/3);//first block is from 1/1/2001 to 31/12/2003
+			
+			$curr_block_num= (date("Y")-2013)/3;
+			if ((date("Y")-2013)%3==0){
+				if (date("m")>=4) {
+					$curr_block_num= 2+floor($curr_block_num);
+				} else {
+					$curr_block_num=1+floor($curr_block_num);
+				}
+			} else {
+				$curr_block_num=1+floor($curr_block_num);
+			}
 		 	$this->load->database();
 		 	$queryStr='SELECT Count(*) as "total" from `conference` WHERE (Researcher1=\''.$user.'\' AND Block_number='.$curr_block_num.') ';
 		 	//echo $queryStr;
@@ -234,9 +245,16 @@ class Conference_model extends CI_Model {
 		 	$queryStr= 'INSERT INTO conference (ConferenceTitle , Description , Start_Date, End_Date, Researcher1 , ConferenceCategory , ConferenceGrant , CStatus) VALUES (\''.$data['title'].'\' , \'' .$data['desc'].'\' , \''.$data['start_date'].'\' , \''.$data['end_date'].'\' , \''.$user.'\' , \''.$data['category'].'\' , \''.$data['grant'].'\' , \'app_admin\' );' ;
 		 	//echo '<br>'.$queryStr;
 		 	$query = $this->db->query($queryStr);
-		 	//$result = $query->result();
-		 	$msg='The Conference has been Sent for approval';
-		 	return $msg;
+			$queryStr1 = 'SELECT ConferenceId FROM conference WHERE ConferenceId = (SELECT MAX(ConferenceId)  FROM conference)';
+			$query1 = $this->db->query($queryStr1);
+			$result1=$query1->result();
+			foreach($result1 as $row)
+						{
+							 $ConfId=$row->ConfId;
+						}
+			
+			return $ConfId;
+		 	
 		 }
 		 // function to get the account status of the project--vridhi
 		 function getC_AccStatus ($conferenceId)
