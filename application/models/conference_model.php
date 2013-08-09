@@ -154,7 +154,18 @@ class Conference_model extends CI_Model {
 		 }
 		  function getNoConfInBlock($user)
 		 {
-		 	$curr_block_num=1+floor((date("Y")-2001)/3);//first block is from 1/1/2001 to 31/12/2003
+		 	//$curr_block_num=1+floor((date("Y")-2001)/3);//first block is from 1/1/2001 to 31/12/2003
+			
+			$curr_block_num= (date("Y")-2013)/3;
+			if ((date("Y")-2013)%3==0){
+				if (date("m")>=4) {
+					$curr_block_num= 2+floor($curr_block_num);
+				} else {
+					$curr_block_num=1+floor($curr_block_num);
+				}
+			} else {
+				$curr_block_num=1+floor($curr_block_num);
+			}
 		 	$this->load->database();
 		 	$queryStr='SELECT Count(*) as "total" from `conference` WHERE (Researcher1=\''.$user.'\' AND Block_number='.$curr_block_num.') ';
 		 	//echo $queryStr;
