@@ -36,7 +36,6 @@ class Conference_model extends CI_Model {
 	//get a conference details
 	function conferenceInfo($Conference)
 		{
-		//echo 'projectInfo called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -45,6 +44,7 @@ class Conference_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query;
 		}
+		
 	//get comments related to the specific conference	
 	function getcomment($ConferenceID, $usertype)
 	{
@@ -55,8 +55,8 @@ class Conference_model extends CI_Model {
 		
 	}
 	
-	// Function to change the status of the project
-	function changeStatus($status,$Conference)//changing the status of the project
+	// Function to change the status of the conference
+	function changeStatus($status,$Conference)//changing the status of the conference
 		{
 		//echo 'changeStatus called ';
 		$this->load->database();
