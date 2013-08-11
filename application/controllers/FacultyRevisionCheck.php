@@ -83,15 +83,20 @@ class FacultyRevisionCheck extends CI_Controller
 								echo'<input type="hidden" name="Filename" value="'.$Filename.'" />';
 								//echo $Filename;
 								$res = $this->project_model->getCitationByFile($Filename, $ProjectID);
+								//$res1=$res->row_array();
+								//$cit_id=$res1['citation_id'];
 								foreach($res->result() as $row)
 									{
 									//$res = $result->row_array();
+
 									 echo '</TD><TD>';
 									echo $row->citation_text;
 									echo '</TD><TD>';
 									echo '<input type="file" name="file_replace_'.$countuploaded.'" id="file_replace_'.$countuploaded.'" />';
 									echo '</TD><TD>';
 									echo'<input type="hidden" name="citation_replace_id_'.$countuploaded.'" value="'.$row->citation_id.'" />';
+								//	echo $cit_id;
+								//	echo'<input type="hidden" name="citation_replace_id_'.$countuploaded.'" value="'.$cit_id.'" />';
 									}
 								echo'<input type="hidden" name="fileDescreplace_'.$countuploaded.'" value="file_desc_'.$countuploaded.'" />';
 								echo '<input type="text" name="citationreplace'.$countuploaded.'" placeholder="Citation" >';

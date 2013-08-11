@@ -23,7 +23,7 @@ class FacultyRevisionCheckSubmit extends CI_Controller
 	
 		for ($j=1; $j < $i ; $j++)
 			{
-			$ext=end(explode('/', $_FILES['file_desc_'.$j]['type']));
+			$ext=end(explode('/', $_FILES['file_desc_'.$j]['name']));
 			move_uploaded_file($_FILES['file_desc_'.$j]["tmp_name"],"upload/" . $ProjectId.'_'.$j.$ext);		           
 			}
 		}

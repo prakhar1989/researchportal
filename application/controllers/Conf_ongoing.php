@@ -97,13 +97,12 @@ class Conf_ongoing extends CI_Controller {
 		//$data['action']=1;
 		$this->load->model('conference_model');
 		if($_POST['submit']=='Print'){
-		
+		 //print file?????
 		} else if($_POST['submit']=='Send to Archive') {
-		echo "1";
 			//$data['msg']='Archived';
 			$Query= $this->conference_model->changeStatus('completed',$_POST['Choice1']);
 			//$this->load->view('layout',$data);
-			$msg='The Project has been sent to Archives';
+			$msg='The Conference has been sent to Archives';
 			require('showMsg.php');
 			$showMsg=new showMsg();
 			$showMsg->index($msg,'admin');

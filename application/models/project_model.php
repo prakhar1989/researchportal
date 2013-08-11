@@ -345,6 +345,7 @@ class Project_model extends CI_Model {
 		}
 		}
 	}
+
 	function getCitationByFile($file, $ID)
 	{
 	$this->load->database();
@@ -352,6 +353,7 @@ class Project_model extends CI_Model {
 	$res = $this->db->query($query);
 	return $res;
 	}
+
 	// Request for Project Completion
 	function projectCompletion($value)
 	{
@@ -668,7 +670,6 @@ class Project_model extends CI_Model {
 
 		$this->load->database();
 		/*********While deployement uncomment the 2 if conditions
-
 
 		if (! $this->getNoProj($data['researcher2']) && $data['researcher2']!='')
 		{

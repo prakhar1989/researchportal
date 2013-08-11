@@ -42,6 +42,7 @@ class Conf_search extends CI_Controller{
 			$data['searchBy']=$_POST['searchBy'];
 			$data['searchValue']=$_POST['searchValue'];
 		    session_start();
+			
 			if($_SESSION['usertype']==1){
 				$this->load->view('layout',$data);
 			} elseif ($_SESSION['usertype']==2){
@@ -55,7 +56,7 @@ class Conf_search extends CI_Controller{
 			}	
 	}
 	
-	//Loads the Project Model and searches for the projec
+	//Loads the Conference Model and searches for the conference
 	function load_search($searchBy,$searchValue)
 	{
 		  
@@ -64,9 +65,11 @@ class Conf_search extends CI_Controller{
 		  $Query= $this->conference_model->conferenceSearch($searchBy,$searchValue);
 	      
 		  echo'
+		  
+		  
 		  <FORM METHOD=POST ACTION="../Conf_Details">
-		  <TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
-                     ';
+		  <table class="table table-bordered">';
+		  
 			foreach($Query->result() as $row)
 			 {
 				 echo '<TR><TD>';

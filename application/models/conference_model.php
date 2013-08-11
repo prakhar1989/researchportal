@@ -36,7 +36,6 @@ class Conference_model extends CI_Model {
 	//get a conference details
 	function conferenceInfo($Conference)
 		{
-		//echo 'projectInfo called';
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
@@ -45,6 +44,7 @@ class Conference_model extends CI_Model {
 		$query = $this->db->query($queryStr);
 		return $query;
 		}
+		
 	//get comments related to the specific conference	
 	function getcomment($ConferenceID, $usertype)
 	{
@@ -55,8 +55,8 @@ class Conference_model extends CI_Model {
 		
 	}
 	
-	// Function to change the status of the project
-	function changeStatus($status,$Conference)//changing the status of the project
+	// Function to change the status of the conference
+	function changeStatus($status,$Conference)//changing the status of the conference
 		{
 		//echo 'changeStatus called ';
 		$this->load->database();
@@ -81,7 +81,7 @@ class Conference_model extends CI_Model {
 		return $query;
 		}	
 		
-	// Search for project
+	// Search for conference
 	function conferenceSearch($type,$value)
 		{
 		$this->load->database();
@@ -99,7 +99,7 @@ class Conference_model extends CI_Model {
 		}
 		elseif ($type == 'Funding')
 		{
-		   $queryStr='SELECT * FROM conference WHERE Researcher1 LIKE \'%'.$value.'%\';';
+		   $queryStr='SELECT * FROM conference WHERE Funding LIKE \'%'.$value.'%\';';
 		}
 		elseif ($type == 'PaperTitle')
 		{
@@ -154,7 +154,18 @@ class Conference_model extends CI_Model {
 		 }
 		  function getNoConfInBlock($user)
 		 {
-		 	$curr_block_num=1+floor((date("Y")-2001)/3);//first block is from 1/1/2001 to 31/12/2003
+		 	//$curr_block_num=1+floor((date("Y")-2001)/3);//first block is from 1/1/2001 to 31/12/2003
+			
+			$curr_block_num= (date("Y")-2013)/3;
+			if ((date("Y")-2013)%3==0){
+				if (date("m")>=4) {
+					$curr_block_num= 2+floor($curr_block_num);
+				} else {
+					$curr_block_num=1+floor($curr_block_num);
+				}
+			} else {
+				$curr_block_num=1+floor($curr_block_num);
+			}
 		 	$this->load->database();
 		 	$queryStr='SELECT Count(*) as "total" from `conference` WHERE (Researcher1=\''.$user.'\' AND Block_number='.$curr_block_num.') ';
 		 	//echo $queryStr;
@@ -228,15 +239,26 @@ class Conference_model extends CI_Model {
 		 	//1. Check if co researchers are doing more than 3 projects
 		 	//echo 'insertProject called';
 			//no logic of co researcher here
-		 
+			$queryStr2='SELECT COUNT(ConferenceId) FROM conference WHERE (Researcher1=\''.$user.'\' AND Funding = \'IIMC\' AND Block_number = '.$data['block_num'].');'; 
+			$query2 = $this->db->query($queryStr2);
+			$result2=$query2->row_array();
+			$No_conference = $result2['COUNT(ConferenceId)']+1;
 		 	//2. Insert value into the project table
+		
 		 	//INSERT INTO `researchportal`.`project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`) VALUES ('Business Leasdership Study', 'P33333', 'Leadership traits study on current business leaders', '2012-09-29', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', '100000', 'app_admin', '1 Leadership report');
-		 	$queryStr= 'INSERT INTO conference (ConferenceTitle , Description , Start_Date, End_Date, Researcher1 , ConferenceCategory , ConferenceGrant , CStatus) VALUES (\''.$data['title'].'\' , \'' .$data['desc'].'\' , \''.$data['start_date'].'\' , \''.$data['end_date'].'\' , \''.$user.'\' , \''.$data['category'].'\' , \''.$data['grant'].'\' , \'app_admin\' );' ;
-		 	//echo '<br>'.$queryStr;
+		 	$queryStr= 'INSERT INTO conference (ConferenceTitle , Start_Date, Researcher1 , Category , CStatus, Block_number, PaperTitle, No_Conferences, Funding, Venue, Researcher2) VALUES (\''.$data['conf_name'].'\' , \'' .$data['conf_date'].'\' , \''.$user.'\' , \''.$data['category'].'\' , \'app_admin\' , '.$data['block_num'].' , \''.$data['paper_title'].'\' , '.$No_conference.' , \''.$data['funding'].'\' , \''.$data['conf_venue'].'\' , \''.$data['co_author'].'\' );' ; 	
+			$data['conf_name']=$_POST['conf_name'];
 		 	$query = $this->db->query($queryStr);
-		 	//$result = $query->result();
-		 	$msg='The Conference has been Sent for approval';
-		 	return $msg;
+			$queryStr1 = 'SELECT ConferenceId FROM conference WHERE ConferenceId = (SELECT MAX(ConferenceId)  FROM conference)';
+			$query1 = $this->db->query($queryStr1);
+			$result1=$query1->result();
+			foreach($result1 as $row)
+						{
+							 $ConfId=$row->ConferenceId;
+						}
+			
+			return $ConfId;
+		 	
 		 }
 		 // function to get the account status of the project--vridhi
 		 function getC_AccStatus ($conferenceId)
