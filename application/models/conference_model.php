@@ -81,7 +81,7 @@ class Conference_model extends CI_Model {
 		return $query;
 		}	
 		
-	// Search for project
+	// Search for conference
 	function conferenceSearch($type,$value)
 		{
 		$this->load->database();
@@ -99,7 +99,7 @@ class Conference_model extends CI_Model {
 		}
 		elseif ($type == 'Funding')
 		{
-		   $queryStr='SELECT * FROM conference WHERE Researcher1 LIKE \'%'.$value.'%\';';
+		   $queryStr='SELECT * FROM conference WHERE Funding LIKE \'%'.$value.'%\';';
 		}
 		elseif ($type == 'PaperTitle')
 		{
