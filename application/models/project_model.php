@@ -313,7 +313,7 @@ class Project_model extends CI_Model {
 	{
 		$this->load->database();
 		//$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus <> \'completed\' AND PStatus <> \'ongoing\'))';
-		$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus = \'app_chairman_1\' OR PStatus = \'app_chairman_1\' OR PStatus = \'app_admin\' OR PStatus = \'app_comm\')) ORDER BY App_Date DESC';
+		$queryStr='SELECT * FROM project WHERE ((Researcher1 =\''.$user.'\' OR Researcher2 = \''.$user.'\' OR Researcher3 = \''.$user.'\') AND (PStatus = \'app_chairman_1\' OR PStatus = \'app_chairman_2\' OR PStatus = \'app_admin\' OR PStatus = \'app_comm\')) ORDER BY App_Date DESC';
 		$query = $this->db->query($queryStr);
 		return $query;
 	}
