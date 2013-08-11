@@ -286,6 +286,7 @@ class ShowArchiveConf extends CI_Controller {
 			}
 		else
 			{
+
 			//echo 'Project has been sent for revision.';
 			}
 		/* $queryStr='SELECT PStatus FROM project WHERE ProjectId = "'.$value.'";';
