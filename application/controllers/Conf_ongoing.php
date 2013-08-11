@@ -97,7 +97,8 @@ class Conf_ongoing extends CI_Controller {
 		//$data['action']=1;
 		$this->load->model('conference_model');
 		if($_POST['submit']=='Print'){
-		 //print file?????
+		 //
+		 header("Location: /rp/ConfPrintApproved?Conf_id=".$_POST['Choice1']);
 		} else if($_POST['submit']=='Send to Archive') {
 			//$data['msg']='Archived';
 			$Query= $this->conference_model->changeStatus('completed',$_POST['Choice1']);
