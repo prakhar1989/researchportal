@@ -138,6 +138,28 @@ class Conference_model extends CI_Model {
 		 	return $query;
 		 }
 		 
+		 function conference_blockwiseconference($status,$block)
+		 {
+		 	$this->load->database();
+		 	//$query= $this->db->get('project');
+		 	//echo $Project['Id'];
+		 	$queryStr='SELECT * FROM conference WHERE CStatus = "'.$status.'" AND Block_number = "'.$block.'";';
+		 	//echo $queryStr;
+		 	$query = $this->db->query($queryStr);
+		 	return $query;
+		 }
+		 
+		 function conference_blocks($status)
+		 {
+		 	$this->load->database();
+		 	//$query= $this->db->get('project');
+		 	//echo $Project['Id'];
+		 	$queryStr='SELECT DISTINCT Block_number FROM conference WHERE CStatus = "'.$status.'" order by Block_number asc;';
+		 	//echo $queryStr;
+		 	$query = $this->db->query($queryStr);
+		 	return $query;
+		 }
+		 
 		  function getNoConflast3yr($user)
 		 {
 		 	// SELECT Count(*) from `project` WHERE Researcher1='ankushv' or Researcher2='ankushv'or Researcher3='ankushv'

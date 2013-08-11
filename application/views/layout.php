@@ -85,8 +85,8 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                         <li><a href="/rp/Conf_ongoing">Approved</a> </li>
                         <li><a href="/rp/Conf_app_chairman">Chairman</a> </li>
                         <li><a href="/rp/Conf_app_committee">Committee</a> </li>
-						<li><a href="/rp/Conf_completed">Archives</a> </li>
-                        <li><a href="/rp/Conf_cancelled">Cancelled Conferences</a> </li>
+						<li><a href="/rp/Conf_completed?block=0">Archives</a> </li>
+                        <li><a href="/rp/Conf_cancelled?block=0">Cancelled Conferences</a> </li>
                         <li><a href="/rp/Conf_search">Search</a> </li>
                         
                     </ul>
