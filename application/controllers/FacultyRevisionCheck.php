@@ -53,13 +53,10 @@ class FacultyRevisionCheck extends CI_Controller
 							$countpromised = $countpromised + $row->books;
 							}
 						echo '<br>Number of Deliverables promised: '.$countpromised;
-						echo '<br><br>';
+						echo '';
 						
 						echo '<table class="table table-bordered"> 
-								<thead>
-								<tr>
-								</tr>
-								</thead>';
+								';
 								$tableHeader= '<TR><TD><h4>File Name</h4></TD><TD><h4>Citation Text</h4></TD><TD><h4>Select File</h4></TD><TD><h4>Enter New Citation</h4></TD>';
 								if($_SESSION['usertype']==4){
 									$tableHeader=$tableHeader.'<TD></TD>';
