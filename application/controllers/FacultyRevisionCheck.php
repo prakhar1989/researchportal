@@ -53,7 +53,18 @@ class FacultyRevisionCheck extends CI_Controller
 							$countpromised = $countpromised + $row->books;
 							}
 						echo '<br>Number of Deliverables promised: '.$countpromised;
-						echo '<br><br>';
+						echo '';
+						
+						echo '<table class="table table-bordered"> 
+								';
+								$tableHeader= '<TR><TD><h4>File Name</h4></TD><TD><h4>Citation Text</h4></TD><TD><h4>Select File</h4></TD><TD><h4>Enter New Citation</h4></TD>';
+								if($_SESSION['usertype']==4){
+									$tableHeader=$tableHeader.'<TD></TD>';
+								}
+								$tableHeader= $tableHeader.'</TR>';
+								 
+								 echo $tableHeader;
+						
 						$Path = "upload/".$ProjectID."_";
 						$Files = glob($Path."*.*");
 						$countuploaded = 0;
@@ -62,6 +73,8 @@ class FacultyRevisionCheck extends CI_Controller
 							$countuploaded++;			
 							if($File!="upload/".$ProjectID."_description.pdf")
 							{
+								
+								echo '<TR><TD>';
 								echo'<a href="download?file='.$File.'">'.$File.'</a>';
 								$Filename = substr($File,7);
 								echo'<input type="hidden" name="Filename" value="'.$Filename.'" />';
@@ -72,19 +85,26 @@ class FacultyRevisionCheck extends CI_Controller
 								foreach($res->result() as $row)
 									{
 									//$res = $result->row_array();
-								//	echo $row->FileName;
-									echo "hello";
+
+									 echo '</TD><TD>';
+									echo $row->citation_text;
+									echo '</TD><TD>';
 									echo '<input type="file" name="file_replace_'.$countuploaded.'" id="file_replace_'.$countuploaded.'" />';
+									echo '</TD><TD>';
 									echo'<input type="hidden" name="citation_replace_id_'.$countuploaded.'" value="'.$row->citation_id.'" />';
 								//	echo $cit_id;
 								//	echo'<input type="hidden" name="citation_replace_id_'.$countuploaded.'" value="'.$cit_id.'" />';
 									}
 								echo'<input type="hidden" name="fileDescreplace_'.$countuploaded.'" value="file_desc_'.$countuploaded.'" />';
 								echo '<input type="text" name="citationreplace'.$countuploaded.'" placeholder="Citation" >';
+								echo '</TD></TR>';
+								
 								echo '<br>';
 							}
 							}
+						echo '</tbody> </TABLE>';
 						echo'<input type="hidden" name="countuploaded" value="'.$countuploaded.'" />';
+						echo'<input type="hidden" name="countpromised" value="'.$countpromised.'" />';
 						If ($countuploaded>0)
 							$c = $countuploaded-1;
 						else
@@ -97,7 +117,7 @@ class FacultyRevisionCheck extends CI_Controller
 						If ($countpromised > ($c))
 							{
 							echo '<br>Please Upload the remaining promised deliverables.<br>';
-							for ($i=1; $i <= ($countpromised - ($c)); $i++)
+							for ($i=$countuploaded; $i <= ($countpromised); $i++)
 								{
 								echo '<br><input type="file" name="file_desc_'.$i.'" id="file_desc_'.$i.'" />';
 								echo'<input type="hidden" name="fileDesc_'.$i.'" value="file_desc_'.$i.'" />';
@@ -136,17 +156,20 @@ class FacultyRevisionCheck extends CI_Controller
 					$data['projectID'] = $_SESSION['ProjectID'];
 					$i = $_POST['i'];
 					$k = $_POST['countuploaded'];
+					$countpromised = $_POST['countpromised'];
 					$Filename = $_POST['Filename'];
 					echo $Filename;
 					//move_uploaded_file($_FILES["element_5"]["tmp_name"],"upload/".$ProjectId.'.'.$ext);
 					$count = 0;
-					for ($j=1; $j < $i ; $j++)
+					for ($j=$k; $j <= $countpromised  ; $j++)
 						{
 						//$fileTypes = array('doc','docx','ppt','pptx','pdf'); // file extensions allowed
 						//$fileParts = pathinfo($_FILES['file_desc_'.$j]['name']);
 						//if(in_array($fileParts['extension'],$fileTypes))
 						//{
 						$ext=end(explode('/', $_FILES['file_desc_'.$j]['name']));
+						echo $ext;
+						echo 'countuploaded='.$k;
 						move_uploaded_file($_FILES['file_desc_'.$j]["tmp_name"],"upload/" . $ProjectId.'_'.$j.'.'.$ext);
 						If ($_FILES['file_desc_'.$j]['error'] === UPLOAD_ERR_OK)
 							{
@@ -160,7 +183,7 @@ class FacultyRevisionCheck extends CI_Controller
 						//move_uploaded_file($_FILES['file_desc_'.$j]["tmp_name"],"upload/" . $ProjectId.'_'.$j.'.'.$ext);		           
 						}
 					$countreplace = 0;	
-					for ($l=1; $l <= $k ; $l++)
+					for ($l=1; $l <= ($k-1) ; $l++)
 						{
 						$Path = "upload/".$ProjectId."_";
 						//$Files = glob($Path."*.*");

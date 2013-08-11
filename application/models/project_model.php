@@ -325,7 +325,7 @@ class Project_model extends CI_Model {
 		$queryStr1 = 'SELECT ProjectTitle from project WHERE ProjectId= "'.$data['projectID'].'"';
 		$row=$this->db->query($queryStr1)->result();
 		//for($j=($data['countuploaded']+1); $j<($data['count']+$data['countuploaded']); $j++)
-		for($j=1; $j<$data['count']+1; $j++)
+		for($j=$data['countuploaded']; $j<$data['count']+$data['countuploaded']; $j++)
 		{
 		$queryStr= 'INSERT INTO citation (ProjectTitle , FileName , ProjectId,  citation_text, FileDescriptor) VALUES (\''.$row[0]->ProjectTitle.'\' , \''.$data['filename'.$j].'\' , \''.$data['projectID'].'\' , \''.$data['citation'.$j].'\', \''.$data['fileDesc_'.$j].'\');';
 		$query = $this->db->query($queryStr);
@@ -404,18 +404,23 @@ class Project_model extends CI_Model {
 			$this->load->database();
 			$queryStr1='SELECT ProjectId FROM project WHERE WorkOrderId = '.$data['WorkOrderId'].';';
 			$row=$this->db->query($queryStr1)->result();
-			if ($row) {
-			$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, PAN, Cheque_name, Day_payment, Month_payment) VALUES ('.$row[0]->ProjectId.', \''.$data['WorkOrderId'].'\' , '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\',\''.$data['PAN'].'\', \''.$data['Cheque_name'].'\', '.$data['Day_payment'].','.$data['Month_payment'].');';
-			$query = $this->db->query($queryStr);
-			for($i=0; $i<$data['No_Payments']; $i++)
+			if ($row) 
 			{
-				$ddate=date("Y-m-d",mktime(0,0,0,$data['Month_payment']+$i,$data['Day_payment'],date("Y")));
-				$query1='INSERT INTO transaction (DueDate,WorkOrderId,ProjectId,Head,RA_ID,Amount,Remarks,completed) VALUES (\''.$ddate.'\',\''.$data['WorkOrderId'].'\','.$row[0]->ProjectId.',\'ResearchAssistance\',\''.$data['researcher_id'].'\','.$data['recurring_amt'].',"NA",2);';
-				$query11= $this->db->query($query1);
-			}
-			$msg='The Recurring expense has been added';
-			} else {
-			$msg='The work order number '.$data['WorkOrderId'].' was not found.';
+				
+				$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, PAN, Cheque_name, Day_payment, Month_payment) VALUES ('.$row[0]->ProjectId.', \''.$data['WorkOrderId'].'\' , '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\',\''.$data['PAN'].'\', \''.$data['Cheque_name'].'\', '.$data['Day_payment'].','.$data['Month_payment'].');';
+				$query = $this->db->query($queryStr);
+				
+				for($i=0; $i<$data['No_Payments']; $i++)
+				{
+					$ddate=date("Y-m-d",mktime(0,0,0,$data['Month_payment']+$i,$data['Day_payment'],date("Y")));
+					$query1='INSERT INTO transaction (DueDate,WorkOrderId,ProjectId,Head,RA_ID,Amount,Remarks,completed) VALUES (\''.$ddate.'\',\''.$data['WorkOrderId'].'\','.$row[0]->ProjectId.',\'ResearchAssistance\',\''.$data['researcher_id'].'\','.$data['recurring_amt'].',"NA",2);';
+					$query11= $this->db->query($query1);
+				}
+				$msg='The Recurring expense has been added';
+			} 
+			else 
+			{
+				$msg='The work order number '.$data['WorkOrderId'].' was not found.';
 			}
 			return $msg;
 		}
