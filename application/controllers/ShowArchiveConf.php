@@ -26,7 +26,38 @@ class ShowArchiveConf extends CI_Controller {
 			}
 			}
     // Displays the details of the project
-	function load_php(){
+	function load_php()
+	{
+		if ($_POST['check'] == 'VIEW BLOCK')
+		{
+			$blockstring = $_POST['selectblock'];
+			//$blockselected = $_POST['blockselected'];
+			//echo $blockselected;
+			$this->load->model('conference_model');
+			$status='completed';
+			//$Query= $this->conference_model->conference_blockwiseconference($status,$block);
+			$Queryblock= $this->conference_model->conference_blocks($status);
+			if ($Queryblock->num_rows() <> 0)
+			{
+				foreach($Queryblock->result() as $row1)
+				{
+				$str = 'Apr '.(2010+3*($row1->Block_number)).' to Mar '.(2013+3*($row1->Block_number));
+				//echo $str;
+				//$str = 2010+(3*$row1->Block_number to Mar) '.'.2013+3*$row1->Block_number.';
+				If ( $str == $blockstring)
+					$block = $row1->Block_number;
+				//else
+				//	$block = 'block not found';
+				//echo '<option size =30 selected>Apr '.(2010+3*($row1->Block_number)).' to Mar '.(2013+3*($row1->Block_number)).'</option>';
+				//echo '<input type="hidden" name="blockselected" value='.$row1->Block_number.'>';
+				}
+				header("Location: /rp/Conf_completed?block=".$block);
+				//echo $block;
+			}
+			//header("Location: /rp/Conf_completed");
+		}
+		if ($_POST['check'] == 'VIEW')
+		{
 					 //echo 'load project called    ';
 					 $Conference = $this->input->post('Choice1');
 					 //echo $Project;
@@ -174,7 +205,8 @@ class ShowArchiveConf extends CI_Controller {
 						}						
 					 }*/
 					 echo '</FORM>';
-				}
+		}
+	}
 	
 	//function to approve or reject project based on the user's selection
 	function approveConf(){
@@ -278,16 +310,13 @@ class ShowArchiveConf extends CI_Controller {
 	}
 	
 	function approveMsg($status){
-	
-		$data['myClass']=$this;
 		if($status=='Blocked')
 			{
 			echo 'Conference has been cancelled.';
 			}
 		else
 			{
-
-			//echo 'Project has been sent for revision.';
+			echo 'Project has been sent for revision.';
 			}
 		/* $queryStr='SELECT PStatus FROM project WHERE ProjectId = "'.$value.'";';
 		// echo $queryStr;
