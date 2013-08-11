@@ -1,6 +1,6 @@
 <?PHP
 
-class Conf_facultyCompleted extends CI_Controller {
+class Conf_facultypending extends CI_Controller {
 	
 	function index()
 		{
@@ -19,13 +19,13 @@ class Conf_facultyCompleted extends CI_Controller {
 	function load_php()
 				{
 				$this->load->model('conference_model');
-				$result= $this->conference_model-> conferenceCompleteFaculty($_SESSION['username']);
+				$result= $this->conference_model-> conferencePendingFaculty($_SESSION['username']);
 				// Display the results
 				echo'
 					<FORM METHOD=POST ACTION="FacultyConfShowDetails">
 					<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 						
-						<h1>Cancelled conferences</h1>
+						<h1>Pending for approval</h1>
 						<table class="table table-bordered">
 						<tr><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD><TD><h4>Title</h4></TD><TD><h4>Fees</h4></TD><TD><h4>Budget</h4></TD><TD><h4>Acceptance</h4></TD></tr>';
 
@@ -43,8 +43,8 @@ class Conf_facultyCompleted extends CI_Controller {
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
 						 print $row->Funding;
-						 $Conf=$row->ConferenceId;
 						 //echo '<TD><INPUT TYPE="RADIO" NAME="ConferenceChoice" VALUE="'.$row->ConferenceId.'"></TD></TR>';
+						 $Conf=$row->ConferenceId;
 						 echo'</TD><TD><p><a href="downloadfile?file=upload/'.$Conf.'_title">Download Conference Paper</a><br><br></p></TD>';
 						 echo'<TD><a href="downloadfile?file=upload/'.$Conf.'_fees">Download Conference Registration Fees Details</a><br><br></TD>';
 						 echo'<TD><a href="downloadfile?file=upload/'.$Conf.'_budget">Download Conference Budget Details</a><br><br></TD>';

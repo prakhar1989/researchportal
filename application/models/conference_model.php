@@ -203,7 +203,7 @@ class Conference_model extends CI_Model {
 		 function ongoingFacultyConferences($user) //--vridhi
 		 {
 		 	$this->load->database();
-		 	$queryStr='SELECT * FROM conference WHERE (Researcher1 LIKE \'%'.$user.'%\' AND CStatus = \'approved\')';
+		 	$queryStr='SELECT * FROM conference WHERE (Researcher1 = \''.$user.'\' AND CStatus = \'approved\') ORDER BY App_Date DESC;';
 		 	//echo $queryStr;
 		 	$query = $this->db->query($queryStr);
 		 	return $query;
@@ -211,7 +211,23 @@ class Conference_model extends CI_Model {
 		 function conferenceCompleteFaculty($user)
 		 {
 		 	$this->load->database();
-		 	$queryStr='SELECT * FROM conference WHERE (Researcher1 LIKE \'%'.$user.'%\' AND CStatus = \'completed\')';
+		 	$queryStr='SELECT * FROM conference WHERE (Researcher1 = \''.$user.'\' AND CStatus = \'cancelled\') ORDER BY App_Date DESC;';
+		 	//echo $queryStr;
+		 	$query = $this->db->query($queryStr);
+		 	return $query;
+		 }
+		 function conferencePendingFaculty($user)
+		 {
+		 	$this->load->database();
+		 	$queryStr='SELECT * FROM conference WHERE (Researcher1 = \''.$user.'\' AND CStatus = \'app_chairman_1\' OR CStatus = \'app_chairman_2\' OR CStatus = \'app_admin\' OR CStatus = \'app_comm\') ORDER BY App_Date DESC;';
+		 	//echo $queryStr;
+		 	$query = $this->db->query($queryStr);
+		 	return $query;
+		 }
+		 function conferenceRevisionFaculty($user)
+		 {
+			$this->load->database();
+		 	$queryStr='SELECT * FROM conference WHERE (Researcher1 = \''.$user.'\' AND CStatus = \'app_chairman_1\' OR CStatus = \'app_chairman_2\' OR CStatus = \'app_admin\' OR CStatus = \'app_comm\') ORDER BY App_Date DESC;';
 		 	//echo $queryStr;
 		 	$query = $this->db->query($queryStr);
 		 	return $query;
