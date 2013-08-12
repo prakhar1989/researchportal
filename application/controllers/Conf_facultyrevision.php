@@ -47,7 +47,7 @@ class Conf_facultyrevision extends CI_Controller {
 					print $row->Funding;
 					echo '</TD>';
 					echo '<TD><INPUT TYPE="RADIO" NAME="ConferenceSelected" VALUE="'.$row->ConferenceId.'"></TD>';
-					echo '<TD><INPUT TYPE=SUBMIT name ="RequestType" value="Edit New Application"></TD></TR>';
+					echo '<TD><INPUT TYPE=SUBMIT name ="RequestType" value="Edit"></TD></TR>';
 						 
 				}
 				echo '</tbody></TABLE>';
