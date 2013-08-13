@@ -155,7 +155,7 @@ class Conference_model extends CI_Model {
 		 	//$query= $this->db->get('project');
 		 	//echo $Project['Id'];
 		 	$queryStr='SELECT DISTINCT Block_number FROM conference WHERE CStatus = "'.$status.'" order by Block_number asc;';
-		 	//echo $queryStr;
+		 	echo $queryStr;
 		 	$query = $this->db->query($queryStr);
 		 	return $query;
 		 }

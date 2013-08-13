@@ -105,6 +105,16 @@ class Extension extends CI_Controller
 					<tbody>';
 					echo '<p></br></p>';
 					echo '<hr size=10 noshade color="#333333"><h3>Projects Approved for Extension</h3>';
+					
+					if ($result1->num_rows() <> 0)
+						{
+						
+						}
+						
+					
+					
+					
+					/*
 					foreach($result1->result() as $row)
 						{
 						echo '<tr>
@@ -132,7 +142,9 @@ class Extension extends CI_Controller
 						 }
 						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD>';
 						 echo '</TD><TD><INPUT TYPE=SUBMIT name ="RequestType" value="Print"></TD></TR>';
-						}			 
+						}	
+					*/
+								
 					 echo '</tbody>
 					</table>';
 				//<INPUT TYPE=SUBMIT name ="RequestType" value="Print">

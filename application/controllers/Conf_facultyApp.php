@@ -63,7 +63,7 @@ class Conf_facultyApp extends CI_Controller {
 							<td>
 							<select name="category">
 							  <option>International</option>
-							  <option>Other</option>
+							  <option>Domestic</option>
 							</select>
 						</td>
 						</tr>
@@ -105,6 +105,7 @@ class Conf_facultyApp extends CI_Controller {
 					$data['co_author']=$_POST['co_author'];
 					$data['funding']=$_POST['funding'];
 					$block_num= (date("Y")-2013)/3;
+					echo $block_num;
 					if ((date("Y")-2013)%3==0){
 						if (date("m")>=4) {
 							$block_num= 2+floor($block_num);
@@ -114,7 +115,8 @@ class Conf_facultyApp extends CI_Controller {
 					} else {
 						$block_num=1+floor($block_num);
 					}
-			
+					echo 'Final Block no:'.$block_num;
+					
 					$data['block_num']=$block_num;
 					if (($_FILES['file_title']['error'] === UPLOAD_ERR_OK)||($_FILES['file_fees']['error'] === UPLOAD_ERR_OK)||($_FILES['file_budget']['error'] === UPLOAD_ERR_OK)||($_FILES['file_acceptance']['error'] === UPLOAD_ERR_OK)){
 						$this->load->model('conference_model');

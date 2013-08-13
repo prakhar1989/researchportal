@@ -85,7 +85,8 @@ class Project_model extends CI_Model {
 	function projectExtensionApproved()
 		{
 		$this->load->database();
-		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  ApprovalPending = "approved" order by project.App_Date DESC';
+		//$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  ApprovalPending = "approved" order by project.App_Date DESC';
+		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  ApprovalPending = "approved"';
 		$query = $this->db->query($queryStr);
 		return $query;
 		}

@@ -134,10 +134,10 @@ class Conf_show extends CI_Controller {
 					 
 					 echo '</tbody> </TABLE>';
 					
-					echo'<p><a href="downloadfile?file=upload/'.$Conf.'_title">Download Conference Paper</a><br><br></p>';
-					echo'<p><a href="downloadfile?file=upload/'.$Conf.'_fees">Download Conference Registration Fees Details</a><br><br></p>';
-					echo'<p><a href="downloadfile?file=upload/'.$Conf.'_budget">Download Conference Budget Details</a><br><br></p>';
-					echo'<p><a href="downloadfile?file=upload/'.$Conf.'_acceptance">Download Acceptance Letter</a><br><br></p>';
+					echo'<p><a href="downloadfile?file=upload_conf/'.$Conf.'_title">Download Conference Paper</a><br><br></p>';
+					echo'<p><a href="downloadfile?file=upload_conf/'.$Conf.'_fees">Download Conference Registration Fees Details</a><br><br></p>';
+					echo'<p><a href="downloadfile?file=upload_conf/'.$Conf.'_budget">Download Conference Budget Details</a><br><br></p>';
+					echo'<p><a href="downloadfile?file=upload_conf/'.$Conf.'_acceptance">Download Acceptance Letter</a><br><br></p>';
 
 					
 					if ($_SESSION['usertype']==1)
@@ -203,7 +203,7 @@ class Conf_show extends CI_Controller {
 		$this->load->model('conference_model');
 		//echo '@#usertype is :'.$_SESSION['usertype'];
 		//echo 'conference value:'.$_POST['conferenceID'];
-		if($_POST['approve']=='Approve' OR $_POST['approve']=='Forward To Committee' OR $_POST['approve']=='Forward To Chairman' OR $_POST['approve']=='Forward With Approval')
+		if($_POST['approve']=='Approve' OR $_POST['approve']=='Forward To Committee' OR $_POST['approve']=='Forward' OR $_POST['approve']=='Forward To Chairman' OR $_POST['approve']=='Forward With Approval')
 		{
 			$data['msg']='Approved';
 			if($_SESSION['usertype']==1)
@@ -232,7 +232,7 @@ class Conf_show extends CI_Controller {
 				$this->conference_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['conferenceID'],addslashes(trim(nl2br($_POST['comment']))),"chairman_approve");
 				$this->load->view('layoutChairman',$data);
 			}
-			elseif($_SESSION['usertype']==3 && $_POST['approve']=='Forward To Committee')
+			elseif($_SESSION['usertype']==3 && $_POST['approve']=='Forward')
 			{
 				$to = "nippagupta@iimcal.ac.in";
 				$subject = "New Conference Consultation";

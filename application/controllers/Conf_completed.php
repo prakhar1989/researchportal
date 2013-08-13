@@ -36,7 +36,7 @@ class Conf_Completed extends CI_Controller {
 				$Query= $this->conference_model->conference_blockwiseconference($status,$block);
 				$Queryblock= $this->conference_model->conference_blocks($status);
 				
-				//echo "Total number of rows returned:".$Queryblock->num_rows();
+				echo "Total number of rows returned:".$Queryblock->num_rows();
 				
 					echo '<FORM name="archived" class = "cmxform" id="archivedForm" method= "POST" action="ShowArchiveConf">';
 					/*echo '<div id="tabbar" class="usual"><div class="container"><div style="display: none">
