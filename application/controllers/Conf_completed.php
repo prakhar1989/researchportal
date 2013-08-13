@@ -30,7 +30,7 @@ class Conf_Completed extends CI_Controller {
 				// Display the results
                 // For help: new_application.php
 				$block = $_GET['block'];
-				echo '<h3>Current Selected block year: Apr '.(2010+3*$block).' to Mar '.(2013+3*($block)).'</h3>';
+				echo '<h3>Current Selected block year: Apr '.(2007+3*$block).' to Mar '.(2010+3*($block)).'</h3>';
 				$this->load->model('conference_model');
 				$status='completed';
 				$Query= $this->conference_model->conference_blockwiseconference($status,$block);
@@ -65,7 +65,7 @@ class Conf_Completed extends CI_Controller {
 						if ($Queryblock->num_rows() <> 0)
 						foreach($Queryblock->result() as $row1)
 						{
-						echo '<option size =30 >Apr '.(2010+3*($row1->Block_number)).' to Mar '.(2013+3*($row1->Block_number)).'</option>';
+						echo '<option size =30 >Apr '.(2007+3*($row1->Block_number)).' to Mar '.(2010+3*($row1->Block_number)).'</option>';
 						//echo '<input type="hidden" name="blockselected" value='.$row1->Block_number.'>';
 						}						
 						else 
@@ -74,12 +74,12 @@ class Conf_Completed extends CI_Controller {
 						}
 					echo '<INPUT TYPE=SUBMIT name="check" value="VIEW BLOCK" align=right></TD></TD></TR>';
 					echo '</SELECT>';
-					echo '<TR><TD><h4>Block</h4></TD><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD><TD><h4>Select</h4></TD><TD></TD></TR>';
+					echo '<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD><TD><h4>Select</h4></TD><TD></TD></TR>';
 					 foreach($Query->result() as $row)
 					 {
 						 echo '<TR><TD>';
-						 echo 'Apr '.(2010+3*($row->Block_number)).' to Mar '.(2013+3*($row->Block_number));
-						 echo '</TD><TD>';
+						// echo 'Apr '.(2010+3*($row->Block_number-1)).' to Mar '.(2013+3*($row->Block_number-1));
+						// echo '</TD><TD>';
 						 print $row->Researcher1;
 						 echo '</TD><TD>';
 						 print $row->ConferenceTitle;

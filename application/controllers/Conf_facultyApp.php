@@ -47,9 +47,37 @@ class Conf_facultyApp extends CI_Controller {
 							<td><input type="text" class="large" name="conf_venue"></input></td>
 						</tr>
 						<tr>
-						 	<td>Conference Date (YYYY-MM-DD)</td>
-						 	<td><input type="text" class="large" name="conf_date"></input></td>
-						</tr>
+						 	<td>Conference Date (YYYY-MM-DD)</td>';
+						 	
+							/*  $date3_default = "2013-08-12";
+							  $date4_default = "2013-08-18";
+
+							  $myCalendar = new tc_calendar("date3", true, false);
+							  $myCalendar->setIcon("image/iconCalendar.gif");
+							  $myCalendar->setDate(date('d', strtotime($date3_default))
+									, date('m', strtotime($date3_default))
+									, date('Y', strtotime($date3_default)));
+							  $myCalendar->setPath("calendar/");
+							  $myCalendar->setYearInterval(2010, 2050);
+							  $myCalendar->setAlignment('left', 'bottom');
+							  $myCalendar->setDatePair('date3', 'date4', $date4_default);
+							  $myCalendar->writeScript();	  
+							  
+							  $myCalendar = new tc_calendar("date4", true, false);
+							  $myCalendar->setIcon("image/iconCalendar.gif");
+							  $myCalendar->setDate(date('d', strtotime($date4_default))
+								   , date('m', strtotime($date4_default))
+								   , date('Y', strtotime($date4_default)));
+							  $myCalendar->setPath("calendar/");
+							  $myCalendar->setYearInterval(2010, 2050);
+							  $myCalendar->setAlignment('left', 'bottom');
+							  $myCalendar->setDatePair('date3', 'date4', $date3_default);
+							  $myCalendar->writeScript();
+							*/
+							
+						echo 	'<td><input type="text" class="large" name="conf_date"></input></td>';
+						echo '</tr>
+
 						<tr>
 							<td>Title of Paper</td>
 							<td><input type="text" class="large" name="paper_title"></input></td>
@@ -112,9 +140,26 @@ class Conf_facultyApp extends CI_Controller {
 					$data['conf_date']=$_POST['conf_date'];
 					$data['co_author']=$_POST['co_author'];
 					$data['funding']=$_POST['funding'];
-					$data['faculty_category']=$_POST['faculty_category'];
-					$block_num= (date("Y")-2013)/3;
-					if ((date("Y")-2013)%3==0){
+					$confdateyear = substr($data['conf_date'], 0, 4);
+					$block_num= ($confdateyear-2013)/3;
+					//echo $confdateyear;
+					$confdatemon = substr($data['conf_date'], 5, 2);
+					//echo $confdatemon;
+					
+					if (($confdateyear-2013)%3==0)
+					{
+						if ($confdatemon>=4) {
+							$block_num= 2+floor($block_num);
+						} else {
+							$block_num=1+floor($block_num);
+						}
+					} else 
+					{
+						$block_num=1+floor($block_num);
+					}
+					//echo $block_num;
+					/*if ((date("Y")-2013)%3==0)
+					{
 						if (date("m")>=4) {
 							$block_num= 2+floor($block_num);
 						} else {
@@ -122,7 +167,7 @@ class Conf_facultyApp extends CI_Controller {
 						}
 					} else {
 						$block_num=1+floor($block_num);
-					}
+					}*/
 			
 					$data['block_num']=$block_num;
 					if (($_FILES['file_title']['error'] === UPLOAD_ERR_OK)||($_FILES['file_fees']['error'] === UPLOAD_ERR_OK)||($_FILES['file_budget']['error'] === UPLOAD_ERR_OK)||($_FILES['file_acceptance']['error'] === UPLOAD_ERR_OK)){
@@ -133,9 +178,9 @@ class Conf_facultyApp extends CI_Controller {
 						$ext=end(explode('/', $_FILES['file_fees']['type']));
 						move_uploaded_file($_FILES['file_fees']["tmp_name"],"upload_conf/".$ConfId.'_fees.'.$ext);		           
 						$ext=end(explode('/', $_FILES['file_budget']['type']));
-						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/".$ConfId.'_budget.'.$ext);		           
+						move_uploaded_file($_FILES['file_budget']["tmp_name"],"upload_conf/".$ConfId.'_budget.'.$ext);		           
 						$ext=end(explode('/', $_FILES['file_acceptance']['type']));
-						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/".$ConfId.'_acceptance.'.$ext);		           
+						move_uploaded_file($_FILES['file_acceptance']["tmp_name"],"upload_conf/".$ConfId.'_acceptance.'.$ext);		           
 					}
 					if ($_POST['faculty_category'] == 2){
 						$this->load->model('conference_model');
