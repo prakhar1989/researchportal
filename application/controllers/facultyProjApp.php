@@ -29,7 +29,7 @@ class FacultyProjApp extends CI_Controller {
 
 				function load_php()
 				{
-					error_reporting(E_ERROR | E_PARSE);
+					//error_reporting(E_ERROR | E_PARSE);
 					ini_set( "display_errors", 0);  
 					$this->load->model('project_model');
 					//$allow= $this->project_model->getNoProj('ankuhfhfhshv');
@@ -48,7 +48,7 @@ class FacultyProjApp extends CI_Controller {
 					<p>Please use the form below to enter details of a new project</p>
 					 
 					<form name="application" id="commentForm" method=POST action="FacultyProjApp/insert"  enctype="multipart/form-data">
-					<INPUT TYPE="HIDDEN" NAME="hidden2">
+					<INPUT TYPE="HIDDEN" NAME="hidden2"/>
 					<table class="table table-bordered">
 					<thead>
 						<tr>
@@ -72,11 +72,11 @@ class FacultyProjApp extends CI_Controller {
 							<td><table>
 							<tr>Please select all the deliverable appilcable from below</tr>
 							<tr><td>Cases</td><td><input type="checkbox" value="1" name="casesCB" onClick="enableMe(\'cases\');" /></td><td><input type="text" disabled="disabled" name="cases" placeholder="No of Cases" ></td></tr>
-							<tr><td>Journal Papers</td><td><input type="checkbox" value="1" name="journalsCB" onClick="enableMe(\'journals\');" /></td><td><input type="text" disabled="disabled" name="journals" placeholder="No of Journals" ></td></tr>
-							<tr><td>Book Chapters</td><td><input type="checkbox" value="1" name="chaptersCB" onClick="enableMe(\'chapters\');" /></td><td><input type="text" disabled="disabled" name="chapters" placeholder="No of Chapters" ></td></tr>
-							<tr><td>Conference Paper</td><td><input type="checkbox" value="1" name="conferencesCB" onClick="enableMe(\'conferences\');" /></td><td><input type="text" disabled="disabled" name="conferences" placeholder="No of Conferences" ></td></tr>
-							<tr><td>Working Paper</td><td><input type="checkbox" value="1" name="papersCB" onClick="enableMe(\'papers\');" /></td><td><input type="text" disabled="disabled" name="papers" placeholder="No of Work Papers" ></td></tr>
-							<tr><td>Books</td><td><input type="checkbox" value="1" name="booksCB" onClick="enableMe(\'books\');" /></td><td><input type="text" disabled="disabled" name="books" placeholder="No of Books" ></td></tr>
+							<tr><td>Journal Papers</td><td><input type="checkbox" value="1" name="journalsCB" onClick="enableMe(\'journals\');" /></td><td><input type="text" disabled="disabled" name="journals" placeholder="No of Journals" id="journals"></td></tr>
+							<tr><td>Book Chapters</td><td><input type="checkbox" value="1" name="chaptersCB" onClick="enableMe(\'chapters\');" /></td><td><input type="text" disabled="disabled" name="chapters" placeholder="No of Chapters" id="chapters"></td></tr>
+							<tr><td>Conference Paper</td><td><input type="checkbox" value="1" name="conferencesCB" onClick="enableMe(\'conferences\');" /></td><td><input type="text" disabled="disabled" name="conferences" placeholder="No of Conferences" id="conferences"></td></tr>
+							<tr><td>Working Paper</td><td><input type="checkbox" value="1" name="papersCB" onClick="enableMe(\'papers\');" /></td><td><input type="text" disabled="disabled" name="papers" placeholder="No of Work Papers" id="papers"></td></tr>
+							<tr><td>Books</td><td><input type="checkbox" value="1" name="booksCB" onClick="enableMe(\'books\');" /></td><td><input type="text" disabled="disabled" name="books" placeholder="No of Books" id="books"></td></tr>
 							</table></td>													
 						</tr>';
 						
@@ -119,7 +119,7 @@ class FacultyProjApp extends CI_Controller {
 
 
 							
-							echo'
+							/*echo'
 							<div class="container-narrow">
 							<tr>
 							<td>Co-Researcher 1 ID</td>
@@ -133,7 +133,7 @@ class FacultyProjApp extends CI_Controller {
 							<input type="text" name="researcher3" class="names_text" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source=\''.$namescsv.'\'></input> 
 							</td>
 							</tr>
-							';
+							';*/
 						  
 						
 						echo '
@@ -365,5 +365,11 @@ else
 document.form1.hidden2.value = check;
 document.form1.countpromised.value = countpromised;
 document.form1.countuploaded.value = countuploaded;
+}
+
+function enableMe(fld)
+{
+	eval('window.document.application.'+fld+'.disabled = !window.document.application.'+fld+'CB'+'.checked');
+
 }
 </script>
