@@ -29,7 +29,7 @@ class FacultyProjApp extends CI_Controller {
 
 				function load_php()
 				{
-					//error_reporting(E_ERROR | E_PARSE);
+					error_reporting(E_ERROR | E_PARSE);
 					ini_set( "display_errors", 0);  
 					$this->load->model('project_model');
 					//$allow= $this->project_model->getNoProj('ankuhfhfhshv');
@@ -83,7 +83,7 @@ class FacultyProjApp extends CI_Controller {
 						
 							// LDAP Connection
 
-							/*******************Uncomment on Server*********************
+							//*******************Uncomment on Server*********************
 
 							$username="ashishkj11";
 							$ldapHost="192.168.1.103";
@@ -119,7 +119,7 @@ class FacultyProjApp extends CI_Controller {
 
 
 							
-							/*echo'
+							echo'
 							<div class="container-narrow">
 							<tr>
 							<td>Co-Researcher 1 ID</td>
@@ -133,7 +133,7 @@ class FacultyProjApp extends CI_Controller {
 							<input type="text" name="researcher3" class="names_text" style="margin: 0 auto;" data-provide="typeahead" data-items="4" data-source=\''.$namescsv.'\'></input> 
 							</td>
 							</tr>
-							';*/
+							';
 						  
 						
 						echo '

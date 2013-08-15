@@ -109,7 +109,7 @@ class Conf_facultyApp extends CI_Controller {
 							<td>
 							<select name="faculty_category" id="fac_cat" onchange = "MyFunction()">
 							  <option value="1"> Full Time </option>
-							  <option value="2">Part Time/Visiting</option>
+							  <option value="2">Part Time Visiting Faculty/Faculty on Probation</option>
 							</select>
 						</td></tr>
 						<tr><td>Upload Group Recommendation</td><td><input disabled = "disabled" type="file" name="file_grouprecommendation" id="file_grouprecommendation" /></td></tr>
