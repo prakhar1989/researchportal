@@ -51,7 +51,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
            <div id="tabbar" class="usual">
             <div class="container">
                 <ul id="bars">
-                    <li><a href="#confs">Conferences</a></li>
+                    <li><a href="#confs">International Conferences</a></li>
                 </ul>
                 
                 <div id="confs" style="display: none">

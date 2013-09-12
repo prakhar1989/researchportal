@@ -61,7 +61,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
             <div class="container">
                 <ul id="bars">
                     <li><a href="#resproj">Research Projects</a></li>
-                    <li><a href="#confs">Conferences</a></li>
+                    <li><a href="#confs">International Conferences</a></li>
                 </ul>
                 <div id="resproj" style="display: block">
                     <ul> 
