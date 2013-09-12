@@ -40,7 +40,7 @@ class Conf_app_committee extends CI_Controller {
 							<tr>
 							</tr>
 					</thead><tbody>
-						<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD><TD><h4>Approved By</h4></TD></TR>
+						<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Author (if any)</h4></TD><TD><h4>Source of Funding</h4></TD><TD><h4>Approved By</h4></TD></TR>
 						';
 						$flag=0;
 

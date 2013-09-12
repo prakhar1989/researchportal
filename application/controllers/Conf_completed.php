@@ -74,7 +74,7 @@ class Conf_Completed extends CI_Controller {
 						}
 					echo '<INPUT TYPE=SUBMIT name="check" value="VIEW BLOCK" align=right></TD></TD></TR>';
 					echo '</SELECT>';
-					echo '<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD><TD><h4>Select</h4></TD><TD></TD></TR>';
+					echo '<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Author (if any)</h4></TD><TD><h4>Source of Funding</h4></TD><TD><h4>Select</h4></TD><TD></TD></TR>';
 					 foreach($Query->result() as $row)
 					 {
 						 echo '<TR><TD>';

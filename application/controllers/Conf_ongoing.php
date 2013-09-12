@@ -38,7 +38,7 @@ class Conf_ongoing extends CI_Controller {
 					</thead>
 					<tbody>';
 					 
-					$tableHeader= '<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD>';
+					$tableHeader= '<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Author (if any)</h4></TD><TD><h4>Source of Funding</h4></TD>';
 					if($_SESSION['usertype']==1){
 						$tableHeader=$tableHeader.'<TD></TD>';
 					}

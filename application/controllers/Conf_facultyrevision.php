@@ -23,7 +23,7 @@ class Conf_facultyrevision extends CI_Controller {
 				echo '<FORM METHOD=POST ACTION="Conf_facultyrevisionCheck">
 					<table class="table table-bordered">
 					<tr>
-					<TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD><TD><h4>Select</h4></TD><TD></TD></TR>
+					<TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Author (if any)</h4></TD><TD><h4>Source of Funding</h4></TD><TD><h4>Select</h4></TD><TD></TD></TR>
 					<tbody>	
 					';
 				

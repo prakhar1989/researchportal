@@ -38,7 +38,7 @@ class Conf_app_admin extends CI_Controller {
 							</tr>
 					</thead>
 					<tbody>';
-				$tableHeader= '<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Researcher</h4></TD><TD><h4>Source of Funding</h4></TD>';
+				$tableHeader= '<TR><TD><h4>Faculty Name</h4></TD><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Author (if any)</h4></TD><TD><h4>Source of Funding</h4></TD>';
 					
 					/*if ($_SESSION['usertype']==3)
 					{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
