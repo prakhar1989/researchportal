@@ -108,10 +108,8 @@ class Conf_facultyApp extends CI_Controller {
 						<tr><td>Faculty Category</td>
 							<td>
 							<select name="faculty_category" id="fac_cat" onchange = "MyFunction()">
-
 							  <option value="1">Full Time</option>
 							  <option value="2">Part Time Visiting Faculty/Faculty on Probation</option>
-
 							</select>
 						</td></tr>
 						<tr><td>Upload Group Recommendation</td><td><input disabled = "disabled" type="file" name="file_grouprecommendation" id="file_grouprecommendation" /></td></tr>
@@ -142,11 +140,6 @@ class Conf_facultyApp extends CI_Controller {
 					$data['conf_date']=$_POST['conf_date'];
 					$data['co_author']=$_POST['co_author'];
 					$data['funding']=$_POST['funding'];
-<<<<<<< HEAD
-					$data['faculty_category']=$_POST['faculty_category'];
-					$block_num= (date("Y")-2013)/3;
-					if ((date("Y")-2013)%3==0){
-=======
 					$confdateyear = substr($data['conf_date'], 0, 4);
 					$block_num= ($confdateyear-2013)/3;
 					//echo $confdateyear;
@@ -167,7 +160,6 @@ class Conf_facultyApp extends CI_Controller {
 					//echo $block_num;
 					/*if ((date("Y")-2013)%3==0)
 					{
->>>>>>> 6e1b6a27fa4b6ba660003e91ecd2b07ce652b0e8
 						if (date("m")>=4) {
 							$block_num= 2+floor($block_num);
 						} else {
@@ -191,15 +183,9 @@ class Conf_facultyApp extends CI_Controller {
 						$ext=end(explode('/', $_FILES['file_fees']['type']));
 						move_uploaded_file($_FILES['file_fees']["tmp_name"],"upload_conf/".$ConfId.'_fees.'.$ext);		           
 						$ext=end(explode('/', $_FILES['file_budget']['type']));
-<<<<<<< HEAD
-						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/".$ConfId.'_budget.'.$ext);		           
-						$ext=end(explode('/', $_FILES['file_acceptance']['type']));
-						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/".$ConfId.'_acceptance.'.$ext);		           
-=======
 						move_uploaded_file($_FILES['file_budget']["tmp_name"],"upload_conf/".$ConfId.'_budget.'.$ext);		           
 						$ext=end(explode('/', $_FILES['file_acceptance']['type']));
 						move_uploaded_file($_FILES['file_acceptance']["tmp_name"],"upload_conf/".$ConfId.'_acceptance.'.$ext);		           
->>>>>>> 6e1b6a27fa4b6ba660003e91ecd2b07ce652b0e8
 					}
 					if ($_POST['faculty_category'] == 2){
 						$this->load->model('conference_model');

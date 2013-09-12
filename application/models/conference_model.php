@@ -293,11 +293,7 @@ class Conference_model extends CI_Model {
 		 	//2. Insert value into the project table
 		
 		 	//INSERT INTO `researchportal`.`project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`) VALUES ('Business Leasdership Study', 'P33333', 'Leadership traits study on current business leaders', '2012-09-29', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', '100000', 'app_admin', '1 Leadership report');
-<<<<<<< HEAD
-		 	$queryStr= 'INSERT INTO conference (ConferenceTitle , Start_Date, Researcher1 , Category , CStatus, Block_number, PaperTitle, No_Conferences, Funding, Venue, Researcher2, FacultyCategory) VALUES (\''.$data['conf_name'].'\' , \'' .$data['conf_date'].'\' , \''.$user.'\' , \''.$data['category'].'\' , \'app_admin\' , '.$data['block_num'].' , \''.$data['paper_title'].'\' , '.$No_conference.' , \''.$data['funding'].'\' , \''.$data['conf_venue'].'\' , \''.$data['co_author'].'\' , \''.$data['faculty_category'].'\');' ; 	
-=======
 		 	$queryStr= 'INSERT INTO conference (ConferenceTitle , Start_Date, Researcher1 , Category , CStatus, Block_number, PaperTitle, No_Conferences, Funding, Venue, Researcher2, FacultyCategory) VALUES (\''.$data['conf_name'].'\' , \'' .$data['conf_date'].'\' , \''.$user.'\' , \''.$data['category'].'\' , \'app_admin\' , '.$data['block_num'].' , \''.$data['paper_title'].'\' , '.$No_conference.' , \''.$data['funding'].'\' , \''.$data['conf_venue'].'\' , \''.$data['co_author'].'\' , \''.$data['FacultyCategory'].'\');' ; 	
->>>>>>> 6e1b6a27fa4b6ba660003e91ecd2b07ce652b0e8
 			$data['conf_name']=$_POST['conf_name'];
 		 	$query = $this->db->query($queryStr);
 			$queryStr1 = 'SELECT ConferenceId FROM conference WHERE ConferenceId = (SELECT MAX(ConferenceId)  FROM conference)';

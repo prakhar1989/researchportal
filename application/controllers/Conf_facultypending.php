@@ -49,10 +49,7 @@ class Conf_facultypending extends CI_Controller {
 						 echo'<TD><a href="downloadfile?file=upload_conf/'.$Conf.'_fees">Download Conference Registration Fees Details</a><br><br></TD>';
 						 echo'<TD><a href="downloadfile?file=upload_conf/'.$Conf.'_budget">Download Conference Budget Details</a><br><br></TD>';
 						 echo'<TD><a href="downloadfile?file=upload_conf/'.$Conf.'_acceptance">Download Acceptance Letter</a><br><br></TD>';
-<<<<<<< HEAD
-=======
 						 echo'<TD><a href="downloadfile?file=upload_conf/'.$Conf.'_grouprecommendation">Download Group Recommendation</a><br><br></TD>';
->>>>>>> 6e1b6a27fa4b6ba660003e91ecd2b07ce652b0e8
 						}
 							 
 					 echo '</TABLE>
