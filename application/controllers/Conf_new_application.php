@@ -58,7 +58,10 @@ class Conf_new_application extends CI_Controller {
 						 echo '</TD><TD>';
 						 print $row->Researcher2;
 					     echo '</TD><TD>';
-						 print $row->FacultyCategory;
+						 if($row->FacultyCategory == 1)
+						 	 print "Full Time";
+						if($row->FacultyCategory == 2)
+						 	 print "Part Time Visiting Faculty/Faculty on Probation";
 						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="Choice1" VALUE="'.$row->ConferenceId.'"></TD></TR>';
 					 }
 					 if($flag==0){

@@ -72,8 +72,8 @@ class Conf_app_committee extends CI_Controller {
 							echo 'NO';
 						 }*/
 						  $commStr= '';
-							if($row->comm_approval == 0){
-							$commStr = $commStr."No Committee Member ";
+						  	if($row->comm_approval == 0){
+							$commStr = $commStr.'No Committee Member ';
 							}
 							
 							if($row->comm_approval == 2 || $row->comm_approval == 5 || $row->comm_approval == 6 || $row->comm_approval == 9){
@@ -140,7 +140,7 @@ class Conf_app_committee extends CI_Controller {
 							echo 'NO';
 						 }*/
 						 
-						 }
+						 
 						 
 						 $commStr= '';
 							if($row->comm_approval == 0){
@@ -159,7 +159,9 @@ class Conf_app_committee extends CI_Controller {
 						 print $commStr;
 						 
 						 echo '</TD></TR>';
+						 
 						 $flag++;
+						 }
 					 }
 					if($flag==0){
 					echo '<h4>No applications pending with committee</h4> <br > </tbody> </TABLE>';
