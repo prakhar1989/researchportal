@@ -312,7 +312,7 @@ class Conference_model extends CI_Model {
 		 function insertConferenceRevision($user,$data,$status,$conferenceid)
 		 {
 			$this->load->database();
-			$queryStr= 'UPDATE conference SET Venue = "'.$data['venue'].'", Start_Date = "'.$data['conf_date'].'", CStatus = "'.$status.'", PaperTitle = "'.$data['papertitle'].'", Researcher2 = "'.$data['researcher2'].'", Category = "'.$data['category'].'", Funding = "'.$data['funding'].'" WHERE ConferenceId = '.$conferenceid.';';
+			$queryStr= 'UPDATE conference SET ConferenceTitle = "'.$data['title'].'", Venue = "'.$data['venue'].'", Start_Date = "'.$data['conf_date'].'", CStatus = "'.$status.'", PaperTitle = "'.$data['papertitle'].'", Researcher2 = "'.$data['researcher2'].'", Category = "'.$data['category'].'", Funding = "'.$data['funding'].'" WHERE ConferenceId = '.$conferenceid.';';
 			$query = $this->db->query($queryStr);
 		 }
 		 // function to get the account status of the project--vridhi

@@ -47,7 +47,7 @@ class Conf_facultyApp extends CI_Controller {
 							<td><input type="text" class="large" name="conf_venue"></input></td>
 						</tr>
 						<tr>
-						 	<td>Conference Date (YYYY-MM-DD)</td>';
+						 	<td>Conference Date (YYYY-MM-DD) to (YYYY-MM-DD)</td>';
 						 	
 							/*  $date3_default = "2013-08-12";
 							  $date4_default = "2013-08-18";
@@ -91,7 +91,7 @@ class Conf_facultyApp extends CI_Controller {
 							<td>
 							<select name="category">
 							  <option>International</option>
-							  <option>Other</option>
+							  
 							</select>
 						</td>
 						</tr>
@@ -101,19 +101,38 @@ class Conf_facultyApp extends CI_Controller {
 						</td><td><select name = "funding"><option>IIMC</option><option>External</option>
 						</td>
 						</tr>
-						<tr><td>Upload Title of Paper (Full Paper)</td><td><input type="file" name="file_title" id="file_title" /></td></tr>
+						<tr>
+						<td>Financial support sought for : 
+						(Please Select, if applicable as per rules)</TD>
+						<td><table>
+						<tr><td>Air Fare</td><td><select name="airfare"><option>No</option><option>Yes</option></select></td></tr>
+						<tr><td>Registration Fees</td><td><select name="regfees"><option>No</option><option>Yes</option></select></td></tr>
+						<tr><td>Per Diem</td><td><select name="perdiem"><option>No</option><option>Yes</option></select></td></tr>
+						<tr><td>Visa</td><td><select name="visa"><option>No</option><option>Yes</option></select></td></tr>
+						<tr><td>Medical Insurance</td><td><select name="medical"><option>No</option><option>Yes</option></select></td></tr>
+						<tr><td>Local Travel</td><td><select name="localtravel"><option>No</option><option>Yes</option></select></td></tr>
+						</table></td>
+						</tr>
+						<tr><td>Upload Full Paper</td><td><input type="file" name="file_title" id="file_title" /></td></tr>
 						<tr><td>Upload Website Registration Fees Page</td><td><input type="file" name="file_fees" id="file_fees" /></td></tr>
-						<tr><td>Upload Budget Declaration Page</td><td><input type="file" name="file_budget" id="file_budget" /></td></tr>
-						<tr><td>Upload Acceptance Letter</td><td><input type="file" name="file_acceptance" id="file_acceptance" /></td></tr>
+						';
+						//<tr><td>Upload Budget Declaration Page</td><td><input type="file" name="file_budget" id="file_budget" /></td></tr>
+						echo '<tr><td>Upload Acceptance Letter</td><td><input type="file" name="file_acceptance" id="file_acceptance" /></td></tr>
 						<tr><td>Faculty Category</td>
 							<td>
 							<select name="faculty_category" id="fac_cat" onchange = "MyFunction()">
 							  <option value="1">Full Time</option>
 							  <option value="2">Part Time Visiting Faculty/Faculty on Probation</option>
 							</select>
-						</td></tr>
-						<tr><td>Upload Group Recommendation</td><td><input disabled = "disabled" type="file" name="file_grouprecommendation" id="file_grouprecommendation" /></td></tr>
-					</tbody>
+						</td></tr>';
+						//<tr><td>Upload Group Recommendation</td><td><input disabled = "disabled" type="file" name="file_grouprecommendation" id="file_grouprecommendation" /></td></tr>
+					echo '
+					<tr>
+							<td>Extra comments</td>
+							<td><input type="checkbox" value="1" name="commentCB" onClick="enableMe(\'comment\');" />
+							<textarea disabled="disabled" name="comment" ></textarea></td>
+						
+						</tr></tbody>
 					</table>
 
 					<input type="submit" value"Submit" class="btn btn-large btn-primary"></input></form>';
@@ -193,7 +212,18 @@ class Conf_facultyApp extends CI_Controller {
 						$ext=end(explode('/', $_FILES['file_grouprecommendation']['type']));
 						move_uploaded_file($_FILES['file_grouprecommendation']["tmp_name"],"upload_conf/" . $ConfId.'_grouprecommendation.'.$ext);		           
 						}
-						
+					if(isset($_POST['commentCB']))
+						{
+						if(!isset($_POST['comment']) || strlen(trim($_POST['comment'])) == 0)
+						{
+						}
+						else
+							{
+							$this->load->model('project_model');
+							$this->conference_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$ConferenceId,addslashes(trim($_POST['comment'])),"faculty_application");
+							}
+				
+			}
 					}
 					//$data['']=$_POST[''];
 					//$this->load->model('conference_model');

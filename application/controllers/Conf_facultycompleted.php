@@ -27,7 +27,7 @@ class Conf_facultyCompleted extends CI_Controller {
 						
 						<h1>Cancelled conferences</h1>
 						<table class="table table-bordered">
-						<tr><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Author (if any)</h4></TD><TD><h4>Source of Funding</h4></TD><TD><h4>Title</h4></TD><TD><h4>Fees</h4></TD><TD><h4>Budget</h4></TD><TD><h4>Acceptance</h4></TD><TD><h4>Group Recommendation</h4></TD></tr>';
+						<tr><TD><h4>Conference Title</h4></TD><TD><h4>App_Date</h4></TD><TD><h4>Date of Conference</h4></TD><TD><h4>Paper Title</h4></TD><TD><h4>Co Author (if any)</h4></TD><TD><h4>Source of Funding</h4></TD><TD><h4>Full Paper</h4></TD><TD><h4>Fees</h4></TD><TD><h4>Budget</h4></TD><TD><h4>Acceptance</h4></TD></tr>';
 
 					foreach($result->result() as $row)
 						{
@@ -49,7 +49,7 @@ class Conf_facultyCompleted extends CI_Controller {
 						 echo'<TD><a href="downloadfile?file=upload/'.$Conf.'_fees">Download Conference Registration Fees Details</a><br><br></TD>';
 						 echo'<TD><a href="downloadfile?file=upload/'.$Conf.'_budget">Download Conference Budget Details</a><br><br></TD>';
 						 echo'<TD><a href="downloadfile?file=upload/'.$Conf.'_acceptance">Download Acceptance Letter</a><br><br></TD>';
-						 echo'<TD><a href="downloadfile?file=upload/'.$Conf.'_grouprecommendation">Download Group Recommendation</a><br><br></TD>';
+						 //echo'<TD><a href="downloadfile?file=upload/'.$Conf.'_grouprecommendation">Download Group Recommendation</a><br><br></TD>';
 
 						}
 							 

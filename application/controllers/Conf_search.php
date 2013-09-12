@@ -23,11 +23,11 @@ class Conf_search extends CI_Controller{
             echo "<p>Please select filter</p>";
 			echo '<FORM name="Conf_search" method= POST action="Conf_search/search">';
             echo '<ul class="radiolist">';
-            echo '<li><input type="radio" name="searchBy" value="ConferenceId" /> ConferenceId </li>
-                <li><input type="radio" name="searchBy" value="Researcher" /> Researcher </li>
-                <li><input type="radio" name="searchBy" value="ConferenceTitle" /> ConferenceTitle </li>
-                <li><input type="radio" name="searchBy" value="Funding" /> Source of Funding </li>
-                <li><input type="radio" name="searchBy" value="PaperTitle" /> Paper Title </li>';
+            echo '<li><input type="radio" name="searchBy" value="ConferenceTitle" /> ConferenceTitle </li>
+				<li><input type="radio" name="searchBy" value="Funding" /> Source of Funding </li>
+				<li><input type="radio" name="searchBy" value="PaperTitle" /> Paper Title </li>
+				<li><input type="radio" name="searchBy" value="Researcher" /> Researcher </li>
+                ';
 			echo '<input type=text class="searchbox" name="searchValue" placeholder="Enter Search Term">';
 			echo '<input type= submit value= "Search" name="search">'; 
 		    echo '</FORM>';

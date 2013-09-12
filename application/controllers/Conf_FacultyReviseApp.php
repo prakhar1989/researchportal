@@ -49,7 +49,7 @@ class Conf_FacultyReviseApp extends CI_Controller {
 						</tr>
 						<tr>
 							<td>Name of Conference</td>
-							<td><b>'.$row->ConferenceTitle.'</b></td>
+							<td><input type="text" class = "large" placeholder = "'.$row->ConferenceTitle.'" name="conf_title"></input></td>
 						</tr>
 						
 						<tr>
@@ -74,7 +74,6 @@ class Conf_FacultyReviseApp extends CI_Controller {
 							<td>
 							<select name="category">
 							  <option>International</option>
-							  <option>Other</option>
 							</select>
 						</td>
 						</tr>
@@ -83,10 +82,23 @@ class Conf_FacultyReviseApp extends CI_Controller {
 						</td><td><select name = "funding"><option>IIMC</option><option>External</option>
 						</td>
 						</tr>
-						<tr><td>Upload Title of Paper (Full Paper)</td><td><input type="file" name="file_title" id="file_title" /></td><td><p><a href="downloadfile?file=upload_conf/'.$ConferenceID.'_title">Conference Paper</a></p></td></tr>
+						<tr>
+						<td>Financial support sought for : 
+						(Please Select, if applicable as per rules)</TD>
+						<td><table>
+						<tr><td>Air Fare</td><td><select name="airfare"><option>No</option><option>Yes</option></select></td></tr>
+						<tr><td>Registration Fees</td><td><select name="regfees"><option>No</option><option>Yes</option></select></td></tr>
+						<tr><td>Per Diem</td><td><select name="perdiem"><option>No</option><option>Yes</option></select></td></tr>
+						<tr><td>Visa</td><td><select name="visa"><option>No</option><option>Yes</option></select></td></tr>
+						<tr><td>Medical Insurance</td><td><select name="medical"><option>No</option><option>Yes</option></select></td></tr>
+						<tr><td>Local Travel</td><td><select name="localtravel"><option>No</option><option>Yes</option></select></td></tr>
+						</table></td>
+						</tr>
+						<tr><td>Upload Full Paper</td><td><input type="file" name="file_title" id="file_title" /></td><td><p><a href="downloadfile?file=upload_conf/'.$ConferenceID.'_title">Conference Paper</a></p></td></tr>
 						<tr><td>Upload Website Registration Fees Page</td><td><input type="file" name="file_fees" id="file_fees" /></td><TD><a href="downloadfile?file=upload_conf/'.$ConferenceID.'_fees">Conference Registration Fees Details</a></TD></tr>
-						<tr><td>Upload Budget Declaration Page</td><td><input type="file" name="file_budget" id="file_budget" /></td><TD><a href="downloadfile?file=upload_conf/'.$ConferenceID.'_budget">Conference Budget Details</a><br><br></TD></tr>
-						<tr><td>Upload Acceptance Letter</td><td><input type="file" name="file_acceptance" id="file_acceptance" /></td><TD><a href="downloadfile?file=upload_conf/'.$ConferenceID.'_acceptance">Acceptance Letter</a><br><br></TD></tr>
+						';
+						//<tr><td>Upload Budget Declaration Page</td><td><input type="file" name="file_budget" id="file_budget" /></td><TD><a href="downloadfile?file=upload_conf/'.$ConferenceID.'_budget">Conference Budget Details</a><br><br></TD></tr>
+						echo '<tr><td>Upload Acceptance Letter</td><td><input type="file" name="file_acceptance" id="file_acceptance" /></td><TD><a href="downloadfile?file=upload_conf/'.$ConferenceID.'_acceptance">Acceptance Letter</a><br><br></TD></tr>
 						';
 						echo $row->FacultyCategory;
 						if($row->FacultyCategory == "2"){
@@ -121,7 +133,8 @@ function insert()
 			{
 			session_start();
 			$ConferenceID = $_SESSION['ConferenceID'];
-			$data['category']=$_POST['category'];			
+			$data['category']=$_POST['category'];
+			$data['title']=$_POST['conf_title'];	
 			$data['venue']=$_POST['conf_venue'];
 			$data['conf_date']=$_POST['conf_date'];
 			$data['papertitle']=$_POST['paper_title'];
@@ -153,14 +166,14 @@ function insert()
 			 {
 			 }
 			 
-			 if($_FILES['file_budget']['size'] > 0)
+			 /*if($_FILES['file_budget']['size'] > 0)
 			 {
 				$ext=end(explode('/', $_FILES['file_budget']['type']));
 				move_uploaded_file($_FILES['file_budget']["tmp_name"],"upload_conf/" . $ConferenceID.'_budget.'.$ext);
 			 }
 			 else
 			 {
-			 }
+			 }*/
 			 
 			 if($_FILES['file_acceptance']['size'] > 0)
 			 {

@@ -92,7 +92,7 @@ class ShowArchiveConf extends CI_Controller {
 					 
 					 
 									
-					$tableHeader= '<TR><TD><h4>ConferenceTitle</h4></TD><TD><h4>Faculty Member</h4></TD><TD><h4>Conference Date</TD><TD><h4>Title of Paper</TD><TD><h4>Co-Author from IIMC/Outside</TD><TD><h4>Source of Funding</TD></TR>';
+					$tableHeader= '<TR><TD><h4>ConferenceTitle</h4></TD><TD><h4>Faculty Member</h4></TD><TD><h4>Conference Date</TD><TD><h4>Title of Paper</TD><TD><h4>Co-Author (if any)</TD><TD><h4>Source of Funding</TD></TR>';
 					//$tableHeader= $tableHeader.'</TR>';
 					 echo $tableHeader;
 					 //echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Id</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1>';
@@ -148,12 +148,12 @@ class ShowArchiveConf extends CI_Controller {
 					echo'<a href="downloadfile?file=upload/'.$Conference.'_fees">Download Website Registration & Payment details</a><br><br>';
 					echo'<a href="downloadfile?file=upload/'.$Conference.'_budget">Download Budget Declaration</a><br><br>';
 					echo'<a href="downloadfile?file=upload/'.$Conference.'_acceptance">Download Acceptance Letter</a><br><br>';
-					echo'<a href="downloadfile?file=upload/'.$Conference.'_grouprecommendation">Download Group Recommendation</a><br><br>';
+					//echo'<a href="downloadfile?file=upload/'.$Conference.'_grouprecommendation">Download Group Recommendation</a><br><br>';
 					echo '<p>Please enter comments for Blocking*</p>
 					 <p> <label for="cname">Name</label>
 					<em>*</em><input id="cname" name="name" size="25" class="required" minlength="2" /></p>
-					 <p><textarea name="comment"></textarea></p>';
-					echo '<input type= submit value= "Block" name="block"><input type="hidden" name=ConfID value="'.$Conference.' " >';
+					 <p><label for="ccomment">Comments</label><em>*</em><textarea name="comment"></textarea></p>';
+					echo '<input type= submit value= "Cancel The Conference" name="block"><input type="hidden" name=ConfID value="'.$Conference.' " >';
 					/*if ($_SESSION['usertype']==1)
 					{
 					
