@@ -69,7 +69,7 @@ IIIIIIIIII SSSSSSSSSSSSSSS           GGGGGG   GGGG
                 </div>
                 <div id="confs" style="display: none">
                     <ul >
-                        <li><a  href="/rp/Conf_new_application">New Application</a> </li>
+                        <li><a  href="/rp/Conf_new_application_comm">New Application</a> </li>
                     </ul>
                 </div>
            </div> 
