@@ -100,11 +100,16 @@ class Extension extends CI_Controller
 				<TABLE width="90%" border="1" bordercolor="#993300" align="center" cellpadding="3" cellspacing="1" class="table_border_both_left"><tr  class="heading_table_top"> 
 				
 						<table class="table table-bordered">
-					<TD><h4>Project Title</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD><TD><h4>Comments</h1></TD><TD><h4>Select</h1></TD>
+					<TD><h4>Project Title</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>Start Date</h4></TD><TD><h4>End Date</h4></TD><TD><h4>Period</h4></TD><TD><h4>Project Category</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</TD><TD><h4>Researcher3</h1></TD><TD><h4>Comments</h1></TD><TD><h4>Select</h1></TD>
 					
 					<tbody>';
 					echo '<p></br></p>';
 					echo '<hr size=10 noshade color="#333333"><h3>Projects Approved for Extension</h3>';
+					
+					
+					
+					
+					
 					foreach($result1->result() as $row)
 						{
 						echo '<tr>
@@ -119,6 +124,8 @@ class Extension extends CI_Controller
 						 echo '</TD><TD>';
 						 print $row->Period;
 						 echo '</TD><TD>';
+						 print $row->ProjectCategory;
+						 echo '</TD><TD>';
 						 print $row->Researcher1;
 						 echo '</TD><TD>';
 						 print $row->Researcher2;
@@ -132,7 +139,9 @@ class Extension extends CI_Controller
 						 }
 						 echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectSelected" VALUE="'.$row->ProjectId.'"></TD>';
 						 echo '</TD><TD><INPUT TYPE=SUBMIT name ="RequestType" value="Print"></TD></TR>';
-						}			 
+						}	
+					
+								
 					 echo '</tbody>
 					</table>';
 				//<INPUT TYPE=SUBMIT name ="RequestType" value="Print">

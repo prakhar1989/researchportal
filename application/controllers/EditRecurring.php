@@ -177,14 +177,35 @@ class EditRecurring extends CI_Controller {
 							<td>PAN number</td>
 							<td>'.$res[0]->PAN.'</td>
 						</tr>';
-						/*<tr>
-						 <td>CV of RA</td><td>
-						 <INPUT TYPE=SUBMIT value="Download CV" name="Check"></input><input type = "hidden" name="WorkOrderId" value="'.$res[0]->WorkOrderId.'"></input><input type = "hidden" name="RA_id" value = "'.$res[0]->researcher_id.'"></input></td>
+						echo '<tr>
+						 <td>CV of RA</td><td>';
+						
+						$Path = "upload/".$res[0]->WorkOrderId."_cv_".$res[0]->researcher_id;
+						//echo $Path;
+								$Files = glob($Path."*.*");
+								foreach ($Files as $File)
+									{	
+									echo'<a href="download?file='.$File.'">'.$File.'</a><br><br>';
+							
+									}
+							
+
+						 echo '</td>
 						</tr>
 						<tr>
 						<td>Appointment Letter of RA</td>
-						<td><INPUT TYPE=SUBMIT VALUE="Download Appointment Letter" name="Check"></input></td></tr>*/
-						echo'
+						<td>';
+						$Path1 = "upload/".$res[0]->WorkOrderId."_apt_ltr_".$res[0]->researcher_id;
+						//echo $Path;
+								$Files1 = glob($Path1."*.*");
+								foreach ($Files1 as $File1)
+									{	
+									echo'<a href="download?file='.$File1.'">'.$File1.'</a><br><br>';
+									
+									}
+							
+						echo '</td></tr>
+						
 					</tbody>
 					</table></form>';
 		}
@@ -244,11 +265,15 @@ class EditRecurring extends CI_Controller {
 		 $data['Month_payment']=$_POST['Start_payment'];
 		 $this->load->model('project_model');
 		 $msg=$this->project_model->insertRecurring($data);
+		 $ProjectID=$this->project_model->getProjectID($data['WorkOrderId']);
+		 echo 'ProjectttttIdddddd'.$ProjectID;
 		 //Uploading the file code... Can be modified to check the file extension if required
 		 $ext=end(explode('/', $_FILES['cv']['name']));
-		 move_uploaded_file($_FILES['cv']["tmp_name"],"upload/" . $_POST['WorkOrderId'].'_cv_'.$_POST['RA_id'].'.'.$ext);
+		 move_uploaded_file($_FILES['cv']["tmp_name"],"upload/" . $ProjectID.'_cv_'.$_POST['RA_id'].'.'.$ext);
+		 //move_uploaded_file($_FILES['cv']["tmp_name"],"upload/" . $_POST['WorkOrderId'].'_cv_'.$_POST['RA_id'].'.'.$ext);
 		 $ext=end(explode('.', $_FILES['apt_ltr']['name']));
-		 move_uploaded_file($_FILES['apt_ltr']['tmp_name'],"upload/" . $_POST['WorkOrderId'].'_apt_ltr_'.str_replace(" ","_",$_POST['RA_id']).'.'.$ext);
+		 move_uploaded_file($_FILES['apt_ltr']['tmp_name'],"upload/" . $ProjectID.'_apt_ltr_'.str_replace(" ","_",$_POST['RA_id']).'.'.$ext);
+		 //move_uploaded_file($_FILES['apt_ltr']['tmp_name'],"upload/" . $_POST['WorkOrderId'].'_apt_ltr_'.str_replace(" ","_",$_POST['RA_id']).'.'.$ext);
 		 
 		// echo "Stored in: " . "upload/" . $_FILES["cv"]["name"];
 		 require('showMsg.php');

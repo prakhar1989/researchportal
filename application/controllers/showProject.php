@@ -282,7 +282,13 @@ class ShowProject extends CI_Controller {
 			{
 				
 				$Query= $this->project_model->changeStatus('app_chairman_1',$_POST['projectID']);
-				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"admin_forward");
+				if (isset($_POST['name']))
+					$tosend= addslashes(trim($_POST['name'].' : '));
+				else
+					$tosend='';
+				$tosend=$tosend.addslashes(trim($_POST['comment']));
+				//echo $tosend;
+				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],$tosend,"admin_forward");
 				$this->load->view('layout',$data);
 			} 
 			elseif ($_SESSION['usertype']==2)
@@ -301,7 +307,12 @@ class ShowProject extends CI_Controller {
 			{
 				
 				$Query= $this->project_model->changeStatus('approved',$_POST['projectID']);
-				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"chairman_approve");
+				if (isset($_POST['name']))
+					$tosend= addslashes(trim($_POST['name'].' : '));
+				else
+					$tosend='';
+				$tosend=$tosend.addslashes(trim($_POST['comment']));
+				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],$tosend,"chairman_approve");
 				$this->load->view('layoutChairman',$data);
 			}
 			elseif($_SESSION['usertype']==3 && $_POST['approve']=='Forward To Committee')
@@ -315,7 +326,12 @@ class ShowProject extends CI_Controller {
 				$stat = mail($to,$subject,$message,$headers);
 				//echo $stat;
 				$Query= $this->project_model->changeStatus('app_comm',$_POST['projectID']);
-				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"chairman_approve");
+				if (isset($_POST['name']))
+					$tosend= addslashes(trim($_POST['name'].' : '));
+				else
+					$tosend='';
+				$tosend=$tosend.addslashes(trim($_POST['comment']));
+				$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],$tosend,"chairman_forward");
 				$this->load->view('layoutChairman',$data);
 			}
 			else
@@ -334,19 +350,33 @@ class ShowProject extends CI_Controller {
 			if($_SESSION['usertype']==1)
 			{
 							$Query= $this->project_model->changeStatus('revisionAdmin',$_POST['projectID']);
-							$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"admin_reject");
+				if (isset($_POST['name']))
+					$tosend= addslashes(trim($_POST['name'].' : '));
+				else
+					$tosend='';
+				$tosend=$tosend.addslashes(trim($_POST['comment']));
+							$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],$tosend,"admin_reject");
 							$this->load->view('layout',$data);
 			}
 			elseif ($_SESSION['usertype']==2)
 			{
-							
-							$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"committee_reject");
+					if (isset($_POST['name']))
+					$tosend= addslashes(trim($_POST['name'].' : '));
+				else
+					$tosend='';
+				$tosend=$tosend.addslashes(trim($_POST['comment']));
+							$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],$tosend,"committee_reject");
 							$this->load->view('layoutComm',$data);
 			}
 			elseif ($_SESSION['usertype']==3)
 			{
 							$Query= $this->project_model->changeStatus('revisionChairman',$_POST['projectID']);
-							$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"chairmain_reject");
+				if (isset($_POST['name']))
+					$tosend= addslashes(trim($_POST['name'].' : '));
+				else
+					$tosend='';
+				$tosend=$tosend.addslashes(trim($_POST['comment']));
+							$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],$tosend,"chairmain_reject");
 							$this->load->view('layoutChairman',$data);
 			}
 			else{

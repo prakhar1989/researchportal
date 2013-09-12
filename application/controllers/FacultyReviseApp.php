@@ -122,17 +122,33 @@ class FacultyReviseApp extends CI_Controller {
 						  
 						
 						echo '
-							<td>Project Category</td>
+							<tr>
+						<td>Project Category</td>
 							<td>
-							<select name="category">
-							  <option>Category 1 (IIM C)</option>
-							  <option>Category 2 (IIM C)</option>
-							  <option>Category 3 (IIM C)</option>
+							<select name="category" id = "cat" onchange = "MyFunction1()">
+							  <option value="1">Category 1 (IIM C)</option>
+							  <option value="2">Category 2 (IIM C)</option>
+							  <option value="3">Category 3 (IIM C)</option>
 							  <option>Externally Funded Project </option>
-							  <option>Other Category</option>
+							  
 							  
 							</select>
 						</td>
+						</tr>
+						<tr>
+						<!--<input type="textarea" name="Reference" id="ref_details" style="display: none;" />-->
+						<td>
+						 <font color="#a0a0a0">
+						Reference Details (For Category 2 and Category 3 Projects)
+						<br>Please enter the details in following format
+						<br>Name
+						<br>Contact
+						<br>Email
+						<br>Address
+						</font>
+						</td>
+						<td><textarea rows	= "12"  name="Reference" style= "width: 400px;" id="ref_details" disabled = "disabled"></textarea></td>
+						
 						</tr>
 						<tr>
 							<td>Project Grant</td>
@@ -168,6 +184,12 @@ function insert()
 			{
 			 session_start();
 			 $ProjectID = $_SESSION['ProjectID'];
+			  if (isset($_POST['Reference'])) {
+			 $data['reference'] = addslashes(trim(nl2br($_POST['Reference'])));
+			 } else {
+			 $data['reference'] = "";
+
+			 }
 			 //echo 'The value of Project category is: '.$_POST['category'];
 			 if(isset($_POST['casesCB']))
 			 {
@@ -270,3 +292,28 @@ function insert()
 
 
 ?>
+<script>
+function MyFunction1()
+{
+	if (document.getElementById('cat').value == 2 || document.getElementById('cat').value == 3){
+       //document.getElementById('ref_details').style.display = 'block';}
+	   document.getElementById('ref_details').disabled = false;}
+   else {
+   //document.getElementById('ref_details').style.display = 'none';
+   document.getElementById('ref_details').disabled = true;
+   }
+	/*var names = "";
+	var sel = document.getElementById("cat");
+	if (sel.options[sel.selectedIndex].value == "Category 2 (IIM C)" || sel.options[sel.selectedIndex].value == "Category 3 (IIM C)")
+	{
+	names = prompt("Please Enter external reference name and email","");
+	}
+	document.application.hidden2.value = names;*/
+
+}
+function enableMe(fld)
+{
+	eval('window.document.application.'+fld+'.disabled = !window.document.application.'+fld+'CB'+'.checked');
+
+}
+</script>

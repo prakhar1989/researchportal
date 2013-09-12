@@ -266,8 +266,8 @@ class FacultyProjRequest extends CI_Controller
 				$data['citation'.$j] = $_POST['citation'.$j];
 				$data['fileDesc_'.$j] = $_POST['fileDesc_'.$j];
 			}
-			$data['count'] = $i;
-			$data['countuploaded'] = $countuploaded;
+			$data['count'] = $i-1;
+			$data['countuploaded'] = $countuploaded+1;
 			$this->load->database();
 			$this->load->model('project_model');
 			$msg1 = $this->project_model->addCitation($data);

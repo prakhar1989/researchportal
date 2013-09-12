@@ -148,6 +148,7 @@ class ShowArchiveConf extends CI_Controller {
 					echo'<a href="downloadfile?file=upload/'.$Conference.'_fees">Download Website Registration & Payment details</a><br><br>';
 					echo'<a href="downloadfile?file=upload/'.$Conference.'_budget">Download Budget Declaration</a><br><br>';
 					echo'<a href="downloadfile?file=upload/'.$Conference.'_acceptance">Download Acceptance Letter</a><br><br>';
+					echo'<a href="downloadfile?file=upload/'.$Conference.'_grouprecommendation">Download Group Recommendation</a><br><br>';
 					echo '<p>Please enter comments for Blocking*</p>
 					 <p> <label for="cname">Name</label>
 					<em>*</em><input id="cname" name="name" size="25" class="required" minlength="2" /></p>

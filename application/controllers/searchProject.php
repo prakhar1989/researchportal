@@ -26,13 +26,13 @@ class SearchProject extends CI_Controller{
 			echo '<FORM name="searchProject" method= POST action="SearchProject/search_proj">';
             echo '<ul class="radiolist">
                 <!--<li><input type="radio" name="searchBy" value="ProjectId" /> ProjectId </li>-->
-                <li><input type="radio" name="searchBy" value="Researcher" /> Researcher </li>
-                <li><input type="radio" name="searchBy" value="ProjectType" /> Project Type </li>
-                <li><input type="radio" name="searchBy" value="ProjectCategory" /> Project Category </li>
-                <li><input type="radio" name="searchBy" value="ReferenceDetails" /> Reference Details</li>
-                <li><input type="radio" name="searchBy" value="Budget" /> Budget </li>
-                <li><input type="radio" name="searchBy" value="Deliverable" /> Deliverable </li>
-                <li><input type="radio" name="searchBy" value="ProjectName" /> Project Name </li>
+                <li><input type="radio" name="searchBy" value="Researcher" /> Researcher </li>';
+//                <li><input type="radio" name="searchBy" value="ProjectType" /> Project Type </li>
+            echo'    <li><input type="radio" name="searchBy" value="ProjectCategory" /> Project Category </li>';
+//                <li><input type="radio" name="searchBy" value="ReferenceDetails" /> Reference Details</li>
+//                <li><input type="radio" name="searchBy" value="Budget" /> Budget </li>
+//                <li><input type="radio" name="searchBy" value="Deliverable" /> Deliverable </li>
+            echo '    <li><input type="radio" name="searchBy" value="ProjectName" /> Project Name </li>
 				<li><input type="radio" name="searchBy" value="WorkOrderId" /> Work OrderID  </li></ul>';
 			echo '<div class="searcharea"><br><input type=text class="searchbox" name="searchValue" placeholder="Enter Search Term"><br>';
 			echo '<input type= submit value= "Search" name="search"></div>'; 
