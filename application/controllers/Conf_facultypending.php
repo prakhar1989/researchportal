@@ -45,10 +45,10 @@ class Conf_facultypending extends CI_Controller {
 						 print $row->Funding;
 						 //echo '<TD><INPUT TYPE="RADIO" NAME="ConferenceChoice" VALUE="'.$row->ConferenceId.'"></TD></TR>';
 						 $Conf=$row->ConferenceId;
-						 echo'</TD><TD><p><a href="downloadfile?file=upload/'.$Conf.'_title">Download Conference Paper</a><br><br></p></TD>';
-						 echo'<TD><a href="downloadfile?file=upload/'.$Conf.'_fees">Download Conference Registration Fees Details</a><br><br></TD>';
-						 echo'<TD><a href="downloadfile?file=upload/'.$Conf.'_budget">Download Conference Budget Details</a><br><br></TD>';
-						 echo'<TD><a href="downloadfile?file=upload/'.$Conf.'_acceptance">Download Acceptance Letter</a><br><br></TD>';
+						 echo'</TD><TD><p><a href="downloadfile?file=upload_conf/'.$Conf.'_title">Download Conference Paper</a><br><br></p></TD>';
+						 echo'<TD><a href="downloadfile?file=upload_conf/'.$Conf.'_fees">Download Conference Registration Fees Details</a><br><br></TD>';
+						 echo'<TD><a href="downloadfile?file=upload_conf/'.$Conf.'_budget">Download Conference Budget Details</a><br><br></TD>';
+						 echo'<TD><a href="downloadfile?file=upload_conf/'.$Conf.'_acceptance">Download Acceptance Letter</a><br><br></TD>';
 						}
 							 
 					 echo '</TABLE>

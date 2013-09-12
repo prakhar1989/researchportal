@@ -77,6 +77,14 @@ class Conf_facultyApp extends CI_Controller {
 						<tr><td>Upload Website Registration Fees Page</td><td><input type="file" name="file_fees" id="file_fees" /></td></tr>
 						<tr><td>Upload Budget Declaration Page</td><td><input type="file" name="file_budget" id="file_budget" /></td></tr>
 						<tr><td>Upload Acceptance Letter</td><td><input type="file" name="file_acceptance" id="file_acceptance" /></td></tr>
+						<tr><td>Faculty Category</td>
+							<td>
+							<select name="faculty_category" id="fac_cat" onchange = "MyFunction()">
+							  <option value="1"> Full Time </option>
+							  <option value="2">Part Time/Visiting</option>
+							</select>
+						</td></tr>
+						<tr><td>Upload Group Recommendation</td><td><input disabled = "disabled" type="file" name="file_grouprecommendation" id="file_grouprecommendation" /></td></tr>
 					</tbody>
 					</table>
 
@@ -104,6 +112,7 @@ class Conf_facultyApp extends CI_Controller {
 					$data['conf_date']=$_POST['conf_date'];
 					$data['co_author']=$_POST['co_author'];
 					$data['funding']=$_POST['funding'];
+					$data['faculty_category']=$_POST['faculty_category'];
 					$block_num= (date("Y")-2013)/3;
 					if ((date("Y")-2013)%3==0){
 						if (date("m")>=4) {
@@ -119,16 +128,23 @@ class Conf_facultyApp extends CI_Controller {
 					if (($_FILES['file_title']['error'] === UPLOAD_ERR_OK)||($_FILES['file_fees']['error'] === UPLOAD_ERR_OK)||($_FILES['file_budget']['error'] === UPLOAD_ERR_OK)||($_FILES['file_acceptance']['error'] === UPLOAD_ERR_OK)){
 						$this->load->model('conference_model');
 						$ConfId=$this->conference_model->insertConference($_SESSION['username'],$data);
-						$ext=end(explode('/', $_FILES['file_title']['name']));
-						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/" . $ConfId.'_title.'.$ext);		           
-						$ext=end(explode('/', $_FILES['file_fees']['name']));
-						move_uploaded_file($_FILES['file_fees']["tmp_name"],"upload_conf/" . $ConfId.'_fees.'.$ext);		           
-						$ext=end(explode('/', $_FILES['file_budget']['name']));
-						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/" . $ConfId.'_budget.'.$ext);		           
-						$ext=end(explode('/', $_FILES['file_acceptance']['name']));
-						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/" . $ConfId.'_acceptance.'.$ext);		           
+						$ext=end(explode('/', $_FILES['file_title']['type']));
+						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/".$ConfId.'_title.'.$ext);		           
+						$ext=end(explode('/', $_FILES['file_fees']['type']));
+						move_uploaded_file($_FILES['file_fees']["tmp_name"],"upload_conf/".$ConfId.'_fees.'.$ext);		           
+						$ext=end(explode('/', $_FILES['file_budget']['type']));
+						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/".$ConfId.'_budget.'.$ext);		           
+						$ext=end(explode('/', $_FILES['file_acceptance']['type']));
+						move_uploaded_file($_FILES['file_title']["tmp_name"],"upload_conf/".$ConfId.'_acceptance.'.$ext);		           
 					}
-					
+					if ($_POST['faculty_category'] == 2){
+						$this->load->model('conference_model');
+						if(($_FILES['file_grouprecommendation']['error'] === UPLOAD_ERR_OK)){
+						$ext=end(explode('/', $_FILES['file_grouprecommendation']['type']));
+						move_uploaded_file($_FILES['file_grouprecommendation']["tmp_name"],"upload_conf/" . $ConfId.'_grouprecommendation.'.$ext);		           
+						}
+						
+					}
 					//$data['']=$_POST[''];
 					//$this->load->model('conference_model');
 					//$msg=$this->conference_model->insertConference('absdfsf',$data); // insert the real username from session
@@ -142,3 +158,24 @@ class Conf_facultyApp extends CI_Controller {
 
 
 ?>
+<script>
+function MyFunction()
+{
+	if (document.getElementById('fac_cat').value == 2){
+       //document.getElementById('ref_details').style.display = 'block';}
+	   document.getElementById('file_grouprecommendation').disabled = false;}
+   else {
+   //document.getElementById('ref_details').style.display = 'none';
+   document.getElementById('file_grouprecommendation').disabled = true;
+   }
+	/*var names = "";
+	var sel = document.getElementById("cat");
+	if (sel.options[sel.selectedIndex].value == "Category 2 (IIM C)" || sel.options[sel.selectedIndex].value == "Category 3 (IIM C)")
+	{
+	names = prompt("Please Enter external reference name and email","");
+	}
+	document.application.hidden2.value = names;*/
+
+}
+
+</script>

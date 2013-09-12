@@ -193,6 +193,7 @@ class EditRecurring extends CI_Controller {
     
 	//*** this will change the recurring amount for the selected project
 	function EditAmount(){
+	session_start();
 	$data['myClass']=$this;
 	$data['action']=2;
 	
