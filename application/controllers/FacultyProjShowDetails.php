@@ -115,7 +115,7 @@ class FacultyProjShowDetails extends CI_Controller {
 						}
 					else
 						{
-						$tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>Reference Details (Category 2,3)</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Project Duration</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h4></TD><TD><h4>Select</h4></TD>';
+						$tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>Reference Details (Category 2,3)</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</h4></TD><TD><h4>Project Duration</h4></TD><TD><h4>Extensions (If any)</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3 </h4></TD><TD><h4>Select</h4></TD>';
 						/*if ($_SESSION['usertype']==3)
 						{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
 						}*/
@@ -143,6 +143,18 @@ class FacultyProjShowDetails extends CI_Controller {
 						 print $row->App_Date;
 						 echo '</TD><TD>';
 						 print $row->ProjectDuration;
+ 						 echo '</TD><TD>';
+
+						 $queryStr1='SELECT * FROM projectextension WHERE ProjectId = "'.$row->ProjectId.'";';
+						$query1= $this->db->query($queryStr1);
+						$total_ext = 0;
+						foreach($query1->result() as $row1)
+							{
+							$total_ext = $total_ext + $row1->Period;
+							}
+						
+						//print intval($diff/31);
+						print $total_ext;
 						 echo '</TD><TD>';
 						 print $row->Researcher1;
 						 echo '</TD><TD>';

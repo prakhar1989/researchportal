@@ -44,7 +44,7 @@ class App_chairman extends CI_Controller {
 						 echo '</TD><TD>';
 						 print $row->ProjectCategory;
 						 echo '</TD><TD>';
-						 print $row->Reference;
+						 echo $row->Reference;
 						 echo '</TD><TD>';
 						 print $row->ProjectGrant;
 						 echo '</TD><TD>';
@@ -70,6 +70,8 @@ class App_chairman extends CI_Controller {
 						 print $row->Description;
 						 echo '</TD><TD>';
 						 print $row->ProjectCategory;
+						 echo '</TD><TD>';
+						 echo $row->Reference;
 						 echo '</TD><TD>';
 						 print $row->ProjectGrant;
 						 echo '</TD><TD>';

@@ -157,7 +157,7 @@ class FacultyProjApp extends CI_Controller {
 						Reference Details (For Category 2 and Category 3 Projects)
 						<br>Please enter the details in following format
 						<br>Name
-						<br>Contact
+						<br>Contact Number
 						<br>Email
 						<br>Address
 						</font>

@@ -86,7 +86,7 @@ class Project_model extends CI_Model {
 		{
 		$this->load->database();
 		//$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  ApprovalPending = "approved" order by project.App_Date DESC';
-		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  ApprovalPending = "approved"';
+		$queryStr='Select project.*,projectextension.* From project Inner Join projectextension On project.ProjectId = projectextension.ProjectId where  ApprovalPending = "approved" order by project.App_Date DESC';
 		$query = $this->db->query($queryStr);
 		return $query;
 		}
@@ -403,12 +403,12 @@ class Project_model extends CI_Model {
 	function insertRecurring($data)
 		{
 			$this->load->database();
-			$queryStr1='SELECT ProjectId FROM project WHERE WorkOrderId = '.$data['WorkOrderId'].';';
+			$queryStr1='SELECT ProjectId FROM project WHERE WorkOrderId = \''.$data['WorkOrderId'].'\';';
 			$row=$this->db->query($queryStr1)->result();
 			if ($row) 
 			{
 				
-				$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, PAN, Cheque_name, Day_payment, Month_payment) VALUES ('.$row[0]->ProjectId.', \''.$data['WorkOrderId'].'\' , '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\',\''.$data['PAN'].'\', \''.$data['Cheque_name'].'\', '.$data['Day_payment'].','.$data['Month_payment'].');';
+				$queryStr= 'INSERT INTO recurring (ProjectId, WorkOrderId, recurring_amt, Userid, Account_Details, Payment_Procedure, No_Payments, researcher_id, PAN, Cheque_name, Day_payment, Month_payment, DOB) VALUES ('.$row[0]->ProjectId.', \''.$data['WorkOrderId'].'\' , '.$data['recurring_amt'].', \''.$data['Userid'].'\', \''.$data['Account_Details'].'\', \''.$data['Payment_Procedure'].'\', '.$data['No_Payments'].', \''.$data['researcher_id'].'\',\''.$data['PAN'].'\', \''.$data['Cheque_name'].'\', '.$data['Day_payment'].','.$data['Month_payment'].' , \''.$data['DOB'].'\');';
 				$query = $this->db->query($queryStr);
 				
 				for($i=0; $i<$data['No_Payments']; $i++)
@@ -425,6 +425,15 @@ class Project_model extends CI_Model {
 			}
 			return $msg;
 		}
+		
+		function getProjectID($data)
+		{
+			$this->load->database();
+			$queryStr1='SELECT ProjectId FROM project WHERE WorkOrderId = \''.$data.'\';';
+			$projectID=$this->db->query($queryStr1)->result();
+			return $projectID;
+		}
+		
 		
 	//get a project's details
 	function projectInfoNewProject($Project)

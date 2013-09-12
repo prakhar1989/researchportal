@@ -108,7 +108,7 @@ class Conf_facultyApp extends CI_Controller {
 						<tr><td>Faculty Category</td>
 							<td>
 							<select name="faculty_category" id="fac_cat" onchange = "MyFunction()">
-							  <option value="1"> Full Time </option>
+							  <option value="1">Full Time</option>
 							  <option value="2">Part Time Visiting Faculty/Faculty on Probation</option>
 							</select>
 						</td></tr>
@@ -170,6 +170,11 @@ class Conf_facultyApp extends CI_Controller {
 					}*/
 			
 					$data['block_num']=$block_num;
+					if ($_POST['faculty_category']=1)
+					$data['FacultyCategory']='Full Time';
+					else
+					$data['FacultyCategory']='Part Time Visiting Faculty/Faculty on Probation';
+					
 					if (($_FILES['file_title']['error'] === UPLOAD_ERR_OK)||($_FILES['file_fees']['error'] === UPLOAD_ERR_OK)||($_FILES['file_budget']['error'] === UPLOAD_ERR_OK)||($_FILES['file_acceptance']['error'] === UPLOAD_ERR_OK)){
 						$this->load->model('conference_model');
 						$ConfId=$this->conference_model->insertConference($_SESSION['username'],$data);

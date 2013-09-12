@@ -64,7 +64,7 @@ function index ()
 					if ($row->Researcher3 != '')
 						echo ', Prof.'.$row->Researcher3;
 					 echo '</TD></TR>
-					<TR><TD align = left colspan=2><br></TD></TR>
+					
 
 					 <TR><TD align = left colspan=2>Date : '.date("Y-m-d").'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
@@ -77,7 +77,7 @@ function index ()
 					echo ' has been completed and the required deliverables submitted to the FPR office. Please grant the closure of the project.</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2>Title of the Project : '.$row->ProjectTitle.'</TD></TR>
-					 <TR><TD align = left colspan=2><br></TD></TR>
+					<TR><TD align = left colspan=2><br></TD></TR>
 					 <TR><TD align = left colspan=2>Researcher : Prof.'.$row->Researcher1.'';   
 					 if ($row->Researcher2 != '')
 						echo ', Prof.'.$row->Researcher2;
@@ -86,7 +86,8 @@ function index ()
 					 
 					 
 					 echo '</TD></TR>
-					 <TR><TD align = left colspan=2></TD></TR>
+					 <TR><TD align = left colspan=2><br></TD></TR>
+					 
 					 <TR><TD align = left colspan=2>Project Category : '.$row->ProjectCategory.'</TD></TR>
 					 <TR><TD align = left colspan=2><br></TD></TR>';
 					 

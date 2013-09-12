@@ -22,9 +22,10 @@ class Conf_facultyrevisionCheck extends CI_Controller {
 				$_SESSION['ConferenceID'] = $_POST['ConferenceSelected'];
 				$ConferenceID = $_POST['ConferenceSelected'];
 				
-				echo '<FORM METHOD=POST action="FacultyRevisionCheck/insert" enctype="multipart/form-data">';
-				if ($_POST['RequestType'] == 'Edit New Application')
+				echo '<FORM METHOD=POST action="Conf_facultyrevisioncheck/insert" enctype="multipart/form-data">';
+				if ($_POST['RequestType'] == 'Edit')
 					{
+					//echo 'asd';
 					header("Location: /rp/Conf_FacultyReviseApp");
 					}
 				
