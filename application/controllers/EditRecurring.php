@@ -180,7 +180,7 @@ class EditRecurring extends CI_Controller {
 						echo '<tr>
 						 <td>CV of RA</td><td>';
 						
-						$Path = "upload/".$res[0]->WorkOrderId."_cv_".$res[0]->researcher_id;
+						$Path = "upload/".$res[0]->ProjectId."_cv_".$res[0]->researcher_id;
 						//echo $Path;
 								$Files = glob($Path."*.*");
 								foreach ($Files as $File)
@@ -195,7 +195,7 @@ class EditRecurring extends CI_Controller {
 						<tr>
 						<td>Appointment Letter of RA</td>
 						<td>';
-						$Path1 = "upload/".$res[0]->WorkOrderId."_apt_ltr_".$res[0]->researcher_id;
+						$Path1 = "upload/".$res[0]->ProjectId."_apt_ltr_".$res[0]->researcher_id;
 						//echo $Path;
 								$Files1 = glob($Path1."*.*");
 								foreach ($Files1 as $File1)
