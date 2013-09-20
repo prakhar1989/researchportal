@@ -81,41 +81,41 @@ class FacultyProjShowDetails extends CI_Controller {
 					 {
 					If ($row->cases!=0 OR  $row->journals!=0 OR $row->chapters!=0 OR $row->conference!=0 OR $row->paper!=0 OR $row->books!=0)
 						{
-						$tableHeader= '<TR><TD rowspan="2"><h4>ProjectTitle</h4></TD><TD rowspan="2"><h4>Work Order Number</h4></TD><TD rowspan="2"><h4>ProjectCategory</TD><TD rowspan="2"><h4>Reference Details (Category 2,3)</TD><TD rowspan="2"><h4>ProjectGrant</h4></TD><TD rowspan="2"><h4>App_Date</TD><TD rowspan="2"><h4>Project Duration</TD><TD rowspan="2"><h4>Researcher1</TD><TD rowspan="2"><h4>Researcher2</TD><TD rowspan="2"><h4>Researcher3 </h4></TD>';
+						$tableHeader= '<TR><TD rowspan="2"><h4>ProjectTitle</h4></TD><TD rowspan="2"><h4>Work Order Number</h4></TD><TD rowspan="2"><h4>ProjectCategory</TD><TD rowspan="2"><h4>Extension (if any)</TD><TD rowspan="2"><h4>Reference Details (Category 2,3)</TD><TD rowspan="2"><h4>ProjectGrant</h4></TD><TD rowspan="2"><h4>App_Date</TD><TD rowspan="2"><h4>Project Duration</TD><TD rowspan="2"><h4>Researcher1</TD><TD rowspan="2"><h4>Researcher2</TD><TD rowspan="2"><h4>Researcher3 </h4></TD>';
 						/*if ($_SESSION['usertype']==3)
 						{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
 						}*/
 						$tableHeader= $tableHeader.'<TD><h4>Deliverables</h4></TD></TR><TR>';
 						if ($row->cases!=0)
 						{
-						 $tableHeader= $tableHeader.'<TD><h4>Cases</h4></TD>';
+						 $tableHeader= $tableHeader.'<TD ><h4>Cases</h4></TD>';
 						}
 						if ($row->journals!=0)
 						{
-						 $tableHeader= $tableHeader.'<TD><h4>Journals</h4></TD>';
+						 $tableHeader= $tableHeader.'<TD ><h4>Journals</h4></TD>';
 						}
 						if ($row->chapters!=0)
 						{
-						 $tableHeader= $tableHeader.'<TD><h4>Chapters</h4></TD>';
+						 $tableHeader= $tableHeader.'<TD ><h4>Chapters</h4></TD>';
 						}
 						if ($row->conference!=0)
 						{
-						 $tableHeader= $tableHeader.'<TD><h4>Conferences</h4></TD>';
+						 $tableHeader= $tableHeader.'<TD ><h4>Conferences</h4></TD>';
 						}
 						if ($row->paper!=0)
 						{
-						 $tableHeader= $tableHeader.'<TD><h4>Papers</h4></TD>';
+						 $tableHeader= $tableHeader.'<TD ><h4>Papers</h4></TD>';
 						}
 						if ($row->books!=0)
 						{
-						 $tableHeader= $tableHeader.'<TD><h4>Books</h4></TD>';
+						 $tableHeader= $tableHeader.'<TD ><h4>Books</h4></TD>';
 						}
 						
-						$tableHeader= $tableHeader.'<TD><H4>Select</H4>	</TD></TR>';
+						$tableHeader= $tableHeader.'<TD ><H4>Select</H4>	</TD></TR>';
 						}
 					else
 						{
-						$tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>Reference Details (Category 2,3)</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</h4></TD><TD><h4>Project Duration</h4></TD><TD><h4>Extensions (If any)</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3 </h4></TD><TD><h4>Select</h4></TD>';
+						$tableHeader= '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Number</h4></TD><TD><h4>ProjectCategory</h4></TD><TD><h4>Extension (if any)</h4></TD><TD><h4>Reference Details (Category 2,3)</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</h4></TD><TD><h4>Project Duration</h4></TD><TD><h4>Extensions (If any)</h4></TD><TD><h4>Researcher1</h4></TD><TD><h4>Researcher2</h4></TD><TD><h4>Researcher3 </h4></TD><TD><h4>Select</h4></TD>';
 						/*if ($_SESSION['usertype']==3)
 						{$tableHeader= $tableHeader.'<TD><h4>Committee consulted</h4>';
 						}*/
@@ -126,7 +126,7 @@ class FacultyProjShowDetails extends CI_Controller {
 					 }
 					 //$tableHeader= $tableHeader.'</TR>';
 					 
-					 //echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Id</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1>';
+					 //echo '<TR><TD><h4>ProjectTitle</h4></TD><TD><h4>Work Order Id</h4></TD><TD><h4>ProjectCategory</TD><TD><h4>Extension (if any)</TD><TD><h4>ProjectGrant</TD><TD><h4>App_Date</TD><TD><h4>Researcher1</TD><TD><h4>Researcher2</TD><TD><h4>Researcher3 </h1>';
 					 foreach($Query->result() as $row)
 					 {
 						 echo '<TR><TD>';
@@ -135,6 +135,17 @@ class FacultyProjShowDetails extends CI_Controller {
 						 print $row->WorkOrderId;
 						 echo '</TD><TD>';
 						 print $row->ProjectCategory;
+
+						 $queryStr1='SELECT * FROM projectextension WHERE ProjectId = "'.$row->ProjectId.'";';
+						 $query1= $this->db->query($queryStr1);
+						 $total_ext = 0;
+						 foreach($query1->result() as $row1)
+							{
+							$total_ext = $total_ext + $row1->Period;
+							}
+						 echo '</TD><TD>';
+						 print $total_ext;
+
 						 echo '</TD><TD>';
 						 print $row->Reference;
 						 echo '</TD><TD>';
@@ -154,14 +165,14 @@ class FacultyProjShowDetails extends CI_Controller {
 							}
 						
 						//print intval($diff/31);
-						print $total_ext;
-						 echo '</TD><TD>';
+						//print $total_ext;
+						// echo '</TD><TD>';
 						 print $row->Researcher1;
 						 echo '</TD><TD>';
 						 print $row->Researcher2;
 						 echo '</TD><TD>';
-						 print $row->Researcher3;
-						 echo '</TD>';
+						 echo  $row->Researcher3;
+						 //echo '</TD>';
 						 /*if ($_SESSION['usertype']=='3' && $row->PStatus=='app_chairman_2')
 						 {
 							echo 'YES';
@@ -203,9 +214,9 @@ class FacultyProjShowDetails extends CI_Controller {
 						 echo '</td><TD>';
 
 						 print $row->books;
-						 echo '</td>';
+						 
 						}
-					echo '<TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
+					echo '</TD><TD><INPUT TYPE="RADIO" NAME="ProjectChoice" VALUE="'.$row->ProjectId.'"></TD></TR>';
 					 	
 					 }
 					 echo '</tbody> </TABLE>';

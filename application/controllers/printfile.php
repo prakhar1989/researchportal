@@ -60,7 +60,7 @@ function index ()
 		 $Files = glob($path."*.*");
 		 foreach ($Files as $File)
 			{
-			echo '<IMG src="'.$File.'" border="0" width ="100" height="100">';
+			echo '<IMG src="'.$File.'" border="0" width ="75" height="75">';
 			}	
 		 echo '</TD></TR>
 		 <TR><TD style="font-weight:bold" align = center colspan=6>INDIAN INSTITUE OF MANAGEMENT CALCUTTA</TD></TR>
