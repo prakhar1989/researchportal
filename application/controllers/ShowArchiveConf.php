@@ -260,8 +260,11 @@ class ShowArchiveConf extends CI_Controller {
 			{
 				$to = "nippagupta@iimcal.ac.in";
 				$subject = "New Project Consultation";
-				$message = "Hello,
-				Chairman has sent a new project for consultation";
+				$message = "Hello Research Committee members,
+FPR Chairperson has sent a new project application for consultation. Please login to research portal (link below) to review it. 
+fpr.iimcal.ac.in
+fpr.iimcal.ac.in/rp/login
+FPR Office.";
 				$from = "fpoffice@iimcal.ac.in";
 				$headers = "From:" . $from;
 				$stat = mail($to,$subject,$message,$headers);

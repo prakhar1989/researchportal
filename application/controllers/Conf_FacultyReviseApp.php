@@ -99,24 +99,18 @@ class Conf_FacultyReviseApp extends CI_Controller {
 						';
 						//<tr><td>Upload Budget Declaration Page</td><td><input type="file" name="file_budget" id="file_budget" /></td><TD><a href="downloadfile?file=upload_conf/'.$ConferenceID.'_budget">Conference Budget Details</a><br><br></TD></tr>
 						echo '<tr><td>Upload Acceptance Letter</td><td><input type="file" name="file_acceptance" id="file_acceptance" /></td><TD><a href="downloadfile?file=upload_conf/'.$ConferenceID.'_acceptance">Acceptance Letter</a><br><br></TD></tr>
-						<tr><td>Faculty Category</td>
-							<td>
-							<select name="faculty_category" id="fac_cat">
-							  <option value="1">Full Time</option>
-							  <option value="2">Part Time Visiting Faculty/Faculty on Probation</option>
-							</select>
-						</td></tr>
 						';
-						
-						/*echo $row->FacultyCategory;
+						echo $row->FacultyCategory;
 						if($row->FacultyCategory == "2"){
 							echo '<tr><td>Upload Group Recommendation</td><td><input type="file" name="file_grouprecommendation" id="file_grouprecommendation" /></td><TD><a href="downloadfile?file=upload_conf/'.$ConferenceID.'_grouprecommendation">Group Recommendation</a><br><br></TD></tr>';
-						}*/
+						}
 						
 						echo '
 						<tr>
 							<td>Extra comments</td>
+							
 							<td><textarea name="comment" ></textarea></td>
+						
 						</tr>
 					</tbody>
 					</table>

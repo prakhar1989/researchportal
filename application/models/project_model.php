@@ -17,11 +17,11 @@ class Project_model extends CI_Model {
 		elseif ($_SESSION['usertype']==2)
 		{
 			
-			if($_SESSION['username']=="comm")
+			if($_SESSION['username']=="fprcomm1")
 				$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 3 OR comm_approval = 4 OR comm_approval = 7) ORDER BY App_Date DESC;';
-			elseif($_SESSION['username']=="comm1")
+			elseif($_SESSION['username']=="fprcomm2")
 				$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 2 OR comm_approval = 4 OR comm_approval = 6) ORDER BY App_Date DESC; ';
-			elseif($_SESSION['username']=="comm2")
+			elseif($_SESSION['username']=="fprcomm3")
 				$queryStr='SELECT * FROM project WHERE PStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 2 OR comm_approval = 3 OR comm_approval = 5) ORDER BY App_Date DESC; ';
 		}
 		elseif ($_SESSION['usertype']==3)
@@ -430,8 +430,8 @@ class Project_model extends CI_Model {
 		{
 			$this->load->database();
 			$queryStr1='SELECT ProjectId FROM project WHERE WorkOrderId = \''.$data.'\';';
-			$projectID=$this->db->query($queryStr1)->result();
-			return $projectID;
+			$result=$this->db->query($queryStr1)->row_array();
+			return $result['ProjectId'];
 		}
 		
 		
@@ -489,16 +489,16 @@ class Project_model extends CI_Model {
 			$result = $query->result();
 			echo'  The value is '.$result[0]->comm_approval;
 			$comm_val= $result[0]->comm_approval;
-			if ($_SESSION['username']=='comm')
+			if ($_SESSION['username']=='fprcomm1')
 			{
 				$comm_val=$comm_val+2;
 			}
 			elseif 
-			($_SESSION['username']=='comm1')
+			($_SESSION['username']=='fprcomm2')
 			{
 				$comm_val=$comm_val+6;
 			}
-			elseif ($_SESSION['username']=='comm2')
+			elseif ($_SESSION['username']=='fprcomm3')
 			{
 				$comm_val=$comm_val+7;
 			}

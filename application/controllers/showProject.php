@@ -293,11 +293,11 @@ class ShowProject extends CI_Controller {
 			} 
 			elseif ($_SESSION['usertype']==2)
 			{
-				if($_SESSION['username']=="comm")
+				if($_SESSION['username']=="fprcomm1")
 					$Query= $this->project_model->changeStatusComm(2,'app_chairman_2',$_POST['projectID']);
-				elseif($_SESSION['username']=="comm1")
+				elseif($_SESSION['username']=="fprcomm2")
 					$Query= $this->project_model->changeStatusComm(3,'app_chairman_2',$_POST['projectID']);
-				elseif($_SESSION['username']=="comm2")
+				elseif($_SESSION['username']=="fprcomm3")
 					$Query= $this->project_model->changeStatusComm(4,'app_chairman_2',$_POST['projectID']);
 				
 				//$this->project_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['projectID'],addslashes(trim($_POST['comment'])),"committee_approve");
@@ -319,8 +319,12 @@ class ShowProject extends CI_Controller {
 			{
 				$to = "nippagupta@iimcal.ac.in";
 				$subject = "New Project Consultation";
-				$message = "Hello,
-				Chairman has sent a new project for consultation";
+				$message = "Hello Research Committee members,
+FPR Chairperson has sent a new project application for consultation. Please login to research portal (link below) to review it. 
+fpr.iimcal.ac.in
+fpr.iimcal.ac.in/rp/login
+
+FPR Office.";
 				$from = "fpoffice@iimcal.ac.in";
 				$headers = "From:" . $from;
 				$stat = mail($to,$subject,$message,$headers);

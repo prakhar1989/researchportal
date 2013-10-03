@@ -105,12 +105,12 @@ class Conf_facultyApp extends CI_Controller {
 						<td>Financial support sought for : 
 						(Please Select, if applicable as per rules)</TD>
 						<td><table>
-						<tr><td>Air Fare</td><td><select name="airfare"><option>No</option><option>Yes</option></select></td></tr>
-						<tr><td>Registration Fees</td><td><select name="regfees"><option>No</option><option>Yes</option></select></td></tr>
-						<tr><td>Per Diem</td><td><select name="perdiem"><option>No</option><option>Yes</option></select></td></tr>
-						<tr><td>Visa</td><td><select name="visa"><option>No</option><option>Yes</option></select></td></tr>
-						<tr><td>Medical Insurance</td><td><select name="medical"><option>No</option><option>Yes</option></select></td></tr>
-						<tr><td>Local Travel</td><td><select name="localtravel"><option>No</option><option>Yes</option></select></td></tr>
+						<tr><td>Air Fare</td><td><select name="airfare"><option value="0">No</option><option value="1">Yes</option></select></td></tr>
+						<tr><td>Registration Fees</td><td><select name="regfees"><option value="0">No</option><option value="1">Yes</option></select></td></tr>
+						<tr><td>Per Diem</td><td><select name="perdiem"><option value="0">No</option><option value="1">Yes</option></select></td></tr>
+						<tr><td>Visa</td><td><select name="visa"><option value="0">No</option><option value="1">Yes</option></select></td></tr>
+						<tr><td>Medical Insurance</td><td><select name="medical"><option value="0">No</option><option value="1">Yes</option></select></td></tr>
+						<tr><td>Local Travel</td><td><select name="localtravel"><option value="0">No</option><option value="1">Yes</option></select></td></tr>
 						</table></td>
 						</tr>
 						<tr><td>Upload Full Paper</td><td><input type="file" name="file_title" id="file_title" /></td></tr>
@@ -159,6 +159,12 @@ class Conf_facultyApp extends CI_Controller {
 					$data['conf_date']=$_POST['conf_date'];
 					$data['co_author']=$_POST['co_author'];
 					$data['funding']=$_POST['funding'];
+					$data['air_fare']=$_POST['airfare'];
+					$data['reg_fees']=$_POST['regfees'];
+					$data['per_diem']=$_POST['perdiem'];
+					$data['visa']=$_POST['visa'];
+					$data['local_travel']=$_POST['localtravel'];
+					$data['medical_insurance']=$_POST['medical'];
 					$confdateyear = substr($data['conf_date'], 0, 4);
 					$block_num= ($confdateyear-2013)/3;
 					//echo $confdateyear;

@@ -216,11 +216,11 @@ class Conf_show extends CI_Controller {
 			} 
 			elseif ($_SESSION['usertype']==2)
 			{
-				if($_SESSION['username']=="comm")
+				if($_SESSION['username']=="fprcomm1")
 					$Query= $this->conference_model->changeStatusComm(2,'app_chairman_2',$_POST['conferenceID']);
-				elseif($_SESSION['username']=="comm1")
+				elseif($_SESSION['username']=="fprcomm2")
 					$Query= $this->conference_model->changeStatusComm(3,'app_chairman_2',$_POST['conferenceID']);
-				elseif($_SESSION['username']=="comm2")
+				elseif($_SESSION['username']=="fprcomm3")
 					$Query= $this->conference_model->changeStatusComm(4,'app_chairman_2',$_POST['conferenceID']);
 				
 				//$this->conference_model->insertComment($_SESSION['username'],$_SESSION['usertype'],$_POST['conferenceID'],addslashes(trim($_POST['comment'])),"committee_approve");

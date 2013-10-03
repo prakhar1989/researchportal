@@ -12,21 +12,21 @@ class Conference_model extends CI_Model {
 		//echo '@#usertype is :'.$_SESSION['usertype'];
 		if($_SESSION['usertype']==1)
 		{
-			$queryStr='SELECT * FROM conference WHERE CStatus = "app_admin" ORDER BY App_Date DESC; ';
+			$queryStr='SELECT * FROM conference WHERE CStatus = "app_admin" ORDER BY App_Date ASC; ';
 		} 
 		elseif ($_SESSION['usertype']==2)
 		{
 			
-			if($_SESSION['username']=="comm")
-				$queryStr='SELECT * FROM conference WHERE CStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 3 OR comm_approval = 4 OR comm_approval = 7) ORDER BY App_Date DESC;';
-			elseif($_SESSION['username']=="comm1")
-				$queryStr='SELECT * FROM conference WHERE CStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 2 OR comm_approval = 4 OR comm_approval = 6) ORDER BY App_Date DESC; ';
-			elseif($_SESSION['username']=="comm2")
-				$queryStr='SELECT * FROM conference WHERE CStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 2 OR comm_approval = 3 OR comm_approval = 5) ORDER BY App_Date DESC; ';
+			if($_SESSION['username']=="fprcomm1")
+				$queryStr='SELECT * FROM conference WHERE CStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 3 OR comm_approval = 4 OR comm_approval = 7) ORDER BY App_Date ASC;';
+			elseif($_SESSION['username']=="fprcomm2")
+				$queryStr='SELECT * FROM conference WHERE CStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 2 OR comm_approval = 4 OR comm_approval = 6) ORDER BY App_Date ASC; ';
+			elseif($_SESSION['username']=="fprcomm3")
+				$queryStr='SELECT * FROM conference WHERE CStatus = "app_comm" AND (comm_approval = 0 OR comm_approval = 2 OR comm_approval = 3 OR comm_approval = 5) ORDER BY App_Date ASC; ';
 		}
 		elseif ($_SESSION['usertype']==3)
 		{
-			$queryStr='SELECT * FROM conference WHERE CStatus = "app_chairman_1" ORDER BY App_Date DESC;';
+			$queryStr='SELECT * FROM conference WHERE CStatus = "app_chairman_1" ORDER BY App_Date ASC;';
 		}
 		$query= $this->db->query($queryStr);
 		return $query->result();
@@ -75,7 +75,7 @@ class Conference_model extends CI_Model {
 		$this->load->database();
 		//$query= $this->db->get('project');
 		//echo $Project['Id'];	
-		$queryStr='SELECT * FROM conference WHERE CStatus = "app_'.$stage.'";';
+		$queryStr='SELECT * FROM conference WHERE CStatus = "app_'.$stage.'" ORDER BY App_Date ASC;';
 		//echo $queryStr;
 		$query = $this->db->query($queryStr);
 		return $query;
@@ -132,7 +132,7 @@ class Conference_model extends CI_Model {
 		 	$this->load->database();
 		 	//$query= $this->db->get('project');
 		 	//echo $Project['Id'];
-		 	$queryStr='SELECT * FROM conference WHERE CStatus = "'.$status.'";';
+		 	$queryStr='SELECT * FROM conference WHERE CStatus = "'.$status.'" ORDER BY App_Date ASC;';
 		 	//echo $queryStr;
 		 	$query = $this->db->query($queryStr);
 		 	return $query;
@@ -143,7 +143,7 @@ class Conference_model extends CI_Model {
 		 	$this->load->database();
 		 	//$query= $this->db->get('project');
 		 	//echo $Project['Id'];
-		 	$queryStr='SELECT * FROM conference WHERE CStatus = "'.$status.'" AND Block_number = "'.$block.'";';
+		 	$queryStr='SELECT * FROM conference WHERE CStatus = "'.$status.'" AND Block_number = "'.$block.'" ORDER BY App_Date ASC;';
 		 	//echo $queryStr;
 		 	$query = $this->db->query($queryStr);
 		 	return $query;
@@ -203,7 +203,7 @@ class Conference_model extends CI_Model {
 		 function ongoingFacultyConferences($user) //--vridhi
 		 {
 		 	$this->load->database();
-		 	$queryStr='SELECT * FROM conference WHERE (Researcher1 = \''.$user.'\' AND CStatus = \'approved\') ORDER BY App_Date DESC;';
+		 	$queryStr='SELECT * FROM conference WHERE (Researcher1 = \''.$user.'\' AND CStatus = \'approved\') ORDER BY App_Date ASC;';
 		 	//echo $queryStr;
 		 	$query = $this->db->query($queryStr);
 		 	return $query;
@@ -211,7 +211,7 @@ class Conference_model extends CI_Model {
 		 function conferenceCompleteFaculty($user)
 		 {
 		 	$this->load->database();
-		 	$queryStr='SELECT * FROM conference WHERE (Researcher1 = \''.$user.'\' AND CStatus = \'cancelled\') ORDER BY App_Date DESC;';
+		 	$queryStr='SELECT * FROM conference WHERE (Researcher1 = \''.$user.'\' AND CStatus = \'cancelled\') ORDER BY App_Date ASC;';
 		 	//echo $queryStr;
 		 	$query = $this->db->query($queryStr);
 		 	return $query;
@@ -219,7 +219,7 @@ class Conference_model extends CI_Model {
 		 function conferencePendingFaculty($user)
 		 {
 		 	$this->load->database();
-		 	$queryStr='SELECT * FROM conference WHERE (Researcher1 = \''.$user.'\' AND CStatus = \'app_chairman_1\' OR CStatus = \'app_chairman_2\' OR CStatus = \'app_admin\' OR CStatus = \'app_comm\') ORDER BY App_Date DESC;';
+		 	$queryStr='SELECT * FROM conference WHERE (Researcher1 = \''.$user.'\' AND CStatus = \'app_chairman_1\' OR CStatus = \'app_chairman_2\' OR CStatus = \'app_admin\' OR CStatus = \'app_comm\') ORDER BY App_Date ASC;';
 		 	//echo $queryStr;
 		 	$query = $this->db->query($queryStr);
 		 	return $query;
@@ -293,7 +293,7 @@ class Conference_model extends CI_Model {
 		 	//2. Insert value into the project table
 		
 		 	//INSERT INTO `researchportal`.`project` (`ProjectTitle`, `ProjectId`, `Description`, `App_Date`, `Start_Date`, `End_Date`, `Researcher1`, `Researcher2`, `Researcher3`, `ProjectCategory`, `ProjectGrant`, `PStatus`, `Deliverables`) VALUES ('Business Leasdership Study', 'P33333', 'Leadership traits study on current business leaders', '2012-09-29', '2012-09-30', '2012-11-20', 'ashishkj11', 'prakhars2013', 'anuragn2013', '2', '100000', 'app_admin', '1 Leadership report');
-		 	$queryStr= 'INSERT INTO conference (ConferenceTitle , Start_Date, Researcher1 , Category , CStatus, Block_number, PaperTitle, No_Conferences, Funding, Venue, Researcher2, FacultyCategory) VALUES (\''.$data['conf_name'].'\' , \'' .$data['conf_date'].'\' , \''.$user.'\' , \''.$data['category'].'\' , \'app_admin\' , '.$data['block_num'].' , \''.$data['paper_title'].'\' , '.$No_conference.' , \''.$data['funding'].'\' , \''.$data['conf_venue'].'\' , \''.$data['co_author'].'\' , \''.$data['FacultyCategory'].'\');' ; 	
+		 	$queryStr= 'INSERT INTO conference (ConferenceTitle , Start_Date, Researcher1 , Category , CStatus, Block_number, PaperTitle, No_Conferences, Funding, Venue, Researcher2, FacultyCategory, air_fare, reg_fees, per_diem, visa, local_travel, medical_insurance) VALUES (\''.$data['conf_name'].'\' , \'' .$data['conf_date'].'\' , \''.$user.'\' , \''.$data['category'].'\' , \'app_admin\' , '.$data['block_num'].' , \''.$data['paper_title'].'\' , '.$No_conference.' , \''.$data['funding'].'\' , \''.$data['conf_venue'].'\' , \''.$data['co_author'].'\' , \''.$data['FacultyCategory'].'\', ' . $data['air_fare'] . ', ' . $data['reg_fees'] . ', '. $data['per_diem'] . ', ' . $data['visa'] . ', ' . $data['local_travel'] . ', ' . $data['medical_insurance'] . ');' ; 	
 			$data['conf_name']=$_POST['conf_name'];
 		 	$query = $this->db->query($queryStr);
 			$queryStr1 = 'SELECT ConferenceId FROM conference WHERE ConferenceId = (SELECT MAX(ConferenceId)  FROM conference)';
@@ -376,7 +376,7 @@ class Conference_model extends CI_Model {
 		$this->load->database();
 		if ($_SESSION['usertype']==3 || $_SESSION['usertype']==1)
 		{
-			$queryStr='SELECT * FROM conference WHERE CStatus = "app_comm" OR CStatus = "app_chairman_2" ORDER BY App_Date DESC;';
+			$queryStr='SELECT * FROM conference WHERE CStatus = "app_comm" OR CStatus = "app_chairman_2" ORDER BY App_Date ASC;';
 		}
 		$query= $this->db->query($queryStr);
 		return $query->result();

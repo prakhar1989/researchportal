@@ -177,32 +177,34 @@ class EditRecurring extends CI_Controller {
 							<td>PAN number</td>
 							<td>'.$res[0]->PAN.'</td>
 						</tr>';
+						echo '<input type="hidden" name=projectId value="'.$project.'"><input type="hidden" name=RA_id value="'.$rname.'">';
 						echo '<tr>
 						 <td>CV of RA</td><td>';
 						
-						$Path = "upload/".$res[0]->ProjectId."_cv_".$res[0]->researcher_id;
-						//echo $Path;
-								$Files = glob($Path."*.*");
-								foreach ($Files as $File)
-									{	
-									echo'<a href="download?file='.$File.'">'.$File.'</a><br><br>';
+						// $Path = "upload/".$res[0]->ProjectId."_cv_".$res[0]->researcher_id;
+						// //echo $Path;
+								// $Files = glob($Path."*.*");
+								// foreach ($Files as $File)
+									// {	
+									// echo'<a href="download?file='.$File.'">'.$File.'</a><br><br>';
 							
-									}
-							
+									// }
+						echo '<input type="submit" name = "Check" value="Download CV" class="btn btn-large btn-primary"></input>';	
 
 						 echo '</td>
 						</tr>
 						<tr>
 						<td>Appointment Letter of RA</td>
 						<td>';
-						$Path1 = "upload/".$res[0]->ProjectId."_apt_ltr_".$res[0]->researcher_id;
-						//echo $Path;
-								$Files1 = glob($Path1."*.*");
-								foreach ($Files1 as $File1)
-									{	
-									echo'<a href="download?file='.$File1.'">'.$File1.'</a><br><br>';
+						// $Path1 = "upload/".$res[0]->ProjectId."_apt_ltr_".$res[0]->researcher_id;
+						// //echo $Path;
+								// //$Files1 = glob($Path1."*.*");
+								// //foreach ($Files1 as $File1)
+									// {	
+									// echo'<a href="download?file='.$File1.'">'.$File1.'</a><br><br>';
 									
-									}
+									// }
+									echo '<input type="submit" name = "Check" value="Download Appointment Letter" class="btn btn-large btn-primary"></input>';
 							
 						echo '</td></tr>
 						
@@ -266,10 +268,10 @@ class EditRecurring extends CI_Controller {
 		 $this->load->model('project_model');
 		 $msg=$this->project_model->insertRecurring($data);
 		 $ProjectID=$this->project_model->getProjectID($data['WorkOrderId']);
-		 echo 'ProjectttttIdddddd'.$ProjectID;
+		 //echo 'ProjectttttIdddddd'.$ProjectID;
 		 //Uploading the file code... Can be modified to check the file extension if required
 		 $ext=end(explode('/', $_FILES['cv']['name']));
-		 move_uploaded_file($_FILES['cv']["tmp_name"],"upload/" . $ProjectID.'_cv_'.$_POST['RA_id'].'.'.$ext);
+		 move_uploaded_file($_FILES['cv']["tmp_name"],"upload/" .$ProjectID.'_cv_'.$_POST['RA_id'].'.'.$ext);
 		 //move_uploaded_file($_FILES['cv']["tmp_name"],"upload/" . $_POST['WorkOrderId'].'_cv_'.$_POST['RA_id'].'.'.$ext);
 		 $ext=end(explode('.', $_FILES['apt_ltr']['name']));
 		 move_uploaded_file($_FILES['apt_ltr']['tmp_name'],"upload/" . $ProjectID.'_apt_ltr_'.str_replace(" ","_",$_POST['RA_id']).'.'.$ext);
@@ -284,23 +286,33 @@ class EditRecurring extends CI_Controller {
 	{
 	    if($_POST['Check']=='Download CV')
 		{
+		
 		//$Project = $this->input->post('Choice1');
 		//header("location:/rp/downloadfile?file=upload/".$Project."_description");
 		//header("location:/rp/downloadfile?file=upload/".$_POST['WorkOrderId']."_cv_".str_replace(" ","_",$_POST['RA_id']));
+		$Path = "upload/".$_POST['projectId']."_cv_".str_replace(" ","_",$_POST['RA_id']);
+		echo $Path;
+						$Files = glob($Path."*.*");
+						foreach ($Files as $File)
+							{
+							header("location:/rp/download?file=".$File);
+							echo'<a href="download?file='.$File.'">'.$File.'</a>';
+							//echo '<br>';
+							}
 		}
 		elseif($_POST['Check']=='Download Appointment Letter')
 		{
 		//$Project = $this->input->post('Choice1');
 		//header("location:/rp/downloadfile?file=upload/".$_POST['WorkOrderId']."_apt_ltr_".str_replace(" ","_",$_POST['RA_id']));
 		
-		if ($_POST['WorkOrderId']) $work="0"; else $work=$_POST['WorkOrderId'];
-		$Path = "upload/".$work."_apt_ltr_".str_replace(" ","_",$_POST['RA_id']);
+	
+		$Path = "upload/".$_POST['projectId']."_apt_ltr_".str_replace(" ","_",$_POST['RA_id']);
 		echo $Path;
 						$Files = glob($Path."*.*");
 						foreach ($Files as $File)
 							{
-							header("location:/rp/".$Path);
-							//echo'<a href="download?file='.$File.'">'.$File.'</a>';
+							header("location:/rp/download?file=".$File);
+							echo'<a href="download?file='.$File.'">'.$File.'</a>';
 							//echo '<br>';
 							}
 		}
